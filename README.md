@@ -9,7 +9,7 @@ In this project, teams will be required to design and implement a web-based seri
 | Sukhans Asrani     | Deagler         | ?       |
 | Andrew Hu          | andrewh318      | ?       |
 | Tony Liu           | Minus20Five     | ?       |
-| Nisarag Bhatt      | FocalChord      | ?       |
+| Nisarag Bhatt      | FocalChord      | Nbha702 |
 | Jed Robertson      | JedLJRobertson  | Jrob928 |
 | Jordan Sim-Smith   | jordansimsmith  | Jsim862 |
 
