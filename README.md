@@ -6,8 +6,8 @@ In this project, teams will be required to design and implement a web-based seri
 | Name               | GitHub Username | UoA UPI |
 |--------------------|:---------------:|---------|
 | Reshad Contractor  | res550          | Rcon954 |
-| Sukhans Asrani     | Deagler         | ?       |
-| Andrew Hu          | andrewh318      | ?       |
+| Sukhans Asrani     | Deagler         | sasr366 |
+| Andrew Hu          | andrewh318      | ahu156  |
 | Tony Liu           | Minus20Five     | ?       |
 | Nisarag Bhatt      | FocalChord      | Nbha702 |
 | Jed Robertson      | JedLJRobertson  | Jrob928 |
