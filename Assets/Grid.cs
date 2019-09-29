@@ -2,21 +2,20 @@
 
 public class Grid : MonoBehaviour
 {
-    [SerializeField]
-    private float size = 1f;
+    [SerializeField] private float size = 1f;
 
     public Vector3 GetNearestPointOnGrid(Vector3 position)
     {
         position -= transform.position;
 
         int xCount = Mathf.FloorToInt(position.x / size);
-		int yCount = Mathf.FloorToInt(position.y / size);
-		int zCount = Mathf.FloorToInt(position.z / size);
+        int yCount = Mathf.FloorToInt(position.y / size);
+        int zCount = Mathf.FloorToInt(position.z / size);
 
         Vector3 result = new Vector3(
-            (float)xCount * size,
-            (float)yCount * size,
-            (float)zCount * size);
+            (float) xCount * size,
+            (float) yCount * size,
+            (float) zCount * size);
 
         result += transform.position;
 
@@ -33,12 +32,11 @@ public class Grid : MonoBehaviour
                 var point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
                 Gizmos.DrawSphere(point, 0.1f);
             }
-
         }
     }
 
-	public float GetUnitSize()
-	{
-		return size;
-	}
+    public float GetUnitSize()
+    {
+        return size;
+    }
 }
