@@ -1,5 +1,7 @@
-namespace World {
-    public enum EntityType {
+namespace World
+{
+    public enum EntityType
+    {
         Forest
     }
 }
