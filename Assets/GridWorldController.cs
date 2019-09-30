@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridWorldController : MonoBehaviour
-{
+public class GridWorldController : MonoBehaviour {
     public GameObject grass;
     public GameObject water;
     public GameObject beach;
@@ -18,15 +17,13 @@ public class GridWorldController : MonoBehaviour
 
     private int unit;
 
-    public enum Tile
-    {
+    public enum Tile {
         GRASS,
         WATER,
         BEACH
     }
 
-    void Start()
-    {
+    void Start() {
         var grid = FindObjectOfType<Grid>();
 
         unit = (int) grid.GetUnitSize();
@@ -38,10 +35,8 @@ public class GridWorldController : MonoBehaviour
         worldArray = new Tile[end, end];
         entities = new GameObject[end, end];
 
-        for (int x = start; x < end; x += 1)
-        {
-            for (int z = start; z < end; z += 1)
-            {
+        for (int x = start; x < end; x += 1) {
+            for (int z = start; z < end; z += 1) {
                 var centerRelOffsetX = Mathf.Abs((float) (x - (start + end) / 2) / (end - start));
                 var centerRelOffsetZ = Mathf.Abs((float) (z - (start + end) / 2) / (end - start));
 
@@ -54,12 +49,10 @@ public class GridWorldController : MonoBehaviour
                 num -= centerRelOffset * 1.5f;
 
                 Tile tile;
-                if (num > 0.4)
-                {
+                if (num > 0.4) {
                     tile = Tile.GRASS;
                 }
-                else
-                {
+                else {
                     tile = Tile.WATER;
                 }
 
@@ -68,45 +61,35 @@ public class GridWorldController : MonoBehaviour
         }
 
         // Add water borders
-        for (int x = start; x < end; x++)
-        {
-            for (int z = start; z < end; z++)
-            {
-                if (x == 0 || z == 0 || x == end - 1 || z == end - 1)
-                {
+        for (int x = start; x < end; x++) {
+            for (int z = start; z < end; z++) {
+                if (x == 0 || z == 0 || x == end - 1 || z == end - 1) {
                     worldArray[x, z] = Tile.WATER;
                 }
             }
         }
 
         // Add beaches
-        for (int x = start; x < end; x++)
-        {
-            for (int z = start; z < end; z++)
-            {
+        for (int x = start; x < end; x++) {
+            for (int z = start; z < end; z++) {
                 var position = new Vector3Int(x, z, 0);
-                if (worldArray[x, z] != Tile.GRASS)
-                {
+                if (worldArray[x, z] != Tile.GRASS) {
                     continue;
                 }
 
-                if (z < end - 1 && worldArray[x, z + 1] == Tile.WATER)
-                {
+                if (z < end - 1 && worldArray[x, z + 1] == Tile.WATER) {
                     worldArray[x, z] = Tile.BEACH;
                 }
 
-                if (z > 0 && worldArray[x, z - 1] == Tile.WATER)
-                {
+                if (z > 0 && worldArray[x, z - 1] == Tile.WATER) {
                     worldArray[x, z] = Tile.BEACH;
                 }
 
-                if (x < end - 1 && worldArray[x + 1, z] == Tile.WATER)
-                {
+                if (x < end - 1 && worldArray[x + 1, z] == Tile.WATER) {
                     worldArray[x, z] = Tile.BEACH;
                 }
 
-                if (x > 0 && worldArray[x - 1, z] == Tile.WATER)
-                {
+                if (x > 0 && worldArray[x - 1, z] == Tile.WATER) {
                     worldArray[x, z] = Tile.BEACH;
                 }
             }
@@ -116,13 +99,10 @@ public class GridWorldController : MonoBehaviour
         var tileHeight = mesh.sharedMesh.bounds.size.y * grass.GetComponent<Transform>().localScale.y - 0.01;
 
 
-        for (int x = start; x < end; x++)
-        {
-            for (int z = start; z < end; z++)
-            {
+        for (int x = start; x < end; x++) {
+            for (int z = start; z < end; z++) {
                 GameObject tile;
-                switch (worldArray[x, z])
-                {
+                switch (worldArray[x, z]) {
                     case Tile.WATER:
                         tile = (GameObject) Instantiate(water);
                         break;
@@ -131,8 +111,7 @@ public class GridWorldController : MonoBehaviour
                         var num = Mathf.PerlinNoise(2 + generationOffset + x * forestFidelity,
                             2 + generationOffset + z * forestFidelity);
 
-                        if (num > 0.4)
-                        {
+                        if (num > 0.4) {
                             GameObject treeSet = (GameObject) Instantiate(trees);
                             treeSet.transform.parent = tile.transform;
                             treeSet.transform.localPosition = Vector3.zero;
@@ -148,8 +127,7 @@ public class GridWorldController : MonoBehaviour
                         break;
                 }
 
-                if (tile == null)
-                {
+                if (tile == null) {
                     Debug.Log("not good");
                     return;
                 }
@@ -161,17 +139,13 @@ public class GridWorldController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
+    void Update() { }
 
-    public bool AddAtReal(float xf, float zf, GameObject entity)
-    {
+    public bool AddAtReal(float xf, float zf, GameObject entity) {
         int x = Mathf.FloorToInt(xf / unit);
         int z = Mathf.FloorToInt(zf / unit);
 
-        if (entities[x, z] != null)
-        {
+        if (entities[x, z] != null) {
             return false;
         }
 
@@ -179,16 +153,14 @@ public class GridWorldController : MonoBehaviour
         return true;
     }
 
-    public Tile? GetTileAtReal(float xf, float zf)
-    {
+    public Tile? GetTileAtReal(float xf, float zf) {
         int x = Mathf.FloorToInt(xf / unit);
         int z = Mathf.FloorToInt(zf / unit);
 
         return worldArray[x, z];
     }
 
-    public void TryDeleteAtReal(float xf, float zf)
-    {
+    public void TryDeleteAtReal(float xf, float zf) {
         int x = Mathf.FloorToInt(xf / unit);
         int z = Mathf.FloorToInt(zf / unit);
 

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c439d3996955f4e7e918af05562a03d3
+=======
+guid: d6b54c847665f4b69a87ecc88099437e
+>>>>>>> 949a8ce... Refactored world
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

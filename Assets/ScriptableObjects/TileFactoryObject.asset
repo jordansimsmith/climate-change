@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c212eadc1c9c4026a0f2e411d008e85a, type: 3}
+  m_Name: TileFactoryObject
+  m_EditorClassIdentifier: 
+  grassPrefab: {fileID: 8528977549570182077, guid: 5e618c43606ab40069c12086d1d2ec1e,
+    type: 3}
+  sandPrefab: {fileID: 8450032971161961347, guid: 49bbac0f6e36240cdbbc5fb9c6b96eeb,
+    type: 3}
+  waterPrefab: {fileID: 377047158347412803, guid: 89f7adb82962d4484b43e4ea4813b2da,
+    type: 3}
+  mountainPrefab: {fileID: 3138859624339318757, guid: 59a241f1126f74b66a39ce6f4a2d3409,
+    type: 3}

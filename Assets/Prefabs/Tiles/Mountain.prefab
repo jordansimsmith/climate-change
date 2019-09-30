@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0083f145e7d3240e19ccce5eaa0693c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  biome: 2
+  tileType: 2
 --- !u!1001 &652052005800465529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,21 +128,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2842502394432359988}
     m_Modifications:
-    - target: {fileID: 1958872332763838, guid: 47168710cae13564398951978cf51b02, type: 3}
-      propertyPath: m_Name
-      value: Rock big
-      objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6
+      value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.65
+      value: 5.54
       objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalRotation.x
@@ -178,15 +174,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.75
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.75
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.75
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958872332763838, guid: 47168710cae13564398951978cf51b02, type: 3}
+      propertyPath: m_Name
+      value: Rock big
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47168710cae13564398951978cf51b02, type: 3}
