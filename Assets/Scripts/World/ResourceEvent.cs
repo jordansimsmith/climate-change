@@ -1,10 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace World {
+    public class ResourceEvent {
+        private readonly bool exceeded;
+        private readonly int threshold;
+        public bool WentAbove => exceeded == true;
+        public bool WentBelow => exceeded == false;
+        public int Threshold => threshold;
 
-public class ResourceEvent
-{
-  public bool Incremented { get; set; }
-  public int Threshold { get; set; }
-
+        public ResourceEvent(bool exceeded, int threshold) {
+            this.exceeded = exceeded;
+            this.threshold = threshold;
+        }
+    }
 }
