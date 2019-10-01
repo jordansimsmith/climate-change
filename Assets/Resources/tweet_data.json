@@ -1,6 +1,6 @@
-﻿﻿﻿{
+﻿{
   "food": {
-    "very_bad": [
+    "veryBad": [
       "The supermarket was empty again this week..",
       "R.I.P Wilson, the family dog. Starved to death in the night.",
       "Would you steal a loaf of bread to feed your starving family?"
@@ -13,13 +13,13 @@
       "The supermarket was overflowing with fruit and vegetables this morning!",
       "They bought back the free fruit for the kids at the supermarket."
     ],
-    "very_good": [
+    "veryGood": [
       "I've made a fruit pie every night this week from all the freebies the farmers are handing out",
       "Who wants to come to the harvest festival next week?"
     ]
   },
   "power": {
-    "very_bad": [
+    "veryBad": [
       "Haven't had a drop of hot water for two weeks straight",
       "No electricity means a cold home ofr my grandparents",
       "Factories aren't receiving power. Employees are restless"
@@ -33,13 +33,13 @@
       "Low power prices this week! Charge everything!",
       "Reading all night under my bed lamp"
     ],
-    "very_good": [
+    "veryGood": [
       "Consistent power means I can spend more time at home and spend more time with my family",
       "Three different power company salesmen came knocking today..."
     ]
   },
   "shelter": {
-    "very_bad": [
+    "veryBad": [
       "It's under the bridge again tonight. Looks like its going to rain...",
       "Everywhere you look, people are homeless. But have you ever seen a government official among them?"
     ],
@@ -51,13 +51,13 @@
       "Just moved into a bigger house! Perfect for our new baby!",
       "Which bank has the cheapest mortgages?"
     ],
-    "very_good": [
+    "veryGood": [
       "Bought a new house for my newborn! Get them while they're cheap.",
       "Anyone else seen that block of housing that just went up? Jealous!"
     ]
   },
   "environment": {
-    "very_bad": [
+    "veryBad": [
       "I remember when I used to be able to see the stars at night.",
       "Just bought face masks to protect my kids from the smog. When is the government going to stop endangering everyone's lives?",
       "I don't feel safe spending time outdoors with all this air pollution.",
@@ -72,7 +72,7 @@
       "Nothing starts the day better than a walk in the fresh air!",
       "Feels great to be a part of a clean green community."
     ],
-    "very_good": [
+    "veryGood": [
       "I just love gazing across the water at the stars.",
       "The island is thriving with wildlife! What a lovely place to live!",
       "Swimming in crystal clear streams is my new favourite thing!"
