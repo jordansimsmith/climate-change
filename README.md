@@ -3,15 +3,15 @@ In this project, teams will be required to design and implement a web-based seri
 
 ## Team members (Team 10) 
 
-| Name               | GitHub Username | UoA UPI |
-|--------------------|:---------------:|---------|
-| Reshad Contractor  | res550          | Rcon954 |
-| Sukhans Asrani     | Deagler         | sasr366 |
-| Andrew Hu          | andrewh318      | ahu156  |
-| Tony Liu           | Minus20Five     | tliu818 |
-| Nisarag Bhatt      | FocalChord      | Nbha702 |
-| Jed Robertson      | JedLJRobertson  | Jrob928 |
-| Jordan Sim-Smith   | jordansimsmith  | Jsim862 |
+| Name               | GitHub Username | UoA UPI | Role                               |
+|--------------------|:---------------:|---------|------------------------------------|
+| Reshad Contractor  | res550          | Rcon954 | Head of Vision Intern              |
+| Sukhans Asrani     | Deagler         | sasr366 | Chief Solutions Architect Intern   |
+| Andrew Hu          | andrewh318      | ahu156  | Lead Head of Test Architect Intern |
+| Tony Liu           | Minus20Five     | tliu818 | The Tech Lead Intern               |
+| Nisarag Bhatt      | FocalChord      | Nbha702 | Chief Dreaming Officer Intern      |
+| Jed Robertson      | JedLJRobertson  | Jrob928 | Unpaid Head of Intern              |
+| Jordan Sim-Smith   | jordansimsmith  | Jsim862 | Chief Intern Driver Intern         |
 
 ## How to collaborate
 
