@@ -1,16 +1,16 @@
 namespace World
 {
-  public enum EntityType
-  {
-    Forest,
-    House,
+    public enum EntityType
+    {
+        Forest,
+        House,
 
-    TownHall,
+        TownHall,
 
-    Factory,
+        Factory,
 
-    Farm,
-    PowerStation
+        Farm,
+        PowerStation
 
-  }
+    }
 }

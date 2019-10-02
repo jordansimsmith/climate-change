@@ -1,5 +1,7 @@
-﻿namespace World {
-    public enum TileType {
+﻿namespace World
+{
+    public enum TileType
+    {
         Grass,
         Water,
         Mountain,
