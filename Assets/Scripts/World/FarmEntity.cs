@@ -5,7 +5,5 @@ using UnityEngine;
 namespace World
 {
 
-  public class FarmEntity : Entity
-  {
-  }
+    public class FarmEntity : Entity { }
 }
