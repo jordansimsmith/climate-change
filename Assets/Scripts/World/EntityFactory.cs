@@ -6,14 +6,30 @@ namespace World
     public class EntityFactory : ScriptableObject
     {
         [SerializeField] private ForestEntity forestPrefab;
+        [SerializeField] private HouseEntity housePrefab;
+        [SerializeField] private TownHallEntity townHallPreFab;
+        [SerializeField] private FactoryEntity factoryEntity;
+        [SerializeField] private FarmEntity farmEntity;
 
-        public Entity Get(EntityType entityType)
+        [SerializeField] private PowerStationEntity powerStationEntity;
+        public Entity Get (EntityType entityType)
         {
             switch (entityType)
             {
-                case EntityType.Forest: return Instantiate(forestPrefab);
+                case EntityType.Forest:
+                    return Instantiate (forestPrefab);
+                case EntityType.House:
+                    return Instantiate (housePrefab);
+                case EntityType.TownHall:
+                    return Instantiate (townHallPreFab);
+                case EntityType.Factory:
+                    return Instantiate (factoryEntity);
+                case EntityType.Farm:
+                    return Instantiate (farmEntity);
+                case EntityType.PowerStation:
+                    return Instantiate (powerStationEntity);
                 default:
-                    Debug.Log("Unknown entity type");
+                    Debug.Log ("Unknown entity type");
                     return null;
             }
         }
