@@ -17,14 +17,13 @@ public class CameraManager : MonoBehaviour
     public Vector2 minBounds, maxBounds;
 
     [Header("Zoom Controls")]
-    public float zoomSpeed = 5f;
+    public float zoomSpeed = 30f;
     public float nearZoomLimit = 50f;
     public float farZoomLimit = 1000f;
     public float startingZoom = 50f;
 
     IZoomStrategy zoomStrategy;
     Vector3 frameMove;
-    Vector3 frameRotate;
     float frameZoom;
     Camera cam;
 
@@ -32,11 +31,8 @@ public class CameraManager : MonoBehaviour
     {
         maxBounds.x = 190;
         maxBounds.y = 190;
-        inOutSpeed = 75f;
-        lateralSpeed = 75f;
         cam = GetComponentInChildren<Camera>();
         cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
-        //zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
         zoomStrategy = cam.orthographic ? ((IZoomStrategy)new OrthographicZoomStrategy(cam, startingZoom)) : new PerspectiveZoomStrategy(cam, cameraOffset, startingZoom);
         cam.transform.LookAt(transform.position + Vector3.up * lookAtOffset);
     }
@@ -44,31 +40,22 @@ public class CameraManager : MonoBehaviour
     private void OnEnable()
     {
         KeyboardInputManager.OnMoveInput += UpdateFrameMove;
-        KeyboardInputManager.OnRotateInput += UpdateFrameRotate;
         KeyboardInputManager.OnZoomInput += UpdateFrameZoom;
         MouseInputManager.OnMoveInput += UpdateFrameMove;
-        MouseInputManager.OnRotateInput += UpdateFrameRotate;
         MouseInputManager.OnZoomInput += UpdateFrameZoom;
     }
 
     private void OnDisable()
     {
         KeyboardInputManager.OnMoveInput -= UpdateFrameMove;
-        KeyboardInputManager.OnRotateInput -= UpdateFrameRotate;
         KeyboardInputManager.OnZoomInput -= UpdateFrameZoom;
         MouseInputManager.OnMoveInput -= UpdateFrameMove;
-        MouseInputManager.OnRotateInput -= UpdateFrameRotate;
         MouseInputManager.OnZoomInput -= UpdateFrameZoom;
     }
 
     private void UpdateFrameZoom(float zoomAmount)
     {
         frameZoom += zoomAmount;
-    }
-
-    private void UpdateFrameRotate(Vector3 rotateAmount)
-    {
-        frameRotate += rotateAmount;
     }
 
     private void UpdateFrameMove(Vector3 moveVector)
@@ -78,6 +65,17 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            cam = GetComponentInChildren<Camera>();
+            cameraOffset.x = 15f;
+            cameraOffset.y = 20f;
+            lookAtOffset = 20f;
+            transform.localPosition = new Vector3(40f, 0, 40f);
+            cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
+            zoomStrategy = cam.orthographic ? ((IZoomStrategy)new OrthographicZoomStrategy(cam, startingZoom)) : new PerspectiveZoomStrategy(cam, cameraOffset, startingZoom);
+            cam.transform.LookAt(transform.position + Vector3.up * lookAtOffset);
+        }
         if(frameMove != Vector3.zero)
         {
             Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y, frameMove.z * inOutSpeed);
