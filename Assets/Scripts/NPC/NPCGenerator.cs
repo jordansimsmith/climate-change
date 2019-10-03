@@ -7,8 +7,10 @@ namespace NPC
     public class NPCGenerator : MonoBehaviour
     {
         public TextAsset nameData;
+        public GameObject npcPrefab;
 
         private NameData names;
+
 
         private void Awake()
         {
@@ -16,16 +18,23 @@ namespace NPC
             Debug.Log(names.Names.Count);
         }
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-
+            GenerateNPC();
         }
 
-        // Update is called once per frame
-        void Update()
+        public GameObject GenerateNPC()
         {
+            GameObject npc = Instantiate(npcPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
+            NonPlayingCharacter npcScript = npc.GetComponent<NonPlayingCharacter>();
+
+            // TODO: randomise
+            npcScript.FirstName = "Reshad";
+            npcScript.LastName = "Contractor";
+            npcScript.Occupation = "Chief dreaming officer";
+
+            return npc;
         }
     }
 }
