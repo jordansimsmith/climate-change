@@ -14,3 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forestPrefab: {fileID: 339164512736441134, guid: 52ecc28506da6413b9f70778efe792f6,
     type: 3}
+  housePrefab: {fileID: -7082405656168766782, guid: 95577532a80eff94e9869bcd56b60565,
+    type: 3}
+  townHallPreFab: {fileID: 8068884375748032247, guid: 9665868e38efc8342a592f7d4c82665b,
+    type: 3}
+  factoryEntity: {fileID: 4367830585035474112, guid: dfc20c6503a39aa4ab568745e6e3d779,
+    type: 3}
+  farmEntity: {fileID: -6795025145051476749, guid: 915900f7bf0f69d4fbdc2aa358a0f2ff,
+    type: 3}
+  powerStationEntity: {fileID: 5451753183567810381, guid: 2f13ffe4a2a6e4142b949b3f7e70f2de,
+    type: 3}

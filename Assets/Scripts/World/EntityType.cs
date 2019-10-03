@@ -2,6 +2,15 @@ namespace World
 {
     public enum EntityType
     {
-        Forest
+        Forest,
+        House,
+
+        TownHall,
+
+        Factory,
+
+        Farm,
+        PowerStation
+
     }
 }
