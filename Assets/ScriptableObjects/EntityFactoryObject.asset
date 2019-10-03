@@ -22,5 +22,5 @@ MonoBehaviour:
     type: 3}
   farmEntity: {fileID: -6795025145051476749, guid: 915900f7bf0f69d4fbdc2aa358a0f2ff,
     type: 3}
-  powerStationEntity: {fileID: 5451753183567810381, guid: 2f13ffe4a2a6e4142b949b3f7e70f2de,
+  powerStationEntity: {fileID: 523364037030582250, guid: cc562e02235d06948ad2cd55d4400981,
     type: 3}
