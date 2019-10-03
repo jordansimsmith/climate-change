@@ -7,15 +7,19 @@ namespace NPC
     public class NPCGenerator : MonoBehaviour
     {
         public TextAsset nameData;
+        public TextAsset occupationData;
         public GameObject npcPrefab;
 
         private NameData names;
+        private OccupationData occupations;
 
 
         private void Awake()
         {
             names = NameData.ParseJson(nameData.text);
+            occupations = OccupationData.ParseJson(occupationData.text);
             Debug.Log(names.Names.Count);
+            Debug.Log(occupations.Occupations.Count);
         }
 
         private void Start()
@@ -30,11 +34,16 @@ namespace NPC
             NonPlayingCharacter npcScript = npc.GetComponent<NonPlayingCharacter>();
 
             // TODO: randomise
-            npcScript.FirstName = "Reshad";
-            npcScript.LastName = "Contractor";
-            npcScript.Occupation = "Chief dreaming officer";
+            npcScript.FirstName = GetRandomFromList(names.Names);
+            npcScript.LastName = GetRandomFromList(names.Names);
+            npcScript.Occupation = GetRandomFromList(occupations.Occupations);
 
             return npc;
+        }
+
+        private string GetRandomFromList(List<string> list)
+        {
+            return list[Random.Range(0, list.Count)];
         }
     }
 }
