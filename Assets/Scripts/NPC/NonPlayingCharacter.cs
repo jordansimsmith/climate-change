@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using Tweets;
 using UnityEngine;
 
@@ -61,7 +62,8 @@ public class NonPlayingCharacter : MonoBehaviour
     {
         string fullName = firstName + " " + lastName;
         string tweet = tweetGenerator.GenerateTweet(0, 0, 0, 0);
-
-        panelController.Show(fullName, occupation, tweet, null);
+        TextInfo text = new CultureInfo("en-US",false).TextInfo;
+        string capitalisedOccupation = text.ToTitleCase(occupation);
+        panelController.Show(fullName, capitalisedOccupation, tweet, null);
     }
 }
