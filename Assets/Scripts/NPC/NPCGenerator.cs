@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace NPC
@@ -33,7 +32,6 @@ namespace NPC
 
             NonPlayingCharacter npcScript = npc.GetComponent<NonPlayingCharacter>();
 
-            // TODO: randomise
             npcScript.FirstName = GetRandomFromList(names.Names);
             npcScript.LastName = GetRandomFromList(names.Names);
             npcScript.Occupation = GetRandomFromList(occupations.Occupations);
