@@ -11,13 +11,12 @@ namespace World
 
         [SerializeField] private EntityFactory factory;
         private Entity entity;
-        private GameBoard gameBoard;
+        private Plane tilePlane;
 
-        void Awake()
-        {
-            gameBoard = FindObjectOfType<GameBoard>();
+        private void Start() {
+            tilePlane = new Plane(Vector3.up, 0);
         }
-        
+
         public void spawn(EntityType type)
         {
             entity = factory.Get(type);
@@ -32,13 +31,20 @@ namespace World
             {
                 Debug.DrawLine (Camera.main.transform.position, hitInfo.point,  Color.red);
                 GameObject gameTile = hitInfo.collider.gameObject;
-                buildingTransform.SetParent(gameTile.transform, false);
-
+                buildingTransform.SetParent(gameTile.transform);
+                buildingTransform.localPosition = Vector3.zero;
                 if (Input.GetMouseButtonDown(0)) {
                     gameTile.GetComponent<Tile>().Entity = entity;
                     enabled = false;
                 }
             }
+            else {
+                tilePlane.Raycast(ray, out var enter);
+                Vector3 hitPoint = ray.GetPoint(enter);
+                buildingTransform.parent = null;
+                buildingTransform.position = hitPoint;
+            }
+
         }
     
 
