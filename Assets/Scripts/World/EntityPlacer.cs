@@ -21,59 +21,27 @@ namespace World
         public void spawn(EntityType type)
         {
             entity = factory.Get(type);
+            enabled = true;
         }
 
         private void Update()
         {
-            if (entity == null)
-            {
-                return;
-            }
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hitInfo;
-
             Transform buildingTransform = entity.transform;
-
-            if (Physics.Raycast(ray, out hitInfo))
+            if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10 ))
             {
+                Debug.DrawLine (Camera.main.transform.position, hitInfo.point,  Color.red);
                 GameObject gameTile = hitInfo.collider.gameObject;
-                Vector3 finalPosition = getNearestPointOnGrid(hitInfo.point);
-                buildingTransform.SetParent(gameTile.transform);
-                buildingTransform.position = finalPosition;
+                buildingTransform.SetParent(gameTile.transform, false);
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    // this method is absolutely fucked
-                    Tile tile = gameBoard.GetTileAt(finalPosition.x, finalPosition.z);
-                    
-                    // this code places it but commented out for now
-                    tile.Entity = entity;
-                    entity = null;
+                if (Input.GetMouseButtonDown(0)) {
+                    gameTile.GetComponent<Tile>().Entity = entity;
+                    enabled = false;
                 }
             }
         }
     
-        // Probably should be in the GameBoard class...
-        private Vector3 getNearestPointOnGrid(Vector3 position)
-        {
-            Transform buildingTransform = entity.transform;
-            position = position - buildingTransform.position;
-            float size = Tile.Size.x;
 
-            int xCount = Mathf.FloorToInt(position.x / size);
-            int yCount = Mathf.FloorToInt(position.y / size);
-            int zCount = Mathf.FloorToInt(position.z / size);
-
-            Vector3 result = new Vector3(
-                (float) xCount * size,
-                (float) yCount * size,
-                (float) zCount * size);
-
-            Vector3 finalPosition = buildingTransform.position + result;
-            return finalPosition;
-
-        }
 
     
 }

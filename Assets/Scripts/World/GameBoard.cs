@@ -75,17 +75,5 @@ namespace World
                 }
             }
         }
-
-        [CanBeNull]
-        public Tile GetTileAt(float xf, float zf)
-        {
-            int x = Mathf.FloorToInt(xf / 10f);
-            int z = Mathf.FloorToInt(zf / 10f);
-
-            Debug.Log("x " + x);
-            Debug.Log("y " + x);
-
-            return tiles[x, z];
-        }
     }
 }

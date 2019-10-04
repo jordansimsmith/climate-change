@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2842502394432359988}
   - component: {fileID: 3138859624339318757}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,6 +128,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2842502394432359988}
     m_Modifications:
+    - target: {fileID: 1958872332763838, guid: 47168710cae13564398951978cf51b02, type: 3}
+      propertyPath: m_Name
+      value: Rock big
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958872332763838, guid: 47168710cae13564398951978cf51b02, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4380900357793344, guid: 47168710cae13564398951978cf51b02, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.56
@@ -184,9 +192,9 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.3
       objectReference: {fileID: 0}
-    - target: {fileID: 1958872332763838, guid: 47168710cae13564398951978cf51b02, type: 3}
-      propertyPath: m_Name
-      value: Rock big
+    - target: {fileID: 1534776288102658, guid: 47168710cae13564398951978cf51b02, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47168710cae13564398951978cf51b02, type: 3}
