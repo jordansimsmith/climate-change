@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tweets;
 using UnityEngine;
 
 public class NonPlayingCharacter : MonoBehaviour
@@ -12,6 +13,8 @@ public class NonPlayingCharacter : MonoBehaviour
     private Color[] colours;
     private Renderer[] renderers;
 
+    private TweetGenerator tweetGenerator;
+    
     public string FirstName { get => firstName; set => firstName = value; }
     public string LastName { get => lastName; set => lastName = value; }
     public string Occupation { get => occupation; set => occupation = value; }
@@ -19,8 +22,13 @@ public class NonPlayingCharacter : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        // get tweet generator singleton instance
+        tweetGenerator = TweetGenerator.Instance;
+        
+        // get renderers of npc model components
         renderers = GetComponentsInChildren<Renderer>();
         colours = new Color[renderers.Length];
+        
         // cache original color
         for (int i = 0; i < renderers.Length; i++)
         {
@@ -29,6 +37,7 @@ public class NonPlayingCharacter : MonoBehaviour
     }
     private void OnMouseEnter()
     {
+        // highlight npc
         foreach (Renderer rend in renderers)
         {
             rend.material.color = Color.magenta;
@@ -47,5 +56,7 @@ public class NonPlayingCharacter : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Clicked " + firstName + " " + lastName);
+        Debug.Log(occupation);
+        Debug.Log(tweetGenerator.GenerateTweet(0,0,0,0));
     }
 }

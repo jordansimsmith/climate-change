@@ -11,10 +11,17 @@ namespace Tweets
 
         private TweetData tweets;
 
+        private static TweetGenerator instance;
+
+        // singleton instance as to only load the JSON once
+        public static TweetGenerator Instance => instance;
+
         private void Awake()
         {
             // load tweet data from JSON file
             tweets = TweetData.ParseJson(tweetData.text);
+
+            instance = this;
         }
 
         /// <summary>
