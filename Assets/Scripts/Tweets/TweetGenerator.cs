@@ -63,16 +63,16 @@ namespace Tweets
             switch (level)
             {
                 case float l when l <= 0.25f:
-                    List<string> veryBadTweets = tweetLevels.Bad;
+                    List<string> veryBadTweets = tweetLevels.VeryBad;
                     return veryBadTweets[Random.Range(0, veryBadTweets.Count)];
                 case float l when l <= 0.5f:
                     List<string> badTweets = tweetLevels.Bad;
                     return badTweets[Random.Range(0, badTweets.Count)];
                 case float l when l <= 0.75f:
-                    List<string> goodTweets = tweetLevels.Bad;
+                    List<string> goodTweets = tweetLevels.Good;
                     return goodTweets[Random.Range(0, goodTweets.Count)];
                 case float l when l <= 1.0f:
-                    List<string> veryGoodTweets = tweetLevels.Bad;
+                    List<string> veryGoodTweets = tweetLevels.VeryGood;
                     return veryGoodTweets[Random.Range(0, veryGoodTweets.Count)];
                 default:
                     return null;

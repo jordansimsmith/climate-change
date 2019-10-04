@@ -57,6 +57,7 @@ public class NonPlayingCharacter : MonoBehaviour
     {
         Debug.Log("Clicked " + firstName + " " + lastName);
         Debug.Log(occupation);
+        // TODO: read resources
         Debug.Log(tweetGenerator.GenerateTweet(0,0,0,0));
     }
 }
