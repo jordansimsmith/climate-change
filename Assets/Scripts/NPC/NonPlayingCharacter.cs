@@ -16,6 +16,7 @@ public class NonPlayingCharacter : MonoBehaviour
     private Renderer[] renderers;
 
     private TweetGenerator tweetGenerator;
+    private NPCPanelController panelController;
     
     public string FirstName { get => firstName; set => firstName = value; }
     public string LastName { get => lastName; set => lastName = value; }
@@ -24,8 +25,9 @@ public class NonPlayingCharacter : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        // get tweet generator singleton instance
+        // get singleton instances
         tweetGenerator = TweetGenerator.Instance;
+        panelController = NPCPanelController.Instance;
         
         // get renderers of npc model components
         renderers = GetComponentsInChildren<Renderer>();
@@ -57,9 +59,9 @@ public class NonPlayingCharacter : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("Clicked " + firstName + " " + lastName);
-        Debug.Log(occupation);
-        // TODO: read resources
-        Debug.Log(tweetGenerator.GenerateTweet(0,0,0,0));
+        string fullName = firstName + " " + lastName;
+        string tweet = tweetGenerator.GenerateTweet(0, 0, 0, 0);
+
+        panelController.Show(fullName, occupation, tweet, null);
     }
 }
