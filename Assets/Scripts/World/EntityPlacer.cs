@@ -45,11 +45,11 @@ namespace World
                 if (Input.GetMouseButtonDown(0))
                 {
                     // this method is absolutely fucked
-                    Tile tile = gameBoard.GetTileAt(finalPosition.x, finalPosition.y);
+                    Tile tile = gameBoard.GetTileAt(finalPosition.x, finalPosition.z);
                     
                     // this code places it but commented out for now
-                    //tile.Entity = entity;
-                    //entity = null;
+                    tile.Entity = entity;
+                    entity = null;
                 }
             }
         }
