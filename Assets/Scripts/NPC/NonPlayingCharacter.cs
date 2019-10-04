@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class NonPlayingCharacter : MonoBehaviour
 {
+    public Color highlightColour;
+    
     private string firstName;
     private string lastName;
     private string occupation;
@@ -40,7 +42,7 @@ public class NonPlayingCharacter : MonoBehaviour
         // highlight npc
         foreach (Renderer rend in renderers)
         {
-            rend.material.color = Color.magenta;
+            rend.material.color = highlightColour;
         }
     }
 
