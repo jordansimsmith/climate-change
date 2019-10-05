@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Tweets;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NonPlayingCharacter : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class NonPlayingCharacter : MonoBehaviour
 
     private TweetGenerator tweetGenerator;
     private NPCPanelController panelController;
+    private NavMeshAgent agent;
 
     public string FirstName
     {
@@ -38,6 +40,7 @@ public class NonPlayingCharacter : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         // get singleton instances
         tweetGenerator = TweetGenerator.Instance;
         panelController = NPCPanelController.Instance;
@@ -51,6 +54,19 @@ public class NonPlayingCharacter : MonoBehaviour
         {
             colours[i] = renderers[i].material.color;
         }
+        
+        // update pathing destination every 10 seconds
+        InvokeRepeating("ChangeDestination", 0, 10f);
+    }
+
+    private void ChangeDestination()
+    {
+        float x = Random.Range(0, 190f);
+        float y = transform.position.y;
+        float z = Random.Range(0, 190f);
+        
+        Vector3 destination = new Vector3(x,y,z);
+        agent.destination = destination;
     }
 
     private void OnMouseEnter()
