@@ -75,5 +75,18 @@ namespace World
                 }
             }
         }
+
+        public bool IsEntityTypeOnBoard(EntityType type)
+        {
+            foreach (Tile tile in tiles)
+            {
+                if (tile.Entity.Type == type)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

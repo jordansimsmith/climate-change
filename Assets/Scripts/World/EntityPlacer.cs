@@ -20,6 +20,7 @@ namespace World
         public void spawn(EntityType type)
         {
             entity = factory.Get(type);
+            entity.Type = type;
             enabled = true;
         }
 
@@ -33,7 +34,8 @@ namespace World
                 GameObject gameTile = hitInfo.collider.gameObject;
                 buildingTransform.SetParent(gameTile.transform);
                 buildingTransform.localPosition = Vector3.zero;
-                if (Input.GetMouseButtonDown(0)) {
+                if (Input.GetMouseButtonDown(0))
+                {
                     gameTile.GetComponent<Tile>().Entity = entity;
                     enabled = false;
                 }

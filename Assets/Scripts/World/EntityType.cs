@@ -4,11 +4,8 @@ namespace World
     {
         Forest,
         House,
-
         TownHall,
-
         Factory,
-
         Farm,
         PowerStation
 
