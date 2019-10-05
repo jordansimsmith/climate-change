@@ -80,7 +80,8 @@ namespace World
         {
             foreach (Tile tile in tiles)
             {
-                if (tile.Entity.Type == type)
+                
+                if (tile.Entity != null && tile.Entity.Type == type)
                 {
                     return true;
                 }

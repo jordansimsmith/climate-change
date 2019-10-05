@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 4_Power
   m_EditorClassIdentifier: 
   title: Building power
-  description: Let's build some power!
+  description: Let's build some power so the people have electricity!
   entityToDetect: 5

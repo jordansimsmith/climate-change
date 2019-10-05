@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2aaecce5da4464a8d3c375d955bf957, type: 3}
   m_Name: 1_Welcome
   m_EditorClassIdentifier: 
-  title: Paris Agreement
-  description: Follow these paris agreement rules
+  title: Welcome to Game
+  description: Welcome to game, do not pollute the island! Thank

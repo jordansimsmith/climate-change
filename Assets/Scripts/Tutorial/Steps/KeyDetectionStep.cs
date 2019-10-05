@@ -7,22 +7,30 @@ namespace Tutorial.Steps
     public class KeyDetectionStep : TutorialStep
     {
         public List<KeyCode> keys;
+        private HashSet<KeyCode> usedKeys;
         public KeyDetectionStep(string title, string description) : base(title, description)
         {
+        }
+
+        public override void OnStepBegin()
+        {
+            usedKeys = new HashSet<KeyCode>();
+            stepCompleted = false;
         }
 
 
         public override void Update()
         {
+
             foreach (KeyCode key in keys)
             {
-                if (Input.GetKeyDown(key))
+                if (!usedKeys.Contains(key) && Input.GetKeyDown(key))
                 {
-                    keys.Remove(key);
+                    usedKeys.Add(key);
                 }
             }
 
-            if (keys.Count == 0)
+            if (usedKeys.Count == keys.Count)
             {
                 this.stepCompleted = true;
             }

@@ -6,14 +6,16 @@ namespace Tutorial
     {
         [SerializeField]
         protected string title;
-        [SerializeField]
+        [SerializeField,  TextArea(3, 10)]
         protected string description;
+
         protected bool stepCompleted;
 
         protected TutorialStep(string title, string description)
         {
             this.title = title;
             this.description = description;
+            this.stepCompleted = false;
         }
 
         public string Title => title;
@@ -38,7 +40,7 @@ namespace Tutorial
             
         }
 
-        public bool IsStepCompleted()
+        public virtual bool IsStepCompleted()
         {
             return stepCompleted;
         }
