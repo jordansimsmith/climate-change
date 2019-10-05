@@ -36,8 +36,11 @@ namespace World
                 buildingTransform.localPosition = Vector3.zero;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    gameTile.GetComponent<Tile>().Entity = entity;
-                    enabled = false;
+                    Tile tile = gameTile.GetComponent<Tile>();
+                    if (tile.TileType.Equals(TileType.Grass) && tile.Entity == null) {
+                        tile.Entity = entity;
+                        enabled = false;
+                    }
                 }
             }
             else {
