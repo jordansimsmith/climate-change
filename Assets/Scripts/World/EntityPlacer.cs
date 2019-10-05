@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using World;
 using World.Entities;
+using World.Resource;
 using World.Tiles;
 
 namespace World
@@ -12,6 +13,7 @@ namespace World
     {
 
         [SerializeField] private EntityFactory factory;
+        [SerializeField] private ResourceSingleton resources;
         private Entity entity;
         private Plane tilePlane;
 
@@ -37,8 +39,10 @@ namespace World
                 buildingTransform.localPosition = Vector3.zero;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Tiles.Tile tile = gameTile.GetComponent<Tiles.Tile>();
-                    if (tile.TileType.Equals(TileType.Grass) && tile.Entity == null) {
+                    Tile tile = gameTile.GetComponent<Tile>();
+                    if (tile.TileType.Equals(TileType.Grass) 
+                        && tile.Entity == null
+                        && resources.Money.CurAmount >= entity.State.cost) {
                         tile.Entity = entity;
                         enabled = false;
                     }
@@ -50,7 +54,6 @@ namespace World
                 buildingTransform.parent = null;
                 buildingTransform.position = hitPoint;
             }
-
         }
     
 

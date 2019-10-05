@@ -2,6 +2,7 @@ using UnityEngine;
 using World.Resource;
 
 namespace World.Entities {
+    [CreateAssetMenu]
     public class EntityHelper : ScriptableObject {
 
         [SerializeField] private ResourceSingleton resources;
