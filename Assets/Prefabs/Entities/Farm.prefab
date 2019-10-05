@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8472297155716390561}
   - component: {fileID: -6795025145051476749}
+  - component: {fileID: 8760580469225321362}
   m_Layer: 0
   m_Name: Farm
   m_TagString: Untagged
@@ -44,6 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482e1a66c3d971544aefa731d949e76c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &8760580469225321362
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261242982337095913}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.5, y: 2.5, z: 4}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 5, y: 5, z: 6}
+  m_TimeToStationary: 0.5
 --- !u!1 &7619670570186113213
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,11 +152,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8472297155716390561}
     m_Modifications:
-    - target: {fileID: 5641092159663973501, guid: 87c1f1bdba30a8546a459fa08acbd072,
-        type: 3}
-      propertyPath: m_Name
-      value: Farm
-      objectReference: {fileID: 0}
     - target: {fileID: 8499657533357262870, guid: 87c1f1bdba30a8546a459fa08acbd072,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,6 +221,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641092159663973501, guid: 87c1f1bdba30a8546a459fa08acbd072,
+        type: 3}
+      propertyPath: m_Name
+      value: Farm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87c1f1bdba30a8546a459fa08acbd072, type: 3}

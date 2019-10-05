@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 6231702178619023946}
   - component: {fileID: 5451753183567810381}
   - component: {fileID: -3195138917342268664}
+  - component: {fileID: 3540152834073852543}
   m_Layer: 0
   m_Name: PowerStation
   m_TagString: Untagged
@@ -217,6 +218,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b34b5a7015f474b9bc4031f6b0db39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &3540152834073852543
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375035856484354913}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.6, y: 2, z: 0.6}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2763443357391358975
 GameObject:
   m_ObjectHideFlags: 0
