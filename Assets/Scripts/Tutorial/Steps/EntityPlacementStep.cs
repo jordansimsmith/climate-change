@@ -8,7 +8,6 @@ namespace Tutorial.Steps
     public class EntityPlacementStep : TutorialStep
     {
         public EntityType entityToDetect;
-        public GameObject boardGameObject;
         private GameBoard gameBoard;
         
         public EntityPlacementStep(string title, string description) : base(title, description)
@@ -17,7 +16,7 @@ namespace Tutorial.Steps
 
         public override void OnStepBegin()
         {
-            this.gameBoard = boardGameObject.GetComponentInChildren<GameBoard>();
+            this.gameBoard = GameObject.FindGameObjectWithTag("Board").GetComponent<GameBoard>();
         }
 
         public override void Update()

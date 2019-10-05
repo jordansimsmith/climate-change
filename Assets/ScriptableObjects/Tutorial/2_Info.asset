@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2aaecce5da4464a8d3c375d955bf957, type: 3}
-  m_Name: InfoStep2
+  m_Name: 2_Info
   m_EditorClassIdentifier: 
-  title: Paris Agreement
-  description: Follow these paris agreement rules
+  title: Welcome to the game
+  description: Description 1

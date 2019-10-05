@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355fae3da8284a90ab512427b47ac362, type: 3}
-  m_Name: CameraStep3
+  m_Script: {fileID: 11500000, guid: f2aaecce5da4464a8d3c375d955bf957, type: 3}
+  m_Name: 1_Welcome
   m_EditorClassIdentifier: 
-  title: Camera Movement
-  description: You can move your view using WASD!
-  keys: 77000000610000007300000064000000
+  title: Paris Agreement
+  description: Follow these paris agreement rules
