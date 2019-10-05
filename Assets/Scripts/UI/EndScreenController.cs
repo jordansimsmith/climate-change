@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
 
-public class WinScreenController : MonoBehaviour
+public class EndScreenController : MonoBehaviour
 {
-    public GameObject winSceneUI;
+    public GameObject winMenuUI;
+    public GameObject loseMenuUI;
     private EscapeController escapeController;
     private PostProcessingBehaviour blurComponent;
     
@@ -15,10 +16,8 @@ public class WinScreenController : MonoBehaviour
     {
         escapeController = gameObject.GetComponent<EscapeController>();
         GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        winSceneUI.SetActive(false);
+        winMenuUI.SetActive(false);
         blurComponent = mainCamera.GetComponent<PostProcessingBehaviour>();
-        
-      
     }
 
     // Update is called once per frame
@@ -39,7 +38,7 @@ public class WinScreenController : MonoBehaviour
     public void EnableWinScreen()
     {
         escapeController.enabled = false;
-        winSceneUI.SetActive(true);
+        winMenuUI.SetActive(true);
         blurComponent.enabled = true;
     }
     
@@ -47,10 +46,24 @@ public class WinScreenController : MonoBehaviour
     {
         blurComponent.enabled = false;
         escapeController.enabled = true;
-        winSceneUI.SetActive(false);
+        winMenuUI.SetActive(false);
     }
     
-    public void ContinueButtonOnClick()
+    public void EnableLoseScreen()
+    {
+        escapeController.enabled = false;
+        loseMenuUI.SetActive(true);
+        blurComponent.enabled = true;
+    }
+    
+    public void DisableLoseScreen()
+    {
+        blurComponent.enabled = false;
+        escapeController.enabled = true;
+        loseMenuUI.SetActive(false);
+    }
+    
+    public void WinContinueButtonOnClick()
     {
         DisableWinScreen();
     }
