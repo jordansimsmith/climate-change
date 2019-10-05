@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace World
+namespace World.Tiles
 {
     [CreateAssetMenu]
     public class TileFactory : ScriptableObject

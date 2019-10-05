@@ -1,4 +1,4 @@
-namespace World
+namespace World.Entities
 {
     public enum EntityType
     {

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using World;
+using World.Entities;
+using World.Tiles;
 
 namespace World
 {
@@ -20,7 +22,6 @@ namespace World
         public void spawn(EntityType type)
         {
             entity = factory.Get(type);
-            entity.Type = type;
             enabled = true;
         }
 
@@ -36,7 +37,7 @@ namespace World
                 buildingTransform.localPosition = Vector3.zero;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Tile tile = gameTile.GetComponent<Tile>();
+                    Tiles.Tile tile = gameTile.GetComponent<Tiles.Tile>();
                     if (tile.TileType.Equals(TileType.Grass) && tile.Entity == null) {
                         tile.Entity = entity;
                         enabled = false;

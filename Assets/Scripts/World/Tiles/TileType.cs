@@ -1,4 +1,4 @@
-﻿namespace World
+﻿namespace World.Tiles
 {
     public enum TileType
     {

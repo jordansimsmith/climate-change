@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using World;
+using World.Entities;
 
 public class EntityMenu : EventTrigger
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace World
+namespace World.Resource
 {
   public enum ResourceType
   {

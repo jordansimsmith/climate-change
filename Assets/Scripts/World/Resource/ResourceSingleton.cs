@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace World {
+namespace World.Resource {
     [CreateAssetMenu]
     public class ResourceSingleton : ScriptableObject {
         [SerializeField] private Resource money = new Resource(ResourceType.Money);

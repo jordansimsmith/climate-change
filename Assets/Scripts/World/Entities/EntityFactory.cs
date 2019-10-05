@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace World
+namespace World.Entities
 {
     [CreateAssetMenu]
     public class EntityFactory : ScriptableObject

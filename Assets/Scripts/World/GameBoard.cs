@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
+using World.Entities;
+using World.Tiles;
 
 namespace World
 {
@@ -81,7 +83,7 @@ namespace World
 
         public bool IsEntityTypeOnBoard(EntityType type)
         {
-            foreach (Tile tile in tiles)
+            foreach (var tile in tiles)
             {
                 
                 if (tile.Entity != null && tile.Entity.Type == type)

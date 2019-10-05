@@ -1,4 +1,4 @@
-﻿namespace World {
+﻿namespace World.Resource {
     public class ResourceEvent {
         private readonly bool exceeded;
         private readonly int threshold;
