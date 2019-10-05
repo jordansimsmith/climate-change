@@ -28,7 +28,7 @@ namespace NPC
 
         public GameObject GenerateNPC()
         {
-            GameObject npc = Instantiate(npcPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject npc = Instantiate(npcPrefab, new Vector3(90, 0, 90), Quaternion.identity);
 
             NonPlayingCharacter npcScript = npc.GetComponent<NonPlayingCharacter>();
 
