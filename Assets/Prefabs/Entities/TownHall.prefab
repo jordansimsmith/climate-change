@@ -99,8 +99,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6073973638651444430}
   - component: {fileID: 8068884375748032247}
+  - component: {fileID: 7946182720853876289}
   m_Layer: 0
-  m_Name: Bank
+  m_Name: TownHall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,3 +134,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff540ac710317bb4690f54507c744a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &7946182720853876289
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6079715812517241000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.5, y: 3.5, z: 4}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 5, y: 5, z: 4.5}
+  m_TimeToStationary: 0.5
