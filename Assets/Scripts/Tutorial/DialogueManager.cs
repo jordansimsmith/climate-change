@@ -21,7 +21,7 @@ namespace Tutorial
         {
             Debug.Log("Starting conversation  " +titleText);
             this.titleText.text = titleText;
-            ContinueEnabled = false;
+            ContinueInteractable = false;
           
 
             DisplayNextSentence(descriptionText);
@@ -35,7 +35,7 @@ namespace Tutorial
 
         }
 
-        public bool ContinueEnabled
+        public bool ContinueInteractable
         {
             get => continueButton.interactable;
             set => continueButton.interactable = value;

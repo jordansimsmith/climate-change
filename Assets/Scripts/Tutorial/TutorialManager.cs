@@ -76,7 +76,7 @@ namespace Tutorial
         {
             TutorialStep currentStep = tutorialSteps[currentTutorialStep];
            
-            dialogueManager.ContinueEnabled = currentStep.IsStepCompleted();
+            dialogueManager.ContinueInteractable = currentStep.IsStepCompleted();
         }
         
         public void EndTutorial()
