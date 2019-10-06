@@ -13,7 +13,8 @@ public class EntityMenu : EventTrigger
         {"Electricity", EntityType.PowerStation},
         {"Ecosystem", EntityType.Forest},
         {"Food", EntityType.Farm},
-        { "Shelter", EntityType.TownHall}
+        { "Shelter", EntityType.House},
+        { "TownHall", EntityType.TownHall}
     };
     
    

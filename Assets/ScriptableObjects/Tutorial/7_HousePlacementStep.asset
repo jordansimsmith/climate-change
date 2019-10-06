@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 7_HousePlacementStep
   m_EditorClassIdentifier: 
   title: Ewan
-  description: 'You probably need somewhere to live so click the house icon on the
-    right and drag it on to the board! '
+  description: 'You probably need somewhere to live so click the TownHall icon on
+    the right and drag it on to the board! '
   successMessage: Nice! You have a place to live!
-  entityToDetect: 5
+  entityToDetect: 2
