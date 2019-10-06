@@ -6,7 +6,6 @@ using World.Resource;
 
 public class NaturalDisasterPanelController : MonoBehaviour
 {
-
     public Text title;
     public Text info;
     public ResourceSingleton resources;
@@ -14,14 +13,14 @@ public class NaturalDisasterPanelController : MonoBehaviour
     public void Awake()
     {
         //Every 10 Seconds check if we should dispatch an event
-        InvokeRepeating("DisasterEventDispatcher", 0,10f);
+        InvokeRepeating("DisasterEventDispatcher", 0, 10f);
         Hide();
     }
 
     public void DisasterEventDispatcher()
     {
         // bottom 25% environment not sure if this is how you should do it
-        if (resources.Environment.CurPercentage <= 25)
+        if (resources.Environment.CurPercentage <= -50)
         {
             // roll dice 10% to have the natural event
             if (Random.Range(0, 10) == 0)
@@ -54,6 +53,7 @@ public class NaturalDisasterPanelController : MonoBehaviour
                 }
             }
         }
+
         //generate Rng Event for the subscribe
     }
 
@@ -68,7 +68,5 @@ public class NaturalDisasterPanelController : MonoBehaviour
         title.text = disatster;
         info.text = disasterInfo;
         gameObject.SetActive(true);
-        
     }
-
 }
