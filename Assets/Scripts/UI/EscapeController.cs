@@ -1,8 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Net.Configuration;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
@@ -12,9 +7,9 @@ public class EscapeController : MonoBehaviour
     private bool gameIsPaused = false;
 
     public GameObject escapeUIObj;
-    
 
     private PostProcessingBehaviour blurComponent;
+
     // Start is called before the first frame update
     void Start()
     {

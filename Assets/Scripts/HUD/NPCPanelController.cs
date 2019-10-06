@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class NPCPanelController : MonoBehaviour
@@ -7,7 +6,7 @@ public class NPCPanelController : MonoBehaviour
     public Text npcName;
     public Text npcOccupation;
     public Text npcTweet;
-    public Image npcAvatar;
+    private Image npcAvatar;
 
     private static NPCPanelController instance;
 
