@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 using World.Entities;
+using World.Resource;
 using World.Tiles;
 
 namespace World
@@ -11,6 +12,7 @@ namespace World
         [SerializeField] private int boardSize = 20;
         [SerializeField] private TileFactory tileFactory = default;
         [SerializeField] private EntityFactory entityFactory = default;
+        [SerializeField] private ResourceSingleton resources;
 
         public NavMeshSurface surface;
 
@@ -32,41 +34,20 @@ namespace World
                     tiles[x, z] = tile;
                 }
             }
-            
+
             // bake nav mesh
             surface.BuildNavMesh();
 
-//            // Generate some random houses
-//            for (int x = 0; x < boardSize; x++)
-//            {
-//                for (int z = 0; z < boardSize; z++)
-//                {
-//                    float rand = Random.value;
-//                    if (tiles[x, z].TileType == TileType.Grass)
-//                    {
-//                        if (rand < 0.2)
-//                        {
-//                            tiles[x, z].Entity = entityFactory.Get(EntityType.Factory);
-//                        }
-//                        else if (rand < 0.4)
-//                        {
-//                            tiles[x, z].Entity = entityFactory.Get(EntityType.Farm);
-//                        }
-//                        else if (rand < 0.6)
-//                        {
-//                            tiles[x, z].Entity = entityFactory.Get(EntityType.PowerStation);
-//                        }
-//                        else if (rand < 0.8)
-//                        {
-//                            tiles[x, z].Entity = entityFactory.Get(EntityType.House);
-//                        }
-//                        else
-//                        {
-//                            tiles[x, z].Entity = entityFactory.Get(EntityType.TownHall);
-//                        }
-//                    }
-//                }
-//            }
+            resources.Money = 1000;
+            resources.MoneyRate = 0;
+            resources.Environment.MinAmount = -100;
+            resources.Environment.CurAmount = 0;
+            resources.Power.MinAmount = -100;
+            resources.Power.CurAmount = 0;
+            resources.Food.MinAmount = -100;
+            resources.Food.CurAmount = 0;
+            resources.Shelter.MinAmount = -100;
+            resources.Shelter.CurAmount = 0;
 
             // Generate some random trees
             for (int x = 0; x < boardSize; x++)
@@ -85,7 +66,6 @@ namespace World
         {
             foreach (var tile in tiles)
             {
-                
                 if (tile.Entity != null && tile.Entity.Type == type)
                 {
                     return true;

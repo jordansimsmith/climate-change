@@ -9,16 +9,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resources.Money = 1000;
-        resources.MoneyRate = 0;
-        resources.Environment.MinAmount = -100;
-        resources.Environment.CurAmount = 0;
-        resources.Power.MinAmount = -100;
-        resources.Power.CurAmount = 0;
-        resources.Food.MinAmount = -100;
-        resources.Food.CurAmount = 0;
-        resources.Shelter.MinAmount = -100;
-        resources.Shelter.CurAmount = 0;
+        
 //        void EventHandler(ResourceEvent e) {
 //            Debug.Log(e.Threshold);
 //            if (e.WentBelow && e.Threshold == -100) {

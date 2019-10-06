@@ -104,6 +104,7 @@ MonoBehaviour:
   boardSize: 20
   tileFactory: {fileID: 11400000, guid: e340a0798551647f3a5c8d70df709502, type: 2}
   entityFactory: {fileID: 11400000, guid: 43f28b09c7d1c4342a63723bfd5cb8d8, type: 2}
+  resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
   surface: {fileID: 1703059134773651384, guid: 5e398c1899bc51f4a9cc1b70f01af43d, type: 3}
 --- !u!114 &7941001179048457805
 MonoBehaviour:
