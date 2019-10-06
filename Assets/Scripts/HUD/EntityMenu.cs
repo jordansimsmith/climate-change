@@ -14,7 +14,8 @@ public class EntityMenu : EventTrigger
         {"Ecosystem", EntityType.Forest},
         {"Food", EntityType.Farm},
         { "Shelter", EntityType.House},
-        { "TownHall", EntityType.TownHall}
+        { "TownHall", EntityType.TownHall},
+        {"Factory", EntityType.Factory}
     };
     
    
