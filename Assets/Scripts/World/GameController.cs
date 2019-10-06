@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
         resources.Shelter.CurAmount = 2;
         
         void EventHandler(ResourceEvent e) {
-            if (e.WentBelow && e.Threshold == 0) {
+            if (e.WentBelow && e.Threshold == -100) {
                 OnGameLose();
             }
         }
@@ -32,11 +32,13 @@ public class GameController : MonoBehaviour {
     
 
     public void OnGameLose() {
-       // Display a lose scene? 
+        var endScreen = FindObjectOfType<EndScreenController>();
+        endScreen.EnableLoseScreen();
     }
     
     public void OnGameWin() {
-       // Display a win scene? 
+        var endScreen = FindObjectOfType<EndScreenController>();
+        endScreen.EnableWinScreen();
     }
 
 }
