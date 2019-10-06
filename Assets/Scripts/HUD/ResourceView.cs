@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using World.Resource;
 
 
 public class ResourceView : MonoBehaviour
 {
+
+    [SerializeField] private ResourceSingleton resources;
+    
     private ViewedResource[] viewedResources;
 
     // Takes name of gameObject that encompasses slider
@@ -20,21 +24,20 @@ public class ResourceView : MonoBehaviour
         viewedResources = new ViewedResource[4];
 
         viewedResources[0] = getViewedResource("Electricity");
-        viewedResources[0].SetValues(4, 10);
         viewedResources[1] = getViewedResource("Ecosystem");
-        viewedResources[1].SetValues(20, 10);
         viewedResources[2] = getViewedResource("Food");
-        viewedResources[2].SetValues(10, 4);
         viewedResources[3] = getViewedResource("Shelter");
-        viewedResources[3].SetValues(1, 10);
-
-        InvokeRepeating("TickTenthSecond", 0.1f, 0.1f);
+        
+//        InvokeRepeating("TickTenthSecond", 0.1f, 0.1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        viewedResources[0].SetValues(resources.Power.MinAmount, resources.Power.CurAmount);
+        viewedResources[1].SetValues(resources.Environment.MinAmount, resources.Environment.CurAmount);
+        viewedResources[2].SetValues(resources.Food.MinAmount, resources.Food.CurAmount);
+        viewedResources[3].SetValues(resources.Shelter.MinAmount, resources.Shelter.CurAmount);
     }
 
     void TickTenthSecond()    {

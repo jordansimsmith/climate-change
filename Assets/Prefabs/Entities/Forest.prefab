@@ -48,6 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0a1d0edddd432cbd915817f6d37254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state:
+    cost: 1
+    money: 0
+    food: 0
+    shelter: 0
+    power: 0
+    environment: 1
+  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
   treeTransforms:
   - {fileID: 6900461539549307207}
   - {fileID: 771817598166536456}

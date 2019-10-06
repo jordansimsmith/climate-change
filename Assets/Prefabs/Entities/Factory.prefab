@@ -233,6 +233,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03758a3b7613f8447b4efc4679595b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state:
+    cost: 1
+    money: 1
+    food: 0
+    shelter: -1
+    power: -1
+    environment: -1
+  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
 --- !u!208 &5628365820630494312
 NavMeshObstacle:
   m_ObjectHideFlags: 0
