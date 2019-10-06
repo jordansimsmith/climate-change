@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using World.Resource;
 
-public class GameController : MonoBehaviour {
-
+public class GameController : MonoBehaviour
+{
     [SerializeField] private ResourceSingleton resources;
-    
+    [SerializeField] private EndScreenController endScreenController;
+
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         resources.Money = 1000;
         resources.MoneyRate = 0;
         resources.Environment.MinAmount = -100;
@@ -45,17 +45,15 @@ public class GameController : MonoBehaviour {
             OnGameLose();
         }
     }
-
-
-        public void OnGameLose() {
-        Debug.Log("game lose");
-        var endScreen = FindObjectOfType<EndScreenController>();
-        endScreen.EnableLoseScreen();
-    }
     
-    public void OnGameWin() {
-        var endScreen = FindObjectOfType<EndScreenController>();
-        endScreen.EnableWinScreen();
+    public void OnGameLose()
+    {
+        Debug.Log("game lose");
+        endScreenController.EnableLoseScreen();
     }
 
+    public void OnGameWin()
+    {
+        endScreenController.EnableWinScreen();
+    }
 }
