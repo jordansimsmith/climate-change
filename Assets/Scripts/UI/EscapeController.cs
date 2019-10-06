@@ -7,9 +7,7 @@ public class EscapeController : MonoBehaviour
     private bool gameIsPaused = false;
 
     public GameObject escapeUIObj;
-
     private PostProcessingBehaviour blurComponent;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +19,8 @@ public class EscapeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
             if (!gameIsPaused)
             {
                 Pause();
