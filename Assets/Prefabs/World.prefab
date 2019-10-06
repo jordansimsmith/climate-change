@@ -51,6 +51,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e27e23222d7124ec68695a7820d7747d, type: 2}
   - {fileID: 11400000, guid: 232616b3cd0744bcaa4820402d042c70, type: 2}
   - {fileID: 11400000, guid: f0f1484e09c3d4ac98d165571a9323c4, type: 2}
+  - {fileID: 11400000, guid: 0b80aaf797041c448a4f52ce5db8e2a3, type: 2}
+  - {fileID: 11400000, guid: a584e8a765b71824abf75584075086ac, type: 2}
+  - {fileID: 11400000, guid: c7dfc3c880d5fd14f8becfe99fe017da, type: 2}
+  - {fileID: 11400000, guid: 2e73dd9d5902fe04682abde3a4648e80, type: 2}
   tutorialActive: 0
   tutorialCanvas: {fileID: 0}
 --- !u!1 &7941001179048457792

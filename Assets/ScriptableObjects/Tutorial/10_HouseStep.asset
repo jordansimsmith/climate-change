@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e5c3103565d48788bab4773905bc743, type: 3}
-  m_Name: 7_HousePlacementStep
+  m_Name: 10_HouseStep
   m_EditorClassIdentifier: 
   title: Ewan
-  description: 'You probably need somewhere to live so click the TownHall icon on
-    the right and drag it on to the board! '
-  successMessage: Nice! You have a place to live!
-  entityToDetect: 2
+  description: Each of those buildings is costing money. Create a factory to generate
+    some money.
+  successMessage: Good work! Your carbon credits are now increasing.
+  entityToDetect: 3
