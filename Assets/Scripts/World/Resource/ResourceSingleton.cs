@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace World.Resource {
     [CreateAssetMenu]
@@ -13,5 +14,13 @@ namespace World.Resource {
         public Resource Environment => environment;
         [SerializeField] private Resource power = new Resource(ResourceType.Power);
         public Resource Power => power;
+        
+        private int moneyRate = 1;
+
+        public int MoneyRate
+        {
+            get => moneyRate;
+            set => moneyRate = value;
+        }
     }
 }
