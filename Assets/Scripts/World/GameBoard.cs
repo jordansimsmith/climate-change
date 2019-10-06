@@ -36,37 +36,37 @@ namespace World
             // bake nav mesh
             surface.BuildNavMesh();
 
-            // Generate some random houses
-            for (int x = 0; x < boardSize; x++)
-            {
-                for (int z = 0; z < boardSize; z++)
-                {
-                    float rand = Random.value;
-                    if (tiles[x, z].TileType == TileType.Grass)
-                    {
-                        if (rand < 0.2)
-                        {
-                            tiles[x, z].Entity = entityFactory.Get(EntityType.Factory);
-                        }
-                        else if (rand < 0.4)
-                        {
-                            tiles[x, z].Entity = entityFactory.Get(EntityType.Farm);
-                        }
-                        else if (rand < 0.6)
-                        {
-                            tiles[x, z].Entity = entityFactory.Get(EntityType.PowerStation);
-                        }
-                        else if (rand < 0.8)
-                        {
-                            tiles[x, z].Entity = entityFactory.Get(EntityType.House);
-                        }
-                        else
-                        {
-                            tiles[x, z].Entity = entityFactory.Get(EntityType.TownHall);
-                        }
-                    }
-                }
-            }
+//            // Generate some random houses
+//            for (int x = 0; x < boardSize; x++)
+//            {
+//                for (int z = 0; z < boardSize; z++)
+//                {
+//                    float rand = Random.value;
+//                    if (tiles[x, z].TileType == TileType.Grass)
+//                    {
+//                        if (rand < 0.2)
+//                        {
+//                            tiles[x, z].Entity = entityFactory.Get(EntityType.Factory);
+//                        }
+//                        else if (rand < 0.4)
+//                        {
+//                            tiles[x, z].Entity = entityFactory.Get(EntityType.Farm);
+//                        }
+//                        else if (rand < 0.6)
+//                        {
+//                            tiles[x, z].Entity = entityFactory.Get(EntityType.PowerStation);
+//                        }
+//                        else if (rand < 0.8)
+//                        {
+//                            tiles[x, z].Entity = entityFactory.Get(EntityType.House);
+//                        }
+//                        else
+//                        {
+//                            tiles[x, z].Entity = entityFactory.Get(EntityType.TownHall);
+//                        }
+//                    }
+//                }
+//            }
 
             // Generate some random trees
             for (int x = 0; x < boardSize; x++)

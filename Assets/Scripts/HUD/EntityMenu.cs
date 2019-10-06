@@ -12,6 +12,7 @@ public class EntityMenu : EventTrigger
     private static Vector4 defaultAlpha = new Vector4(1, 1, 1, 0.7f);
     private static Vector4 hoverAlpha = new Vector4(1, 1, 1, 0.9f);
     
+    
 
     public void Start() {
         this._background = gameObject.GetComponent<Image>();
@@ -20,16 +21,21 @@ public class EntityMenu : EventTrigger
 
     public override void OnPointerDown(PointerEventData data)
     {
-        EntitySubMenu subMenu = FindObjectsOfType<EntitySubMenu>()[0];
-        subMenu.Toggle(gameObject.name);
+//        EntitySubMenu subMenu = FindObjectsOfType<EntitySubMenu>()[0];
+//        subMenu.Toggle(gameObject.name);
+        EntityPlacer placer = FindObjectOfType<EntityPlacer>();
+        placer.spawn(gameObject.name);
     }
 
+
+ 
+    
     public override void OnPointerEnter(PointerEventData data)
     {
-        EntityPlacer placer = FindObjectOfType<EntityPlacer>();
-        placer.spawn(EntityType.PowerStation);
-        
-        
+//        EntityPlacer placer = FindObjectOfType<EntityPlacer>();
+//        placer.spawn(EntityType.PowerStation);
+//        
+//        
         this._background.color = hoverAlpha;
     }
 
