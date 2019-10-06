@@ -35,7 +35,10 @@ namespace World
             }
 
             // bake nav mesh
-            surface.BuildNavMesh();
+            if (surface != null)
+            {
+                surface.BuildNavMesh();
+            }
 
             resources.Money = 1000;
             resources.MoneyRate = 0;
