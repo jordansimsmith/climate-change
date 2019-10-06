@@ -19,18 +19,36 @@ public class GameController : MonoBehaviour {
         resources.Food.CurAmount = 0;
         resources.Shelter.MinAmount = -100;
         resources.Shelter.CurAmount = 0;
-        void EventHandler(ResourceEvent e) {
-            if (e.WentBelow && e.Threshold == -100) {
-                OnGameLose();
-            }
-        }
-        resources.Food.Subscribe(EventHandler);        
-        resources.Power.Subscribe(EventHandler);        
-        resources.Shelter.Subscribe(EventHandler);        
+//        void EventHandler(ResourceEvent e) {
+//            Debug.Log(e.Threshold);
+//            if (e.WentBelow && e.Threshold == -100) {
+//                OnGameLose();
+//            }
+//        }
+//        resources.Food.Subscribe(EventHandler);        
+//        resources.Power.Subscribe(EventHandler);        
+//        resources.Shelter.Subscribe(EventHandler);        
+//        resources.Environment.Subscribe(EventHandler);
+        InvokeRepeating("PollResources", 0, 1f);
     }
-    
 
-    public void OnGameLose() {
+    private void PollResources()
+    {
+        float food = resources.Food.CurAmount;
+        float power = resources.Power.CurAmount;
+        float shelter = resources.Shelter.CurAmount;
+        float environment = resources.Environment.CurAmount;
+
+        if (food <= -100 || power <= -100 || shelter <= -100 || environment <= -100)
+        {
+            CancelInvoke("PollResources");
+            OnGameLose();
+        }
+    }
+
+
+        public void OnGameLose() {
+        Debug.Log("game lose");
         var endScreen = FindObjectOfType<EndScreenController>();
         endScreen.EnableLoseScreen();
     }
