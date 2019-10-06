@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,19 +12,18 @@ public class EntityMenu : EventTrigger
         {"Electricity", EntityType.PowerStation},
         {"Ecosystem", EntityType.Forest},
         {"Food", EntityType.Farm},
-        { "Shelter", EntityType.House},
-        { "TownHall", EntityType.TownHall},
+        {"Shelter", EntityType.House},
+        {"TownHall", EntityType.TownHall},
         {"Factory", EntityType.Factory}
     };
-    
-   
+
+
     private Image _background;
     private static Vector4 defaultAlpha = new Vector4(1, 1, 1, 0.7f);
     private static Vector4 hoverAlpha = new Vector4(1, 1, 1, 0.9f);
-    
-    
 
-    public void Start() {
+    public void Start()
+    {
         this._background = gameObject.GetComponent<Image>();
         this._background.color = defaultAlpha;
     }
@@ -36,11 +34,15 @@ public class EntityMenu : EventTrigger
 //        subMenu.Toggle(gameObject.name);
         EntityPlacer placer = FindObjectOfType<EntityPlacer>();
         placer.spawn(entityMap[gameObject.name]);
+
+        // only create one townhall
+        if (gameObject.name == "TownHall")
+        {
+            GameObject.Find("TownHall").SetActive(false);
+        }
     }
 
 
- 
-    
     public override void OnPointerEnter(PointerEventData data)
     {
 //        EntityPlacer placer = FindObjectOfType<EntityPlacer>();
