@@ -105,7 +105,7 @@ MonoBehaviour:
   tileFactory: {fileID: 11400000, guid: e340a0798551647f3a5c8d70df709502, type: 2}
   entityFactory: {fileID: 11400000, guid: 43f28b09c7d1c4342a63723bfd5cb8d8, type: 2}
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
-  surface: {fileID: 1703059134773651384, guid: 5e398c1899bc51f4a9cc1b70f01af43d, type: 3}
+  surface: {fileID: 146149877115348120}
 --- !u!114 &7941001179048457805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,3 +264,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1559725188013589280}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &146149877115348120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1703059134773651384, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1559725188013589280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
