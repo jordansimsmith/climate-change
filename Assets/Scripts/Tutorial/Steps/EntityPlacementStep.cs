@@ -17,15 +17,15 @@ namespace Tutorial.Steps
 
         public override void OnStepBegin()
         {
-            this.gameBoard = GameObject.FindGameObjectWithTag("Board").GetComponent<GameBoard>();
-            stepCompleted = false;
+            gameBoard = GameObject.FindGameObjectWithTag("Board").GetComponent<GameBoard>();
+            StepCompleted = false;
         }
 
         public override void Update()
         {
-            if (this.gameBoard.IsEntityTypeOnBoard(entityToDetect))
+            if (gameBoard.IsEntityTypeOnBoard(entityToDetect))
             {
-                this.stepCompleted = true;
+                StepCompleted = true;
             }
         }
     }

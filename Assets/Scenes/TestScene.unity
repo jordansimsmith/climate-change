@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -971,8 +971,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: -218}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_AnchoredPosition: {x: -8, y: -234.3}
+  m_SizeDelta: {x: 1000, y: 230.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879743275
 MonoBehaviour:
@@ -1028,7 +1028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &893486206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,6 +1833,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1843080479781869976, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65837ba7d3d75948bc9990ab93583fe, type: 3}
 --- !u!1 &1109707037
@@ -1892,7 +1897,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 54204da7423aa44fab22ac86079435a4, type: 3}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1954,8 +1959,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 376.78, y: -74.67}
-  m_SizeDelta: {x: 222.97, y: 43.74}
+  m_AnchoredPosition: {x: 394, y: -84}
+  m_SizeDelta: {x: 196.4, y: 38.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268897985
 MonoBehaviour:
@@ -3065,9 +3070,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.3, y: -32.7}
-  m_SizeDelta: {x: 867.2, y: 101.1}
+  m_AnchorMax: {x: 0.5, y: 0.6218167}
+  m_AnchoredPosition: {x: -43.3, y: -46.099995}
+  m_SizeDelta: {x: 867.2, y: 107.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022471258
 MonoBehaviour:
@@ -3089,7 +3094,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 54204da7423aa44fab22ac86079435a4, type: 3}
-    m_FontSize: 40
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3512,7 +3517,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialSteps:
   - {fileID: 11400000, guid: e50be606fb7e1f64d818cd4eb522a445, type: 2}
-  - {fileID: 11400000, guid: bdebb25e24e3a3946873a5097d72ec4a, type: 2}
-  - {fileID: 11400000, guid: c688a7fc14e04024bbefe6c0cc7e5fc1, type: 2}
+  - {fileID: 11400000, guid: ebdedd1f2ed5141ffb0682e1b473e43a, type: 2}
+  - {fileID: 11400000, guid: 4cf67b6594d114b22a927759fbee055b, type: 2}
+  - {fileID: 11400000, guid: 4a2c1b24db7ac42e4aa926f9bdcf3c75, type: 2}
+  - {fileID: 11400000, guid: e27e23222d7124ec68695a7820d7747d, type: 2}
+  - {fileID: 11400000, guid: 232616b3cd0744bcaa4820402d042c70, type: 2}
+  - {fileID: 11400000, guid: f0f1484e09c3d4ac98d165571a9323c4, type: 2}
   tutorialActive: 0
   tutorialCanvas: {fileID: 1289231646}

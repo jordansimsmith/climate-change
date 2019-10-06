@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 355fae3da8284a90ab512427b47ac362, type: 3}
-  m_Name: 3_Camera
+  m_Name: 5_CameraStep
   m_EditorClassIdentifier: 
-  title: Camera Movement
-  description: You can move your view using WASD!
+  title: Ewan
+  description: "Let\u2019s take a look around the island, move your mouse to the edges
+    of the screen or use WASD to pan.\n\n(Hint: Hit W,A,S,D to continue)"
+  successMessage: 
   keys: 77000000610000007300000064000000

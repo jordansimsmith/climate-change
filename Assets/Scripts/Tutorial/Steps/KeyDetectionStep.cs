@@ -8,14 +8,14 @@ namespace Tutorial.Steps
     {
         public List<KeyCode> keys;
         private HashSet<KeyCode> usedKeys;
-        public KeyDetectionStep(string title, string description) : base(title, description)
+        public KeyDetectionStep(string title, string description, string successMessage) : base(title, description, successMessage)
         {
         }
 
         public override void OnStepBegin()
         {
             usedKeys = new HashSet<KeyCode>();
-            stepCompleted = false;
+            StepCompleted = false;
         }
 
 
@@ -32,7 +32,7 @@ namespace Tutorial.Steps
 
             if (usedKeys.Count == keys.Count)
             {
-                this.stepCompleted = true;
+                StepCompleted = true;
             }
         }
     }
