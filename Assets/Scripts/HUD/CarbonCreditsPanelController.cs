@@ -13,6 +13,12 @@ namespace HUD
         private float tempTime;
         private float period = 1f;
 
+        public float Period
+        {
+            get => period;
+            set => period = value;
+        }
+
         [SerializeField]
         private ResourceSingleton resourceSingleton;
         
@@ -32,7 +38,7 @@ namespace HUD
             carbonCreditsValue.text = money.CurAmount.ToString();
             
             // update money with rate every second;
-            if (tempTime > period)
+            if (tempTime > Period)
             {
                 UpdateCarbonCredits(money);
             }
@@ -45,7 +51,7 @@ namespace HUD
             int rate = resourceSingleton.MoneyRate;
             money.CurAmount += rate;
             carbonCreditsValue.text = money.CurAmount.ToString();
-
         }
+        
     }
 }
