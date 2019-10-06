@@ -16,10 +16,12 @@ namespace World.Tiles
             {
                 if (entity != null)
                 {
+                    entity.Destruct();
                     Destroy (entity.gameObject);
                 }
                 value.transform.SetParent (gameObject.transform, false);
                 entity = value;
+                entity.Construct();
             }
         }
 

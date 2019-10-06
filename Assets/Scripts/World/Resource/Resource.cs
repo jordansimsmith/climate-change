@@ -56,7 +56,9 @@ namespace World.Resource {
         public int MinAmount {
             get => minAmount;
             set {
-                Assert.IsTrue(minAmount < 0);
+                if (minAmount >= 0) {
+                    Debug.Log("Min amount should be less than zero");
+                }
                 minAmount = value;
             }
         }
@@ -66,15 +68,13 @@ namespace World.Resource {
             set {
                 int oldAmount = curAmount;
                 int oldPercentage = CurPercentage;
-                curAmount = value < 0 ? 0 : value;
+                curAmount = value;
                 if (curAmount == oldAmount) {
                     return;
                 }
-
                 if (subscribers.Count == 0) {
                     return;
                 }
-
                 foreach (Threshold t in Enum.GetValues(typeof(Threshold))) {
                     int thresh = (int) t;
                     if (oldPercentage < thresh && CurPercentage > thresh ||

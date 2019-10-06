@@ -5,25 +5,25 @@ namespace World.Entities
 {
     public class ForestEntity : Entity
     {
-        [SerializeField] private EntityState state;
+        [SerializeField] private EntityStats stats;
         [SerializeField] private EntityHelper entityHelper;
         [SerializeField] private Transform[] treeTransforms;
-        public override EntityState State => state;
+        public override EntityStats Stats => stats;
         public override EntityType Type => EntityType.Forest;
 
         public override void Construct() {
-            entityHelper.Construct(state);
+            entityHelper.Construct(stats);
         }
 
         public override void Destruct() {
-            entityHelper.Destruct(state);
+            entityHelper.Destruct(stats);
         }
 
 
         private void Start() {
             foreach (var tree in treeTransforms) {
                 tree.localPosition =
-                    new Vector3(Random.Range(0, Tiles.Tile.Size.x), 0, Random.Range(0, Tiles.Tile.Size.z));
+                    new Vector3(Random.Range(0, Tiles.Tile.Size.x), tree.localPosition.y, Random.Range(0, Tiles.Tile.Size.z));
             }
         }
     }

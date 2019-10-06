@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b34b5a7015f474b9bc4031f6b0db39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state:
-    cost: 1
+  stats:
+    cost: 150
     money: 0
     food: 0
-    shelter: -1
-    power: 1
-    environment: -1
+    shelter: -15
+    power: 30
+    environment: -20
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
 --- !u!33 &1071992989294937928
 MeshFilter:

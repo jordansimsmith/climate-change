@@ -43,9 +43,8 @@ namespace World
                     Tile tile = gameTile.GetComponent<Tile>();
                     if (tile.TileType.Equals(TileType.Grass) 
                         && tile.Entity == null
-                        && resources.Money.CurAmount >= entity.State.cost) {
+                        && resources.Money >= entity.Stats.cost) {
                         tile.Entity = entity;
-                        entity.Construct();
                         enabled = false;
                     }
                 }

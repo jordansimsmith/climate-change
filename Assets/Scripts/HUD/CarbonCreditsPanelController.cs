@@ -31,27 +31,19 @@ namespace HUD
 
         public void Update()
         {
-            Resource money = resourceSingleton.Money;
+            int money = resourceSingleton.Money;
             tempTime += Time.deltaTime;
 
             // always render money value
-            carbonCreditsValue.text = money.CurAmount.ToString();
+            carbonCreditsValue.text = money.ToString();
             
             // update money with rate every second;
-            if (tempTime > Period)
-            {
-                UpdateCarbonCredits(money);
+            if (tempTime > Period) {
+                tempTime = 0;
+                resourceSingleton.Money += resourceSingleton.MoneyRate;
+                carbonCreditsValue.text = money.ToString();
             }
 
         }
-
-        private void UpdateCarbonCredits(Resource money)
-        {
-            tempTime = 0;
-            int rate = resourceSingleton.MoneyRate;
-            money.CurAmount += rate;
-            carbonCreditsValue.text = money.CurAmount.ToString();
-        }
-        
     }
 }
