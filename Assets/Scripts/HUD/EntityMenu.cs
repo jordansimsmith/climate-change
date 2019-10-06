@@ -8,6 +8,15 @@ using World.Entities;
 
 public class EntityMenu : EventTrigger
 {
+    private static IDictionary<string, EntityType> entityMap = new Dictionary<string, EntityType>()
+    {
+        {"Electricity", EntityType.PowerStation},
+        {"Ecosystem", EntityType.Forest},
+        {"Food", EntityType.Farm},
+        { "Shelter", EntityType.TownHall}
+    };
+    
+   
     private Image _background;
     private static Vector4 defaultAlpha = new Vector4(1, 1, 1, 0.7f);
     private static Vector4 hoverAlpha = new Vector4(1, 1, 1, 0.9f);
@@ -24,7 +33,7 @@ public class EntityMenu : EventTrigger
 //        EntitySubMenu subMenu = FindObjectsOfType<EntitySubMenu>()[0];
 //        subMenu.Toggle(gameObject.name);
         EntityPlacer placer = FindObjectOfType<EntityPlacer>();
-        placer.spawn(gameObject.name);
+        placer.spawn(entityMap[gameObject.name]);
     }
 
 

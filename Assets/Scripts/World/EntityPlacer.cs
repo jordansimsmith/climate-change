@@ -27,24 +27,6 @@ namespace World
             enabled = true;
         }
 
-        public void spawn(string type)
-        {
-            switch (type)
-            {
-                case "Electricity":
-                    spawn(EntityType.PowerStation);
-                    break;
-                case "Ecosystem":
-                    spawn(EntityType.Forest);
-                    break;
-                case "Food":
-                    spawn(EntityType.Farm);
-                    break;
-                case "Shelter":
-                    spawn(EntityType.TownHall);
-                    break;
-            }
-        }
 
         private void Update()
         {
