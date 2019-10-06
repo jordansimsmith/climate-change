@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: ResourceSingleton
   m_EditorClassIdentifier: 
   money:
-    MinAmount: 0
-    CurAmount: 0
-    HealthyAmount: 0
+    minAmount: 0
+    curAmount: 310
+    healthyAmount: 0
   food:
-    MinAmount: 0
-    CurAmount: 0
-    HealthyAmount: 0
+    minAmount: 0
+    curAmount: 0
+    healthyAmount: 0
   shelter:
-    MinAmount: 0
-    CurAmount: 0
-    HealthyAmount: 0
+    minAmount: 0
+    curAmount: 0
+    healthyAmount: 0
   environment:
-    MinAmount: 0
-    CurAmount: 0
-    HealthyAmount: 0
+    minAmount: 0
+    curAmount: 0
+    healthyAmount: 0
   power:
-    MinAmount: 0
-    CurAmount: 0
-    HealthyAmount: 0
+    minAmount: 0
+    curAmount: 0
+    healthyAmount: 0

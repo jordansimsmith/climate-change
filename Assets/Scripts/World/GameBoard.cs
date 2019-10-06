@@ -1,5 +1,8 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
+using World.Entities;
+using World.Tiles;
 
 namespace World
 {
@@ -76,6 +79,20 @@ namespace World
                     }
                 }
             }
+        }
+
+        public bool IsEntityTypeOnBoard(EntityType type)
+        {
+            foreach (var tile in tiles)
+            {
+                
+                if (tile.Entity != null && tile.Entity.Type == type)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
