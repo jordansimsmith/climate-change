@@ -3,6 +3,10 @@ In this project, teams will be required to design and implement a web-based seri
 
 ![caeli](https://user-images.githubusercontent.com/18223858/66280156-d93ed400-e911-11e9-818c-beadef4b7b3b.png)
 
+### Useful Links
+
+1. [Discussion and reflection on prototype play testing with Group 11](https://github.com/jordansimsmith/climate-change/wiki/Prototype-Testing-by-Group-11)
+
 ## Team members (Team 10) 
 
 | Name               | GitHub Username | UoA UPI |
