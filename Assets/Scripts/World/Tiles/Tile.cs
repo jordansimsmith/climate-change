@@ -9,6 +9,7 @@ namespace World.Tiles
         public TileType TileType => tileType;
 
         private Entity entity;
+
         public Entity Entity
         {
             get => entity;
@@ -17,15 +18,22 @@ namespace World.Tiles
                 if (entity != null)
                 {
                     entity.Destruct();
-                    Destroy (entity.gameObject);
+                    Destroy(entity.gameObject);
                 }
-                value.transform.SetParent (gameObject.transform, false);
-                entity = value;
-                entity.Construct();
+
+                if (value != null)
+                {
+                    value.transform.SetParent(gameObject.transform, false);
+                    entity = value;
+                    entity.Construct();
+                }
+                else
+                {
+                    entity = null;
+                }
             }
         }
 
-        public static Vector3 Size { get; } = new Vector3 (10f, 2.5f, 10f);
-
+        public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
     }
 }

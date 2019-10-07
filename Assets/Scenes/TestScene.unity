@@ -1183,6 +1183,36 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 2095922217}
+    - target: {fileID: 2205174731751999253, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205174731751999253, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205174731751999253, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205174731751999253, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205174731751999253, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205174731751999253, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65837ba7d3d75948bc9990ab93583fe, type: 3}
 --- !u!114 &2095922217 stripped
