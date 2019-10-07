@@ -39,6 +39,4 @@ Unity, by default, uses binary files for project configuration. However, it can 
 > Refer to this article for more information: [how-to-git-with-unity](https://thoughtbot.com/blog/how-to-git-with-unity)
 
 ## How to run
-1. Download the ZIP Archive from releases.
-2. Unzip the archive.
-3. Run `Caeli.exe` on Windows OS.
+Open https://tinyurl.com/caeli-island in google chrome.
