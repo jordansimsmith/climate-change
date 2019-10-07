@@ -55,7 +55,7 @@ namespace World
             {
                 for (int z = 0; z < boardSize; z++)
                 {
-                    if (tiles[x, z].TileType == TileType.Grass && Random.value > 0.5)
+                    if (tiles[x, z].TileType == TileType.Grass && Random.value > 0.6)
                     {
                         tiles[x, z].Entity = entityFactory.Get(EntityType.Forest);
                     }

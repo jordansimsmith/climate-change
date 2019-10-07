@@ -19,6 +19,11 @@ namespace World
 
         public void spawn(EntityType type)
         {
+            if (enabled)
+            {
+                return;
+            }
+
             entity = factory.Get(type);
             enabled = true;
         }
