@@ -13,25 +13,35 @@ namespace Tutorial
         private Text descriptionText;
         [SerializeField]
         private Button continueButton;
-        
 
+        private string fullDescriptionText;
    
 
         public void StartDialogue(string titleText, string descriptionText)
         {
             Debug.Log("Starting conversation  " +titleText);
             this.titleText.text = titleText;
+            fullDescriptionText = descriptionText;
             ContinueInteractable = false;
           
 
             DisplayNextSentence(descriptionText);
         }
 
-        public void DisplayNextSentence(string descriptionText)
+        public void AppendDialogue(string textToAppend)
         {
+            descriptionText.text = fullDescriptionText;
             StopAllCoroutines();
-            StartCoroutine(TypeSentence(descriptionText));
-            Debug.Log(descriptionText);
+            StartCoroutine(TypeSentence("\n"+textToAppend));
+        }
+
+        public void DisplayNextSentence(string description)
+        {
+            descriptionText.text = "";
+            
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(description));
+            Debug.Log(description);
 
         }
 
@@ -44,7 +54,6 @@ namespace Tutorial
 
         IEnumerator TypeSentence(string sentence)
         {
-            descriptionText.text = "";
             foreach (var letter in sentence.ToCharArray())
             {
                 descriptionText.text += letter;
@@ -52,6 +61,11 @@ namespace Tutorial
             }
         }
 
+        public void FinishTyping()
+        {
+            StopAllCoroutines();
+            descriptionText.text = fullDescriptionText;
+        }
       
     }
 }

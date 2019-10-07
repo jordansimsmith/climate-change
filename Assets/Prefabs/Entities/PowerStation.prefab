@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1663121603228564104}
   - component: {fileID: 1071992989294937928}
   - component: {fileID: 257832229482503779}
+  - component: {fileID: 4480923246119326866}
   m_Layer: 0
   m_Name: PowerStation
   m_TagString: Untagged
@@ -46,13 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b34b5a7015f474b9bc4031f6b0db39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state:
-    cost: 1
+  stats:
+    cost: 150
     money: 0
     food: 0
-    shelter: -1
-    power: 1
-    environment: -1
+    shelter: -15
+    power: 30
+    environment: -20
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
 --- !u!33 &1071992989294937928
 MeshFilter:
@@ -100,6 +101,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!208 &4480923246119326866
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880775336744690255}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 3, y: 4, z: 3}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 6, y: 6, z: 6}
+  m_TimeToStationary: 0.5
 --- !u!1 &1897606826279363446
 GameObject:
   m_ObjectHideFlags: 0

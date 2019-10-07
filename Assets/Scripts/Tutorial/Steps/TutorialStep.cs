@@ -8,29 +8,52 @@ namespace Tutorial
         protected string title;
         [SerializeField,  TextArea(3, 10)]
         protected string description;
+        [SerializeField,  TextArea(3, 10)]
+        protected string successMessage;
 
-        protected bool stepCompleted;
+        private bool stepCompleted;
 
-        protected TutorialStep(string title, string description)
+        protected TutorialStep(string title, string description, string successMessage = null)
         {
             this.title = title;
             this.description = description;
-            this.stepCompleted = false;
+            this.successMessage = successMessage;
+            stepCompleted = false;
         }
 
         public string Title => title;
 
         public string Description => description;
 
+        public string SuccessMessage => successMessage;
+
+        /**
+         * Called when this tutorial step begins/initially renders
+         */
         public virtual void OnStepBegin()
         {
             
         }
 
+        /**
+         * Called when this step is completed (StepCompleted set to true)
+         */
+        public virtual void OnStepCompleted()
+        {
+            
+        }
+
+        
+        /**
+         * Called when this tutorial step ends (the user continues to next step)
+         */
         public virtual void OnStepEnd()
         {
             
         }
+        
+        
+        
 
         /**
          * Called every frame when this step is the active step.
@@ -40,9 +63,18 @@ namespace Tutorial
             
         }
 
-        public virtual bool IsStepCompleted()
+    
+        public virtual bool StepCompleted
         {
-            return stepCompleted;
+            get => stepCompleted;
+            set
+            {
+                if (!stepCompleted && value)
+                {
+                    OnStepCompleted();
+                }
+                stepCompleted = value;
+            }
         }
     }
 }

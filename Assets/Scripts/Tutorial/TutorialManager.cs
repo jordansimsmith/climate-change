@@ -30,27 +30,35 @@ namespace Tutorial
                 return;
             }
             
+            
+            
+            
             TutorialStep currentStep = tutorialSteps[currentTutorialStep];
-            if (!currentStep.IsStepCompleted())
+            if (!currentStep.StepCompleted)
             {
                
                 currentStep.Update();
-                InvalidateUI();
+
+                if (currentStep.StepCompleted)
+                {
+                    dialogueManager.AppendDialogue(currentStep.SuccessMessage);
+                    InvalidateUI();
+                }
+            } else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                NextStep();
             }
+            
         }
 
         public bool TutorialActive => tutorialActive;
 
         public void StartTutorial(int startingStep)
         {
-            this.tutorialActive = true;
-            this.tutorialCanvas.enabled = true;
-            this.currentTutorialStep = startingStep;
-            TutorialStep currentStep = tutorialSteps[currentTutorialStep];
-            currentStep.OnStepBegin();
-            dialogueManager.StartDialogue(currentStep.Title, currentStep.Description);
-
-            InvalidateUI();
+            tutorialActive = true;
+            tutorialCanvas.enabled = true;
+            currentTutorialStep = startingStep;
+            DrawStep(currentTutorialStep);
             
         }
 
@@ -65,24 +73,30 @@ namespace Tutorial
                 return;
             }
             
-            TutorialStep nextStep = tutorialSteps[currentTutorialStep];
+            DrawStep(currentTutorialStep);
+          
+
+        }
+
+        private void DrawStep(int step)
+        {
+            TutorialStep nextStep = tutorialSteps[step];
             dialogueManager.StartDialogue(nextStep.Title, nextStep.Description);
             nextStep.OnStepBegin();
             InvalidateUI();
-
         }
 
         public void InvalidateUI()
         {
             TutorialStep currentStep = tutorialSteps[currentTutorialStep];
-           
-            dialogueManager.ContinueInteractable = currentStep.IsStepCompleted();
+
+            dialogueManager.ContinueInteractable = currentStep.StepCompleted;
         }
         
         public void EndTutorial()
         {
-            this.tutorialActive = false;
-            this.tutorialCanvas.enabled = false;
+            tutorialActive = false;
+            tutorialCanvas.enabled = false;
         }
         
 

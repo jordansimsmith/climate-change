@@ -11,7 +11,7 @@ namespace Tutorial.Steps
 
         public override void OnStepBegin()
         {
-            stepCompleted = true;
+            StepCompleted = true;
         }
     }
 }

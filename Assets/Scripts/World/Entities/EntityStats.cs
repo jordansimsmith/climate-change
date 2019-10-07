@@ -1,6 +1,6 @@
 namespace World.Entities {
     [System.Serializable]
-    public struct EntityState {
+    public struct EntityStats {
         public int cost;
         public int money;
         public int food;

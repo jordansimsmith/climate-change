@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff540ac710317bb4690f54507c744a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state:
-    cost: 0
+  stats:
+    cost: 100
     money: 0
     food: 0
     shelter: 0

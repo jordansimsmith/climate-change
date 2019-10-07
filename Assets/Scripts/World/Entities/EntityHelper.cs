@@ -7,23 +7,27 @@ namespace World.Entities {
 
         [SerializeField] private ResourceSingleton resources;
         
-        public void Construct(EntityState res) {
-          resources.Money.CurAmount -= res.cost;
+        public void Construct(EntityStats res) {
+          resources.Money -= res.cost;
           resources.Food.CurAmount += res.food;
           resources.Environment.CurAmount += res.environment;
           resources.Power.CurAmount += res.power;
           resources.Shelter.CurAmount += res.shelter;
         }
 
-        public void Destruct(EntityState res) {
+        public void Destruct(EntityStats res) {
           resources.Food.CurAmount -= res.food;
           resources.Environment.CurAmount -= res.environment;
           resources.Power.CurAmount -= res.power;
           resources.Shelter.CurAmount -= res.shelter;
         }
 
-        public void SendMoney(int amount) {
-            resources.Money.CurAmount += amount;
+        public void increaseMoneyRate(int amount) {
+            resources.MoneyRate += amount;
+        }
+        
+        public void decreaseMoneyRate(int amount) {
+            resources.MoneyRate -= amount;
         }
     }
 }

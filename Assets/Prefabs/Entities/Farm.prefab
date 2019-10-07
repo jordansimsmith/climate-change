@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482e1a66c3d971544aefa731d949e76c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state:
-    cost: 1
+  stats:
+    cost: 40
     money: 0
-    food: 1
-    shelter: -1
+    food: 20
+    shelter: -10
     power: 0
-    environment: -1
+    environment: -5
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
 --- !u!208 &8760580469225321362
 NavMeshObstacle:
@@ -63,7 +63,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 3.5, y: 2.5, z: 4}
+  m_Extents: {x: 3, y: 2, z: 3.5}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1

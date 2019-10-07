@@ -4,18 +4,18 @@ namespace World.Entities
 {
   public class HouseEntity : Entity
   {
-      [SerializeField] private EntityState state;
+      [SerializeField] private EntityStats stats;
       [SerializeField] private EntityHelper entityHelper;
 
-      public override EntityState State => state;
+      public override EntityStats Stats => stats;
       public override EntityType Type => EntityType.House;
 
       public override void Construct() {
-          entityHelper.Construct(state);
+          entityHelper.Construct(stats);
       }
 
       public override void Destruct() {
-          entityHelper.Destruct(state);
+          entityHelper.Destruct(stats);
       }
 
 

@@ -12,23 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3307e30906d50044ea1da5a44527b1c6, type: 3}
   m_Name: ResourceSingleton
   m_EditorClassIdentifier: 
-  money:
-    minAmount: 0
-    curAmount: 310
-    healthyAmount: 0
   food:
-    minAmount: 0
+    minAmount: -100
     curAmount: 0
-    healthyAmount: 0
   shelter:
-    minAmount: 0
+    minAmount: -100
     curAmount: 0
-    healthyAmount: 0
   environment:
-    minAmount: 0
-    curAmount: 0
-    healthyAmount: 0
+    minAmount: -100
+    curAmount: 350
   power:
-    minAmount: 0
+    minAmount: -100
     curAmount: 0
-    healthyAmount: 0
+  Money: 100000
+  MoneyRate: 0

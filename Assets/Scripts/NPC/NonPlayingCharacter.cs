@@ -2,11 +2,13 @@
 using Tweets;
 using UnityEngine;
 using UnityEngine.AI;
+using World.Resource;
 
 public class NonPlayingCharacter : MonoBehaviour
 {
     public Color highlightColour;
     public Sprite avatar;
+    public ResourceSingleton resourceSingleton;
 
     private string firstName;
     private string lastName;
@@ -90,7 +92,13 @@ public class NonPlayingCharacter : MonoBehaviour
     void OnMouseDown()
     {
         string fullName = firstName + " " + lastName;
-        string tweet = tweetGenerator.GenerateTweet(0, 0, 0, 0);
+
+        float food = resourceSingleton.Food.CurAmount;
+        float power = resourceSingleton.Power.CurAmount;
+        float shelter = resourceSingleton.Shelter.CurAmount;
+        float environment = resourceSingleton.Environment.CurAmount;
+        
+        string tweet = tweetGenerator.GenerateTweet(food, power, shelter, environment);
         tweet = "\"" + tweet + "\"";
         TextInfo info = new CultureInfo("en-US", false).TextInfo;
         string occupationTitleCase = info.ToTitleCase(occupation);

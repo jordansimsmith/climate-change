@@ -8,6 +8,7 @@ namespace NPC
         public TextAsset nameData;
         public TextAsset occupationData;
         public GameObject npcPrefab;
+        public int npcCount = 3;
 
         private NameData names;
         private OccupationData occupations;
@@ -23,12 +24,18 @@ namespace NPC
 
         private void Start()
         {
-            GenerateNPC();
+            for (int i = 0; i < npcCount; i++)
+            {
+                GenerateNPC();
+            }
         }
 
         public GameObject GenerateNPC()
         {
-            GameObject npc = Instantiate(npcPrefab, new Vector3(90, 0, 90), Quaternion.identity);
+            int x = Random.Range(85, 95);
+            int y = 0;
+            int z = Random.Range(85, 95);
+            GameObject npc = Instantiate(npcPrefab, new Vector3(x, y, z), Quaternion.identity);
 
             NonPlayingCharacter npcScript = npc.GetComponent<NonPlayingCharacter>();
 

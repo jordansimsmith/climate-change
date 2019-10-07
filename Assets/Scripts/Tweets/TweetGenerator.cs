@@ -25,8 +25,7 @@ namespace Tweets
         }
 
         /// <summary>
-        /// Generates a random tweet based on the current game resource levels. Resource levels should be
-        /// normalised. i.e. 0.0 to 1.0.
+        /// Generates a random tweet based on the current game resource levels. 
         /// </summary>
         /// <param name="food">food resource level</param>
         /// <param name="power">power resource level</param>
@@ -53,29 +52,21 @@ namespace Tweets
 
         private string PickRandomTweet(TweetLevels tweetLevels, float level)
         {
-            // ensure level is normalised
-            if (level < 0.0f || level > 1.0f)
-            {
-                throw new ArgumentException("resource percentage is < 0 or > 1");
-            }
-
             // determine which category of tweet to return
             switch (level)
             {
-                case float l when l <= 0.25f:
+                case float l when l <= -50f:
                     List<string> veryBadTweets = tweetLevels.VeryBad;
                     return veryBadTweets[Random.Range(0, veryBadTweets.Count)];
-                case float l when l <= 0.5f:
+                case float l when l <= 0f:
                     List<string> badTweets = tweetLevels.Bad;
                     return badTweets[Random.Range(0, badTweets.Count)];
-                case float l when l <= 0.75f:
+                case float l when l <= 100f:
                     List<string> goodTweets = tweetLevels.Good;
                     return goodTweets[Random.Range(0, goodTweets.Count)];
-                case float l when l <= 1.0f:
+                default:
                     List<string> veryGoodTweets = tweetLevels.VeryGood;
                     return veryGoodTweets[Random.Range(0, veryGoodTweets.Count)];
-                default:
-                    return null;
             }
         }
     }

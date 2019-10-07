@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f56f5b972b41f49aee7368e18dfd5a, type: 3}
   m_Name: EntityFactoryObject
   m_EditorClassIdentifier: 
-  forestPrefab: {fileID: 339164512736441134, guid: 52ecc28506da6413b9f70778efe792f6,
+  forestPrefab: {fileID: 6472262284098676859, guid: 3008f66a9ade549e59266c86a50d0af3,
     type: 3}
-  housePrefab: {fileID: -7082405656168766782, guid: 95577532a80eff94e9869bcd56b60565,
+  housePrefab: {fileID: 3224693876281667166, guid: 1354ecb7fb39e4812b5385a8faa4cb54,
     type: 3}
   townHallPreFab: {fileID: 8068884375748032247, guid: 9665868e38efc8342a592f7d4c82665b,
     type: 3}
-  factoryEntity: {fileID: 4367830585035474112, guid: dfc20c6503a39aa4ab568745e6e3d779,
+  factoryEntity: {fileID: 3543377990499035316, guid: 2eb2c8d73d33f478a89be67bf607eb99,
     type: 3}
   farmEntity: {fileID: -6795025145051476749, guid: 915900f7bf0f69d4fbdc2aa358a0f2ff,
     type: 3}
