@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    cost: 10
+    cost: 50
     money: 0
     food: 0
     shelter: 0
