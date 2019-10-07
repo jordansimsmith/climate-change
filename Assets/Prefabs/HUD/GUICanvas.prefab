@@ -150,7 +150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0
-  m_Text: Net Usage
+  m_Text: Resource Balance
 --- !u!1 &537214303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,7 +2901,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: 100, y: 500}
+  m_SizeDelta: {x: 100, y: 700}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3119533546376261247
 CanvasRenderer:
