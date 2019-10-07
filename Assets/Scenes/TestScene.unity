@@ -194,9 +194,38 @@ PrefabInstance:
       objectReference: {fileID: 747239069}
     - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
+      propertyPath: tutorialSteps.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
       propertyPath: tutorialCanvas
       value: 
       objectReference: {fileID: 396818558}
+    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: tutorialSteps.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 935e99a2ddbee3e46b5180066d4f2bed,
+        type: 2}
+    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: tutorialSteps.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a5f808656e8a2d4188c9109d7314807,
+        type: 2}
+    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: tutorialSteps.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ab99027a0058884c90e06901c4dd311,
+        type: 2}
+    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: tutorialSteps.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e73dd9d5902fe04682abde3a4648e80,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
 --- !u!1001 &190397859

@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Ewan
   description: Your factory and power plant are destorying the environment. Plant
     some trees to counteract them.
-  successMessage: 'Great work! '
+  successMessage: 
   entityToDetect: 0
