@@ -14,20 +14,31 @@ namespace World.Entities
         [SerializeField] private PowerStationEntity powerStationEntity;
         public Entity Get (EntityType entityType)
         {
+            Entity entity = GetPrefab(entityType);
+            return Instantiate(entity);
+        }
+
+        public int GetCost(EntityType entityType)
+        {
+            return GetPrefab(entityType).Stats.cost;
+        }
+        
+        public Entity GetPrefab(EntityType entityType)
+        {
             switch (entityType)
             {
                 case EntityType.Forest:
-                    return Instantiate (forestPrefab);
+                    return forestPrefab;
                 case EntityType.House:
-                    return Instantiate (housePrefab);
+                    return housePrefab;
                 case EntityType.TownHall:
-                    return Instantiate (townHallPreFab);
+                    return townHallPreFab;
                 case EntityType.Factory:
-                    return Instantiate (factoryEntity);
+                    return factoryEntity;
                 case EntityType.Farm:
-                    return Instantiate (farmEntity);
+                    return farmEntity;
                 case EntityType.PowerStation:
-                    return Instantiate (powerStationEntity);
+                    return powerStationEntity;
                 default:
                     Debug.Log ("Unknown entity type");
                     return null;

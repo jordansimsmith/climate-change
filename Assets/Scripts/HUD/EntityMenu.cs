@@ -17,22 +17,26 @@ public class EntityMenu : EventTrigger
         {"Factory", EntityType.Factory}
     };
 
-
+    
     private Image _background;
     private static Vector4 defaultAlpha = new Vector4(1, 1, 1, 0.7f);
     private static Vector4 hoverAlpha = new Vector4(1, 1, 1, 0.9f);
+    private EntityPlacer placer;
+    private EntityController controller;
+
 
     public void Start()
     {
         this._background = gameObject.GetComponent<Image>();
         this._background.color = defaultAlpha;
+        placer = FindObjectOfType<EntityPlacer>();
+        controller = GetComponentInParent<EntityController>();
     }
 
     public override void OnPointerDown(PointerEventData data)
     {
 //        EntitySubMenu subMenu = FindObjectsOfType<EntitySubMenu>()[0];
 //        subMenu.Toggle(gameObject.name);
-        EntityPlacer placer = FindObjectOfType<EntityPlacer>();
         placer.spawn(entityMap[gameObject.name]);
 
         // only create one townhall
@@ -50,10 +54,15 @@ public class EntityMenu : EventTrigger
 //        
 //        
         this._background.color = hoverAlpha;
+        controller.onHover(entityMap[gameObject.name]);
     }
 
     public override void OnPointerExit(PointerEventData data)
     {
         this._background.color = defaultAlpha;
+        controller.onHoverExit();
     }
+
+
+
 }
