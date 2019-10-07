@@ -61,6 +61,11 @@ namespace Tutorial
             }
         }
 
+        public void FinishTyping()
+        {
+            StopAllCoroutines();
+            descriptionText.text = fullDescriptionText;
+        }
       
     }
 }
