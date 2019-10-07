@@ -40,7 +40,6 @@ namespace World
                 surface.BuildNavMesh();
             }
 
-            resources.Money = 1000;
             resources.MoneyRate = 0;
             resources.Environment.MinAmount = -100;
             resources.Environment.CurAmount = 0;
@@ -62,7 +61,10 @@ namespace World
                     }
                 }
             }
+
+            resources.Money = 1000;
         }
+
 
         public bool IsEntityTypeOnBoard(EntityType type)
         {
