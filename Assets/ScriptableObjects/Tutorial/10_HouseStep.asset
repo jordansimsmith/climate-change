@@ -15,5 +15,7 @@ MonoBehaviour:
   title: Ewan
   description: Each of those buildings is costing money. Create a factory to generate
     some money.
-  successMessage: Good work! Your carbon credits are now increasing.
+  successMessage: '
+
+    Good work! Your carbon credits are now increasing.'
   entityToDetect: 3

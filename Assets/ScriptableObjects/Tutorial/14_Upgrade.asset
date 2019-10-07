@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e5c3103565d48788bab4773905bc743, type: 3}
-  m_Name: 8_PowerStep
+  m_Script: {fileID: 11500000, guid: f2aaecce5da4464a8d3c375d955bf957, type: 3}
+  m_Name: 14_Upgrade
   m_EditorClassIdentifier: 
   title: Ewan
-  description: "Let\u2019s give the house some electricity! Drag the power icon on
-    the right to the board."
-  successMessage: '
-
-    Awesome! Your house has electricity now!'
-  entityToDetect: 5
+  description: Once you save up 10,000 carbon credits you'll be able to upgrade your
+    town hall to the next level and win the game!
+  successMessage: 

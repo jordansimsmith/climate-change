@@ -15,5 +15,7 @@ MonoBehaviour:
   title: Ewan
   description: Lets give those power plant workers a place to live. Create a house
     for your new citizens.
-  successMessage: Nice! Now your citizens have a place to sleep!
+  successMessage: '
+
+    Nice! Now your citizens have a place to sleep!'
   entityToDetect: 1

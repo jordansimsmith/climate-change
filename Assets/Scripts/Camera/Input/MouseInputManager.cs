@@ -34,7 +34,7 @@ public class MouseInputManager : InputManager
             OnMoveInput?.Invoke(-Vector3.forward);
         }
 
-        if (mp.x > screen.x * 0.95f)
+        if (mp.x > screen.x * 0.995f)
         {
             OnMoveInput?.Invoke(Vector3.right);
         }
