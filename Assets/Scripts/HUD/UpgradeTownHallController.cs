@@ -22,6 +22,7 @@ public class UpgradeTownHallController : MonoBehaviour
         {
             // win game
             gameController.OnGameWin();
+            resourceSingleton.Money = -10_000;
         }
         else
         {

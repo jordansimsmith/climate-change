@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1663121603228564104}
   - component: {fileID: 1071992989294937928}
   - component: {fileID: 257832229482503779}
+  - component: {fileID: 4480923246119326866}
   m_Layer: 0
   m_Name: PowerStation
   m_TagString: Untagged
@@ -100,6 +101,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!208 &4480923246119326866
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880775336744690255}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 3, y: 4, z: 3}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 6, y: 6, z: 6}
+  m_TimeToStationary: 0.5
 --- !u!1 &1897606826279363446
 GameObject:
   m_ObjectHideFlags: 0
