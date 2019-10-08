@@ -35,11 +35,12 @@ public class EntityMenu : EventTrigger
 
     public override void OnPointerDown(PointerEventData data)
     {
-//        EntitySubMenu subMenu = FindObjectsOfType<EntitySubMenu>()[0];
-//        subMenu.Toggle(gameObject.name);
-        placer.spawn(entityMap[gameObject.name]);
+        // clicking on any entity should disable delete mode 
+        DisableDeleteMode();
 
-        // only create one townhall
+        placer.spawn(entityMap[gameObject.name]);
+        
+  
         if (gameObject.name == "TownHall")
         {
             GameObject.Find("TownHall").SetActive(false);
@@ -63,6 +64,11 @@ public class EntityMenu : EventTrigger
         controller.onHoverExit();
     }
 
-
+    private void DisableDeleteMode()
+    {
+        DeleteHandler handler = transform.parent.GetComponentInChildren<DeleteHandler>();
+        handler.UpdateDeleteIconColour(false);
+        // handler.SetDeleteMode(false);
+    }
 
 }

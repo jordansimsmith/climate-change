@@ -11,6 +11,7 @@ namespace World
         [SerializeField] private ResourceSingleton resources;
         private Entity entity;
         private Plane tilePlane;
+        private bool isDeleteMode;
 
         private void Start()
         {
@@ -19,11 +20,6 @@ namespace World
 
         public void spawn(EntityType type)
         {
-            if (enabled)
-            {
-                return;
-            }
-
             entity = factory.Get(type);
             enabled = true;
         }
@@ -64,27 +60,40 @@ namespace World
             }
             else
             {
-                // Remove target object if clicked
-                if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
+                if (isDeleteMode)
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    // Remove target object if clicked
+                    if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                     {
-                        enabled = false;
-                        GameObject gameTile = hitInfo.collider.gameObject;
-                        Tile tile = gameTile.GetComponent<Tile>();
-                        if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
+                        if (Input.GetMouseButtonDown(0))
                         {
-                            tile.Entity = null;
+                            // enabled = false;
+                            GameObject gameTile = hitInfo.collider.gameObject;
+                            Tile tile = gameTile.GetComponent<Tile>();
+                            if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
+                            {
+                                tile.Entity = null;
+                            }
                         }
                     }
                 }
             }
         }
 
-        public void remove()
+        public void SetDeleteMode(bool isDeleteMode)
         {
-            entity = null;
-            enabled = true;
+            this.isDeleteMode = isDeleteMode;
+
+            if (isDeleteMode)
+            {
+                entity = null;
+                enabled = true;
+            }
+            else
+            {
+                enabled = false;
+            }
+           
         }
     }
 }
