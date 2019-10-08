@@ -8,7 +8,6 @@ public class DeleteHandler : EventTrigger
     private Image _background;
     private static Vector4 defaultAlpha = new Vector4(1, 0.5f, 0.5f, 0.7f);
     private static Vector4 hoverAlpha = new Vector4(1, 0.5f, 0.5f, 0.9f);
-    private bool isDeleteMode;
     private EntityPlacer placer;
 
     public void Start()
@@ -20,7 +19,7 @@ public class DeleteHandler : EventTrigger
 
     public override void OnPointerDown(PointerEventData data)
     {
-        SetDeleteMode(!isDeleteMode);
+        SetDeleteMode(!placer.DeleteMode);
     }
 
     public override void OnPointerEnter(PointerEventData data)
@@ -30,22 +29,22 @@ public class DeleteHandler : EventTrigger
 
     public override void OnPointerExit(PointerEventData data)
     {
-        if (isDeleteMode)
+        if (placer.DeleteMode)
         {
-            return;    
+            return;
         }
         this._background.color = defaultAlpha;
     }
 
+    public void InvalidateDeleteButton()
+    {
+        _background.color = placer.DeleteMode ? hoverAlpha : defaultAlpha;
+
+    } 
     public void SetDeleteMode(bool isDeleteMode)
     {
-        UpdateDeleteIconColour(isDeleteMode);
-        placer.SetDeleteMode(isDeleteMode);
+        placer.DeleteMode = isDeleteMode;
+        InvalidateDeleteButton();
     }
 
-    public void UpdateDeleteIconColour(bool isDeleteMode)
-    {
-        this.isDeleteMode = isDeleteMode;
-        this._background.color = isDeleteMode ? hoverAlpha : defaultAlpha;
-    }
 }

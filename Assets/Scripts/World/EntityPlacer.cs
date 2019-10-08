@@ -11,7 +11,26 @@ namespace World
         [SerializeField] private ResourceSingleton resources;
         private Entity entity;
         private Plane tilePlane;
-        private bool isDeleteMode;
+        private bool deleteMode;
+
+        public bool DeleteMode
+        {
+            get => deleteMode;
+            set
+            {
+                deleteMode = value;
+                if (value)
+                {
+                    entity = null;
+                    enabled = true;
+                }
+                else
+                {
+                    enabled = false;
+                }
+
+            }
+        }
 
         private void Start()
         {
@@ -20,6 +39,12 @@ namespace World
 
         public void spawn(EntityType type)
         {
+            if (enabled && !deleteMode)
+            {
+                return;
+            }
+
+            DeleteMode = false;
             entity = factory.Get(type);
             enabled = true;
         }
@@ -58,42 +83,24 @@ namespace World
                     buildingTransform.position = hitPoint;
                 }
             }
-            else
+            else if (DeleteMode)
             {
-                if (isDeleteMode)
+                // Remove target object if clicked
+                if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                 {
-                    // Remove target object if clicked
-                    if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        if (Input.GetMouseButtonDown(0))
+                        // enabled = false;
+                        GameObject gameTile = hitInfo.collider.gameObject;
+                        Tile tile = gameTile.GetComponent<Tile>();
+                        if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
                         {
-                            // enabled = false;
-                            GameObject gameTile = hitInfo.collider.gameObject;
-                            Tile tile = gameTile.GetComponent<Tile>();
-                            if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
-                            {
-                                tile.Entity = null;
-                            }
+                            tile.Entity = null;
                         }
                     }
                 }
             }
         }
-
-        public void SetDeleteMode(bool isDeleteMode)
-        {
-            this.isDeleteMode = isDeleteMode;
-
-            if (isDeleteMode)
-            {
-                entity = null;
-                enabled = true;
-            }
-            else
-            {
-                enabled = false;
-            }
-           
-        }
+        
     }
 }

@@ -23,6 +23,7 @@ public class EntityMenu : EventTrigger
     private static Vector4 hoverAlpha = new Vector4(1, 1, 1, 0.9f);
     private EntityPlacer placer;
     private EntityController controller;
+    private DeleteHandler handler;
 
 
     public void Start()
@@ -31,16 +32,14 @@ public class EntityMenu : EventTrigger
         this._background.color = defaultAlpha;
         placer = FindObjectOfType<EntityPlacer>();
         controller = GetComponentInParent<EntityController>();
+        handler = transform.parent.GetComponentInChildren<DeleteHandler>();
     }
 
     public override void OnPointerDown(PointerEventData data)
     {
-        // clicking on any entity should disable delete mode 
-        DisableDeleteMode();
-
         placer.spawn(entityMap[gameObject.name]);
+        handler.InvalidateDeleteButton();
         
-  
         if (gameObject.name == "TownHall")
         {
             GameObject.Find("TownHall").SetActive(false);
@@ -50,10 +49,6 @@ public class EntityMenu : EventTrigger
 
     public override void OnPointerEnter(PointerEventData data)
     {
-//        EntityPlacer placer = FindObjectOfType<EntityPlacer>();
-//        placer.spawn(EntityType.PowerStation);
-//        
-//        
         this._background.color = hoverAlpha;
         controller.onHover(entityMap[gameObject.name]);
     }
@@ -63,12 +58,6 @@ public class EntityMenu : EventTrigger
         this._background.color = defaultAlpha;
         controller.onHoverExit();
     }
-
-    private void DisableDeleteMode()
-    {
-        DeleteHandler handler = transform.parent.GetComponentInChildren<DeleteHandler>();
-        handler.UpdateDeleteIconColour(false);
-        // handler.SetDeleteMode(false);
-    }
+    
 
 }
