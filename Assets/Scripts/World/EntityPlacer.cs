@@ -37,7 +37,7 @@ namespace World
             tilePlane = new Plane(Vector3.up, 0);
         }
 
-        public void spawn(EntityType type)
+        public void Spawn(EntityType type)
         {
             if (enabled && !deleteMode)
             {
@@ -59,20 +59,12 @@ namespace World
                 Transform buildingTransform = entity.transform;
                 if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                 {
-                    Debug.DrawLine(Camera.main.transform.position, hitInfo.point, Color.red);
                     GameObject gameTile = hitInfo.collider.gameObject;
                     buildingTransform.SetParent(gameTile.transform);
                     buildingTransform.localPosition = Vector3.zero;
                     if (Input.GetMouseButtonDown(0))
                     {
-                        Tile tile = gameTile.GetComponent<Tile>();
-                        if (tile.TileType.Equals(TileType.Grass)
-                            && tile.Entity == null
-                            && resources.Money >= entity.Stats.cost)
-                        {
-                            tile.Entity = entity;
-                            enabled = false;
-                        }
+                        PlaceEntityIfValid(gameTile);
                     }
                 }
                 else
@@ -90,17 +82,36 @@ namespace World
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        // enabled = false;
                         GameObject gameTile = hitInfo.collider.gameObject;
-                        Tile tile = gameTile.GetComponent<Tile>();
-                        if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
-                        {
-                            tile.Entity = null;
-                        }
+                        DeleteEntityifValid(gameTile);
                     }
                 }
             }
         }
         
+        private void PlaceEntityIfValid(GameObject gameTile) {
+            Tile tile = gameTile.GetComponent<Tile>();
+            if (tile.TileType.Equals(TileType.Grass)
+                && tile.Entity == null
+                && resources.Money >= entity.Stats.cost)
+            {
+                tile.Entity = entity;
+                enabled = false;
+            }
+    
+        }
+
+        private void DeleteEntityifValid(GameObject gameTile)
+        {
+            Tile tile = gameTile.GetComponent<Tile>();
+            if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
+            {
+                tile.Entity = null;
+            }
+            
+        }
+
     }
+    
+
 }

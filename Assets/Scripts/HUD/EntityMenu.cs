@@ -37,7 +37,7 @@ public class EntityMenu : EventTrigger
 
     public override void OnPointerDown(PointerEventData data)
     {
-        placer.spawn(entityMap[gameObject.name]);
+        placer.Spawn(entityMap[gameObject.name]);
         handler.InvalidateDeleteButton();
         
         if (gameObject.name == "TownHall")
