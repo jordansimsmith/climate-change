@@ -10,8 +10,16 @@ public class ResourceView : MonoBehaviour
 {
 
     [SerializeField] private ResourceSingleton resources;
+    [SerializeField] private GameController gameController;
+
+    // Used for flashing warning on low resources
+    private bool flipflop;
+    private Vector4 normal = new Vector4(0, 0, 0, 0.6f);
+    private Vector4 red = new Vector4(0.6f, 0, 0, 0.6f);
+
 
     private ViewedResource[] viewedResources;
+
 
     //  Takes name of gameObject that encompasses slider
     private ViewedResource getViewedResource(string name) {
@@ -31,21 +39,31 @@ public class ResourceView : MonoBehaviour
         viewedResources[3] = getViewedResource("Shelter");
        
         InvokeRepeating("TickTenthSecond", 0.1f, 0.1f);
+        InvokeRepeating("TickSecond", 1f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-       viewedResources[0].SetValues(resources.totalDemand.power, resources.totalSupply.power);
-       viewedResources[1].SetValues(resources.totalDemand.environment, resources.totalSupply.environment);
-       viewedResources[2].SetValues(resources.totalDemand.food, resources.totalSupply.food);
-       viewedResources[3].SetValues(resources.totalDemand.shelter, resources.totalSupply.shelter);
+        viewedResources[0].SetValues(resources.totalDemand.power, resources.totalSupply.power);
+        viewedResources[1].SetValues(resources.totalDemand.environment, resources.totalSupply.environment);
+        viewedResources[2].SetValues(resources.totalDemand.food, resources.totalSupply.food);
+        viewedResources[3].SetValues(resources.totalDemand.shelter, resources.totalSupply.shelter);
     }
 
     void TickTenthSecond()    {
-       foreach (var resource in viewedResources)    {
-           resource.Tick(10f);
-       }
+        foreach (var resource in viewedResources)    {
+            resource.Tick(10f);
+        }
+    }
+    
+    void TickSecond()    {
+        if (flipflop && gameController.Loosing)    {
+            gameObject.GetComponent<Image>().color = red;
+        } else {
+            gameObject.GetComponent<Image>().color = normal;
+        }
+        flipflop = !flipflop;
     }
 }
 

@@ -15,17 +15,17 @@ MonoBehaviour:
   totalDemand:
     cost: 0
     money: 0
-    food: 110
-    shelter: 150
-    power: 60
-    environment: 140
+    food: 25
+    shelter: 45
+    power: 130
+    environment: 170
   totalSupply:
     cost: 0
     money: 0
-    food: 60
+    food: 100
     shelter: 135
-    power: 120
-    environment: 320
-  Population: 22
-  Money: 1380
-  MoneyRate: 10
+    power: 60
+    environment: 440
+  Population: 5
+  Money: 2650
+  MoneyRate: 40

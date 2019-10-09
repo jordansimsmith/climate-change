@@ -176,6 +176,9 @@ MonoBehaviour:
   populationFoodMultiplier: 5
   populationShelterMultiplier: 5
   populationPowerMultiplier: 0
+  minResourceRatio: 0.75
+  demandMargin: 40
+  secondsToLose: 30
 --- !u!1001 &1559725188013589280
 PrefabInstance:
   m_ObjectHideFlags: 0

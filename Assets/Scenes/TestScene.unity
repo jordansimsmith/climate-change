@@ -1248,6 +1248,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1380944568}
+    - target: {fileID: 3808103817822792031, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2095922217}
     - target: {fileID: 3119533547314710179, guid: d65837ba7d3d75948bc9990ab93583fe,
         type: 3}
       propertyPath: m_AnchorMax.x

@@ -5291,6 +5291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
+  gameController: {fileID: 0}
 --- !u!1 &3119533547938391102
 GameObject:
   m_ObjectHideFlags: 0
