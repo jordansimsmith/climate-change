@@ -17,15 +17,7 @@ public class ResourceView : MonoBehaviour
     private ViewedResource getViewedResource(string name) {
         var resourceMaster = gameObject.transform.Find(name).gameObject;
         return new ViewedResource(resourceMaster.GetComponentInChildren<Slider>());
-    }
-
-    // private Text getViewedResource(string name)
-    // {
-    //     var resourceMaster = gameObject.transform.Find(name);
-    //     return resourceMaster.GetComponentInChildren<Text>();
-    // }
-
-    
+    }    
     
     // Start is called before the first frame update
     void Start()
@@ -44,10 +36,10 @@ public class ResourceView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       viewedResources[0].SetValues(100, 100 + resources.Power.CurAmount);
-       viewedResources[1].SetValues(100, 100 + resources.Environment.CurAmount);
-       viewedResources[2].SetValues(100, 100 + resources.Food.CurAmount);
-       viewedResources[3].SetValues(resources.Population, resources.Shelter.CurAmount);
+       viewedResources[0].SetValues(resources.totalDemand.power, resources.totalSupply.power);
+       viewedResources[1].SetValues(resources.totalDemand.environment, resources.totalSupply.environment);
+       viewedResources[2].SetValues(resources.totalDemand.food, resources.totalSupply.food);
+       viewedResources[3].SetValues(resources.totalDemand.shelter, resources.totalSupply.shelter);
     }
 
     void TickTenthSecond()    {
@@ -83,7 +75,15 @@ class ViewedResource    {
     }
 
     public void Tick(float ticksPerSecond)   {
-        float targetAmount = current/desired; 
+        float targetAmount;
+        if (desired == 0 && current == 0)   {
+            targetAmount = 0.5f;
+        } else if (desired == 0) {
+            targetAmount = 1f;
+        } else {
+            targetAmount = current/desired/2f;
+        }
+
         if (targetAmount > 1f)  {
             targetAmount = 1f;
         }
@@ -103,7 +103,7 @@ class ViewedResource    {
         }
 
         slider.value += showingVelocity/4f;
-        //slider.value = targetAmount;
+        
         this.SetColor(slider.value);
     }
 

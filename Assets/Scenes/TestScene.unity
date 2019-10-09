@@ -192,11 +192,6 @@ PrefabInstance:
       propertyPath: endScreenController
       value: 
       objectReference: {fileID: 747239069}
-    - target: {fileID: 7941001179834700954, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-        type: 3}
-      propertyPath: gameBoard
-      value: 
-      objectReference: {fileID: 1256482727}
     - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
       propertyPath: tutorialCanvas
@@ -377,18 +372,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ba65afcc95c4698bb1091bcd559ac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1256482727 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7941001179048457806, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-    type: 3}
-  m_PrefabInstance: {fileID: 103732478}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50865dc02cd4619b1833c1698681034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1350013982

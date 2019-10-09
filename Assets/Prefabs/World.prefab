@@ -173,9 +173,9 @@ MonoBehaviour:
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
   endScreenController: {fileID: 0}
   gameBoard: {fileID: 7941001179048457806}
-  populationFoodMultiplier: 0
-  populationShelterMultiplier: 0
-  populationPowerMultiplier: 0
+  populationFoodMultiplier: 1
+  populationShelterMultiplier: 1
+  populationPowerMultiplier: 1
 --- !u!1001 &1559725188013589280
 PrefabInstance:
   m_ObjectHideFlags: 0
