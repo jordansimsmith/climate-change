@@ -55,13 +55,13 @@ namespace Tweets
             // determine which category of tweet to return
             switch (level)
             {
-                case float l when l <= -50f:
+                case float l when l <= -30f:
                     List<string> veryBadTweets = tweetLevels.VeryBad;
                     return veryBadTweets[Random.Range(0, veryBadTweets.Count)];
                 case float l when l <= 0f:
                     List<string> badTweets = tweetLevels.Bad;
                     return badTweets[Random.Range(0, badTweets.Count)];
-                case float l when l <= 100f:
+                case float l when l <= 50f:
                     List<string> goodTweets = tweetLevels.Good;
                     return goodTweets[Random.Range(0, goodTweets.Count)];
                 default:

@@ -23,16 +23,11 @@ public class GameController : MonoBehaviour
     {
         CalculateResources();
 
-        float food = resources.Food.CurAmount;
-        float power = resources.Power.CurAmount;
-        float shelter = resources.Shelter.CurAmount;
-        float environment = resources.Environment.CurAmount;
-
-        if (food <= -100 || power <= -100 || shelter <= -100 || environment <= -100)
-        {
-            CancelInvoke("PollResources");
-            OnGameLose();
-        }
+        // if (food <= -100 || power <= -100 || shelter <= -100 || environment <= -100)
+        // {
+        //     CancelInvoke("PollResources");
+        //     OnGameLose();
+        // }
     }
 
     // Calculates and updates current resource balance based on GameBoard, Population

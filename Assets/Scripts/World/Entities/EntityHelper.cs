@@ -9,17 +9,9 @@ namespace World.Entities {
         
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
-          resources.Food.CurAmount += res.food;
-          resources.Environment.CurAmount += res.environment;
-          resources.Power.CurAmount += res.power;
-          resources.Shelter.CurAmount += res.shelter;
         }
 
         public void Destruct(EntityStats res) {
-          resources.Food.CurAmount -= res.food;
-          resources.Environment.CurAmount -= res.environment;
-          resources.Power.CurAmount -= res.power;
-          resources.Shelter.CurAmount -= res.shelter;
         }
 
         public void increaseMoneyRate(int amount) {

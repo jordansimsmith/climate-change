@@ -10,6 +10,8 @@ public class RatingView : MonoBehaviour
 
     public ResourceSingleton resourceSingleton;
 
+    private int ratingBoost; // If you have a good rating for a while, it gets a positive boost (0 no boost, 10 full boost)
+
     private int rating; // Rating out of ten
 
     private Image[] stars;
@@ -45,6 +47,8 @@ public class RatingView : MonoBehaviour
         }
 
         SetRating(5);
+
+        InvokeRepeating("FourSecondTick", 4f, 4f);
     }
 
 // Update is called once per frame
@@ -52,42 +56,47 @@ public class RatingView : MonoBehaviour
     {
         var pts = 2;
 
-        if (0 < resourceSingleton.Environment.CurAmount)
+        var envBalance = resourceSingleton.totalSupply.environment - resourceSingleton.totalDemand.environment;
+        var powerBalance = resourceSingleton.totalSupply.power - resourceSingleton.totalDemand.power;
+        var foodBalance = resourceSingleton.totalSupply.food - resourceSingleton.totalDemand.food;
+        var shelterBalance = resourceSingleton.totalSupply.shelter - resourceSingleton.totalDemand.shelter;
+
+        if (0 < envBalance)
         {
             pts++;
         }
 
-        if (0 < resourceSingleton.Shelter.CurAmount)
+        if (0 < powerBalance)
         {
             pts++;
         }
 
-        if (0 < resourceSingleton.Food.CurAmount)
+        if (0 < foodBalance)
         {
             pts++;
         }
 
-        if (0 < resourceSingleton.Power.CurAmount)
+        if (0 < shelterBalance)
         {
             pts++;
         }
 
-        if (-20 > resourceSingleton.Environment.CurAmount)
+        if (-20 > envBalance)
         {
             pts--;
         }
 
-        if (-20 > resourceSingleton.Shelter.CurAmount)
+        if (-20 > powerBalance)
         {
             pts--;
         }
 
-        if (-20 > resourceSingleton.Food.CurAmount)
+        if (-20 > foodBalance)
         {
             pts--;
         }
 
-        if (-20 > resourceSingleton.Power.CurAmount)
+        if (-20 > shelterBalance)
         {
             pts--;
         }
@@ -99,6 +108,13 @@ public class RatingView : MonoBehaviour
 
         if (resourceSingleton.MoneyRate > 10)
         {
+            pts++;
+        }
+
+        if (ratingBoost > 6)    {
+            pts++;
+        }
+        if (ratingBoost > 9)    {
             pts++;
         }
 
@@ -131,6 +147,21 @@ public class RatingView : MonoBehaviour
             else
             {
                 stars[i].sprite = noStar;
+            }
+        }
+    }
+
+    // Used to update the rating boost, from having a streak of good rating
+    public void FourSecondTick() {
+        if (rating > 6)    {
+            ratingBoost++;
+            if (ratingBoost > 10)   {
+                ratingBoost = 10;
+            }
+        } else {
+            ratingBoost--;
+            if (ratingBoost < 0)    {
+                ratingBoost = 0;
             }
         }
     }

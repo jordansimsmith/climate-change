@@ -41,14 +41,6 @@ namespace World
             }
 
             resources.MoneyRate = 0;
-            resources.Environment.MinAmount = -100;
-            resources.Environment.CurAmount = 0;
-            resources.Power.MinAmount = -100;
-            resources.Power.CurAmount = 0;
-            resources.Food.MinAmount = -100;
-            resources.Food.CurAmount = 0;
-            resources.Shelter.MinAmount = -100;
-            resources.Shelter.CurAmount = 0;
 
             // Generate some random trees
             for (int x = 0; x < boardSize; x++)

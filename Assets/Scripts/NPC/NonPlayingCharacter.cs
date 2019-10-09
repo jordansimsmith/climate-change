@@ -93,12 +93,12 @@ public class NonPlayingCharacter : MonoBehaviour
     {
         string fullName = firstName + " " + lastName;
 
-        float food = resourceSingleton.Food.CurAmount;
-        float power = resourceSingleton.Power.CurAmount;
-        float shelter = resourceSingleton.Shelter.CurAmount;
-        float environment = resourceSingleton.Environment.CurAmount;
+        var envBalance = resourceSingleton.totalSupply.environment - resourceSingleton.totalDemand.environment;
+        var powerBalance = resourceSingleton.totalSupply.power - resourceSingleton.totalDemand.power;
+        var foodBalance = resourceSingleton.totalSupply.food - resourceSingleton.totalDemand.food;
+        var shelterBalance = resourceSingleton.totalSupply.shelter - resourceSingleton.totalDemand.shelter;
         
-        string tweet = tweetGenerator.GenerateTweet(food, power, shelter, environment);
+        string tweet = tweetGenerator.GenerateTweet(foodBalance, powerBalance, shelterBalance, envBalance);
         tweet = "\"" + tweet + "\"";
         TextInfo info = new CultureInfo("en-US", false).TextInfo;
         string occupationTitleCase = info.ToTitleCase(occupation);

@@ -32,6 +32,5 @@ public class PopulationController : MonoBehaviour
     void PopulationTick()
     {
         ResourceSingleton.Population += Random.Range(MinIncrement, MaxIncrement);
-        Debug.Log(ResourceSingleton.Population);
     }
 }
