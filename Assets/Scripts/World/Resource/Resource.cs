@@ -9,7 +9,8 @@ namespace World.Resource {
         Shelter,
         Power,
         Food,
-        Environment
+        Environment,
+        Population
     }
 
     public enum Threshold {

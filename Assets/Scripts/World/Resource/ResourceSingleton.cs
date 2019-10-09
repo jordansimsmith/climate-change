@@ -15,6 +15,8 @@ namespace World.Resource {
         [SerializeField] private Resource power = new Resource(ResourceType.Power);
         public Resource Power => power;
 
+        public int Population;
+
         public int Money;
         public int MoneyRate;
     }

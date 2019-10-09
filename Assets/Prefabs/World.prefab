@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1879704653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1879704654}
+  - component: {fileID: 1879704655}
+  m_Layer: 0
+  m_Name: PopulationController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1879704654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879704653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7941001179834700957}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879704655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879704653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244bd23e887a945468d3941aa0ce3e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceSingleton: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
+  StartPop: 5
+  MaxIncrement: 3
+  MinIncrement: -1
+  IncrementPeriodS: 15
 --- !u!1 &7941001178917756460
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,6 +102,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b80aaf797041c448a4f52ce5db8e2a3, type: 2}
   - {fileID: 11400000, guid: a584e8a765b71824abf75584075086ac, type: 2}
   - {fileID: 11400000, guid: c7dfc3c880d5fd14f8becfe99fe017da, type: 2}
+  - {fileID: 11400000, guid: 7ab99027a0058884c90e06901c4dd311, type: 2}
+  - {fileID: 11400000, guid: 935e99a2ddbee3e46b5180066d4f2bed, type: 2}
+  - {fileID: 11400000, guid: 4a5f808656e8a2d4188c9109d7314807, type: 2}
   - {fileID: 11400000, guid: 2e73dd9d5902fe04682abde3a4648e80, type: 2}
   tutorialActive: 0
   tutorialCanvas: {fileID: 0}
@@ -89,6 +140,7 @@ Transform:
   - {fileID: 7941001179048457807}
   - {fileID: 7941001178917756459}
   - {fileID: 146149877115348121}
+  - {fileID: 1879704654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,16 +179,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7941001179834700957}
     m_Modifications:
-    - target: {fileID: 1703059134773651391, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
-        type: 3}
-      propertyPath: m_Name
-      value: NavMeshSurface
-      objectReference: {fileID: 0}
-    - target: {fileID: 1703059134773651384, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
-        type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1703059134773651385, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,6 +233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703059134773651391, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
+        type: 3}
+      propertyPath: m_Name
+      value: NavMeshSurface
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e398c1899bc51f4a9cc1b70f01af43d, type: 3}

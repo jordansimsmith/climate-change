@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,38 +194,25 @@ PrefabInstance:
       objectReference: {fileID: 747239069}
     - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
-      propertyPath: tutorialSteps.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-        type: 3}
       propertyPath: tutorialCanvas
       value: 
       objectReference: {fileID: 396818558}
-    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-        type: 3}
-      propertyPath: tutorialSteps.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: 935e99a2ddbee3e46b5180066d4f2bed,
-        type: 2}
-    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-        type: 3}
-      propertyPath: tutorialSteps.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a5f808656e8a2d4188c9109d7314807,
-        type: 2}
-    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-        type: 3}
-      propertyPath: tutorialSteps.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7ab99027a0058884c90e06901c4dd311,
-        type: 2}
-    - target: {fileID: 7941001178917756458, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-        type: 3}
-      propertyPath: tutorialSteps.Array.data[13]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2e73dd9d5902fe04682abde3a4648e80,
-        type: 2}
+    - target: {fileID: 1879704655, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
+      propertyPath: StartPop
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879704655, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
+      propertyPath: MaxIncrement
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879704655, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
+      propertyPath: MinIncrement
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879704655, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
+      propertyPath: IncrementPeriodS
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
 --- !u!1001 &190397859
