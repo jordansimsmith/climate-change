@@ -11,20 +11,19 @@ public class ResourceView : MonoBehaviour
 
     [SerializeField] private ResourceSingleton resources;
 
-    public Text[] resourceUsage;
-//    private ViewedResource[] viewedResources;
+    private ViewedResource[] viewedResources;
 
-    // Takes name of gameObject that encompasses slider
-//    private ViewedResource getViewedResource(string name) {
-//        var resourceMaster = gameObject.transform.Find(name).gameObject;
-//        return new ViewedResource(resourceMaster.GetComponentInChildren<Slider>());
-//    }
-
-    private Text getViewedResource(string name)
-    {
-        var resourceMaster = gameObject.transform.Find(name);
-        return resourceMaster.GetComponentInChildren<Text>();
+    //  Takes name of gameObject that encompasses slider
+    private ViewedResource getViewedResource(string name) {
+        var resourceMaster = gameObject.transform.Find(name).gameObject;
+        return new ViewedResource(resourceMaster.GetComponentInChildren<Slider>());
     }
+
+    // private Text getViewedResource(string name)
+    // {
+    //     var resourceMaster = gameObject.transform.Find(name);
+    //     return resourceMaster.GetComponentInChildren<Text>();
+    // }
 
     
     
@@ -32,33 +31,29 @@ public class ResourceView : MonoBehaviour
     void Start()
     {
    
-//        viewedResources = new ViewedResource[4];
-//
-//        resourceUsage[0] = getViewedResource("Electricity");
-//        resourceUsage[1] = getViewedResource("Ecosystem");
-//        resourceUsage[2] = getViewedResource("Food");
-//        resourceUsage[3] = getViewedResource("Shelter");
-//        
+        viewedResources = new ViewedResource[4];
+
+        viewedResources[0] = getViewedResource("Electricity");
+        viewedResources[1] = getViewedResource("Ecosystem");
+        viewedResources[2] = getViewedResource("Food");
+        viewedResources[3] = getViewedResource("Shelter");
+       
         InvokeRepeating("TickTenthSecond", 0.1f, 0.1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-//        viewedResources[0].SetValues(resources.Power.MinAmount, resources.Power.CurAmount);
-//        viewedResources[1].SetValues(resources.Environment.MinAmount, resources.Environment.CurAmount);
-//        viewedResources[2].SetValues(resources.Food.MinAmount, resources.Food.CurAmount);
-//        viewedResources[3].SetValues(resources.Shelter.MinAmount, resources.Shelter.CurAmount);
-        resourceUsage[0].text = resources.Power.CurAmount.ToString();
-        resourceUsage[1].text = resources.Environment.CurAmount.ToString();
-        resourceUsage[2].text = resources.Food.CurAmount.ToString();
-        resourceUsage[3].text = resources.Shelter.CurAmount.ToString();
+       viewedResources[0].SetValues(100, 100 + resources.Power.CurAmount);
+       viewedResources[1].SetValues(100, 100 + resources.Environment.CurAmount);
+       viewedResources[2].SetValues(100, 100 + resources.Food.CurAmount);
+       viewedResources[3].SetValues(resources.Population, resources.Shelter.CurAmount);
     }
 
     void TickTenthSecond()    {
-//        foreach (var resource in viewedResources)    {
-//            resource.Tick(10f);
-//        }
+       foreach (var resource in viewedResources)    {
+           resource.Tick(10f);
+       }
     }
 }
 
@@ -107,8 +102,8 @@ class ViewedResource    {
             showingVelocity = 0f;
         }
 
-        //slider.value += showingVelocity/4f;
-        slider.value = targetAmount;
+        slider.value += showingVelocity/4f;
+        //slider.value = targetAmount;
         this.SetColor(slider.value);
     }
 
