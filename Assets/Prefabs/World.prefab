@@ -172,6 +172,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
   endScreenController: {fileID: 0}
+  gameBoard: {fileID: 7941001179048457806}
+  populationFoodMultiplier: 0
+  populationShelterMultiplier: 0
+  populationPowerMultiplier: 0
 --- !u!1001 &1559725188013589280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -339,3 +343,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7576255546401229693}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7941001179048457806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 509010355137035571, guid: eaa18fe9c4aad477f985e1c252992c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7576255546401229693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50865dc02cd4619b1833c1698681034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

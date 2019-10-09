@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
+using World.Entities;
 
 namespace World.Resource {
     [CreateAssetMenu]
@@ -14,6 +14,10 @@ namespace World.Resource {
         public Resource Environment => environment;
         [SerializeField] private Resource power = new Resource(ResourceType.Power);
         public Resource Power => power;
+
+        [SerializeField] public EntityStats totalDemand = new EntityStats();
+        
+        [SerializeField] public EntityStats totalSupply = new EntityStats();
 
         public int Population;
 

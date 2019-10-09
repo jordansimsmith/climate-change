@@ -1,30 +1,28 @@
 ﻿using UnityEngine;
+using World;
 using World.Resource;
+using World.Entities;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] private ResourceSingleton resources;
     [SerializeField] private EndScreenController endScreenController;
+    [SerializeField] private GameBoard gameBoard;
+
+    [SerializeField] private int populationFoodMultiplier;
+    [SerializeField] private int populationShelterMultiplier;
+    [SerializeField] private int populationPowerMultiplier;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-//        void EventHandler(ResourceEvent e) {
-//            Debug.Log(e.Threshold);
-//            if (e.WentBelow && e.Threshold == -100) {
-//                OnGameLose();
-//            }
-//        }
-//        resources.Food.Subscribe(EventHandler);        
-//        resources.Power.Subscribe(EventHandler);        
-//        resources.Shelter.Subscribe(EventHandler);        
-//        resources.Environment.Subscribe(EventHandler);
         InvokeRepeating("PollResources", 0, 1f);
     }
 
     private void PollResources()
     {
+        CalculateResources();
+
         float food = resources.Food.CurAmount;
         float power = resources.Power.CurAmount;
         float shelter = resources.Shelter.CurAmount;
@@ -35,6 +33,20 @@ public class GameController : MonoBehaviour
             CancelInvoke("PollResources");
             OnGameLose();
         }
+    }
+
+    // Calculates and updates current resource balance based on GameBoard, Population
+    private void CalculateResources()
+    {
+        EntityStatsTuple totalStats = gameBoard.GetOnBoardResourceCount();
+
+        totalStats.demand.food += resources.Population * populationFoodMultiplier;
+        totalStats.demand.shelter += resources.Population * populationShelterMultiplier;
+        totalStats.demand.power += resources.Population * populationPowerMultiplier;
+
+        resources.totalDemand = totalStats.demand;
+        resources.totalSupply = totalStats.supply;
+
     }
     
     public void OnGameLose()
