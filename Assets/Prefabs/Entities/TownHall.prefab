@@ -135,10 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    cost: 100
+    cost: 0
     money: 0
     food: 0
-    shelter: 0
+    shelter: 35
     power: 0
     environment: 0
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
