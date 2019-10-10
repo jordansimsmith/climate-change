@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using HUD;
 using UnityEngine;
 using UnityEngine.UI;
 using World.Resource;
@@ -11,20 +12,27 @@ public class ResourceView : MonoBehaviour
 
     [SerializeField] private ResourceSingleton resources;
     [SerializeField] private GameController gameController;
+    
+    // Displays a popup showing current demand and supply of 
+    // resource on mouse hover
+    [SerializeField] private ResourceStatHint resStatHint; // prefab
+    private ResourceStatHint resStatHintInstance; // gameobject
 
     // Used for flashing warning on low resources
     private bool flipflop;
     private Vector4 normal = new Vector4(0, 0, 0, 0.6f);
     private Vector4 red = new Vector4(0.6f, 0, 0, 0.6f);
-
-
+    
     private ViewedResource[] viewedResources;
+    private Dictionary<String,Transform> sliderTransform;
 
 
     //  Takes name of gameObject that encompasses slider
     private ViewedResource getViewedResource(string name) {
         var resourceMaster = gameObject.transform.Find(name).gameObject;
-        return new ViewedResource(resourceMaster.GetComponentInChildren<Slider>());
+        var slider = resourceMaster.GetComponentInChildren<Slider>();
+        sliderTransform[name] = slider.transform;
+        return new ViewedResource(slider);
     }    
     
     // Start is called before the first frame update
@@ -32,9 +40,10 @@ public class ResourceView : MonoBehaviour
     {
    
         viewedResources = new ViewedResource[4];
+        sliderTransform = new Dictionary<string, Transform>();
 
-        viewedResources[0] = getViewedResource("Electricity");
-        viewedResources[1] = getViewedResource("Ecosystem");
+        viewedResources[0] = getViewedResource("Power");
+        viewedResources[1] = getViewedResource("Environment");
         viewedResources[2] = getViewedResource("Food");
         viewedResources[3] = getViewedResource("Shelter");
        
@@ -65,6 +74,23 @@ public class ResourceView : MonoBehaviour
         }
         flipflop = !flipflop;
     }
+
+    public void ShowResourceStat(String type)
+    {
+        if (resStatHintInstance == null)
+        {
+            resStatHintInstance = Instantiate(resStatHint);
+        }
+        var stat = resources.GetResourceBalanceFor(type);
+        resStatHintInstance.transform.SetParent(sliderTransform[type], false);
+        resStatHintInstance.ShowHint(stat);
+    }
+
+    public void HideResourceStat()
+    {
+        resStatHintInstance.HideHint();
+    }
+   
 }
 
 class ViewedResource    {
