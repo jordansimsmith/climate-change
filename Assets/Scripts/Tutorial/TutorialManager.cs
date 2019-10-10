@@ -9,7 +9,7 @@ namespace Tutorial
 
         public TutorialStep[] tutorialSteps;
         public bool tutorialActive;
-        public Canvas tutorialCanvas;
+        public GameObject tutorialCanvas;
         private DialogueManager dialogueManager;
         private int currentTutorialStep;
         
@@ -56,7 +56,7 @@ namespace Tutorial
         public void StartTutorial(int startingStep)
         {
             tutorialActive = true;
-            tutorialCanvas.enabled = true;
+            tutorialCanvas.SetActive(true);
             currentTutorialStep = startingStep;
             DrawStep(currentTutorialStep);
             
@@ -96,7 +96,7 @@ namespace Tutorial
         public void EndTutorial()
         {
             tutorialActive = false;
-            tutorialCanvas.enabled = false;
+            tutorialCanvas.SetActive(false);
         }
         
 
