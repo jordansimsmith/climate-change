@@ -48,9 +48,9 @@ MonoBehaviour:
   stats:
     cost: 80
     money: 0
-    food: -20
+    food: 0
     shelter: 20
-    power: 0
+    power: -5
     environment: -5
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
 --- !u!208 &8458683235535145672

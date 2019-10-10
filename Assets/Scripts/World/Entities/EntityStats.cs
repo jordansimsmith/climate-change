@@ -8,4 +8,9 @@ namespace World.Entities {
         public int power;
         public int environment;
     }
+
+    public struct EntityStatsTuple  {
+        public EntityStats demand;
+        public EntityStats supply;
+    }
 }

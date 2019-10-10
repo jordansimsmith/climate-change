@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1879704653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1879704654}
+  - component: {fileID: 1879704655}
+  m_Layer: 0
+  m_Name: PopulationController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1879704654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879704653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7941001179834700957}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879704655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879704653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244bd23e887a945468d3941aa0ce3e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceSingleton: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
+  StartPop: 5
+  MaxIncrement: 3
+  MinIncrement: -1
+  IncrementPeriodS: 15
+--- !u!4 &7941001178917756459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8078507196478302110, guid: 3f8f5ae19a9b9614cb20e974a24977aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 2173133063572126133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7941001179834700958
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +86,7 @@ Transform:
   - {fileID: 7941001179048457807}
   - {fileID: 7941001178917756459}
   - {fileID: 146149877115348121}
+  - {fileID: 1879704654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,6 +118,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
   endScreenController: {fileID: 0}
+  gameBoard: {fileID: 7941001179048457806}
+  populationFoodMultiplier: 5
+  populationShelterMultiplier: 5
+  populationPowerMultiplier: 0
+  minResourceRatio: 0.75
+  demandMargin: 40
+  secondsToLose: 30
 --- !u!1001 &1559725188013589280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219,12 +281,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f8f5ae19a9b9614cb20e974a24977aa, type: 3}
---- !u!4 &7941001178917756459 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8078507196478302110, guid: 3f8f5ae19a9b9614cb20e974a24977aa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2173133063572126133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7576255546401229693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,3 +361,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7576255546401229693}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7941001179048457806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 509010355137035571, guid: eaa18fe9c4aad477f985e1c252992c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7576255546401229693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50865dc02cd4619b1833c1698681034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

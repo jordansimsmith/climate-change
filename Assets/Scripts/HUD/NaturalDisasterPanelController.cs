@@ -19,8 +19,9 @@ public class NaturalDisasterPanelController : MonoBehaviour
 
     public void DisasterEventDispatcher()
     {
-        // bottom 25% environment not sure if this is how you should do it
-        if (resources.Environment.CurPercentage <= -50)
+        // If environment drops below 100, i.e. relatively few trees to factories (you start w +300 env thanks trees).  
+        var envScore = resources.totalSupply.environment - resources.totalDemand.environment;
+        if (envScore < 100)
         {
             // roll dice 10% to have the natural event
             if (Random.Range(0, 10) == 0)
