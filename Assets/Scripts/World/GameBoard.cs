@@ -71,6 +71,21 @@ namespace World
             return false;
         }
 
+        public int CountEntityTypeOnBoard(EntityType type)
+        {
+            var i = 0;
+
+            foreach (var tile in tiles)
+            {
+                if (tile.Entity != null && tile.Entity.Type == type)
+                {
+                    i++;
+                }
+            }
+
+            return i;
+        }
+
         // Gets resource counts from board demand/supply
         public EntityStatsTuple GetOnBoardResourceCount()
         {
