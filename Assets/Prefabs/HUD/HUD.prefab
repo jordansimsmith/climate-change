@@ -1064,9 +1064,9 @@ RectTransform:
   m_Father: {fileID: 8185550238714974695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 195, y: -17.175}
   m_SizeDelta: {x: 390, y: 34.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2961158681775873163
@@ -1194,6 +1194,7 @@ GameObject:
   - component: {fileID: 1318863593027482239}
   - component: {fileID: 8638903148522228950}
   - component: {fileID: 8557921913643534030}
+  - component: {fileID: 1750973286595882113}
   m_Layer: 9
   m_Name: NaturalDisasterPanel
   m_TagString: Untagged
@@ -1283,6 +1284,21 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &1750973286595882113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650349036636796025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855175e8d3cdfc34eade3a1020c23ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 3969994796005145469}
+  info: {fileID: 3962212154499132517}
+  resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
 --- !u!1 &1778150682928825463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,7 +2400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000041485, y: -50}
+  m_AnchoredPosition: {x: 0.00001229, y: -50}
   m_SizeDelta: {x: 390, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4230332502351004939
@@ -3291,14 +3307,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8143244941153498360}
-  - {fileID: 6511745396367686470}
   - {fileID: 8562173219455739664}
   m_Father: {fileID: 8185550238714974695}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 195, y: -124.07}
   m_SizeDelta: {x: 390, y: 179.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &539152780396903083
@@ -4866,7 +4881,7 @@ GameObject:
   - component: {fileID: 5824736325695890732}
   - component: {fileID: 3962212154499132517}
   m_Layer: 9
-  m_Name: Text
+  m_Name: Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4886,10 +4901,10 @@ RectTransform:
   m_Father: {fileID: 7478891090967877253}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 361.18, y: 42.12}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 190.5, y: -62.75}
+  m_SizeDelta: {x: 361.2, y: 105.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5824736325695890732
 CanvasRenderer:
@@ -5110,11 +5125,11 @@ RectTransform:
   m_Children:
   - {fileID: 4122141808540981059}
   m_Father: {fileID: 7478891090967877253}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 190.5, y: -147.47}
   m_SizeDelta: {x: 156.08, y: 49.557}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5262648720571027655
@@ -7166,83 +7181,6 @@ MonoBehaviour:
   titleText: {fileID: 1998534031591063387}
   descriptionText: {fileID: 1467706218079103197}
   continueButton: {fileID: 3867643538611325672}
---- !u!1 &8989177793244942226
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6511745396367686470}
-  - component: {fileID: 8158261915910535959}
-  - component: {fileID: 5974148682901634115}
-  m_Layer: 9
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6511745396367686470
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8989177793244942226}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7478891090967877253}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360.4, y: 45.83}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8158261915910535959
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8989177793244942226}
-  m_CullTransparentMesh: 0
---- !u!114 &5974148682901634115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8989177793244942226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 230cf26cc19aa4f18b0ab99224cdecea, type: 3}
-    m_FontSize: 12
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: The cyclone ravaged your town, destroying many buildings in its path.
 --- !u!1 &9119580717494404698
 GameObject:
   m_ObjectHideFlags: 0
