@@ -4,9 +4,8 @@ namespace World.Entities
 {
     public class FarmEntity :Entity {
         [SerializeField] private EntityStats stats;
-        [SerializeField] private EntityHelper entityHelper;
-
-        public override int MaxLevel { get; } = 4;
+        [SerializeField] private EntityUpgradeCosts upgradeCosts;
+        public override EntityUpgradeCosts UpgradeCosts => upgradeCosts;
         public override  EntityStats Stats => stats;
         public override  EntityType Type => EntityType.Farm;
         

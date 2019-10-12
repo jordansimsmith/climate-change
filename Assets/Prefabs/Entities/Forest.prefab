@@ -62,6 +62,10 @@ MonoBehaviour:
   - {fileID: 6327803863240952413}
   - {fileID: 3644464442665959972}
   - {fileID: 6658363857799602690}
+  upgradeCosts:
+    levelOne: 100
+    levelTwo: 200
+    levelThree: 300
 --- !u!208 &9048195130966428832
 NavMeshObstacle:
   m_ObjectHideFlags: 0

@@ -6,9 +6,22 @@ namespace World.Entities {
     public class EntityHelper : ScriptableObject {
 
         [SerializeField] private ResourceSingleton resources;
-        
+
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
+        }
+
+        public bool Upgrade(int cost)
+        {
+            if (resources.Money - cost > 0)
+            {
+                resources.Money -= cost;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Destruct(EntityStats res) {

@@ -241,6 +241,10 @@ MonoBehaviour:
     power: -20
     environment: -20
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
+  upgradeCosts:
+    levelOne: 100
+    levelTwo: 200
+    levelThree: 300
 --- !u!208 &4875926841797427228
 NavMeshObstacle:
   m_ObjectHideFlags: 0

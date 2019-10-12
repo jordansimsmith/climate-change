@@ -6,8 +6,9 @@ namespace World.Entities
     public class ForestEntity : Entity
     {
         [SerializeField] private EntityStats stats;
-        [SerializeField] private EntityHelper entityHelper;
         [SerializeField] private Transform[] treeTransforms;
+        [SerializeField] private EntityUpgradeCosts upgradeCosts;
+        public override EntityUpgradeCosts UpgradeCosts => upgradeCosts;
         public override EntityStats Stats => stats;
         public override EntityType Type => EntityType.Forest;
 
