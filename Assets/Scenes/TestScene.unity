@@ -674,6 +674,12 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Continue>>
+--- !u!4 &698990939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 698990939, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+    type: 3}
+  m_PrefabInstance: {fileID: 103732478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &743070172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1203,6 +1209,52 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 474.5}
   m_SizeDelta: {x: 1920, y: 1635}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1034941719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034941720}
+  - component: {fileID: 1034941721}
+  m_Layer: 0
+  m_Name: TutorialFinishedAchievement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1034941720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034941719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 698990939}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1034941721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034941719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c81498c2d18f3244997c66d005d928d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Graduate
+  description: Complete the Tutorial
+  tutorialManager: {fileID: 1380944568}
 --- !u!222 &1087964468
 CanvasRenderer:
   m_ObjectHideFlags: 0

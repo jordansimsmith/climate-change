@@ -12,6 +12,8 @@ namespace Tutorial
         public Canvas tutorialCanvas;
         private DialogueManager dialogueManager;
         private int currentTutorialStep;
+        private bool tutorialComplete;
+        public bool TutorialComplete => tutorialComplete;
         
         
         // Start is called before the first frame update
@@ -97,6 +99,7 @@ namespace Tutorial
         {
             tutorialActive = false;
             tutorialCanvas.enabled = false;
+            tutorialComplete = true; 
         }
         
 

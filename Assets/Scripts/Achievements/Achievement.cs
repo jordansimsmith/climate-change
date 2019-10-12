@@ -11,5 +11,5 @@ public abstract class Achievement : MonoBehaviour   {
     protected bool done;
     public bool Done => done;
 
-    public abstract void Update(); 
+    public abstract void AchievementUpdate(); 
 }

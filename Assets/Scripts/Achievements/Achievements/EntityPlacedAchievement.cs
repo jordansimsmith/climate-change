@@ -18,7 +18,7 @@ public class EntityPlacedAchievement : Achievement
         offset = gameBoard.CountEntityTypeOnBoard(targetEntity);
     }
 
-    public override void Update()
+    public override void AchievementUpdate()
     {
         var num = gameBoard.CountEntityTypeOnBoard(targetEntity);
         if (num >= (offset + targetAmount) && !this.done)    {

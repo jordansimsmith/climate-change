@@ -18,7 +18,7 @@ public class AchievementManager : MonoBehaviour
     {
         foreach (var achievement in achievements)   {
             if (!achievement.Done)  {
-                achievement.Update();
+                achievement.AchievementUpdate();
                 if (achievement.Done)   {
                     this.TriggerAchievement(achievement);
                 }
