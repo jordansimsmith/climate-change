@@ -45,14 +45,11 @@ public class TornadoMovement : MonoBehaviour
         if (periodsElapsed > this.periodsTillDeath)
         {
             masterParticleSystem.Stop(true);
-            Invoke("DestroySelf", 2.0f); // Let particle emitter end gracefully.
+            Destroy(gameObject, 2.0f);
         }
     }
 
-    void DestroySelf()
-    {
-        Destroy(gameObject);
-    }
+
 
     Vector3 PickRandomPosition(TileType type = TileType.Grass)
     {
