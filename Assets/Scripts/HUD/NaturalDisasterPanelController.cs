@@ -37,9 +37,10 @@ public class NaturalDisasterPanelController : MonoBehaviour
         {
             return;
         }
-        
+  
         DoSeaLevelRise();
         activeTornado = tornadoPrefab;
+      
         
         // If environment drops below 100, i.e. relatively few trees to factories (you start w +300 env thanks trees).  
         var envScore = resources.totalSupply.environment - resources.totalDemand.environment;
@@ -136,7 +137,7 @@ public class NaturalDisasterPanelController : MonoBehaviour
         foreach (Tuple<int, int> tile in tiles)
         {
             Tile oldTile = board.Tiles[tile.Item1, tile.Item2];
-            Destroy(oldTile);
+            Destroy(oldTile.gameObject);
             board.CreateTileAt(tile.Item1, tile.Item2, conversionType);
         }
         
