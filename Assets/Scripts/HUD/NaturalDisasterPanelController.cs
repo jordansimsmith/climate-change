@@ -33,13 +33,7 @@ public class NaturalDisasterPanelController : MonoBehaviour
 
     public void DisasterEventDispatcher()
     {
-        if (activeTornado != null)
-        {
-            return;
-        }
-  
-        DoSeaLevelRise();
-        activeTornado = tornadoPrefab;
+      
       
         
         // If environment drops below 100, i.e. relatively few trees to factories (you start w +300 env thanks trees).  
