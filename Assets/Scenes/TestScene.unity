@@ -7051,6 +7051,10 @@ MonoBehaviour:
   info: {fileID: 6404763119391956233}
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
   tornadoPrefab: {fileID: 148822, guid: 9c81eb172a2e3644cad527014afc356e, type: 3}
+  sandPrefab: {fileID: 1192370343594454344, guid: 49bbac0f6e36240cdbbc5fb9c6b96eeb,
+    type: 3}
+  smokePrefab: {fileID: 100000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
+  droughtTileConversionDelay: 13
 --- !u!1 &6404763119630107723
 GameObject:
   m_ObjectHideFlags: 0

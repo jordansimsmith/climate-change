@@ -62,11 +62,11 @@ public class TornadoMovement : MonoBehaviour
         if (other.CompareTag("Tile"))
         {
             Tile otherTile = other.gameObject.GetComponent<Tile>();
-            if (otherTile.Entity != null)
+            if (otherTile != null && otherTile.Entity != null)
             {
                 otherTile.Entity = null;
             }
-        }
+        } 
 
     }
 

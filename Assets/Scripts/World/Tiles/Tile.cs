@@ -5,8 +5,14 @@ namespace World.Tiles
 {
     public class Tile : MonoBehaviour
     {
-        [SerializeField] private TileType tileType;
-        public TileType TileType => tileType;
+        [SerializeField]
+        private TileType tileType;
+        
+        public TileType TileType
+        {
+            get => tileType;
+            set => tileType = value;
+        }
 
         private Entity entity;
 
