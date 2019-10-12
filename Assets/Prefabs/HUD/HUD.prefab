@@ -6378,6 +6378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f81c800268014746a1fbc6890462ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiElements:
+  - {fileID: 3175994131752561352}
+  - {fileID: 1650349036636796025}
+  - {fileID: 8958648899507247422}
+  - {fileID: 1596095813890040113}
   escapeUIObj: {fileID: 8807631041250267382}
 --- !u!1 &8807631040477718156
 GameObject:
