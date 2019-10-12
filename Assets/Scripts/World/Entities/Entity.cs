@@ -11,7 +11,7 @@ namespace World.Entities
         public virtual EntityUpgradeCosts UpgradeCosts { get; }
 
         // level starts at 0 currently- upgradable 3 times
-        public int Level { get; set; } = 0;
+        public int Level { get; set; }
         public int MaxLevel { get; } = 3;
 
         

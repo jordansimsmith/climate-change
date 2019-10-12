@@ -39,6 +39,12 @@ namespace HUD
             RefreshEntityInformation();;
         }
 
+        public void CloseSideBar()
+        {
+            entity = null;
+            gameObject.SetActive(false);
+        }
+
         private void RefreshEntityInformation()
         {
             if (entity == null)
@@ -54,6 +60,7 @@ namespace HUD
             environment.text = "Environment: " + stats.environment;
             food.text = "Food: " + stats.food;
             shelter.text = "Shelter: " + stats.shelter;
+            income.text = "Income: " + stats.money;
         }
 
         public void UpgradeEntity()
