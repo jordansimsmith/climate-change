@@ -12,16 +12,21 @@ namespace World.Tiles
 
         public Tile Get (TileType tileType)
         {
+            return Instantiate(GetPrefab(tileType));
+        }
+        
+        public Tile GetPrefab (TileType tileType)
+        {
             switch (tileType)
             {
                 case TileType.Grass:
-                    return Instantiate (grassPrefab);
+                    return grassPrefab;
                 case TileType.Sand:
-                    return Instantiate (sandPrefab);
+                    return sandPrefab;
                 case TileType.Water:
-                    return Instantiate (waterPrefab);
+                    return waterPrefab;
                 case TileType.Mountain:
-                    return Instantiate (mountainPrefab);
+                    return mountainPrefab;
                 default:
                     Debug.Log ("Unknown tile type");
                     return null;

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - World
   - Board
+  - Tornado
+  - Tile
   layers:
   - Default
   - TransparentFX

@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using World.Entities;
 using World.Resource;
 using World.Tiles;
+using Random = UnityEngine.Random;
 
 namespace World
 {
@@ -17,6 +19,9 @@ namespace World
 
         private Tile[,] tiles = default;
 
+        public Tile[,] Tiles => tiles;
+    
+
         private void Awake()
         {
             TileType[,] layout = GetComponent<WorldGenerator>().Generate(boardSize);
@@ -26,19 +31,11 @@ namespace World
             {
                 for (int z = 0; z < boardSize; z++)
                 {
-                    Tile tile = tileFactory.Get(layout[x, z]);
-                    var tileTransform = tile.transform;
-                    tileTransform.position = new Vector3(x * Tile.Size.x, -Tile.Size.y, z * Tile.Size.z);
-                    tileTransform.SetParent(gameObject.transform);
-                    tiles[x, z] = tile;
+                  CreateTileAt(x, z, layout[x, z]);
                 }
             }
 
-            // bake nav mesh
-            if (surface != null)
-            {
-                surface.BuildNavMesh();
-            }
+            RebakeNavMesh();
 
             resources.MoneyRate = 0;
 
@@ -57,6 +54,15 @@ namespace World
             resources.Money = 1000;
         }
 
+        public void CreateTileAt(int x, int z, TileType type)
+        {
+            Tile tile = tileFactory.Get(type);
+            var tileTransform = tile.transform;
+            tileTransform.position = new Vector3(x * Tile.Size.x, -Tile.Size.y, z * Tile.Size.z);
+            tileTransform.SetParent(gameObject.transform);
+            tiles[x, z] = tile;
+        }
+
 
         public bool IsEntityTypeOnBoard(EntityType type)
         {
@@ -70,6 +76,36 @@ namespace World
 
             return false;
         }
+
+        public Tile GetRandomTile(TileType type)
+        {
+            Tuple<int, int> randomTilePos = GetRandomTilePosition(type);
+
+            return tiles[randomTilePos.Item1, randomTilePos.Item2];
+        }
+        
+        public Tuple<int, int> GetRandomTilePosition(TileType type)
+        {
+            int randomX, randomZ;
+            do
+            {
+                randomX = Random.Range(0, boardSize);
+                randomZ = Random.Range(0, boardSize);
+            } while (tiles[randomX, randomZ].TileType != type);
+
+            return Tuple.Create(randomX, randomZ);
+        }
+
+        public void RebakeNavMesh()
+        {
+            // bake nav mesh
+            if (surface != null)
+            {
+                surface.BuildNavMesh();
+            }
+        }
+
+      
 
         // Gets resource counts from board demand/supply
         public EntityStatsTuple GetOnBoardResourceCount()
