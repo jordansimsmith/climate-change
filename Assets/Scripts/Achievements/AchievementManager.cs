@@ -6,9 +6,10 @@ using UnityEngine;
 public class AchievementManager : MonoBehaviour
 {
     private Achievement[] achievements;
+    public Achievement[] Achievements => achievements; 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         this.achievements = gameObject.GetComponentsInChildren<Achievement>();
     }
@@ -29,6 +30,6 @@ public class AchievementManager : MonoBehaviour
     // Displays achievement when it is earned
     public void TriggerAchievement(Achievement achievement)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }
