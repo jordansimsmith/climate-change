@@ -7579,6 +7579,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winMenuUI: {fileID: 6127081993497205311}
   loseMenuUI: {fileID: 3760189535288902120}
+  uiElements:
+  - {fileID: 3175994131752561352}
+  - {fileID: 1650349036636796025}
+  - {fileID: 8958648899507247422}
+  - {fileID: 1596095813890040113}
 --- !u!1 &8807631040477718156
 GameObject:
   m_ObjectHideFlags: 0
