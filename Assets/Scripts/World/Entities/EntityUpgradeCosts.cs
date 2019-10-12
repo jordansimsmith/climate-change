@@ -1,7 +1,7 @@
 ﻿namespace World.Entities
 {
     [System.Serializable]
-    public class EntityUpgradeCosts
+    public struct EntityUpgradeCosts
     {
         public int levelOne;
         public int levelTwo;

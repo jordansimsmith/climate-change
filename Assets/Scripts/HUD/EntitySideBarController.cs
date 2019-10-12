@@ -53,7 +53,7 @@ namespace HUD
             }
             String levelText = "Level " + entity.Level;
             title.text = entity.Type + " (" + levelText + ")";
-        
+
             EntityStats stats = entity.Stats;
 
             electricity.text = "Power: " + stats.power;

@@ -7,12 +7,15 @@ namespace World.Entities
     {
         [SerializeField] public EntityHelper entityHelper;
         public virtual EntityType Type { get; }
-        public virtual EntityStats Stats { get; }
+
+        public EntityStats Stats => GetEntityStats();
+        
+        public virtual EntityUpgradeInformation UpgradeInformation { get; }
         public virtual EntityUpgradeCosts UpgradeCosts { get; }
 
-        // level starts at 0 currently- upgradable 3 times
-        public int Level { get; set; }
-        public int MaxLevel { get; } = 3;
+        // level starts at 1 currently- upgradable 3 times
+        public int Level { get; set; } = 1;
+        [SerializeField] public int maxLevel = 3;
 
         
         public abstract void Construct();
@@ -22,7 +25,7 @@ namespace World.Entities
         // base functionality checks base level + cost
         public virtual void Upgrade()    
         {
-            if (Level + 1 > MaxLevel)
+            if (Level + 1 > maxLevel)
             {
                 Debug.Log("reached level cap");
             }
@@ -40,7 +43,7 @@ namespace World.Entities
             }
         }
 
-        private int GetUpgradeCost()
+        protected int GetUpgradeCost()
         {
             switch (Level + 1)
             {
@@ -55,5 +58,25 @@ namespace World.Entities
             }
             
         }
+
+
+        private EntityStats GetEntityStats()
+        {
+            switch (Level)
+            {
+                case 1:
+                    return UpgradeInformation.levelOne;
+                case 2:
+                    Debug.Log("level two");
+                    return UpgradeInformation.levelTwo;
+                case 3:
+                    return UpgradeInformation.levelThree;
+
+            }
+
+            return UpgradeInformation.levelOne;
+        }
     }
+    
+    
 }
