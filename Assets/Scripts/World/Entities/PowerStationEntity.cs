@@ -11,15 +11,6 @@ namespace World.Entities
       public override EntityUpgradeCosts UpgradeCosts => upgradeCosts;
       
       public override EntityType Type => EntityType.PowerStation;
-
-      public override void Construct() {
-          entityHelper.Construct(Stats);
-      }
-
-      public override void Destruct() {
-          entityHelper.Destruct(Stats);
-      }
-
   }
 
 }

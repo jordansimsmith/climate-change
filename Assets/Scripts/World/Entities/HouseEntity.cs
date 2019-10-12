@@ -12,14 +12,6 @@ namespace World.Entities
 
       public override EntityType Type => EntityType.House;
 
-      public override void Construct() {
-          entityHelper.Construct(Stats);
-      }
-
-      public override void Destruct() {
-          entityHelper.Destruct(Stats);
-      }
-
 
   }
 

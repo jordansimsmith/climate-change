@@ -12,16 +12,6 @@ namespace World.Entities
         public override EntityUpgradeInformation UpgradeInformation => upgradeInformation;
         public override EntityUpgradeCosts UpgradeCosts => upgradeCosts;
         public override EntityType Type => EntityType.Forest;
-
-        public override void Construct() {
-            entityHelper.Construct(Stats);
-        }
-
-        public override void Destruct() {
-            entityHelper.Destruct(Stats);
-        }
-
-
         private void Start() {
             foreach (var tree in treeTransforms) {
                 tree.localPosition =

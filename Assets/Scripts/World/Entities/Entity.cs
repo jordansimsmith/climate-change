@@ -17,9 +17,16 @@ namespace World.Entities
         public int Level { get; set; } = 1;
         [SerializeField] public int maxLevel = 3;
 
-        
-        public abstract void Construct();
-        public abstract void Destruct();
+
+        public virtual void Construct()
+        {
+            entityHelper.Construct(Stats);
+        }
+
+        public virtual void Destruct()
+        {
+            entityHelper.Destruct(Stats);
+        }
 
         // upgrade method can be overwritten to provide upgrade criteria i.e electricity must be > 
         // base functionality checks base level + cost
