@@ -14,11 +14,6 @@ namespace World.Entities
         public override void Construct() {
             entityHelper.Construct(stats);
             entityHelper.increaseMoneyRate(stats.money);
-
-            Transform t = GetComponent<Transform>();
-            Vector3 position = t.localScale;
-            position.y = 1.5f;
-            t.localScale = position;
         }
 
         public override void Destruct() {
