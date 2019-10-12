@@ -9,7 +9,7 @@ namespace World.Entities
         public virtual EntityType Type { get; }
 
         public EntityStats Stats => GetEntityStats();
-        
+
         public virtual EntityUpgradeInformation UpgradeInformation { get; }
         public virtual EntityUpgradeCosts UpgradeCosts { get; }
 
@@ -47,14 +47,12 @@ namespace World.Entities
         {
             switch (Level + 1)
             {
-                case 1:
-                    return UpgradeCosts.levelOne;
                 case 2:
-                    return UpgradeCosts.levelTwo;
+                    return UpgradeInformation.levelTwo.cost;
                 case 3:
-                    return UpgradeCosts.levelThree;
+                    return UpgradeInformation.levelThree.cost;
                 default:
-                    return 0;
+                    return UpgradeInformation.levelOne.cost;
             }
             
         }

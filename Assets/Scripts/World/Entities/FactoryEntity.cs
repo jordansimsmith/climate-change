@@ -29,7 +29,7 @@ namespace World.Entities
                 Debug.Log("reached level cap");
                 return;
             }
-            
+
             int upgradeCost = GetUpgradeCost();
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
