@@ -515,7 +515,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 499693501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1508964261}
+        m_MethodName: upgradeEntity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &499693501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,6 +670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7487133432228363549, guid: 3008f66a9ade549e59266c86a50d0af3,
+        type: 3}
+      propertyPath: m_Name
+      value: Forest
+      objectReference: {fileID: 0}
     - target: {fileID: -2093007100427958032, guid: 3008f66a9ade549e59266c86a50d0af3,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -673,11 +689,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487133432228363549, guid: 3008f66a9ade549e59266c86a50d0af3,
-        type: 3}
-      propertyPath: m_Name
-      value: Forest
       objectReference: {fileID: 0}
     - target: {fileID: 4196366959212067428, guid: 3008f66a9ade549e59266c86a50d0af3,
         type: 3}
@@ -907,11 +918,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882c4526df5db234a84b55eeb4e4d8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 2058864278}
   electricity: {fileID: 8737233}
   environment: {fileID: 1657907828}
   food: {fileID: 1795275998}
   shelter: {fileID: 103283564}
-  Income: {fileID: 0}
+  income: {fileID: 0}
+  upgradeButton: {fileID: 499693500}
 --- !u!1001 &1634204635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2242,7 +2255,7 @@ GameObject:
   - component: {fileID: 2058864279}
   - component: {fileID: 2058864278}
   m_Layer: 5
-  m_Name: Title
+  m_Name: EntityName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

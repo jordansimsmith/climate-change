@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using HUD;
+using UnityEngine;
 using World.Entities;
 
 namespace World.Tiles
@@ -9,6 +11,12 @@ namespace World.Tiles
         public TileType TileType => tileType;
 
         private Entity entity;
+        private EntitySideBarController sideBarController;
+
+        public void Awake()
+        {
+            sideBarController = FindObjectOfType<EntitySideBarController>();
+        }
 
         public Entity Entity
         {
@@ -32,6 +40,12 @@ namespace World.Tiles
                     entity = null;
                 }
             }
+        }
+
+        public void OnMouseDown()
+        {
+            sideBarController.ShowSideBar(entity);
+            
         }
 
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
