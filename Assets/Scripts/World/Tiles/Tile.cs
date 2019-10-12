@@ -44,8 +44,10 @@ namespace World.Tiles
 
         public void OnMouseDown()
         {
-            sideBarController.ShowSideBar(entity);
-            
+            if (entity != null)
+            {
+                sideBarController.ShowSideBar(entity);
+            }
         }
 
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);

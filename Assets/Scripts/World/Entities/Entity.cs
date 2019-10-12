@@ -10,15 +10,16 @@ namespace World.Entities
         public virtual EntityStats Stats { get; }
         public virtual EntityUpgradeCosts UpgradeCosts { get; }
 
-        public int Level { get; set; } = 1;
-        // max level can be overwritten
-        public virtual int MaxLevel { get; } = 3;
+        // level starts at 0 currently- upgradable 3 times
+        public int Level { get; set; } = 0;
+        public int MaxLevel { get; } = 3;
 
         
         public abstract void Construct();
         public abstract void Destruct();
 
-        // upgrade method can be overwritten to provide upgrade criteria i.e electricity must be > X
+        // upgrade method can be overwritten to provide upgrade criteria i.e electricity must be > 
+        // base functionality checks base level + cost
         public virtual void Upgrade()    
         {
             if (Level + 1 > MaxLevel)
@@ -27,14 +28,21 @@ namespace World.Entities
             }
             else
             {
-                Debug.Log(GetUpgradeCost());
-                Level++;
+                int upgradeCost = GetUpgradeCost();
+                if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
+                {
+                    Level++;
+                }
+                else
+                {
+                    Debug.Log("not enough shmoneys");
+                }
             }
         }
 
-        public int GetUpgradeCost()
+        private int GetUpgradeCost()
         {
-            switch (Level)
+            switch (Level + 1)
             {
                 case 1:
                     return UpgradeCosts.levelOne;

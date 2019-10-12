@@ -31,15 +31,20 @@ namespace HUD
         
         }
 
-        public void ShowSideBar(Entity entity)
+        public void ShowSideBar(Entity e)
         {
-            this.entity = entity;
+            Debug.Log("setting entity");
+            entity = e;
             gameObject.SetActive(true);
             RefreshEntityInformation();;
         }
 
         private void RefreshEntityInformation()
         {
+            if (entity == null)
+            {
+                return;
+            }
             String levelText = "Level " + entity.Level;
             title.text = entity.Type + " (" + levelText + ")";
         
@@ -53,7 +58,7 @@ namespace HUD
 
         public void UpgradeEntity()
         {
-            this.entity.Upgrade();
+            entity.Upgrade();
             RefreshEntityInformation();
         }
     }

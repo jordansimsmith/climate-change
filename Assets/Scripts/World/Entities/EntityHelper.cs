@@ -11,17 +11,15 @@ namespace World.Entities {
           resources.Money -= res.cost;
         }
 
-        public bool Upgrade(int cost)
+        public bool UpgradeIfEnoughMoney(int cost)
         {
             if (resources.Money - cost > 0)
             {
                 resources.Money -= cost;
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public void Destruct(EntityStats res) {
