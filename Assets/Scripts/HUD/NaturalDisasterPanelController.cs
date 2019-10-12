@@ -9,6 +9,8 @@ public class NaturalDisasterPanelController : MonoBehaviour
     public Text title;
     public Text info;
     public ResourceSingleton resources;
+    public GameObject tornadoPrefab;
+    private GameObject activeTornado;
 
     public void Awake()
     {
@@ -19,6 +21,7 @@ public class NaturalDisasterPanelController : MonoBehaviour
 
     public void DisasterEventDispatcher()
     {
+        doCyclone();
         // If environment drops below 100, i.e. relatively few trees to factories (you start w +300 env thanks trees).  
         var envScore = resources.totalSupply.environment - resources.totalDemand.environment;
         if (envScore < 100)
@@ -34,12 +37,10 @@ public class NaturalDisasterPanelController : MonoBehaviour
                             "good job!");
                         return;
                     case 1:
-                        Show("Cyclone hits your Island!",
-                            "A cyclone ravages through your island killing people and destroying your land");
+                        doCyclone();
                         return;
                     case 2:
-                        Show("Cyclone hits your Island!",
-                            "A cyclone ravages through your island killing people and destroying your land");
+                        doCyclone();
                         return;
                     case 3:
                         Show("There has been a drought!",
@@ -56,6 +57,19 @@ public class NaturalDisasterPanelController : MonoBehaviour
         }
 
         //generate Rng Event for the subscribe
+    }
+    
+
+    void doCyclone()
+    {
+        if (activeTornado != null)
+        {
+            return;
+        }
+
+        activeTornado = Instantiate(tornadoPrefab);
+        Show("Cyclone hits your Island!",
+            "A cyclone ravages through your island killing people and destroying your land");
     }
 
     public void Hide()

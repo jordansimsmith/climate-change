@@ -71,6 +71,21 @@ namespace World
             return false;
         }
 
+        public Tile GetRandomTile(TileType type)
+        {
+            Tile randomTile;
+            do
+            {
+                int randomX = Random.Range(0, boardSize);
+                int randomY = Random.Range(0, boardSize);
+
+                randomTile = tiles[randomX, randomY];
+
+            } while (randomTile.TileType != type);
+
+            return randomTile;
+        }
+
         // Gets resource counts from board demand/supply
         public EntityStatsTuple GetOnBoardResourceCount()
         {
