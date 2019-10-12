@@ -10,10 +10,13 @@ public class AchievementUI : MonoBehaviour  {
 
     [SerializeField] private GameObject achievementPrefab;
     [SerializeField] private AchievementManager achievementManager;
+    [SerializeField] private Button closeButton;
     private GameObject[] achievementViews;
 
     void Start()    {
         shade = gameObject.transform.Find("Shade").gameObject;
+
+        closeButton.onClick.AddListener(() => { this.ToggleUI(); });
 
         // Populate list with achievements        
         achievementList = gameObject.transform.Find("Shade/OuterContainer/InnerContainer/AchievementList").gameObject;
