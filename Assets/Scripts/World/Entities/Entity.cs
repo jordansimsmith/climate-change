@@ -11,8 +11,6 @@ namespace World.Entities
         public EntityStats Stats => GetEntityStats();
 
         public virtual EntityUpgradeInformation UpgradeInformation { get; }
-        public virtual EntityUpgradeCosts UpgradeCosts { get; }
-
         // level starts at 1 currently- upgradable 3 times
         public int Level { get; set; } = 1;
         [SerializeField] public int maxLevel = 3;

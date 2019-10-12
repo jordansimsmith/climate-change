@@ -6,11 +6,9 @@ namespace World.Entities
     public class ForestEntity : Entity
     {
         [SerializeField] private Transform[] treeTransforms;
-        [SerializeField] private EntityUpgradeCosts upgradeCosts;
         [SerializeField] private EntityUpgradeInformation upgradeInformation;
 
         public override EntityUpgradeInformation UpgradeInformation => upgradeInformation;
-        public override EntityUpgradeCosts UpgradeCosts => upgradeCosts;
         public override EntityType Type => EntityType.Forest;
         private void Start() {
             foreach (var tree in treeTransforms) {
