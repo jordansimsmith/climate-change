@@ -1212,7 +1212,7 @@ MonoBehaviour:
   income: {fileID: 1762518949}
   gameController: {fileID: 0}
   upgradeButton: {fileID: 499693500}
-  closeUpgradePanelButton: {fileID: 0}
+  closeUpgradePanelButton: {fileID: 1952147315}
 --- !u!1 &1639551120
 GameObject:
   m_ObjectHideFlags: 0
