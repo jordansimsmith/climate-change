@@ -28,24 +28,23 @@ namespace World.Entities
 
         // upgrade method can be overwritten to provide upgrade criteria i.e electricity must be > 
         // base functionality checks base level + cost
-        public virtual void Upgrade()    
+        public virtual bool Upgrade()    
         {
             if (Level + 1 > maxLevel)
             {
                 Debug.Log("reached level cap");
+                return false;
             }
-            else
+
+            int upgradeCost = GetUpgradeCost();
+            if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
-                int upgradeCost = GetUpgradeCost();
-                if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
-                {
-                    Level++;
-                }
-                else
-                {
-                    Debug.Log("not enough shmoneys");
-                }
+                Level++;
+                return true;
             }
+
+            Debug.Log("not enough shmoneys");
+            return false;
         }
 
         protected int GetUpgradeCost()
