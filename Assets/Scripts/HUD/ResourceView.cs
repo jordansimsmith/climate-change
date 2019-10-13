@@ -20,10 +20,11 @@ public class ResourceView : MonoBehaviour
 
     // Used for flashing warning on low resources
     private bool flipflop;
-    private Vector4 normal = new Vector4(0, 0, 0, 0.6f);
-    private Vector4 red = new Vector4(0.6f, 0, 0, 0.6f);
+    private Vector4 normal = new Vector4(1f, 1f, 1f, 1f);
+    private Vector4 red = new Vector4(0.5f, 0, 0, 1f);
     
     private ViewedResource[] viewedResources;
+    [SerializeField] private Text populationCounter;
     private Dictionary<String,Transform> sliderTransform;
 
 
@@ -58,6 +59,8 @@ public class ResourceView : MonoBehaviour
         viewedResources[1].SetValues(resources.totalDemand.environment, resources.totalSupply.environment);
         viewedResources[2].SetValues(resources.totalDemand.food, resources.totalSupply.food);
         viewedResources[3].SetValues(resources.totalDemand.shelter, resources.totalSupply.shelter);
+
+        populationCounter.text = resources.Population.ToString();
     }
 
     void TickTenthSecond()    {
