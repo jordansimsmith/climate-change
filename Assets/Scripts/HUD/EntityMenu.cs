@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HUD;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -39,11 +40,6 @@ public class EntityMenu : EventTrigger
     {
         placer.Spawn(entityMap[gameObject.name]);
         handler.InvalidateDeleteButton();
-        
-        if (gameObject.name == "TownHall")
-        {
-            GameObject.Find("TownHall").SetActive(false);
-        }
     }
 
 
