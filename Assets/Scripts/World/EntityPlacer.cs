@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HUD;
+using UnityEngine;
 using World.Entities;
 using World.Resource;
 using World.Tiles;
@@ -12,12 +13,17 @@ namespace World
         private Entity entity;
         private Plane tilePlane;
         private bool deleteMode;
+        private EntitySideBarController sideBarController;
 
         public bool DeleteMode
         {
             get => deleteMode;
             set
             {
+                if (entity != null)
+                {
+                    DestroyCurrentEntity();
+                }
                 deleteMode = value;
                 if (value)
                 {
@@ -35,15 +41,16 @@ namespace World
         private void Start()
         {
             tilePlane = new Plane(Vector3.up, 0);
+            sideBarController = FindObjectOfType<EntitySideBarController>();
         }
 
         public void Spawn(EntityType type)
         {
-            if (enabled && !deleteMode)
+            if (entity != null)
             {
-                return;
+                DestroyCurrentEntity();
             }
-
+            
             DeleteMode = false;
             entity = factory.Get(type);
             enabled = true;
@@ -91,13 +98,19 @@ namespace World
         
         private void PlaceEntityIfValid(GameObject gameTile) {
             Tile tile = gameTile.GetComponent<Tile>();
-            if (tile.TileType.Equals(TileType.Grass)
-                && tile.Entity == null
-                && resources.Money >= entity.Stats.cost)
+            if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
             {
                 tile.Entity = entity;
                 enabled = false;
+                
+                if (entity.Type == EntityType.TownHall)
+                {
+                    GameObject.Find("TownHall").SetActive(false);
+                }
+
+                entity = null;
             }
+            
     
         }
 
@@ -109,6 +122,14 @@ namespace World
                 tile.Entity = null;
             }
             
+        }
+
+        private void DestroyCurrentEntity()
+        {
+            if (entity != null)
+            {
+                Destroy(entity.transform.gameObject);
+            }
         }
 
     }
