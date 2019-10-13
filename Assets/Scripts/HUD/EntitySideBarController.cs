@@ -43,7 +43,7 @@ namespace HUD
                 UpdateBuildEntityInformation();
             }
         }
-
+        
         public void CloseSideBar()
         {
             entity = null;

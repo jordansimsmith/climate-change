@@ -26,7 +26,7 @@ public class EntityController : MonoBehaviour
     public void onHover(EntityType entityType)
     {
         int cost = entityFactory.GetCost(entityType);
-        sideBarController.ShowSideBar(entityFactory.Get(entityType), false);
+        sideBarController.ShowSideBar(entityFactory.GetPrefab(entityType), false);
         costLabel.enabled = true;
         costLabel.text = "Cost:" + cost;
     }
