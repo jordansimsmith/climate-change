@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using World.Resource;
 
@@ -7,10 +9,11 @@ namespace World.Entities
     {
         [SerializeField] public EntityHelper entityHelper;
         public virtual EntityType Type { get; }
+        
+        public virtual EntityUpgradeInformation UpgradeInformation { get; }
 
         public EntityStats Stats => GetEntityStats();
 
-        public virtual EntityUpgradeInformation UpgradeInformation { get; }
         // level starts at 1 currently- upgradable 3 times
         public int Level { get; set; } = 1;
         [SerializeField] public int maxLevel = 3;
@@ -47,6 +50,39 @@ namespace World.Entities
             return false;
         }
 
+        private GameObject box;
+        public void ShowOutline(bool canBePlaced)
+        {
+            if (box == null)
+            {
+                // Get an instance of outline cube
+                box = entityHelper.CreateOutlineCube();
+                
+                // Get the max height of this gameobject
+                var renderers = GetComponentsInChildren<Renderer>();
+                var y = renderers.Select(r => r.bounds.size.y).Concat(new[] {10f}).Max();
+
+                // Set the position and scale to match this gameobject
+                box.transform.localScale = new Vector3(10, y, 10);
+                box.transform.SetParent(transform, false);
+            }
+            
+            // Change the color
+            var color = canBePlaced
+                ? new Color(255, 56, 0, 100)
+                : new Color(0, 255, 87, 100);
+
+            box.GetComponent<Renderer>().material.color = color;
+        }
+
+        public void HideOutline()
+        {
+            if (box == null) return;
+            Destroy(box);
+            box = null;
+        }
+        
+        
         protected int GetUpgradeCost()
         {
             switch (Level + 1)
@@ -75,7 +111,6 @@ namespace World.Entities
                     return UpgradeInformation.levelThree;
 
             }
-
             return UpgradeInformation.levelOne;
         }
     }

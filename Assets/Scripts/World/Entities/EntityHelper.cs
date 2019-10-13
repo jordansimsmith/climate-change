@@ -6,6 +6,7 @@ namespace World.Entities {
     public class EntityHelper : ScriptableObject {
 
         [SerializeField] private ResourceSingleton resources;
+        [SerializeField] private GameObject outlineCube;
 
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
@@ -25,12 +26,17 @@ namespace World.Entities {
         public void Destruct(EntityStats res) {
         }
 
-        public void increaseMoneyRate(int amount) {
+        public void IncreaseMoneyRate(int amount) {
             resources.MoneyRate += amount;
         }
         
-        public void decreaseMoneyRate(int amount) {
+        public void DecreaseMoneyRate(int amount) {
             resources.MoneyRate -= amount;
+        }
+        
+        public GameObject CreateOutlineCube()
+        {
+            return Instantiate(outlineCube); 
         }
     }
 }

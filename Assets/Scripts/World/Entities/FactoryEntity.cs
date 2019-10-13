@@ -9,14 +9,14 @@ namespace World.Entities
         public override  EntityType Type => EntityType.Factory;
         
         public override void Construct() {
-            entityHelper.Construct(Stats);
-            entityHelper.increaseMoneyRate(Stats.money);
+            base.Construct();
+            entityHelper.IncreaseMoneyRate(Stats.money);
         }
         
 
         public override void Destruct() {
-            entityHelper.Destruct(Stats);
-            entityHelper.decreaseMoneyRate(Stats.money);
+            base.Destruct();
+            entityHelper.DecreaseMoneyRate(Stats.money);
         }
 
         public override bool Upgrade()
@@ -30,9 +30,9 @@ namespace World.Entities
             int upgradeCost = GetUpgradeCost();
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
-                entityHelper.decreaseMoneyRate(Stats.money);
+                entityHelper.DecreaseMoneyRate(Stats.money);
                 Level++;
-                entityHelper.increaseMoneyRate(Stats.money);
+                entityHelper.IncreaseMoneyRate(Stats.money);
                 return true;
             }
 
