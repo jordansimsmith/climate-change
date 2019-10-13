@@ -12,7 +12,7 @@ public class EntityController : MonoBehaviour
     private EntitySideBarController sideBarController;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         sideBarController = FindObjectOfType<EntitySideBarController>();
     }
