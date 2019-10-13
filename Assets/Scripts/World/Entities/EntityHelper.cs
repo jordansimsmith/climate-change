@@ -7,6 +7,9 @@ namespace World.Entities {
 
         [SerializeField] private ResourceSingleton resources;
         [SerializeField] private GameObject outlineCube;
+        [SerializeField] private Material redTransparentMat;
+        [SerializeField] private Material greenTransparentMat;
+        
 
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
@@ -36,7 +39,14 @@ namespace World.Entities {
         
         public GameObject CreateOutlineCube()
         {
-            return Instantiate(outlineCube); 
+            return Instantiate(outlineCube);
+        }
+
+        public void setOutlineColor(GameObject cube, bool canBePlaced)
+        {
+            cube.GetComponent<Renderer>().material = canBePlaced
+                ? greenTransparentMat
+                : redTransparentMat;
         }
     }
 }

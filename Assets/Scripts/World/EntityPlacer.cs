@@ -69,6 +69,7 @@ namespace World
                     entity.ShowOutline(canBePlaced);
                     if (Input.GetMouseButtonDown(0) && canBePlaced)
                     {
+                        entity.HideOutline();
                         tile.Entity = entity;
                         enabled = false;
                     }

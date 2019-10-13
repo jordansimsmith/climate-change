@@ -18,5 +18,5 @@ MonoBehaviour:
     type: 3}
   waterPrefab: {fileID: 377047158347412803, guid: 89f7adb82962d4484b43e4ea4813b2da,
     type: 3}
-  mountainPrefab: {fileID: 3138859624339318757, guid: 59a241f1126f74b66a39ce6f4a2d3409,
+  mountainPrefab: {fileID: 2207230295230388727, guid: c23346717a7754ad38267eeef6bae0bc,
     type: 3}

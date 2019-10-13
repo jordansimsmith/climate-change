@@ -57,22 +57,10 @@ namespace World.Entities
             {
                 // Get an instance of outline cube
                 box = entityHelper.CreateOutlineCube();
-                
-                // Get the max height of this gameobject
-                var renderers = GetComponentsInChildren<Renderer>();
-                var y = renderers.Select(r => r.bounds.size.y).Concat(new[] {10f}).Max();
-
-                // Set the position and scale to match this gameobject
-                box.transform.localScale = new Vector3(10, y, 10);
                 box.transform.SetParent(transform, false);
             }
             
-            // Change the color
-            var color = canBePlaced
-                ? new Color(255, 56, 0, 100)
-                : new Color(0, 255, 87, 100);
-
-            box.GetComponent<Renderer>().material.color = color;
+            entityHelper.setOutlineColor(box, canBePlaced);
         }
 
         public void HideOutline()
