@@ -349,7 +349,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 123128165390608877}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999997
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2389,7 +2389,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 414187651653356719}
   m_HandleRect: {fileID: 463221720347173467}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4493,10 +4493,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
@@ -4528,12 +4528,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopItems:
+  - entity: {fileID: -6795025145051476749, guid: 915900f7bf0f69d4fbdc2aa358a0f2ff,
+      type: 3}
+    sprite: {fileID: 21300000, guid: e4df6188e4899b64186a292e9263ba47, type: 3}
   - entity: {fileID: 1663121603228564104, guid: b036a3c7c93494e9c91e1b1b8924e080,
       type: 3}
     sprite: {fileID: 21300000, guid: fa6ed3b9516976f4b91c994a8c6de7eb, type: 3}
+  - entity: {fileID: 3224693876281667166, guid: 1354ecb7fb39e4812b5385a8faa4cb54,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 9d06a73086160b4428a81323d77cfcab, type: 3}
+  - entity: {fileID: 6472262284098676859, guid: 3008f66a9ade549e59266c86a50d0af3,
+      type: 3}
+    sprite: {fileID: 21300000, guid: db858f460b23c1e4ab5ed63ba000dc45, type: 3}
   - entity: {fileID: 3543377990499035316, guid: 2eb2c8d73d33f478a89be67bf607eb99,
       type: 3}
     sprite: {fileID: 21300000, guid: d04a7b137a1aa9040a96fe05eae4f5a9, type: 3}
+  - entity: {fileID: 8068884375748032247, guid: 9665868e38efc8342a592f7d4c82665b,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 26e03a71c92054f83b3a7a22711e2f95, type: 3}
   contentPanel: {fileID: 4019730763119803877}
   shopItemPrefab: {fileID: 7677043186662401089, guid: 4123ab23f8b82694f92b2aa0f12452e1,
     type: 3}

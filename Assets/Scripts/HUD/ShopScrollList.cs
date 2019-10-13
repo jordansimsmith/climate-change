@@ -30,7 +30,7 @@ public class ShopScrollList : MonoBehaviour
             GameObject newItem = Instantiate(shopItemPrefab);
             
             // set parent
-            newItem.transform.SetParent(contentPanel);
+            newItem.transform.SetParent(contentPanel, false);
             
             ShopItem shopItem = newItem.GetComponent<ShopItem>();
             shopItem.Setup(item);
