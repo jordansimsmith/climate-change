@@ -91,9 +91,7 @@ namespace World
         
         private void PlaceEntityIfValid(GameObject gameTile) {
             Tile tile = gameTile.GetComponent<Tile>();
-            if (tile.TileType.Equals(TileType.Grass)
-                && tile.Entity == null
-                && resources.Money >= entity.Stats.cost)
+            if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
             {
                 tile.Entity = entity;
                 enabled = false;
@@ -102,6 +100,8 @@ namespace World
                 {
                     GameObject.Find("TownHall").SetActive(false);
                 }
+
+                entity = null;
             }
             
     

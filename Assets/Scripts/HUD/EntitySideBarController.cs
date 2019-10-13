@@ -17,6 +17,7 @@ namespace HUD
         [SerializeField] private GameController gameController;
 
         [SerializeField] private Button upgradeButton;
+        [SerializeField] private Button closeUpgradePanelButton;
         private Text upgradeButtonText;
     
         private Entity entity;
@@ -34,13 +35,19 @@ namespace HUD
         {
         
         }
-
-        public void ShowSideBar(Entity e)
+        
+        public void ShowSideBar(Entity e, bool isUpgrade)
         {
-            Debug.Log("setting entity");
             entity = e;
             gameObject.SetActive(true);
-            RefreshEntityInformation();;
+            if (isUpgrade)
+            {
+                UpdateUpgradeEntityInformation();
+            }
+            else
+            {
+                UpdateBuildEntityInformation();
+            }
         }
 
         public void CloseSideBar()
@@ -49,7 +56,23 @@ namespace HUD
             gameObject.SetActive(false);
         }
 
-        private void RefreshEntityInformation()
+        private void UpdateBuildEntityInformation()
+        {
+            if (entity == null)
+            {
+                return;
+            }
+
+            title.text = entity.Type.ToString();
+            
+            EntityStats stats = entity.Stats;
+            RefreshEntityStats(stats);
+            
+            upgradeButton.gameObject.SetActive(false);
+            closeUpgradePanelButton.gameObject.SetActive(false);
+        }
+        
+        private void UpdateUpgradeEntityInformation()
         {
             if (entity == null)
             {
@@ -60,19 +83,19 @@ namespace HUD
             title.text = entity.Type + " (" + levelText + ")";
 
             EntityStats stats = entity.Stats;
-            
             RefreshEntityStats(stats);
 
             if (entity.isMaxLevel())
             {
-                upgradeButtonText.text = "Upgrade";
-                upgradeButton.image.color = Color.gray;
-                upgradeButton.enabled = false;
+                DisableUpgradeButton();
             }
             else
             {
-              upgradeButtonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
+                EnableUpgradeButton();
             }
+            
+            upgradeButton.gameObject.SetActive(true);
+            closeUpgradePanelButton.gameObject.SetActive(true);
         }
 
         public void RefreshEntityStats(EntityStats stats)
@@ -90,12 +113,27 @@ namespace HUD
         {
             if (entity.Upgrade())
             {
-                RefreshEntityInformation();
+                UpdateUpgradeEntityInformation();
                 if (entity.Type == EntityType.TownHall && entity.Level == entity.maxLevel)
                 {
                     gameController.OnGameWin();
                 }
             }
+        }
+
+        private void EnableUpgradeButton()
+        {
+            upgradeButtonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
+            upgradeButton.image.color = new Color(0.556f, 0.851f, 0.718f);
+            upgradeButton.enabled = true;
+        }
+
+        private void DisableUpgradeButton()
+        {
+            upgradeButtonText.text = "Upgrade";
+            upgradeButton.image.color = Color.gray;
+            upgradeButton.enabled = false;
+            
         }
     }
 }

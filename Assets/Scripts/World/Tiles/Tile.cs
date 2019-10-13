@@ -47,14 +47,18 @@ namespace World.Tiles
             }
         }
 
+        public bool IsTileValid()
+        {
+            return TileType.Equals(TileType.Grass) && entity == null;
+        }
+
         public void OnMouseDown()
         {
             if (entity != null)
             {
-                sideBarController.ShowSideBar(entity);
+                sideBarController.ShowSideBar(entity, true);
             }
         }
-
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
     }
 }
