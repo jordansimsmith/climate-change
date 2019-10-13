@@ -97,7 +97,13 @@ namespace World
             {
                 tile.Entity = entity;
                 enabled = false;
+                
+                if (entity.Type == EntityType.TownHall)
+                {
+                    GameObject.Find("TownHall").SetActive(false);
+                }
             }
+            
     
         }
 

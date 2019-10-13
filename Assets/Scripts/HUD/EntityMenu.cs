@@ -39,11 +39,6 @@ public class EntityMenu : EventTrigger
     {
         placer.Spawn(entityMap[gameObject.name]);
         handler.InvalidateDeleteButton();
-        
-        if (gameObject.name == "TownHall")
-        {
-            GameObject.Find("TownHall").SetActive(false);
-        }
     }
 
 
