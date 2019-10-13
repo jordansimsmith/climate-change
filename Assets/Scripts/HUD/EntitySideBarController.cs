@@ -16,6 +16,7 @@ namespace HUD
         [SerializeField] private Text income;
         [SerializeField] private Button upgradeButton;
         [SerializeField] private GameController gameController;
+
     
         private Entity entity;
 
@@ -62,6 +63,20 @@ namespace HUD
             food.text = "Food: " + stats.food;
             shelter.text = "Shelter: " + stats.shelter;
             income.text = "Income: " + stats.money;
+            
+            Text buttonText = upgradeButton.GetComponentInChildren<Text>();
+
+            if (entity.isMaxLevel())
+            {
+                buttonText.text = "Upgrade";
+                upgradeButton.image.color = Color.gray;
+                upgradeButton.enabled = false;
+            }
+            else
+            {
+              buttonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
+            }
+
         }
 
         public void UpgradeEntity()

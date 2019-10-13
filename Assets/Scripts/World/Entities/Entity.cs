@@ -47,7 +47,7 @@ namespace World.Entities
             return false;
         }
 
-        protected int GetUpgradeCost()
+        public int GetUpgradeCost()
         {
             switch (Level + 1)
             {
@@ -59,6 +59,11 @@ namespace World.Entities
                     return UpgradeInformation.levelOne.cost;
             }
             
+        }
+
+        public bool isMaxLevel()
+        {
+            return Level == maxLevel;
         }
 
 
