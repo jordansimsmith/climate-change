@@ -27,14 +27,14 @@ public class EntityController : MonoBehaviour
     {
         int cost = entityFactory.GetCost(entityType);
         sideBarController.ShowSideBar(entityFactory.GetPrefab(entityType), false);
-        costLabel.enabled = true;
-        costLabel.text = "Cost:" + cost;
+//        costLabel.enabled = true;
+//        costLabel.text = "Cost:" + cost;
     }
 
     public void onHoverExit()
     {
         sideBarController.CloseSideBar();
-        costLabel.enabled = false;
-        costLabel.text = "";
+//        costLabel.enabled = false;
+//        costLabel.text = "";
     }
 }

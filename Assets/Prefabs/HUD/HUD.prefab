@@ -1806,6 +1806,7 @@ GameObject:
   - component: {fileID: 701812198777453518}
   - component: {fileID: 8821746993917146088}
   - component: {fileID: 6746591075062796455}
+  - component: {fileID: 2053596047612828805}
   m_Layer: 9
   m_Name: DeleteButton
   m_TagString: Untagged
@@ -1913,6 +1914,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2053596047612828805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818617351004978517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2eadcda9b5c9fc4188243e146a526e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1963545157278681345
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,6 +4465,7 @@ GameObject:
   - component: {fileID: 4137019932208472402}
   - component: {fileID: 8483493476962364932}
   - component: {fileID: 3961830870369698816}
+  - component: {fileID: 332353342153949833}
   m_Layer: 9
   m_Name: Content
   m_TagString: Untagged
@@ -4550,6 +4565,20 @@ MonoBehaviour:
   contentPanel: {fileID: 4019730763119803877}
   shopItemPrefab: {fileID: 7677043186662401089, guid: 4123ab23f8b82694f92b2aa0f12452e1,
     type: 3}
+--- !u!114 &332353342153949833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560842166922170065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad45e0758279954aac6c34df8a888f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityFactory: {fileID: 11400000, guid: 43f28b09c7d1c4342a63723bfd5cb8d8, type: 2}
+  costLabel: {fileID: 0}
 --- !u!1 &4604987274318429315
 GameObject:
   m_ObjectHideFlags: 0
