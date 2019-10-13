@@ -105,7 +105,8 @@ namespace World
                 
                 if (entity.Type == EntityType.TownHall)
                 {
-                    GameObject.Find("TownHall").SetActive(false);
+                    //GameObject.Find("TownHall").SetActive(false);
+                    FindObjectOfType<ShopScrollList>().DisableTownHall();
                 }
 
                 entity = null;
