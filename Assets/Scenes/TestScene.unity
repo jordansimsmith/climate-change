@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -192,7 +192,13 @@ PrefabInstance:
       propertyPath: tutorialCanvas
       value: 
       objectReference: {fileID: 1118655774}
-    m_RemovedComponents: []
+    - target: {fileID: 7941001179834700954, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: endScreenController
+      value: 
+      objectReference: {fileID: 1550611959}
+    m_RemovedComponents:
+    - {fileID: 594194169, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
 --- !u!1001 &190397859
 PrefabInstance:
@@ -374,6 +380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807631040173928685, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 106552894735451923, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
@@ -1174,6 +1185,56 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8807631040173928686, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596095813890040113, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746092989744101887, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746092989744101887, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746092989744101887, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746092989744101887, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214500730893039051, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214500730893039051, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214500730893039051, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214500730893039051, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c06590066e2f44590c327a57fb4fe1, type: 3}
 --- !u!1 &1118655774 stripped
@@ -1263,6 +1324,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9335ccfe9c77147b31b26574b8e1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1550611959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4055062841068429009, guid: 65c06590066e2f44590c327a57fb4fe1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1091456244}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ba65afcc95c4698bb1091bcd559ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1660134833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1274,6 +1347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GUICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3119533546516873283, guid: d65837ba7d3d75948bc9990ab93583fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3119533546516873295, guid: d65837ba7d3d75948bc9990ab93583fe,
         type: 3}
@@ -1681,6 +1759,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1508964258, guid: d65837ba7d3d75948bc9990ab93583fe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1612
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508964258, guid: d65837ba7d3d75948bc9990ab93583fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508964261, guid: d65837ba7d3d75948bc9990ab93583fe, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 2095922217}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65837ba7d3d75948bc9990ab93583fe, type: 3}
 --- !u!1 &1816563831

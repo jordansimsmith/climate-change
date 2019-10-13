@@ -15,6 +15,7 @@ namespace HUD
         [SerializeField] private Text shelter;
         [SerializeField] private Text income;
         [SerializeField] private Button upgradeButton;
+        [SerializeField] private GameController gameController;
     
         private Entity entity;
 
@@ -65,8 +66,14 @@ namespace HUD
 
         public void UpgradeEntity()
         {
-            entity.Upgrade();
-            RefreshEntityInformation();
+            if (entity.Upgrade())
+            {
+                RefreshEntityInformation();
+                if (entity.Type == EntityType.TownHall && entity.Level == entity.maxLevel)
+                {
+                    gameController.OnGameWin();
+                }
+            }
         }
     }
 }

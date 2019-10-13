@@ -13,7 +13,6 @@ namespace World.Tiles
         public TileType TileType
         {
             get => tileType;
-            set => tileType = value;
         }
 
         private Entity entity;
@@ -50,6 +49,7 @@ namespace World.Tiles
 
         public void OnMouseDown()
         {
+            Debug.Log("hello");
             if (entity != null)
             {
                 sideBarController.ShowSideBar(entity);
