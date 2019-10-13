@@ -19,12 +19,12 @@ namespace World.Entities
             entityHelper.decreaseMoneyRate(Stats.money);
         }
 
-        public override void Upgrade()
+        public override bool Upgrade()
         {
             if (Level + 1 > maxLevel)
             {
                 Debug.Log("reached level cap");
-                return;
+                return false;
             }
 
             int upgradeCost = GetUpgradeCost();
@@ -33,12 +33,11 @@ namespace World.Entities
                 entityHelper.decreaseMoneyRate(Stats.money);
                 Level++;
                 entityHelper.increaseMoneyRate(Stats.money);
+                return true;
             }
-            else
-            {
-                Debug.Log("not enough shmoneys");
-            }
-            
+
+            Debug.Log("not enough shmoneys");
+            return false;
         }
     }
 }
