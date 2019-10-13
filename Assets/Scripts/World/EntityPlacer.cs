@@ -18,6 +18,10 @@ namespace World
             get => deleteMode;
             set
             {
+                if (entity != null)
+                {
+                    DestroyCurrentEntity();
+                }
                 deleteMode = value;
                 if (value)
                 {
