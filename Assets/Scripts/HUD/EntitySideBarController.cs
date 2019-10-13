@@ -30,12 +30,6 @@ namespace HUD
 
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-        
         public void ShowSideBar(Entity e, bool isUpgrade)
         {
             entity = e;
@@ -65,8 +59,7 @@ namespace HUD
 
             title.text = entity.Type.ToString();
             
-            EntityStats stats = entity.Stats;
-            RefreshEntityStats(stats);
+            RefreshEntityStats();
             
             upgradeButton.gameObject.SetActive(false);
             closeUpgradePanelButton.gameObject.SetActive(false);
@@ -82,8 +75,7 @@ namespace HUD
             String levelText = "Level " + entity.Level;
             title.text = entity.Type + " (" + levelText + ")";
 
-            EntityStats stats = entity.Stats;
-            RefreshEntityStats(stats);
+            RefreshEntityStats();
 
             if (entity.isMaxLevel())
             {
@@ -98,8 +90,9 @@ namespace HUD
             closeUpgradePanelButton.gameObject.SetActive(true);
         }
 
-        public void RefreshEntityStats(EntityStats stats)
+        private void RefreshEntityStats()
         {
+            EntityStats stats = entity.Stats;
             electricity.text = "Power: " + stats.power;
             environment.text = "Environment: " + stats.environment;
             food.text = "Food: " + stats.food;
