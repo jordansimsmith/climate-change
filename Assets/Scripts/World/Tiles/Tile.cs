@@ -49,7 +49,6 @@ namespace World.Tiles
 
         public void OnMouseDown()
         {
-            Debug.Log("hello");
             if (entity != null)
             {
                 sideBarController.ShowSideBar(entity);

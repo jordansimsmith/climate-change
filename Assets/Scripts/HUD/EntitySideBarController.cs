@@ -14,9 +14,10 @@ namespace HUD
         [SerializeField] private Text food;
         [SerializeField] private Text shelter;
         [SerializeField] private Text income;
-        [SerializeField] private Button upgradeButton;
         [SerializeField] private GameController gameController;
 
+        [SerializeField] private Button upgradeButton;
+        private Text upgradeButtonText;
     
         private Entity entity;
 
@@ -24,6 +25,7 @@ namespace HUD
         void Start()
         {
             gameObject.SetActive(false);
+            upgradeButtonText = upgradeButton.GetComponentInChildren<Text>();
 
         }
 
@@ -53,31 +55,36 @@ namespace HUD
             {
                 return;
             }
+            
             String levelText = "Level " + entity.Level;
             title.text = entity.Type + " (" + levelText + ")";
 
             EntityStats stats = entity.Stats;
-
-            electricity.text = "Power: " + stats.power;
-            environment.text = "Environment: " + stats.environment;
-            food.text = "Food: " + stats.food;
-            shelter.text = "Shelter: " + stats.shelter;
-            income.text = "Income: " + stats.money;
             
-            Text buttonText = upgradeButton.GetComponentInChildren<Text>();
+            RefreshEntityStats(stats);
 
             if (entity.isMaxLevel())
             {
-                buttonText.text = "Upgrade";
+                upgradeButtonText.text = "Upgrade";
                 upgradeButton.image.color = Color.gray;
                 upgradeButton.enabled = false;
             }
             else
             {
-              buttonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
+              upgradeButtonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
             }
-
         }
+
+        public void RefreshEntityStats(EntityStats stats)
+        {
+            electricity.text = "Power: " + stats.power;
+            environment.text = "Environment: " + stats.environment;
+            food.text = "Food: " + stats.food;
+            shelter.text = "Shelter: " + stats.shelter;
+            income.text = "Income: " + stats.money;
+        }
+        
+        
 
         public void UpgradeEntity()
         {

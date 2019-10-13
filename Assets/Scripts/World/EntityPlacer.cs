@@ -39,11 +39,11 @@ namespace World
 
         public void Spawn(EntityType type)
         {
-            if (enabled && !deleteMode)
+            if (entity != null)
             {
-                return;
+                DestroyCurrentEntity();
             }
-
+            
             DeleteMode = false;
             entity = factory.Get(type);
             enabled = true;
@@ -109,6 +109,14 @@ namespace World
                 tile.Entity = null;
             }
             
+        }
+
+        private void DestroyCurrentEntity()
+        {
+            if (entity != null)
+            {
+                Destroy(entity.transform.gameObject);
+            }
         }
 
     }

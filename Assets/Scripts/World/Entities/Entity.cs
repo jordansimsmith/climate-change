@@ -74,7 +74,6 @@ namespace World.Entities
                 case 1:
                     return UpgradeInformation.levelOne;
                 case 2:
-                    Debug.Log("level two");
                     return UpgradeInformation.levelTwo;
                 case 3:
                     return UpgradeInformation.levelThree;
