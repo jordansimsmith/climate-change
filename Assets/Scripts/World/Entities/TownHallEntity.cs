@@ -4,19 +4,11 @@ namespace World.Entities
 {
   public class TownHallEntity : Entity
   {
-      [SerializeField] private EntityStats stats;
-      [SerializeField] private EntityHelper entityHelper;
+      [SerializeField] private EntityUpgradeInformation upgradeInformation;
 
-      public override EntityStats Stats => stats;
+      public override EntityUpgradeInformation UpgradeInformation => upgradeInformation;
       public override EntityType Type => EntityType.TownHall;
 
-      public override void Construct() {
-          entityHelper.Construct(stats);
-      }
-
-      public override void Destruct() {
-          entityHelper.Destruct(stats);
-      }
   }
 
 }

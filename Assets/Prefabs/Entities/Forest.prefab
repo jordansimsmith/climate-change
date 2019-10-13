@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4196366959212067428}
   - component: {fileID: 6472262284098676859}
   - component: {fileID: 9048195130966428832}
+  - component: {fileID: -2093007100427958032}
   m_Layer: 0
   m_Name: Forest
   m_TagString: Untagged
@@ -48,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0a1d0edddd432cbd915817f6d37254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
+  maxLevel: 3
   stats:
     cost: 50
     money: 0
@@ -55,12 +58,37 @@ MonoBehaviour:
     shelter: 0
     power: 0
     environment: 10
-  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
   treeTransforms:
   - {fileID: 190753342674844178}
   - {fileID: 6327803863240952413}
   - {fileID: 3644464442665959972}
   - {fileID: 6658363857799602690}
+  upgradeCosts:
+    levelOne: 100
+    levelTwo: 200
+    levelThree: 300
+  upgradeInformation:
+    levelOne:
+      cost: 50
+      money: 0
+      food: 0
+      shelter: 0
+      power: 0
+      environment: 10
+    levelTwo:
+      cost: 100
+      money: 0
+      food: 0
+      shelter: 0
+      power: 0
+      environment: 20
+    levelThree:
+      cost: 150
+      money: 0
+      food: 0
+      shelter: 0
+      power: 0
+      environment: 30
 --- !u!208 &9048195130966428832
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -77,6 +105,34 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 5, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-2093007100427958032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487133432228363549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1001 &190753342674968722
 PrefabInstance:
   m_ObjectHideFlags: 0

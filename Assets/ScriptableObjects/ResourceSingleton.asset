@@ -16,16 +16,16 @@ MonoBehaviour:
     cost: 0
     money: 0
     food: 25
-    shelter: 45
-    power: 130
-    environment: 170
+    shelter: 25
+    power: 0
+    environment: 0
   totalSupply:
     cost: 0
     money: 0
-    food: 100
-    shelter: 135
-    power: 60
-    environment: 440
+    food: 0
+    shelter: 0
+    power: 0
+    environment: 240
   Population: 5
-  Money: 2650
-  MoneyRate: 40
+  Money: 100
+  MoneyRate: 0

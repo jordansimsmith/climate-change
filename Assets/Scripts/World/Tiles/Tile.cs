@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+using System;
+using HUD;
+using UnityEngine;
 using World.Entities;
 
 namespace World.Tiles
@@ -15,6 +17,12 @@ namespace World.Tiles
         }
 
         private Entity entity;
+        private EntitySideBarController sideBarController;
+
+        public void Awake()
+        {
+            sideBarController = FindObjectOfType<EntitySideBarController>();
+        }
 
         public Entity Entity
         {
@@ -37,6 +45,14 @@ namespace World.Tiles
                 {
                     entity = null;
                 }
+            }
+        }
+
+        public void OnMouseDown()
+        {
+            if (entity != null)
+            {
+                sideBarController.ShowSideBar(entity);
             }
         }
 
