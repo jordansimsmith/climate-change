@@ -14,8 +14,11 @@ namespace HUD
         [SerializeField] private Text food;
         [SerializeField] private Text shelter;
         [SerializeField] private Text income;
-        [SerializeField] private Button upgradeButton;
         [SerializeField] private GameController gameController;
+
+        [SerializeField] private Button upgradeButton;
+        [SerializeField] private Button closeUpgradePanelButton;
+        private Text upgradeButtonText;
     
         private Entity entity;
 
@@ -23,57 +26,107 @@ namespace HUD
         void Start()
         {
             gameObject.SetActive(false);
+            upgradeButtonText = upgradeButton.GetComponentInChildren<Text>();
 
         }
 
-        // Update is called once per frame
-        void Update()
+        public void ShowSideBar(Entity e, bool isUpgrade)
         {
-        
-        }
-
-        public void ShowSideBar(Entity e)
-        {
-            Debug.Log("setting entity");
             entity = e;
             gameObject.SetActive(true);
-            RefreshEntityInformation();;
+            if (isUpgrade)
+            {
+                UpdateUpgradeEntityInformation();
+            }
+            else
+            {
+                UpdateBuildEntityInformation();
+            }
         }
-
+        
         public void CloseSideBar()
         {
             entity = null;
             gameObject.SetActive(false);
         }
 
-        private void RefreshEntityInformation()
+        private void UpdateBuildEntityInformation()
         {
             if (entity == null)
             {
                 return;
             }
+
+            title.text = entity.Type.ToString();
+            
+            RefreshEntityStats();
+            
+            upgradeButton.gameObject.SetActive(false);
+            closeUpgradePanelButton.gameObject.SetActive(false);
+        }
+        
+        private void UpdateUpgradeEntityInformation()
+        {
+            if (entity == null)
+            {
+                return;
+            }
+            
             String levelText = "Level " + entity.Level;
             title.text = entity.Type + " (" + levelText + ")";
 
-            EntityStats stats = entity.Stats;
+            RefreshEntityStats();
 
+            if (entity.IsMaxLevel())
+            {
+                DisableUpgradeButton();
+            }
+            else
+            {
+                EnableUpgradeButton();
+            }
+            
+            upgradeButton.gameObject.SetActive(true);
+            closeUpgradePanelButton.gameObject.SetActive(true);
+        }
+
+        private void RefreshEntityStats()
+        {
+            EntityStats stats = entity.Stats;
             electricity.text = "Power: " + stats.power;
             environment.text = "Environment: " + stats.environment;
             food.text = "Food: " + stats.food;
             shelter.text = "Shelter: " + stats.shelter;
             income.text = "Income: " + stats.money;
         }
+        
+        
 
         public void UpgradeEntity()
         {
             if (entity.Upgrade())
             {
-                RefreshEntityInformation();
+                UpdateUpgradeEntityInformation();
                 if (entity.Type == EntityType.TownHall && entity.Level == entity.maxLevel)
                 {
                     gameController.OnGameWin();
                 }
             }
+        }
+
+        private void EnableUpgradeButton()
+        {
+            upgradeButtonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
+            upgradeButton.image.color = new Color(0.556f, 0.851f, 0.718f);
+            upgradeButton.enabled = true;
+        }
+
+        private void DisableUpgradeButton()
+        {
+            upgradeButtonText.text = "Upgrade";
+            upgradeButton.image.color = Color.gray;
+            upgradeButton.enabled = false;
+            
         }
     }
 }

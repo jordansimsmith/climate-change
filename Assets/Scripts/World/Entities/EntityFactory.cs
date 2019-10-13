@@ -22,7 +22,7 @@ namespace World.Entities
         {
             return GetPrefab(entityType).Stats.cost;
         }
-        
+
         public Entity GetPrefab(EntityType entityType)
         {
             switch (entityType)

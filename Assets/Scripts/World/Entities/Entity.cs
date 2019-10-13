@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using UnityEngine;
-using World.Resource;
 
 namespace World.Entities
 {
@@ -9,7 +6,7 @@ namespace World.Entities
     {
         [SerializeField] public EntityHelper entityHelper;
         public virtual EntityType Type { get; }
-        
+
         public virtual EntityUpgradeInformation UpgradeInformation { get; }
 
         public EntityStats Stats => GetEntityStats();
@@ -17,7 +14,6 @@ namespace World.Entities
         // level starts at 1 currently- upgradable 3 times
         public int Level { get; set; } = 1;
         [SerializeField] public int maxLevel = 3;
-
 
         public virtual void Construct()
         {
@@ -31,7 +27,7 @@ namespace World.Entities
 
         // upgrade method can be overwritten to provide upgrade criteria i.e electricity must be > 
         // base functionality checks base level + cost
-        public virtual bool Upgrade()    
+        public virtual bool Upgrade()
         {
             if (Level + 1 > maxLevel)
             {
@@ -51,6 +47,7 @@ namespace World.Entities
         }
 
         private GameObject box;
+
         public void ShowOutline(bool canBePlaced)
         {
             if (box == null)
@@ -59,7 +56,7 @@ namespace World.Entities
                 box = entityHelper.CreateOutlineCube();
                 box.transform.SetParent(transform, false);
             }
-            
+
             entityHelper.setOutlineColor(box, canBePlaced);
         }
 
@@ -69,9 +66,8 @@ namespace World.Entities
             Destroy(box);
             box = null;
         }
-        
-        
-        protected int GetUpgradeCost()
+
+        public int GetUpgradeCost()
         {
             switch (Level + 1)
             {
@@ -82,9 +78,12 @@ namespace World.Entities
                 default:
                     return UpgradeInformation.levelOne.cost;
             }
-            
         }
 
+        public bool IsMaxLevel()
+        {
+            return Level == maxLevel;
+        }
 
         private EntityStats GetEntityStats()
         {
@@ -93,15 +92,12 @@ namespace World.Entities
                 case 1:
                     return UpgradeInformation.levelOne;
                 case 2:
-                    Debug.Log("level two");
                     return UpgradeInformation.levelTwo;
                 case 3:
                     return UpgradeInformation.levelThree;
-
             }
+
             return UpgradeInformation.levelOne;
         }
     }
-    
-    
 }

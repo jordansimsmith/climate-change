@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using HUD;
 using UnityEngine;
 using UnityEngine.UI;
 using World.Entities;
@@ -7,29 +8,23 @@ using World.Entities;
 public class EntityController : MonoBehaviour
 {
     [SerializeField] private EntityFactory entityFactory;
-    [SerializeField] private Text costLabel;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private EntitySideBarController sideBarController;
+
+    // Start is called before the first frame update
+    void Awake()
     {
-        
+        sideBarController = FindObjectOfType<EntitySideBarController>();
     }
 
     public void onHover(EntityType entityType)
     {
         int cost = entityFactory.GetCost(entityType);
-        costLabel.enabled = true;
-        costLabel.text = "Cost:" + cost;
+        sideBarController.ShowSideBar(entityFactory.GetPrefab(entityType), false);
     }
 
     public void onHoverExit()
     {
-        costLabel.enabled = false;
-        costLabel.text = "";
+        sideBarController.CloseSideBar();
     }
 }
