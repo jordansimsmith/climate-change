@@ -1,14 +1,28 @@
-﻿using UnityEngine;
+using System;
+using HUD;
+using UnityEngine;
 using World.Entities;
 
 namespace World.Tiles
 {
     public class Tile : MonoBehaviour
     {
-        [SerializeField] private TileType tileType;
-        public TileType TileType => tileType;
+        [SerializeField]
+        private TileType tileType;
+        
+        public TileType TileType
+        {
+            get => tileType;
+            set => tileType = value;
+        }
 
         private Entity entity;
+        private EntitySideBarController sideBarController;
+
+        public void Awake()
+        {
+            sideBarController = FindObjectOfType<EntitySideBarController>();
+        }
 
         public Entity Entity
         {
@@ -31,6 +45,14 @@ namespace World.Tiles
                 {
                     entity = null;
                 }
+            }
+        }
+
+        public void OnMouseDown()
+        {
+            if (entity != null)
+            {
+                sideBarController.ShowSideBar(entity);
             }
         }
 

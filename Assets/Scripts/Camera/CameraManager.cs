@@ -16,6 +16,9 @@ public class CameraManager : MonoBehaviour
     [Header("Move Bounds")]
     public Vector2 minBounds, maxBounds;
 
+    [Header("Rotate Controls")]
+    public float rotateSpeed = 50f;
+
     [Header("Zoom Controls")]
     public float zoomSpeed = 30f;
     public float nearZoomLimit = 50f;
@@ -25,6 +28,7 @@ public class CameraManager : MonoBehaviour
     IZoomStrategy zoomStrategy;
     Vector3 frameMove;
     float frameZoom;
+    float frameRotate;
     Camera cam;
 
     private void Awake()
@@ -41,14 +45,21 @@ public class CameraManager : MonoBehaviour
     {
         KeyboardInputManager.OnMoveInput += UpdateFrameMove;
         KeyboardInputManager.OnZoomInput += UpdateFrameZoom;
+        KeyboardInputManager.OnRotateInput += UpdateFrameRotate;
         MouseInputManager.OnMoveInput += UpdateFrameMove;
         MouseInputManager.OnZoomInput += UpdateFrameZoom;
+    }
+
+    private void UpdateFrameRotate(float rotateAmount)
+    {
+        frameRotate += rotateAmount;
     }
 
     private void OnDisable()
     {
         KeyboardInputManager.OnMoveInput -= UpdateFrameMove;
         KeyboardInputManager.OnZoomInput -= UpdateFrameZoom;
+        KeyboardInputManager.OnRotateInput -= UpdateFrameRotate;
         MouseInputManager.OnMoveInput -= UpdateFrameMove;
         MouseInputManager.OnZoomInput -= UpdateFrameZoom;
     }
@@ -94,6 +105,12 @@ public class CameraManager : MonoBehaviour
         {
             zoomStrategy.ZoomOut(cam, Time.deltaTime * frameZoom * zoomSpeed, farZoomLimit);
             frameZoom = 0f;
+        }
+
+        if(frameRotate != 0f)
+        {
+            transform.RotateAround(new Vector3(95f,0f,95f),new Vector3(0, 1f, 0), frameRotate * Time.deltaTime * rotateSpeed);
+            frameRotate = 0f;
         }
     }
 

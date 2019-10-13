@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Tutorial
 {
@@ -9,9 +7,11 @@ namespace Tutorial
 
         public TutorialStep[] tutorialSteps;
         public bool tutorialActive;
-        public Canvas tutorialCanvas;
+        public GameObject tutorialCanvas;
         private DialogueManager dialogueManager;
         private int currentTutorialStep;
+        private bool tutorialComplete;
+        public bool TutorialComplete => tutorialComplete;
         
         
         // Start is called before the first frame update
@@ -56,7 +56,7 @@ namespace Tutorial
         public void StartTutorial(int startingStep)
         {
             tutorialActive = true;
-            tutorialCanvas.enabled = true;
+            tutorialCanvas.SetActive(true);
             currentTutorialStep = startingStep;
             DrawStep(currentTutorialStep);
             
@@ -96,7 +96,8 @@ namespace Tutorial
         public void EndTutorial()
         {
             tutorialActive = false;
-            tutorialCanvas.enabled = false;
+            tutorialCanvas.SetActive(false);
+            tutorialComplete = true; 
         }
         
 

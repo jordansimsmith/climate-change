@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,9 @@ public class EscapeController : MonoBehaviour
 {
     private bool gameIsPaused = false;
 
+
+    public GameObject[] uiElements;
+    private List<GameObject> elementsOff;
     public GameObject escapeUIObj;
     private PostProcessingBehaviour blurComponent;
     // Start is called before the first frame update
@@ -34,6 +38,15 @@ public class EscapeController : MonoBehaviour
 
     void Pause()
     {
+        elementsOff = new List<GameObject>();
+        foreach (GameObject obj in uiElements)
+        {
+            if (obj.activeSelf)
+            {
+                obj.SetActive(false);
+                elementsOff.Add(obj);
+            }
+        }
         blurComponent.enabled = true;
         gameIsPaused = true;
         Time.timeScale = 0f;
@@ -42,6 +55,11 @@ public class EscapeController : MonoBehaviour
 
     void Resume()
     {
+        foreach (GameObject obj in elementsOff)
+        {
+            obj.SetActive(true);
+        }
+        elementsOff = new List<GameObject>();
         blurComponent.enabled = false;
         gameIsPaused = false;
         Time.timeScale = 1f;

@@ -11,6 +11,10 @@ public class KeyboardInputManager : InputManager
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.LeftControl) || (Input.GetKey(KeyCode.RightControl))) {
+            return;
+        }
+
         //Handle Move
         if (Input.GetKey(KeyCode.W))
         {
@@ -28,37 +32,15 @@ public class KeyboardInputManager : InputManager
         {
             OnMoveInput?.Invoke(Vector3.right);
         }
-
-/*        Vector3 rotate = new Vector3(0f, 0f);
         //Handle Rotation
         if (Input.GetKey(KeyCode.Q))
         {
-            rotate.x = 1f;
+            OnRotateInput?.Invoke(1f);
         }
         if (Input.GetKey(KeyCode.E))
         {
-            rotate.x = -1f;
+            OnRotateInput?.Invoke(-1f);
         }
-        if (Input.GetKey(KeyCode.R))
-        {
-            rotate.y = 1f;
-        }
-        if (Input.GetKey(KeyCode.T))
-        {
-            rotate.y = -1f;
-        }
-        if (Input.GetKey(KeyCode.G))
-        {
-            rotate.z = 1f;
-        }
-        if (Input.GetKey(KeyCode.H))
-        {
-            rotate.z = -1f;
-        }
-        if (rotate.x != 0f || rotate.y != 0f || rotate.z != 0f)
-        {
-            OnRotateInput?.Invoke(rotate);
-        }*/
 
 
         //Handle Zoom

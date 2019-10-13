@@ -3,21 +3,42 @@
 namespace World.Entities
 {
     public class FactoryEntity : Entity {
-        [SerializeField] private EntityStats stats;
-        [SerializeField] private EntityHelper entityHelper;
+        [SerializeField] private EntityUpgradeInformation upgradeInformation;
 
-        public override  EntityStats Stats => stats;
+        public override EntityUpgradeInformation UpgradeInformation => upgradeInformation;
         public override  EntityType Type => EntityType.Factory;
         
         public override void Construct() {
-            entityHelper.Construct(stats);
-            entityHelper.increaseMoneyRate(stats.money);
+            entityHelper.Construct(Stats);
+            entityHelper.increaseMoneyRate(Stats.money);
         }
+        
 
         public override void Destruct() {
-            entityHelper.Destruct(stats);
-            entityHelper.decreaseMoneyRate(stats.money);
+            entityHelper.Destruct(Stats);
+            entityHelper.decreaseMoneyRate(Stats.money);
         }
 
+        public override void Upgrade()
+        {
+            if (Level + 1 > maxLevel)
+            {
+                Debug.Log("reached level cap");
+                return;
+            }
+
+            int upgradeCost = GetUpgradeCost();
+            if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
+            {
+                entityHelper.decreaseMoneyRate(Stats.money);
+                Level++;
+                entityHelper.increaseMoneyRate(Stats.money);
+            }
+            else
+            {
+                Debug.Log("not enough shmoneys");
+            }
+            
+        }
     }
 }

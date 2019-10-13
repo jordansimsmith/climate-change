@@ -5,21 +5,11 @@ namespace World.Entities
 {
     public class ForestEntity : Entity
     {
-        [SerializeField] private EntityStats stats;
-        [SerializeField] private EntityHelper entityHelper;
         [SerializeField] private Transform[] treeTransforms;
-        public override EntityStats Stats => stats;
+        [SerializeField] private EntityUpgradeInformation upgradeInformation;
+
+        public override EntityUpgradeInformation UpgradeInformation => upgradeInformation;
         public override EntityType Type => EntityType.Forest;
-
-        public override void Construct() {
-            entityHelper.Construct(stats);
-        }
-
-        public override void Destruct() {
-            entityHelper.Destruct(stats);
-        }
-
-
         private void Start() {
             foreach (var tree in treeTransforms) {
                 tree.localPosition =

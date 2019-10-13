@@ -233,6 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03758a3b7613f8447b4efc4679595b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
+  maxLevel: 3
   stats:
     cost: 100
     money: 10
@@ -240,7 +242,32 @@ MonoBehaviour:
     shelter: 0
     power: -20
     environment: -20
-  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
+  upgradeCosts:
+    levelOne: 100
+    levelTwo: 200
+    levelThree: 300
+  upgradeInformation:
+    levelOne:
+      cost: 100
+      money: 10
+      food: 0
+      shelter: 0
+      power: -20
+      environment: -20
+    levelTwo:
+      cost: 200
+      money: 20
+      food: 0
+      shelter: 0
+      power: -20
+      environment: -20
+    levelThree:
+      cost: 300
+      money: 30
+      food: 0
+      shelter: 0
+      power: -20
+      environment: -20
 --- !u!208 &4875926841797427228
 NavMeshObstacle:
   m_ObjectHideFlags: 0

@@ -24,6 +24,9 @@ Climate Change is developed using the Unity Game Engine. As such, many large ass
 2. Run `git lfs install` inside the repository.
 3. Commit as usual, the `.gitattributes` file contains the lfs configuration.
 
+**Unity Version**  
+Please make sure when you run the project you are using unity version 2019.2.6f1
+
 **Configure Unity**  
 Unity, by default, uses binary files for project configuration. However, it can be configured to use text based files instead so that they can be managed with version control.
 
