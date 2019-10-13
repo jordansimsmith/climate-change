@@ -5,7 +5,6 @@ public class ShopItem : MonoBehaviour
 {
     [SerializeField] private Button button;
     [SerializeField] private Text name;
-    [SerializeField] private Text cost;
     [SerializeField] private Image image;
 
     private Item item;
@@ -21,7 +20,6 @@ public class ShopItem : MonoBehaviour
 
         // populate information views
         name.text = item.entity.Type.ToString();
-        cost.text = "CC " + item.entity.Stats.cost;
         image.sprite = item.sprite;
     }
 }
