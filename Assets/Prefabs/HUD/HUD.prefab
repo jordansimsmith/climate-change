@@ -4529,6 +4529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopItems:
+  - entity: {fileID: 8068884375748032247, guid: 9665868e38efc8342a592f7d4c82665b,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 26e03a71c92054f83b3a7a22711e2f95, type: 3}
   - entity: {fileID: -6795025145051476749, guid: 915900f7bf0f69d4fbdc2aa358a0f2ff,
       type: 3}
     sprite: {fileID: 21300000, guid: e4df6188e4899b64186a292e9263ba47, type: 3}
@@ -4544,9 +4547,6 @@ MonoBehaviour:
   - entity: {fileID: 3543377990499035316, guid: 2eb2c8d73d33f478a89be67bf607eb99,
       type: 3}
     sprite: {fileID: 21300000, guid: d04a7b137a1aa9040a96fe05eae4f5a9, type: 3}
-  - entity: {fileID: 8068884375748032247, guid: 9665868e38efc8342a592f7d4c82665b,
-      type: 3}
-    sprite: {fileID: 21300000, guid: 26e03a71c92054f83b3a7a22711e2f95, type: 3}
   contentPanel: {fileID: 4019730763119803877}
   shopItemPrefab: {fileID: 7677043186662401089, guid: 4123ab23f8b82694f92b2aa0f12452e1,
     type: 3}
