@@ -44,6 +44,9 @@ public class ShopScrollList : MonoBehaviour
             // set parent
             newItem.transform.SetParent(contentPanel, false);
             
+            // attach event trigger
+            newItem.AddComponent<ShopItemEventTrigger>();
+            
             // initialise
             ShopItem shopItem = newItem.GetComponent<ShopItem>();
             shopItem.Setup(item);

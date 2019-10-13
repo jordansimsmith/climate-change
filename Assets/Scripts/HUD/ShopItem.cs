@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using World;
 
@@ -10,6 +11,7 @@ public class ShopItem : MonoBehaviour
     private EntityPlacer placer;
 
     private Item item;
+    public Item Item => item;
 
     // Start is called before the first frame update
     void Start()
