@@ -55,6 +55,11 @@ public class EndScreenController : MonoBehaviour
     
     public void DisableWinScreen()
     {
+        foreach (GameObject obj in elementsOff)
+        {
+            obj.SetActive(true);
+        }
+        elementsOff = new List<GameObject>();
         blurComponent.enabled = false;
         escapeController.enabled = true;
         winMenuUI.SetActive(false);
@@ -78,6 +83,11 @@ public class EndScreenController : MonoBehaviour
     
     public void DisableLoseScreen()
     {
+        foreach (GameObject obj in elementsOff)
+        {
+            obj.SetActive(true);
+        }
+        elementsOff = new List<GameObject>();
         blurComponent.enabled = false;
         escapeController.enabled = true;
         loseMenuUI.SetActive(false);
