@@ -1,4 +1,5 @@
-﻿using HUD;
+﻿using Audio;
+using HUD;
 using UnityEngine;
 using World.Entities;
 using World.Resource;
@@ -72,6 +73,7 @@ namespace World
                     if (Input.GetMouseButtonDown(0))
                     {
                         PlaceEntityIfValid(gameTile);
+                        AudioManager.Instance.Play(gameTile);
                     }
                 }
                 else
