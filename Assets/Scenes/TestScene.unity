@@ -197,12 +197,7 @@ PrefabInstance:
       propertyPath: endScreenController
       value: 
       objectReference: {fileID: 1550611959}
-    - target: {fileID: 1682106977, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
-      propertyPath: targetEntity
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 594194169, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
 --- !u!1001 &190397859
 PrefabInstance:

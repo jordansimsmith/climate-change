@@ -128,6 +128,8 @@ Transform:
   - {fileID: 328928426}
   - {fileID: 1034941720}
   - {fileID: 1682106976}
+  - {fileID: 6576518103538763220}
+  - {fileID: 3299661960460137021}
   m_Father: {fileID: 7941001179834700957}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -285,6 +287,100 @@ MonoBehaviour:
   MaxIncrement: 3
   MinIncrement: -1
   IncrementPeriodS: 15
+--- !u!1 &3328929498887430831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6576518103538763220}
+  - component: {fileID: 3967170656121184421}
+  m_Layer: 0
+  m_Name: FarmBuilderAchievement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6576518103538763220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328929498887430831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 698990939}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3967170656121184421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328929498887430831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df996b9cb545104eb7afa70a8edb892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Agricultural Revolution
+  description: Build 10 Farms
+  targetEntity: 4
+  targetAmount: 10
+  gameBoard: {fileID: 7941001179048457806}
+--- !u!1 &6299459441424567991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3299661960460137021}
+  - component: {fileID: 4641617061922579645}
+  m_Layer: 0
+  m_Name: SocialiserAchievement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3299661960460137021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299459441424567991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 698990939}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4641617061922579645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299459441424567991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e22d3bdf4154454bb2526357bd39a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Socialite
+  description: Talk to 5 villagers
+  target: 5
 --- !u!1 &7941001179834700958
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,12 +522,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e398c1899bc51f4a9cc1b70f01af43d, type: 3}
---- !u!4 &146149877115348121 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1703059134773651385, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1559725188013589280}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &146149877115348120 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1703059134773651384, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
@@ -444,6 +534,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &146149877115348121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1703059134773651385, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1559725188013589280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2173133063572126133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,12 +609,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f8f5ae19a9b9614cb20e974a24977aa, type: 3}
---- !u!4 &7941001178917756459 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8078507196478302110, guid: 3f8f5ae19a9b9614cb20e974a24977aa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2173133063572126133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7941001178917756458 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8078507196478302111, guid: 3f8f5ae19a9b9614cb20e974a24977aa,
@@ -531,6 +621,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9335ccfe9c77147b31b26574b8e1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7941001178917756459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8078507196478302110, guid: 3f8f5ae19a9b9614cb20e974a24977aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 2173133063572126133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7576255546401229693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,12 +701,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa18fe9c4aad477f985e1c252992c0c, type: 3}
---- !u!4 &7941001179048457807 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 509010355137035570, guid: eaa18fe9c4aad477f985e1c252992c0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7576255546401229693}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7941001179048457806 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 509010355137035571, guid: eaa18fe9c4aad477f985e1c252992c0c,
@@ -623,3 +713,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50865dc02cd4619b1833c1698681034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7941001179048457807 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 509010355137035570, guid: eaa18fe9c4aad477f985e1c252992c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7576255546401229693}
+  m_PrefabAsset: {fileID: 0}
