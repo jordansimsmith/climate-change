@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using World.Resource;
 
 public class CheatController : MonoBehaviour
 {
+    [SerializeField] private ResourceSingleton resources;
     private NaturalDisasterPanelController disasters;
 
     private void Awake()
@@ -30,6 +32,13 @@ public class CheatController : MonoBehaviour
             // cheat for sea level rise
             Debug.Log("sea level rise cheat");
             disasters.DoSeaLevelRise();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            // cheat for more money
+            Debug.Log("money cheat");
+            resources.Money += 1_000;
         }
     }
 }
