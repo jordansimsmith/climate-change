@@ -20,14 +20,14 @@ public class NaturalDisasterPanelController : MonoBehaviour
     private GameObject activeTornado;
     private GameBoard board;
 
-    private void Awake()
+    private void Start()
     {
         //Every 10 Seconds check if we should dispatch an event
         InvokeRepeating("DisasterEventDispatcher", 0, 10f);
         board = FindObjectOfType<GameBoard>();
         Hide();
     }
-
+   
     private void DisasterEventDispatcher()
     {
         // If environment drops below 100, i.e. relatively few trees to factories (you start w +300 env thanks trees).  
@@ -63,7 +63,7 @@ public class NaturalDisasterPanelController : MonoBehaviour
         //generate Rng Event for the subscribe
     }
 
-    private void DoCyclone()
+    public void DoCyclone()
     {
         if (activeTornado != null)
         {
@@ -75,7 +75,7 @@ public class NaturalDisasterPanelController : MonoBehaviour
             "A climate change caused cyclone ravages your island, destroying buildings in its wake.");
     }
 
-    private void DoDrought()
+    public void DoDrought()
     {
         Show("There has been a drought!",
             "Lush fields of grass have dried out into barren desert wastelands.");
@@ -83,7 +83,7 @@ public class NaturalDisasterPanelController : MonoBehaviour
         ConvertTilesRandomly(TileType.Grass, TileType.Sand, tilesToConvert);
     }
 
-    private void DoSeaLevelRise()
+    public void DoSeaLevelRise()
     {
         Show("Sea levels have risen",
             "Melting ice caps have caused the sea to erode your island's outermost regions");
