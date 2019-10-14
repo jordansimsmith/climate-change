@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
@@ -14,27 +13,12 @@ public class EndScreenController : MonoBehaviour
     private List<GameObject> elementsOff;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         escapeController = gameObject.GetComponent<EscapeController>();
         GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         winMenuUI.SetActive(false);
         blurComponent = mainCamera.GetComponent<PostProcessingBehaviour>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            EnableWinScreen();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            DisableWinScreen();
-        }
-        
     }
 
     public void EnableWinScreen()
@@ -48,23 +32,25 @@ public class EndScreenController : MonoBehaviour
                 elementsOff.Add(obj);
             }
         }
+
         escapeController.enabled = false;
         winMenuUI.SetActive(true);
         blurComponent.enabled = true;
     }
-    
+
     public void DisableWinScreen()
     {
         foreach (GameObject obj in elementsOff)
         {
             obj.SetActive(true);
         }
+
         elementsOff = new List<GameObject>();
         blurComponent.enabled = false;
         escapeController.enabled = true;
         winMenuUI.SetActive(false);
     }
-    
+
     public void EnableLoseScreen()
     {
         elementsOff = new List<GameObject>();
@@ -76,29 +62,32 @@ public class EndScreenController : MonoBehaviour
                 elementsOff.Add(obj);
             }
         }
+
         escapeController.enabled = false;
         loseMenuUI.SetActive(true);
         blurComponent.enabled = true;
     }
-    
+
     public void DisableLoseScreen()
     {
         foreach (GameObject obj in elementsOff)
         {
             obj.SetActive(true);
         }
+
         elementsOff = new List<GameObject>();
         blurComponent.enabled = false;
         escapeController.enabled = true;
         loseMenuUI.SetActive(false);
     }
-    
+
     public void WinContinueButtonOnClick()
     {
         foreach (GameObject obj in elementsOff)
         {
             obj.SetActive(true);
         }
+
         elementsOff = new List<GameObject>();
         DisableWinScreen();
     }
@@ -107,5 +96,4 @@ public class EndScreenController : MonoBehaviour
     {
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
     }
-    
 }

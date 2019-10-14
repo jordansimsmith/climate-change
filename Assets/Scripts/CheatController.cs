@@ -5,14 +5,17 @@ public class CheatController : MonoBehaviour
 {
     [SerializeField] private ResourceSingleton resources;
     private NaturalDisasterPanelController disasters;
+    private EndScreenController endScreen;
 
     private void Awake()
     {
         disasters = FindObjectOfType<NaturalDisasterPanelController>();
+        endScreen = FindObjectOfType<EndScreenController>();
     }
 
     private void Update()
     {
+        // natural disasters
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             // cheat for cyclone
@@ -34,11 +37,27 @@ public class CheatController : MonoBehaviour
             disasters.DoSeaLevelRise();
         }
 
+        // resources
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             // cheat for more money
             Debug.Log("money cheat");
             resources.Money += 1_000;
+        }
+
+        // game state
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            // cheat for win
+            Debug.Log("win cheat");
+            endScreen.EnableWinScreen();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // cheat for lose
+            Debug.Log("lose cheat");
+            endScreen.EnableLoseScreen();
         }
     }
 }
