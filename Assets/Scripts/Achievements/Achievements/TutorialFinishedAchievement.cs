@@ -10,7 +10,8 @@ public class TutorialFinishedAchievement : Achievement
     // Update is called once per frame
     public override void AchievementUpdate()
     {
-        if (tutorialManager.TutorialComplete && !done)  {
+        if (tutorialManager.TutorialComplete == true && !done)  {
+            Debug.Log(this.Title+" Done");
             done = true;
         }
     }

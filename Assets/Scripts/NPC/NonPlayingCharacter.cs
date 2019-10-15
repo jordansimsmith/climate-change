@@ -91,6 +91,14 @@ public class NonPlayingCharacter : MonoBehaviour
 
     void OnMouseDown()
     {
+        var npcAchievement = GameObject.Find("SocialiserAchievement");
+        if (npcAchievement) {
+            AchievementSocialite achv = npcAchievement.GetComponent<AchievementSocialite>();
+            if (achv)   {
+                achv.OnTalkTo();
+            }
+        }
+
         string fullName = firstName + " " + lastName;
 
         var envBalance = resourceSingleton.totalSupply.environment - resourceSingleton.totalDemand.environment;
