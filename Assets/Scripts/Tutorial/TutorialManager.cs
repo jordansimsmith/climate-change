@@ -4,39 +4,35 @@ namespace Tutorial
 {
     public class TutorialManager : MonoBehaviour
     {
-
         public TutorialStep[] tutorialSteps;
         public bool tutorialActive;
         public GameObject tutorialCanvas;
         private DialogueManager dialogueManager;
         private int currentTutorialStep;
         private bool tutorialComplete = false;
+
         public bool TutorialComplete => tutorialComplete;
-        
-        
+        public int CurrentTutorialStep => currentTutorialStep;
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-            this.EndTutorial();
-            this.dialogueManager = tutorialCanvas.GetComponent<DialogueManager>();
-            this.StartTutorial(0);
+            EndTutorial();
+            dialogueManager = tutorialCanvas.GetComponent<DialogueManager>();
+            StartTutorial(0);
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (!tutorialActive || currentTutorialStep >= tutorialSteps.Length)
             {
                 return;
             }
-            
-            
-            
-            
+
             TutorialStep currentStep = tutorialSteps[currentTutorialStep];
             if (!currentStep.StepCompleted)
             {
-               
                 currentStep.Update();
 
                 if (currentStep.StepCompleted)
@@ -44,11 +40,11 @@ namespace Tutorial
                     dialogueManager.AppendDialogue(currentStep.SuccessMessage);
                     InvalidateUI();
                 }
-            } else if (Input.GetKeyDown(KeyCode.Space))
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
             {
                 NextStep();
             }
-            
         }
 
         public bool TutorialActive => tutorialActive;
@@ -60,7 +56,6 @@ namespace Tutorial
             tutorialCanvas.SetActive(true);
             currentTutorialStep = startingStep;
             DrawStep(currentTutorialStep);
-            
         }
 
         public void NextStep()
@@ -70,13 +65,11 @@ namespace Tutorial
             currentTutorialStep++;
             if (currentTutorialStep >= tutorialSteps.Length)
             {
-               EndTutorial();
+                EndTutorial();
                 return;
             }
-            
-            DrawStep(currentTutorialStep);
-          
 
+            DrawStep(currentTutorialStep);
         }
 
         private void DrawStep(int step)
@@ -93,17 +86,12 @@ namespace Tutorial
 
             dialogueManager.ContinueInteractable = currentStep.StepCompleted;
         }
-        
+
         public void EndTutorial()
         {
             tutorialActive = false;
             tutorialCanvas.SetActive(false);
-            tutorialComplete = true; 
+            tutorialComplete = true;
         }
-        
-
-
-        public int CurrentTutorialStep => currentTutorialStep;
     }
-
 }
