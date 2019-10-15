@@ -19,25 +19,11 @@ namespace World.Entities
             entityHelper.DecreaseMoneyRate(Stats.money);
         }
 
-        public override bool Upgrade()
-        {
-            if (Level + 1 > maxLevel)
-            {
-                Debug.Log("reached level cap");
-                return false;
-            }
-
-            int upgradeCost = GetUpgradeCost();
-            if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
-            {
-                entityHelper.DecreaseMoneyRate(Stats.money);
-                Level++;
-                entityHelper.IncreaseMoneyRate(Stats.money);
-                return true;
-            }
-
-            Debug.Log("not enough shmoneys");
-            return false;
+        public override bool Upgrade() {
+            if (!base.Upgrade()) return false;
+            entityHelper.DecreaseMoneyRate(base.GetEntityStats(Level - 1).cost);
+            entityHelper.IncreaseMoneyRate(Stats.money);
+            return true;
         }
     }
 }

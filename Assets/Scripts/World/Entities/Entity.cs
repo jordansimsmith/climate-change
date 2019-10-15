@@ -47,10 +47,12 @@ namespace World.Entities
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
                 Level++;
-                Debug.Log("level went up to " + Level);
+                
+                // Switch out the model when upgrading to next level
                 for (int i = 0; i < modelForLevel.Length; i++) {
                     modelForLevel[i].SetActive(i == Level - 1);
                 }
+                
                 return true;
             }
 
@@ -100,6 +102,21 @@ namespace World.Entities
         private EntityStats GetEntityStats()
         {
             switch (Level)
+            {
+                case 1:
+                    return UpgradeInformation.levelOne;
+                case 2:
+                    return UpgradeInformation.levelTwo;
+                case 3:
+                    return UpgradeInformation.levelThree;
+            }
+
+            return UpgradeInformation.levelOne;
+        }
+        
+        protected EntityStats GetEntityStats(int level)
+        {
+            switch (level)
             {
                 case 1:
                     return UpgradeInformation.levelOne;
