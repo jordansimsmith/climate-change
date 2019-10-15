@@ -6,16 +6,16 @@ namespace World.Entities
 {
     public abstract class Entity : MonoBehaviour
     {
-        [SerializeField] public EntityHelper entityHelper;
+        [SerializeField] protected EntityHelper entityHelper;
+        [SerializeField] protected int maxLevel = 3;
+        [SerializeField] protected GameObject[] modelForLevel;
+        
         public virtual EntityType Type { get; }
-
         public virtual EntityUpgradeInformation UpgradeInformation { get; }
-
+        
         public EntityStats Stats => GetEntityStats();
-
-        // level starts at 1 currently- upgradable 3 times
-        public int Level { get; set; } = 1;
-        [SerializeField] public int maxLevel = 3;
+        public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 3 times
+        public int MaxLevel => maxLevel;
 
         private EntitySideBarController sideBarController;
 
@@ -47,6 +47,10 @@ namespace World.Entities
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
                 Level++;
+                Debug.Log("level went up to " + Level);
+                for (int i = 0; i < modelForLevel.Length; i++) {
+                    modelForLevel[i].SetActive(i == Level - 1);
+                }
                 return true;
             }
 
