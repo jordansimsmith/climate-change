@@ -17,12 +17,10 @@ namespace World.Tiles
 
         private Entity entity;
         private EntityInformationController informationController;
-        private ToggleInformationController toggleInformationController;
 
         public void Awake()
         {
             informationController = FindObjectOfType<UpgradeInformationController>();
-            toggleInformationController = FindObjectOfType<ToggleInformationController>();
         }
 
         public Entity Entity
@@ -56,13 +54,9 @@ namespace World.Tiles
 
         public void OnMouseDown()
         {
-            if (Entity == null)
+            if (Entity != null)
             {
-                toggleInformationController.SetTileInformation(this, Entity);
-            }
-            else
-            {
-                toggleInformationController.SetUpgradeInformation(this, Entity);
+                informationController.ShowInformation(this, Entity);
             }
         }
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
