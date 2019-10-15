@@ -12,7 +12,6 @@ namespace World.Entities
             base.Construct();
             entityHelper.IncreaseMoneyRate(Stats.money);
         }
-        
 
         public override void Destruct() {
             base.Destruct();
