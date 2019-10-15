@@ -23,7 +23,7 @@ namespace NaturalDisasters
         private void Start()
         {
             //Every 10 Seconds check if we should dispatch an event
-            InvokeRepeating("DisasterEventDispatcher", 0, 10f);
+            InvokeRepeating("DisasterEventDispatcher", 10f, 10f);
             board = FindObjectOfType<GameBoard>();
             naturalDisasterPanelController.Hide();
         }
