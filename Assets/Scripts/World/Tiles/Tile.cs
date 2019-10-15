@@ -16,11 +16,11 @@ namespace World.Tiles
         }
 
         private Entity entity;
-        private EntitySideBarController sideBarController;
+        private EntityInformationController informationController;
 
         public void Awake()
         {
-            sideBarController = FindObjectOfType<EntitySideBarController>();
+            informationController = FindObjectOfType<UpgradeInformationController>();
         }
 
         public Entity Entity
@@ -56,7 +56,7 @@ namespace World.Tiles
         {
             if (entity != null)
             {
-                sideBarController.ShowSideBar(entity, true);
+                informationController.ShowInformation(entity);
             }
         }
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);

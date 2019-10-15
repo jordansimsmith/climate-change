@@ -13,7 +13,6 @@ namespace World
         private Entity entity;
         private Plane tilePlane;
         private bool deleteMode;
-        private EntitySideBarController sideBarController;
 
         public bool DeleteMode
         {
@@ -41,7 +40,6 @@ namespace World
         private void Start()
         {
             tilePlane = new Plane(Vector3.up, 0);
-            sideBarController = FindObjectOfType<EntitySideBarController>();
         }
 
         public void Spawn(EntityType type)

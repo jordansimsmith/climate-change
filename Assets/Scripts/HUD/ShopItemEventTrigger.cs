@@ -15,11 +15,11 @@ public class ShopItemEventTrigger : EventTrigger
     public override void OnPointerEnter(PointerEventData eventData)
     {
         EntityType type = shopItem.Item.entity.Type;
-        entityController.onHover(type);
+        entityController.OnHover(type);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
-        entityController.onHoverExit();
+        entityController.OnHoverExit();
     }
 }
