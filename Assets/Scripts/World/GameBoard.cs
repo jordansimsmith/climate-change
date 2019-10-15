@@ -8,7 +8,6 @@ using Persistence;
 using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 using World.Entities;
 using World.Resource;
 using World.Tiles;
@@ -40,7 +39,7 @@ namespace World
 
             if (persistenceManager.SelectedWorld == null)
             {
-                SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
+                buildWorldFromSerialized(JsonConvert.DeserializeObject<SerializableWorld>(serialisedWorld));
             }
             else
             {

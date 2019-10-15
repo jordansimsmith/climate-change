@@ -78,6 +78,7 @@ public class EscapeController : MonoBehaviour
 
     public void BackButtonOnClick()
     {
+        Resume();
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
     }
 

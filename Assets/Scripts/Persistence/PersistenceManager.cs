@@ -20,12 +20,17 @@ namespace Persistence
         private static bool created = false;
         private SerializableWorld selectedWorld;
 
+        private string worldsDirectoryPath;
+
         void Awake()
         {
             if (!created)
             {
                 DontDestroyOnLoad(gameObject);
                 created = true;
+                // Ensure Worlds directory is created when game loads.
+                worldsDirectoryPath = Path.Combine(Application.persistentDataPath, "worlds");
+                Directory.CreateDirectory (worldsDirectoryPath);
             }
             else
             {
@@ -41,11 +46,18 @@ namespace Persistence
             string serializedObject = JsonConvert.SerializeObject(world, serializationSettings);
             Debug.Log(serializedObject);
             
-            string path = Path.Combine(Application.persistentDataPath, "worlds");
-            Directory.CreateDirectory (path);
-            path = Path.Combine(path, world.GetHashCode() + ".json");
+      
+           
+            string path = Path.Combine(WorldsDirectoryPath, world.GetHashCode() + ".json");
             
             File.WriteAllText(path, serializedObject);
+        }
+        
+        public void DeleteWorld(SerializableWorld world)
+        {
+            string path = Path.Combine(worldsDirectoryPath, world.GetHashCode() + ".json");
+            Debug.Log("Try delete "+path);
+            File.Delete(path);
         }
 
     
@@ -55,5 +67,7 @@ namespace Persistence
             get => selectedWorld;
             set => selectedWorld = value;
         }
+
+        public string WorldsDirectoryPath => worldsDirectoryPath;
     }
 }

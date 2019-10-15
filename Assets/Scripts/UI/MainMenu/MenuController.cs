@@ -14,12 +14,14 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        worldsPanel.SetActive(false);
         persistenceManager = FindObjectOfType<PersistenceManager>();
     }
 
     public void PlayButtonOnClick()
     {
         worldsPanel.SetActive(true);
+        worldsPanel.GetComponent<WorldsPanelController>().PopulateWorldsList();
     }
 
     public void ExitButtonOnClick()

@@ -16,20 +16,26 @@ using Random = UnityEngine.Random;
 public class WorldManager : MonoBehaviour
 {
 
-    private List<SerializableWorld> worlds;
+
     private PersistenceManager persistenceManager;
+    [SerializeField]
+    private WorldGenerator worldGenerator;
  
     void Start()
     {
-        this.worlds =  LoadWorldsFromDisk();
-        persistenceManager = GetComponent<PersistenceManager>();
+        persistenceManager = FindObjectOfType<PersistenceManager>();
+    }
+
+    void Awake()
+    {
+      
     }
 
     public List<SerializableWorld> LoadWorldsFromDisk()
     {
         string[] filePaths = Directory.GetFiles(Path.Combine(Application.persistentDataPath, "worlds"));
         List<SerializableWorld> worlds = new List<SerializableWorld>();
-
+        Debug.Log(filePaths);
         foreach (string path in filePaths)
         {
             string worldJson = File.ReadAllText(path);
@@ -39,9 +45,6 @@ public class WorldManager : MonoBehaviour
 
         return worlds;
     }
-    
-
-    public List<SerializableWorld> Worlds => worlds;
     
 
     public SerializableWorld CreateWorld(string name, int boardSize = 20)
@@ -58,6 +61,7 @@ public class WorldManager : MonoBehaviour
 
                 if (tile.TileType == TileType.Grass && Random.value > 0.6)
                 {
+                    tile.Entity = new SerializableEntity();
                     tile.Entity.EntityType = EntityType.Forest;
                     tile.Entity.Level = 1;
                 }
@@ -81,4 +85,6 @@ public class WorldManager : MonoBehaviour
         return newWorld;
 
     }
+
+  
 }

@@ -13,17 +13,26 @@ public class WorldsPanelController : MonoBehaviour
     [SerializeField] private InputField newWorldInput;
     [SerializeField] private Button createButton;
 
-
+    [SerializeField]
     private WorldManager worldManager;
+
+    private List<GameObject> worldItems = new List<GameObject>();
     
     void Start()
     {
-        worldManager = GetComponent<WorldManager>();
-        AddItems();
+        PopulateWorldsList();
     }
-    private void AddItems()
+    
+    public void PopulateWorldsList()
     {
-        foreach (SerializableWorld world in worldManager.Worlds)
+        foreach (GameObject worldItem in worldItems)
+        {
+            Destroy(worldItem);
+        }
+
+        worldItems = new List<GameObject>();
+        var worlds = worldManager.LoadWorldsFromDisk();
+        foreach (SerializableWorld world in worlds)
         {
             AddItem(world);
         }
@@ -40,7 +49,9 @@ public class WorldsPanelController : MonoBehaviour
         // initialise
         WorldItem worldItem = newItem.GetComponent<WorldItem>();
         worldItem.Initialise(world);
+        worldItems.Add(newItem);
     }
+    
 
     public void NewWorldTextChanged()
     {
