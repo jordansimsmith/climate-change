@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using NaturalDisasters;
+using UnityEngine;
 using World.Resource;
 
 public class CheatController : MonoBehaviour
 {
     [SerializeField] private ResourceSingleton resources;
-    private NaturalDisasterPanelController disasters;
+    private NaturalDisasterDispatcher disasters;
     private EndScreenController endScreen;
 
     private void Awake()
     {
-        disasters = FindObjectOfType<NaturalDisasterPanelController>();
+        disasters = FindObjectOfType<NaturalDisasterDispatcher>();
         endScreen = FindObjectOfType<EndScreenController>();
     }
 
