@@ -576,6 +576,9 @@ MonoBehaviour:
   - entityType: 4
     audioClip: {fileID: 8300000, guid: ce62efd04015d034f98135ca9fcd49f0, type: 3}
     source: {fileID: 0}
+  conversationSound:
+    audioClip: {fileID: 8300000, guid: 34767b52f2158994194998e51a2fa628, type: 3}
+    source: {fileID: 0}
 --- !u!1001 &1559725188013589280
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -26,7 +26,9 @@ namespace Audio
          private set { _instance = value; }
       }
 
-      public Sound[] sounds;
+      public EntitySound[] sounds;
+      public Sound conversationSound;
+      private bool conversationRunning;
 
       private void Awake()
       {
@@ -35,14 +37,33 @@ namespace Audio
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.AudioClip;
          }
+         conversationSound.source = gameObject.AddComponent<AudioSource>();
+         conversationSound.source.clip = conversationSound.AudioClip;
+         conversationSound.source.volume = 0.6f;
       }
 
       public void Play(GameObject gameTile)
       {
          Tile tile = gameTile.GetComponent<Tile>();
-         Sound s = Array.Find(sounds, sound => sound.EntityType == tile.Entity.Type);
+         EntitySound s = Array.Find(sounds, sound => sound.EntityType == tile.Entity.Type);
          if (s != null)   {
             s.source.Play();
+         }
+      }
+
+      public void StartConversation()
+      {
+         if (!conversationRunning)  {
+            conversationRunning = true;
+            conversationSound.source.Play();
+         }
+      }
+      
+      public void EndConversation()
+      {
+         if (conversationRunning)  {
+            conversationRunning = false;
+            conversationSound.source.Stop();
          }
       }
 
