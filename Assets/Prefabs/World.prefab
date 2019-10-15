@@ -128,9 +128,8 @@ Transform:
   - {fileID: 328928426}
   - {fileID: 1034941720}
   - {fileID: 1682106976}
-  - {fileID: 2016812875}
-  - {fileID: 6718956668224161658}
-  - {fileID: 6937685553200331235}
+  - {fileID: 6576518103538763220}
+  - {fileID: 3299661960460137021}
   m_Father: {fileID: 7941001179834700957}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: BRIC
   description: Build 10 Powerplants
-  targetEntity: 0
+  targetEntity: 5
   targetAmount: 10
   gameBoard: {fileID: 7941001179048457806}
 --- !u!1 &1879704653
@@ -288,7 +287,7 @@ MonoBehaviour:
   MaxIncrement: 3
   MinIncrement: -1
   IncrementPeriodS: 15
---- !u!1 &2016812874
+--- !u!1 &3328929498887430831
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,22 +295,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2016812875}
-  - component: {fileID: 2016812876}
+  - component: {fileID: 6576518103538763220}
+  - component: {fileID: 3967170656121184421}
   m_Layer: 0
-  m_Name: Test
+  m_Name: FarmBuilderAchievement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2016812875
+--- !u!4 &6576518103538763220
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016812874}
+  m_GameObject: {fileID: 3328929498887430831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -319,24 +318,24 @@ Transform:
   m_Father: {fileID: 698990939}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2016812876
+--- !u!114 &3967170656121184421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016812874}
+  m_GameObject: {fileID: 3328929498887430831}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2df996b9cb545104eb7afa70a8edb892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Test
-  description: Build 10 Powerplants
-  targetEntity: 0
+  title: Agricultural Revolution
+  description: Build 10 Farms
+  targetEntity: 4
   targetAmount: 10
   gameBoard: {fileID: 7941001179048457806}
---- !u!1 &2173504243698375768
+--- !u!1 &6299459441424567991
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,22 +343,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6718956668224161658}
-  - component: {fileID: 7958945911834970729}
+  - component: {fileID: 3299661960460137021}
+  - component: {fileID: 4641617061922579645}
   m_Layer: 0
-  m_Name: PowerBuilderAchievement
+  m_Name: SocialiserAchievement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6718956668224161658
+--- !u!4 &3299661960460137021
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2173504243698375768}
+  m_GameObject: {fileID: 6299459441424567991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -367,87 +366,21 @@ Transform:
   m_Father: {fileID: 698990939}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7958945911834970729
+--- !u!114 &4641617061922579645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2173504243698375768}
+  m_GameObject: {fileID: 6299459441424567991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df996b9cb545104eb7afa70a8edb892, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e22d3bdf4154454bb2526357bd39a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: BRIC
-  description: Build 10 Powerplants
-  targetEntity: 0
-  targetAmount: 10
-  gameBoard: {fileID: 7941001179048457806}
---- !u!1 &6653205144112330675
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6937685553200331235}
-  - component: {fileID: 3027561629229991390}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6937685553200331235
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6653205144112330675}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 698990939}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3027561629229991390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6653205144112330675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df996b9cb545104eb7afa70a8edb892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Test
-  description: Build 10 Powerplants
-  targetEntity: 0
-  targetAmount: 10
-  gameBoard: {fileID: 7941001179048457806}
---- !u!54 &594194169
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941001179048457792}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  title: Socialite
+  description: Talk to 5 villagers
+  target: 5
 --- !u!1 &7941001179834700958
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +392,8 @@ GameObject:
   - component: {fileID: 7941001179834700957}
   - component: {fileID: 7941001179834700956}
   - component: {fileID: 7941001179834700954}
+  - component: {fileID: 849650613}
+  - component: {fileID: 849650612}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -482,6 +417,7 @@ Transform:
   - {fileID: 146149877115348121}
   - {fileID: 1879704654}
   - {fileID: 698990939}
+  - {fileID: 5372208699833719043}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -520,6 +456,178 @@ MonoBehaviour:
   minResourceRatio: 0.75
   demandMargin: 40
   secondsToLose: 30
+--- !u!1 &8014577346517369288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5372208699833719043}
+  - component: {fileID: 5849492340240631483}
+  m_Layer: 0
+  m_Name: NaturalDisasterController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5372208699833719043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014577346517369288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7941001179834700957}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5849492340240631483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8014577346517369288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca17eb0d8b3485cb1f410bb4dd5be2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
+  tornadoPrefab: {fileID: 148822, guid: 9c81eb172a2e3644cad527014afc356e, type: 3}
+  smokePrefab: {fileID: 100000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
+  tileConversionDelay: 13
+  naturalDisasterPanelController: {fileID: 0}
+--- !u!82 &849650613
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7941001179834700958}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 77e58946bb22947b2802ec4331d49d0c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.27
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &849650612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7941001179834700958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26715d97746fb4d4fb2791b89f4529aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - entityType: 0
+    audioClip: {fileID: 8300000, guid: 26d4bad0e0a220d4d83477effa0c5f50, type: 3}
+    source: {fileID: 0}
+  - entityType: 1
+    audioClip: {fileID: 8300000, guid: cb1e450432f3f9949808508727cbbc88, type: 3}
+    source: {fileID: 0}
+  - entityType: 3
+    audioClip: {fileID: 8300000, guid: 03212f23572b13c458036d1a45f7fdba, type: 3}
+    source: {fileID: 0}
+  - entityType: 4
+    audioClip: {fileID: 8300000, guid: ce62efd04015d034f98135ca9fcd49f0, type: 3}
+    source: {fileID: 0}
+  conversationSound:
+    audioClip: {fileID: 8300000, guid: 34767b52f2158994194998e51a2fa628, type: 3}
+    source: {fileID: 0}
 --- !u!1001 &1559725188013589280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,11 +635,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7941001179834700957}
     m_Modifications:
-    - target: {fileID: 1703059134773651391, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
-        type: 3}
-      propertyPath: m_Name
-      value: NavMeshSurface
-      objectReference: {fileID: 0}
     - target: {fileID: 1703059134773651385, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -586,6 +689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703059134773651391, guid: 5e398c1899bc51f4a9cc1b70f01af43d,
+        type: 3}
+      propertyPath: m_Name
+      value: NavMeshSurface
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e398c1899bc51f4a9cc1b70f01af43d, type: 3}
@@ -766,6 +874,11 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 146149877115348120}
+    - target: {fileID: 509010355137035571, guid: eaa18fe9c4aad477f985e1c252992c0c,
+        type: 3}
+      propertyPath: persistenceManager
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa18fe9c4aad477f985e1c252992c0c, type: 3}
 --- !u!114 &7941001179048457806 stripped
@@ -774,18 +887,12 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7576255546401229693}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941001179048457792}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f50865dc02cd4619b1833c1698681034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7941001179048457792 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 509010355137035581, guid: eaa18fe9c4aad477f985e1c252992c0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7576255546401229693}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7941001179048457807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 509010355137035570, guid: eaa18fe9c4aad477f985e1c252992c0c,

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Audio;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class NPCPanelController : MonoBehaviour
@@ -26,11 +27,13 @@ public class NPCPanelController : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+        GameObject.Find("World").GetComponent<AudioManager>().EndConversation();
     }
 
     public void Show(string name, string occupation, string tweet, Sprite avatar)
     {
         gameObject.SetActive(true);
+        GameObject.Find("World").GetComponent<AudioManager>().StartConversation();
 
         npcName.text = name;
         npcOccupation.text = occupation;
