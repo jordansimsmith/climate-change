@@ -1894,6 +1894,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 737058942243659449, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: achievementManager
+      value: 
+      objectReference: {fileID: 698990940}
+    - target: {fileID: 4368812032270337044, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368812032270337044, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368812032270337044, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c06590066e2f44590c327a57fb4fe1, type: 3}
 --- !u!114 &1091456245 stripped
