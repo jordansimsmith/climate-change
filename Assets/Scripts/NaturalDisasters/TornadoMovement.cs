@@ -59,9 +59,11 @@ public class TornadoMovement : MonoBehaviour
     
     public void OnTriggerEnter(Collider other)
     {
+     
         if (other.CompareTag("Tile"))
         {
             Tile otherTile = other.gameObject.GetComponent<Tile>();
+           
             if (otherTile != null && otherTile.Entity != null)
             {
                 otherTile.Entity = null;

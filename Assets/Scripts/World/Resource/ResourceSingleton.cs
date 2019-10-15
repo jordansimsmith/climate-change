@@ -1,17 +1,21 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using UnityEngine;
 using World.Entities;
 
 namespace World.Resource {
-    [CreateAssetMenu]
+    [CreateAssetMenu, DataContract]
     public class ResourceSingleton : ScriptableObject {
         
         // Ignore the money and cost fields of EntityStats
-        [SerializeField] public EntityStats totalDemand = new EntityStats();
-        [SerializeField] public EntityStats totalSupply = new EntityStats();
+        [SerializeField, DataMember] public EntityStats totalDemand = new EntityStats();
+        [SerializeField, DataMember] public EntityStats totalSupply = new EntityStats();
         
+        [DataMember]
         public int Population;
+        [DataMember]
         public int Money;
+        [DataMember]
         public int MoneyRate;
 
         // Kms
