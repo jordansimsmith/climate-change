@@ -38,7 +38,7 @@ public class WorldItem : MonoBehaviour
     public void DeleteButtonOnClick()
     {
         persistenceManager.DeleteWorld(world);
-        Destroy(gameObject, 1.0f);
+        Destroy(gameObject);
     }
 
     public void Initialise(SerializableWorld world)

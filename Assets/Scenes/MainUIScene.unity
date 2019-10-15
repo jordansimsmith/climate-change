@@ -1030,6 +1030,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 164824c7a5bff4ea798629a58a3369fc, type: 2}
+--- !u!1 &1088053115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 760458437316153522, guid: fe9699826e8d2f94da0a8b38094def2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 760458436717775318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1088053119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088053115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ad81237692fc249b63c0f8a6841f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FrameToDrag: {fileID: 1249969487}
+--- !u!114 &1088053120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088053115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1088053119}
+          m_MethodName: OnBeginDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1 &1161632862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1275,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 760458436717775318}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145418213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 760458435484585093, guid: fe9699826e8d2f94da0a8b38094def2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 760458436717775318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145418208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133ffc2b2cbd15747bda8e2c19a5f617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &509010356122314241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 509010355137035570, guid: eaa18fe9c4aad477f985e1c252992c0c,
@@ -1241,6 +1300,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 403701503}
     m_Modifications:
+    - target: {fileID: 3485462657077311569, guid: fe9699826e8d2f94da0a8b38094def2f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2145418213}
+    - target: {fileID: 3485462657077311569, guid: fe9699826e8d2f94da0a8b38094def2f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseButtonClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 760458435484585112, guid: fe9699826e8d2f94da0a8b38094def2f,
         type: 3}
       propertyPath: m_Name
@@ -1350,6 +1419,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 760458435484585113, guid: fe9699826e8d2f94da0a8b38094def2f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 760458435484585113, guid: fe9699826e8d2f94da0a8b38094def2f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 760458435484585113, guid: fe9699826e8d2f94da0a8b38094def2f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 760458437316153523, guid: fe9699826e8d2f94da0a8b38094def2f,
         type: 3}
@@ -1595,6 +1679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 760458436646049043, guid: fe9699826e8d2f94da0a8b38094def2f,
+        type: 3}
+      propertyPath: m_Text
+      value: Enter a name for a new world...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe9699826e8d2f94da0a8b38094def2f, type: 3}

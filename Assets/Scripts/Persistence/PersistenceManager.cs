@@ -48,14 +48,14 @@ namespace Persistence
             
       
            
-            string path = Path.Combine(WorldsDirectoryPath, world.GetHashCode() + ".json");
+            string path = Path.Combine(WorldsDirectoryPath, world.GetHashedId() + ".json");
             
             File.WriteAllText(path, serializedObject);
         }
         
         public void DeleteWorld(SerializableWorld world)
         {
-            string path = Path.Combine(worldsDirectoryPath, world.GetHashCode() + ".json");
+            string path = Path.Combine(worldsDirectoryPath, world.GetHashedId() + ".json");
             Debug.Log("Try delete "+path);
             File.Delete(path);
         }

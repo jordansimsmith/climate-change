@@ -205,7 +205,10 @@ namespace World
 
         public void SaveGameState()
         {
-            persistenceManager.SaveGameState(new SerializableWorld(Tiles, resources));
+            SerializableWorld updatedWorld = new SerializableWorld(Tiles, resources);
+            updatedWorld.Name = persistenceManager.SelectedWorld.Name;
+            updatedWorld.CreationTime = persistenceManager.SelectedWorld.CreationTime;
+            persistenceManager.SaveGameState(updatedWorld);
         }
         
 

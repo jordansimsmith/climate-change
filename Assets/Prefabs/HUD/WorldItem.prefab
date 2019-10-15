@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b7ddc49daf44f564e9d8a8fbc1febcb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d63c1846f42c6e4cb753dc8ca33ee70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e4df6188e4899b64186a292e9263ba47, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4eb43db8da9bc894a9b496bb6da768d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -964,8 +964,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 56.9, y: -19.7}
-  m_SizeDelta: {x: 121.7, y: 25}
+  m_AnchoredPosition: {x: 120.88, y: -18.5}
+  m_SizeDelta: {x: 227.04, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5742094600485861101
 CanvasRenderer:
@@ -1000,10 +1000,10 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'World Name

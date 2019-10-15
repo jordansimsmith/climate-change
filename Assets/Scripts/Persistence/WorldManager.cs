@@ -78,7 +78,7 @@ public class WorldManager : MonoBehaviour
         newWorld.ResourceData = initialResource;
         newWorld.WorldData = tiles;
         newWorld.Name = name;
-        newWorld.CreationTime = DateTime.Now.ToLongDateString();
+        newWorld.CreationTime = DateTime.Now.ToLongTimeString();
         
         persistenceManager.SaveGameState(newWorld);
         
