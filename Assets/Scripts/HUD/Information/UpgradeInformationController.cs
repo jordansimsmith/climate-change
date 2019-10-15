@@ -7,6 +7,7 @@ namespace HUD
 {
     public class UpgradeInformationController : EntityInformationController
     {
+        [SerializeField] private Text level;
         [SerializeField] private Button upgradeButton;
         [SerializeField] private Button closeUpgradePanelButton;
         private Text upgradeButtonText;
@@ -23,10 +24,10 @@ namespace HUD
             {
                 return;
             }
-            
-            String levelText = "Level " + entity.Level;
-            title.text = entity.Type + " (" + levelText + ")";
 
+            title.text = entity.Type + " (" + tile.TileType + ")";
+            String levelText = "Level: " + entity.Level;
+            level.text = levelText;
             RefreshEntityStats();
 
             if (entity.isMaxLevel())
@@ -37,8 +38,6 @@ namespace HUD
             {
                 EnableUpgradeButton();
             }
-
-
         }
         
         public void UpgradeEntity()

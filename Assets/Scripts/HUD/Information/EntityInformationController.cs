@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using World.Entities;
+using World.Tiles;
 
 namespace HUD
 {
@@ -14,19 +15,20 @@ namespace HUD
         [SerializeField] protected Text income;
         [SerializeField] protected GameController gameController;
 
+        protected Tile tile;
         protected Entity entity;
    
         void Start() {
             gameObject.SetActive(false);
         }
 
-        public void ShowInformation(Entity e)
+        public void ShowInformation(Tile t, Entity e)
         {
+            tile = t;
             entity = e;
             gameObject.SetActive(true);
             
             UpdateInformation();
-
         }
 
         public void CloseInformation()

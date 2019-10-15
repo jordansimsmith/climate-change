@@ -54,10 +54,7 @@ namespace World.Tiles
 
         public void OnMouseDown()
         {
-            if (entity != null)
-            {
-                informationController.ShowInformation(entity);
-            }
+            informationController.ShowInformation(this, Entity);
         }
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
     }
