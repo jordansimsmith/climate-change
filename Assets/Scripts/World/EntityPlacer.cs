@@ -25,6 +25,7 @@ namespace World
                 {
                     DestroyCurrentEntity();
                 }
+
                 deleteMode = value;
                 if (value)
                 {
@@ -35,7 +36,6 @@ namespace World
                 {
                     enabled = false;
                 }
-
             }
         }
 
@@ -51,7 +51,7 @@ namespace World
             {
                 DestroyCurrentEntity();
             }
-            
+
             DeleteMode = false;
             entity = factory.Get(type);
             enabled = true;
@@ -68,9 +68,14 @@ namespace World
                 if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                 {
                     GameObject gameTile = hitInfo.collider.gameObject;
+                    Tile tile = gameTile.GetComponent<Tile>();
+
                     buildingTransform.SetParent(gameTile.transform);
                     buildingTransform.localPosition = Vector3.zero;
-                    if (Input.GetMouseButtonDown(0))
+
+                    var canBePlaced = EntityCanBePlacedOn(tile);
+                    entity.ShowOutline(canBePlaced);
+                    if (Input.GetMouseButtonDown(0) && canBePlaced)
                     {
                         PlaceEntityIfValid(gameTile);
                         AudioManager.Instance.Play(gameTile);
@@ -82,6 +87,7 @@ namespace World
                     Vector3 hitPoint = ray.GetPoint(enter);
                     buildingTransform.parent = null;
                     buildingTransform.position = hitPoint;
+                    entity.HideOutline();
                 }
             }
             else if (DeleteMode)
@@ -97,24 +103,31 @@ namespace World
                 }
             }
         }
-        
-        private void PlaceEntityIfValid(GameObject gameTile) {
+
+        private bool EntityCanBePlacedOn(Tile tile)
+        {
+            return tile.TileType.Equals(TileType.Grass)
+                   && tile.Entity == null
+                   && resources.Money >= entity.Stats.cost;
+        }
+
+        private void PlaceEntityIfValid(GameObject gameTile)
+        {
             Tile tile = gameTile.GetComponent<Tile>();
             if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
             {
                 tile.Entity = entity;
                 enabled = false;
-                
+
                 if (entity.Type == EntityType.TownHall)
                 {
                     //GameObject.Find("TownHall").SetActive(false);
                     FindObjectOfType<ShopScrollList>().DisableTownHall();
                 }
 
+                entity.HideOutline();
                 entity = null;
             }
-            
-    
         }
 
         private void DeleteEntityifValid(GameObject gameTile)
@@ -124,7 +137,6 @@ namespace World
             {
                 tile.Entity = null;
             }
-            
         }
 
         private void DestroyCurrentEntity()
@@ -134,8 +146,5 @@ namespace World
                 Destroy(entity.transform.gameObject);
             }
         }
-
     }
-    
-
 }

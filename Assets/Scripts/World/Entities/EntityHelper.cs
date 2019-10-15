@@ -1,3 +1,5 @@
+using System;
+using HUD;
 using UnityEngine;
 using World.Resource;
 
@@ -6,6 +8,10 @@ namespace World.Entities {
     public class EntityHelper : ScriptableObject {
 
         [SerializeField] private ResourceSingleton resources;
+        [SerializeField] private GameObject outlineCube;
+        [SerializeField] private Material redTransparentMat;
+        [SerializeField] private Material greenTransparentMat;
+        
 
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
@@ -25,12 +31,24 @@ namespace World.Entities {
         public void Destruct(EntityStats res) {
         }
 
-        public void increaseMoneyRate(int amount) {
+        public void IncreaseMoneyRate(int amount) {
             resources.MoneyRate += amount;
         }
         
-        public void decreaseMoneyRate(int amount) {
+        public void DecreaseMoneyRate(int amount) {
             resources.MoneyRate -= amount;
+        }
+        
+        public GameObject CreateOutlineCube()
+        {
+            return Instantiate(outlineCube);
+        }
+
+        public void SetOutlineColor(GameObject cube, bool canBePlaced)
+        {
+            cube.GetComponent<Renderer>().material = canBePlaced
+                ? greenTransparentMat
+                : redTransparentMat;
         }
     }
 }

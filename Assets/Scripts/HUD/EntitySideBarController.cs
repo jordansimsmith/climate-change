@@ -77,7 +77,7 @@ namespace HUD
 
             RefreshEntityStats();
 
-            if (entity.isMaxLevel())
+            if (entity.IsMaxLevel())
             {
                 DisableUpgradeButton();
             }
@@ -107,7 +107,7 @@ namespace HUD
             if (entity.Upgrade())
             {
                 UpdateUpgradeEntityInformation();
-                if (entity.Type == EntityType.TownHall && entity.Level == entity.maxLevel)
+                if (entity.Type == EntityType.TownHall && entity.Level == entity.MaxLevel)
                 {
                     gameController.OnGameWin();
                 }

@@ -349,7 +349,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 123128165390608877}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999997
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4423,7 +4423,7 @@ MonoBehaviour:
   - entity: {fileID: 1663121603228564104, guid: b036a3c7c93494e9c91e1b1b8924e080,
       type: 3}
     sprite: {fileID: 21300000, guid: fa6ed3b9516976f4b91c994a8c6de7eb, type: 3}
-  - entity: {fileID: 3224693876281667166, guid: 1354ecb7fb39e4812b5385a8faa4cb54,
+  - entity: {fileID: 3104591069837747699, guid: 1354ecb7fb39e4812b5385a8faa4cb54,
       type: 3}
     sprite: {fileID: 21300000, guid: 9d06a73086160b4428a81323d77cfcab, type: 3}
   - entity: {fileID: 6472262284098676859, guid: 3008f66a9ade549e59266c86a50d0af3,
