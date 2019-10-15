@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8472297155716390561}
   - component: {fileID: -6795025145051476749}
   - component: {fileID: 8760580469225321362}
+  - component: {fileID: 886690113044422936}
   m_Layer: 0
   m_Name: Farm
   m_TagString: Untagged
@@ -47,17 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
   maxLevel: 3
-  stats:
-    cost: 80
-    money: 0
-    food: 20
-    shelter: 0
-    power: -5
-    environment: -5
-  upgradeCosts:
-    levelOne: 100
-    levelTwo: 200
-    levelThree: 300
   upgradeInformation:
     levelOne:
       cost: 80
@@ -96,6 +86,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5, y: 5, z: 6}
   m_TimeToStationary: 0.5
+--- !u!65 &886690113044422936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261242982337095913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 5, y: 7.5, z: 5}
 --- !u!1 &7619670570186113213
 GameObject:
   m_ObjectHideFlags: 0

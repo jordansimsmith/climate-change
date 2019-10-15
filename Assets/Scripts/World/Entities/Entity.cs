@@ -1,3 +1,5 @@
+using System;
+using HUD;
 using UnityEngine;
 
 namespace World.Entities
@@ -14,6 +16,12 @@ namespace World.Entities
         // level starts at 1 currently- upgradable 3 times
         public int Level { get; set; } = 1;
         [SerializeField] public int maxLevel = 3;
+
+        private EntitySideBarController sideBarController;
+
+        private void Awake() {
+            sideBarController = FindObjectOfType<EntitySideBarController>();
+        }
 
         public virtual void Construct()
         {
@@ -57,7 +65,7 @@ namespace World.Entities
                 box.transform.SetParent(transform, false);
             }
 
-            entityHelper.setOutlineColor(box, canBePlaced);
+            entityHelper.SetOutlineColor(box, canBePlaced);
         }
 
         public void HideOutline()
@@ -98,6 +106,11 @@ namespace World.Entities
             }
 
             return UpgradeInformation.levelOne;
+        }
+        
+        public void OnMouseDown()
+        {
+            sideBarController.ShowSideBar(this, true);
         }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using HUD;
 using UnityEngine;
 using World.Resource;
 
@@ -42,7 +44,7 @@ namespace World.Entities {
             return Instantiate(outlineCube);
         }
 
-        public void setOutlineColor(GameObject cube, bool canBePlaced)
+        public void SetOutlineColor(GameObject cube, bool canBePlaced)
         {
             cube.GetComponent<Renderer>().material = canBePlaced
                 ? greenTransparentMat
