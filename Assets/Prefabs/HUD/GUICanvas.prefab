@@ -5336,9 +5336,9 @@ MonoBehaviour:
   title: {fileID: 6404763119957294969}
   info: {fileID: 6404763121271444805}
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
-  tornadoPrefab: {fileID: 0}
-  smokePrefab: {fileID: 0}
-  tileConversionDelay: 0
+  tornadoPrefab: {fileID: 148822, guid: 9c81eb172a2e3644cad527014afc356e, type: 3}
+  smokePrefab: {fileID: 100000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
+  tileConversionDelay: 13
 --- !u!1 &6404763121271444804
 GameObject:
   m_ObjectHideFlags: 0

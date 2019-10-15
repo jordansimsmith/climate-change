@@ -349,7 +349,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 123128165390608877}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999997
+  m_Size: 0.99999976
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 1318863593027482239}
   - component: {fileID: 8638903148522228950}
   - component: {fileID: 8557921913643534030}
-  - component: {fileID: 1750973286595882113}
+  - component: {fileID: 717048469692494955}
   m_Layer: 9
   m_Name: NaturalDisasterPanel
   m_TagString: Untagged
@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &1750973286595882113
+--- !u!114 &717048469692494955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1425,10 +1425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: {fileID: 3969994796005145469}
   info: {fileID: 3962212154499132517}
-  resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
-  tornadoPrefab: {fileID: 148822, guid: 9c81eb172a2e3644cad527014afc356e, type: 3}
-  smokePrefab: {fileID: 100000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
-  tileConversionDelay: 13
 --- !u!1 &1708097529435479928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2221,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 414187651653356719}
   m_HandleRect: {fileID: 463221720347173467}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6936,7 +6932,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1750973286595882113}
+      - m_Target: {fileID: 717048469692494955}
         m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
