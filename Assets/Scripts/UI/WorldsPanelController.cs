@@ -74,6 +74,7 @@ public class WorldsPanelController : MonoBehaviour
     {
         SerializableWorld newWorld = worldManager.CreateWorld(newWorldInput.text);
         AddItem(newWorld);
+        newWorldInput.text = "";
     }
 
     public void CloseButtonClicked()
