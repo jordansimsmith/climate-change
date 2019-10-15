@@ -1,9 +1,5 @@
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Persistence;
 using Persistence.Serializables;
 using UnityEngine;
@@ -22,35 +18,28 @@ namespace World
         [SerializeField] private EntityFactory entityFactory = default;
         [SerializeField] private ResourceSingleton resources;
         private PersistenceManager persistenceManager;
-        
-        public NavMeshSurface surface;
-        
-        
-        private Tile[,] tiles = default;
-        
 
+        public NavMeshSurface surface;
+
+        private Tile[,] tiles = default;
         public Tile[,] Tiles => tiles;
 
         private void Awake()
         {
-
-        
             persistenceManager = FindObjectOfType<PersistenceManager>();
 
             if (persistenceManager.SelectedWorld == null)
             {
-                buildWorldFromSerialized(JsonConvert.DeserializeObject<SerializableWorld>(serialisedWorld));
+                BuildWorldFromSerialized(JsonConvert.DeserializeObject<SerializableWorld>(serialisedWorld));
             }
             else
             {
-                    Debug.Log("BUILT FROM SELECTED");
-                buildWorldFromSerialized(persistenceManager.SelectedWorld);
+                Debug.Log("BUILT FROM SELECTED");
+                BuildWorldFromSerialized(persistenceManager.SelectedWorld);
             }
-            
-
         }
 
-        private void buildWorldFromSerialized(SerializableWorld world)
+        private void BuildWorldFromSerialized(SerializableWorld world)
         {
             boardSize = world.WorldData.GetLength(0);
             tiles = new Tile[boardSize, boardSize];
@@ -70,8 +59,8 @@ namespace World
             }
 
             RebakeNavMesh();
-            
-            resources.Money = world.ResourceData.Money; 
+
+            resources.Money = world.ResourceData.Money;
             resources.Population = world.ResourceData.Population;
             resources.totalDemand = world.ResourceData.TotalDemand;
             resources.totalSupply = world.ResourceData.TotalSupply;
@@ -210,10 +199,5 @@ namespace World
             updatedWorld.CreationTime = persistenceManager.SelectedWorld.CreationTime;
             persistenceManager.SaveGameState(updatedWorld);
         }
-        
-
     }
-    
-    
-   
 }
