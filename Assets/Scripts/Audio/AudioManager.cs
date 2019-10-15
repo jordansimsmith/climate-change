@@ -41,7 +41,9 @@ namespace Audio
       {
          Tile tile = gameTile.GetComponent<Tile>();
          Sound s = Array.Find(sounds, sound => sound.EntityType == tile.Entity.Type);
-         s.source.Play();
+         if (s != null)   {
+            s.source.Play();
+         }
       }
 
    }
