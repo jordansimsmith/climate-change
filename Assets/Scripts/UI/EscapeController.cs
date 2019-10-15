@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
+using World;
 
 public class EscapeController : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class EscapeController : MonoBehaviour
     private List<GameObject> elementsOff;
     public GameObject escapeUIObj;
     private PostProcessingBehaviour blurComponent;
+
+    private GameBoard board;
     // Start is called before the first frame update
     void Start()
     {
         GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         escapeUIObj.SetActive(false);
         blurComponent = mainCamera.GetComponent<PostProcessingBehaviour>();
+        board = FindObjectOfType<GameBoard>();
     }
 
     // Update is called once per frame
@@ -64,6 +68,11 @@ public class EscapeController : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1f;
         escapeUIObj.SetActive(false);
+    }
+
+    public void SaveButtonOnClick()
+    {
+        board.SaveGameState();
     }
 
 

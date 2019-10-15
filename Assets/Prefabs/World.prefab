@@ -799,6 +799,11 @@ PrefabInstance:
       propertyPath: surface
       value: 
       objectReference: {fileID: 146149877115348120}
+    - target: {fileID: 509010355137035571, guid: eaa18fe9c4aad477f985e1c252992c0c,
+        type: 3}
+      propertyPath: persistenceManager
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa18fe9c4aad477f985e1c252992c0c, type: 3}
 --- !u!114 &7941001179048457806 stripped
