@@ -35,23 +35,20 @@ namespace Persistence
             }
         }
 
-        public void SaveGameState(Tile[,] tiles, ResourceSingleton resources)
+        public void SaveGameState(SerializableWorld world)
         {
-            SerializableWorld world = new SerializableWorld(tiles, resources);
+
+            string serializedObject = JsonConvert.SerializeObject(world, serializationSettings);
+            Debug.Log(serializedObject);
             
-            var serializeObject = JsonConvert.SerializeObject(world, serializationSettings);
-            Debug.Log(serializeObject);
+            string path = Path.Combine(Application.persistentDataPath, "worlds");
+            Directory.CreateDirectory (path);
+            path = Path.Combine(path, world.GetHashCode() + ".json");
             
-            File.WriteAllText(Application.persistentDataPath+"/world.json", serializeObject);
-            LoadSerializedGameState();
+            File.WriteAllText(path, serializedObject);
         }
 
-        public SerializableWorld LoadSerializedGameState()
-        {
-           string serializedWorld =  File.ReadAllText(Application.persistentDataPath + "/world.json");
-
-           return JsonConvert.DeserializeObject<SerializableWorld>(serializedWorld);
-        }
+    
 
         public SerializableWorld SelectedWorld
         {

@@ -8,6 +8,7 @@ using Persistence;
 using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using World.Entities;
 using World.Resource;
 using World.Tiles;
@@ -33,40 +34,13 @@ namespace World
 
         private void Awake()
         {
-//            TileType[,] layout = GetComponent<WorldGenerator>().Generate(boardSize);
-//            tiles = new Tile[boardSize, boardSize];
-//
-//            for (int x = 0; x < boardSize; x++)
-//            {
-//                for (int z = 0; z < boardSize; z++)
-//                {
-//                    CreateTileAt(x, z, layout[x, z]);
-//                }
-//            }
-//
-//            RebakeNavMesh();
-//
-//            resources.MoneyRate = 0;
-//
-//            // Generate some random trees
-//            for (int x = 0; x < boardSize; x++)
-//            {
-//                for (int z = 0; z < boardSize; z++)
-//                {
-//                    if (tiles[x, z].TileType == TileType.Grass && Random.value > 0.6)
-//                    {
-//                        tiles[x, z].Entity = entityFactory.Get(EntityType.Forest);
-//                    }
-//                }
-//            }
-//
-//            resources.Money = 1000;
-//            
+
+        
             persistenceManager = FindObjectOfType<PersistenceManager>();
 
             if (persistenceManager.SelectedWorld == null)
             {
-                buildWorldFromSerialized(JsonConvert.DeserializeObject<SerializableWorld>(serialisedWorld));
+                SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
             }
             else
             {
@@ -74,7 +48,7 @@ namespace World
                 buildWorldFromSerialized(persistenceManager.SelectedWorld);
             }
             
-//            SerialiseGameData();
+
         }
 
         private void buildWorldFromSerialized(SerializableWorld world)
@@ -100,8 +74,8 @@ namespace World
             
             resources.Money = world.ResourceData.Money; 
             resources.Population = world.ResourceData.Population;
-            resources.totalDemand = world.ResourceData.totalDemand;
-            resources.totalSupply = world.ResourceData.totalSupply;
+            resources.totalDemand = world.ResourceData.TotalDemand;
+            resources.totalSupply = world.ResourceData.TotalSupply;
         }
 
         public Tile CreateTileAt(int x, int z, TileType type)
@@ -232,7 +206,7 @@ namespace World
 
         public void SaveGameState()
         {
-            persistenceManager.SaveGameState(Tiles, resources);
+            persistenceManager.SaveGameState(new SerializableWorld(Tiles, resources));
         }
         
 

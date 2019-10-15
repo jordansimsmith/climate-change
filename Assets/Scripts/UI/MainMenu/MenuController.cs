@@ -9,6 +9,8 @@ public class MenuController : MonoBehaviour
 {
 
     private PersistenceManager persistenceManager;
+  
+    public GameObject worldsPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +19,7 @@ public class MenuController : MonoBehaviour
 
     public void PlayButtonOnClick()
     {
-        SerializableWorld selectedWorld = persistenceManager.LoadSerializedGameState();
-        persistenceManager.SelectedWorld = selectedWorld;
-        SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
+        worldsPanel.SetActive(true);
     }
 
     public void ExitButtonOnClick()
