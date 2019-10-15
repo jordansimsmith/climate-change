@@ -1,4 +1,9 @@
 using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.AI;
 using World.Entities;
@@ -16,42 +21,47 @@ namespace World
         [SerializeField] private ResourceSingleton resources;
 
         public NavMeshSurface surface;
-
+        
+        
         private Tile[,] tiles = default;
 
         public Tile[,] Tiles => tiles;
 
         private void Awake()
         {
-            TileType[,] layout = GetComponent<WorldGenerator>().Generate(boardSize);
-            tiles = new Tile[boardSize, boardSize];
-
-            for (int x = 0; x < boardSize; x++)
-            {
-                for (int z = 0; z < boardSize; z++)
-                {
-                    CreateTileAt(x, z, layout[x, z]);
-                }
-            }
-
-            RebakeNavMesh();
-
-            resources.MoneyRate = 0;
-
-            // Generate some random trees
-            for (int x = 0; x < boardSize; x++)
-            {
-                for (int z = 0; z < boardSize; z++)
-                {
-                    if (tiles[x, z].TileType == TileType.Grass && Random.value > 0.6)
-                    {
-                        tiles[x, z].Entity = entityFactory.Get(EntityType.Forest);
-                    }
-                }
-            }
-
-            resources.Money = 1000;
+//            TileType[,] layout = GetComponent<WorldGenerator>().Generate(boardSize);
+//            tiles = new Tile[boardSize, boardSize];
+//
+//            for (int x = 0; x < boardSize; x++)
+//            {
+//                for (int z = 0; z < boardSize; z++)
+//                {
+//                    CreateTileAt(x, z, layout[x, z]);
+//                }
+//            }
+//
+//            RebakeNavMesh();
+//
+//            resources.MoneyRate = 0;
+//
+//            // Generate some random trees
+//            for (int x = 0; x < boardSize; x++)
+//            {
+//                for (int z = 0; z < boardSize; z++)
+//                {
+//                    if (tiles[x, z].TileType == TileType.Grass && Random.value > 0.6)
+//                    {
+//                        tiles[x, z].Entity = entityFactory.Get(EntityType.Forest);
+//                    }
+//                }
+//            }
+//
+//            resources.Money = 1000;
+//            
+            SerialiseGameData();
         }
+        
+        
 
         public void CreateTileAt(int x, int z, TileType type)
         {
@@ -174,5 +184,98 @@ namespace World
 
             return tuple;
         }
+
+        private static string serialisedWorld =
+            "{\"WorldData\":[[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":2},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":2},{\"TileType\":0},{\"TileType\":0},{\"TileType\":2},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}]],\"ResourceData\":{\"totalDemand\":{\"cost\":0,\"money\":0,\"food\":35,\"shelter\":35,\"power\":0,\"environment\":0},\"totalSupply\":{\"cost\":0,\"money\":0,\"food\":0,\"shelter\":0,\"power\":0,\"environment\":320},\"Population\":7,\"Money\":1000,\"MoneyRate\":0}}";
+        public void SerialiseGameData()
+        {
+            SerialisableWorld world = new SerialisableWorld(tiles, resources);
+            var settings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.None,
+                NullValueHandling = NullValueHandling.Ignore
+            };
+
+            var serializeObject = JsonConvert.SerializeObject(world,settings);
+            Debug.Log(serializeObject);
+            
+
+        }
+
+
+
+        [Serializable]
+        private class SerialisableWorld
+        {
+            
+            public SerialisableWorld()
+            {
+            }
+            
+            public SerialisableWorld(Tile[,] tiles, ResourceSingleton resources)
+            {
+                ResourceData = resources;
+                WorldData = new SerialisableTile[tiles.GetLength(0), tiles.GetLength(1)];
+                
+                for (int i = 0; i < tiles.GetLength(0); i++)
+                {
+                    for (int j = 0; j < tiles.GetLength(1); j++)
+                    {
+                        Tile tile = tiles[i, j];
+                        WorldData[i, j] =  new SerialisableTile(tile);
+                       
+                    }
+                }
+                
+            }
+
+            public SerialisableTile[,] WorldData { get; set; }
+            public ResourceSingleton ResourceData { get; set; }
+
+     
+        }
+
+        [Serializable]
+        private class SerialisableTile
+        {
+            public SerialisableTile()
+            {
+            }
+
+            public SerialisableTile(Tile tile)
+            {
+
+                TileType = tile.TileType;
+                if (tile.Entity != null)
+                {
+                    Entity = new SerialisableEntity(tile.Entity);
+                }
+            }
+            
+            public TileType TileType { get; set; }
+            public SerialisableEntity Entity { get; set; }
+            
+        }
+
+        private class SerialisableEntity
+        {
+            public SerialisableEntity()
+            {
+            }
+
+            public SerialisableEntity(Entity entity)
+            {
+                EntityType = entity.Type;
+                Level = entity.Level;
+            }
+            
+            public EntityType EntityType { get; set; }
+            public int Level { get; set;}
+        }
+
+       
     }
+    
+    
+   
 }
