@@ -204,6 +204,18 @@ PrefabInstance:
       objectReference: {fileID: 1550611959}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
+--- !u!114 &103732479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7941001179048457806, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+    type: 3}
+  m_PrefabInstance: {fileID: 103732478}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50865dc02cd4619b1833c1698681034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &190397859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1894,6 +1906,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3961830870369698816, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: gameBoard
+      value: 
+      objectReference: {fileID: 103732479}
     - target: {fileID: 737058942243659449, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
       propertyPath: achievementManager
