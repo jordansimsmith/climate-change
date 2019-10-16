@@ -7,6 +7,7 @@ var AuthFunctions =
     $impl: {
         openAuthUI: function()
         {
+          console.log('test');
           const provider = new firebase.auth.GoogleAuthProvider();
           firebase.auth().signInWithPopup(provider).then(function(result) {
   
@@ -18,7 +19,7 @@ var AuthFunctions =
               idToken: result.credential.idToken
             }
 
-            unityInstance.SendMessage("AuthHandler", "LoginSuccess", JSON.stringify(successObj));
+            unityInstance.SendMessage("AuthHandler", "GoogleLoginSuccess", JSON.stringify(successObj));
 
           }).catch(function(error) {
             console.log(error);
@@ -31,7 +32,7 @@ var AuthFunctions =
             var credential = error.credential;
 
             
-            unityInstance.SendMessage("AuthHandler", "LoginError", JSON.stringify(error));
+            unityInstance.SendMessage("AuthHandler", "GoogleLoginError", JSON.stringify(error));
           });
         },
     },
