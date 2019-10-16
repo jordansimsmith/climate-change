@@ -50,7 +50,7 @@ namespace World
                 }
             }
 
-            resources.Money = 1000000;
+            resources.Money = 1_000;
         }
 
         public void CreateTileAt(int x, int z, TileType type)
