@@ -57,12 +57,12 @@ public class AchievementUI : MonoBehaviour  {
         if (uiShowing)  {
             shade.SetActive(false);
         } else {
+            shade.SetActive(true);
             int i = 0;
             foreach (var achievementView in achievementViews)    {
                 achievementView.transform.Find("DisabledShade").gameObject.SetActive(!achievementManager.Achievements[i].Done);
                 i++;
             }
-            shade.SetActive(true);
         }
         uiShowing = !uiShowing;
     }

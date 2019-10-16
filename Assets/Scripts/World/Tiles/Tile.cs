@@ -16,12 +16,6 @@ namespace World.Tiles
         }
 
         private Entity entity;
-        private EntitySideBarController sideBarController;
-
-        public void Awake()
-        {
-            sideBarController = FindObjectOfType<EntitySideBarController>();
-        }
 
         public Entity Entity
         {
@@ -52,13 +46,6 @@ namespace World.Tiles
             return TileType.Equals(TileType.Grass) && entity == null;
         }
 
-        public void OnMouseDown()
-        {
-            if (entity != null)
-            {
-                sideBarController.ShowSideBar(entity, true);
-            }
-        }
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
     }
 }

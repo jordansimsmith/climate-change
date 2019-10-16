@@ -9,35 +9,20 @@ namespace World.Entities
         public override  EntityType Type => EntityType.Factory;
         
         public override void Construct() {
-            entityHelper.Construct(Stats);
-            entityHelper.increaseMoneyRate(Stats.money);
+            base.Construct();
+            entityHelper.IncreaseMoneyRate(Stats.money);
         }
-        
 
         public override void Destruct() {
-            entityHelper.Destruct(Stats);
-            entityHelper.decreaseMoneyRate(Stats.money);
+            base.Destruct();
+            entityHelper.DecreaseMoneyRate(Stats.money);
         }
 
-        public override bool Upgrade()
-        {
-            if (Level + 1 > maxLevel)
-            {
-                Debug.Log("reached level cap");
-                return false;
-            }
-
-            int upgradeCost = GetUpgradeCost();
-            if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
-            {
-                entityHelper.decreaseMoneyRate(Stats.money);
-                Level++;
-                entityHelper.increaseMoneyRate(Stats.money);
-                return true;
-            }
-
-            Debug.Log("not enough shmoneys");
-            return false;
+        public override bool Upgrade() {
+            if (!base.Upgrade()) return false;
+            entityHelper.DecreaseMoneyRate(base.GetEntityStats(Level - 1).cost);
+            entityHelper.IncreaseMoneyRate(Stats.money);
+            return true;
         }
     }
 }

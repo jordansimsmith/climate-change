@@ -464,7 +464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &653106911
 Transform:
   m_ObjectHideFlags: 0
@@ -4620,7 +4620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6116084484669922720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5335,10 +5335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: {fileID: 6404763119957294969}
   info: {fileID: 6404763121271444805}
-  resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
-  tornadoPrefab: {fileID: 148822, guid: 9c81eb172a2e3644cad527014afc356e, type: 3}
-  smokePrefab: {fileID: 100000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
-  tileConversionDelay: 13
 --- !u!1 &6404763121271444804
 GameObject:
   m_ObjectHideFlags: 0
