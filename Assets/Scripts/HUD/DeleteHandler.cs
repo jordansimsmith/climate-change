@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using World;
+using World.Entities;
 
 public class DeleteHandler : EventTrigger
 {
@@ -19,7 +20,7 @@ public class DeleteHandler : EventTrigger
 
     public override void OnPointerDown(PointerEventData data)
     {
-        SetDeleteMode(!placer.DeleteMode);
+        SetDeleteMode(placer.Mode != EntityPlacerMode.DELETE);
     }
 
     public override void OnPointerEnter(PointerEventData data)
@@ -29,7 +30,7 @@ public class DeleteHandler : EventTrigger
 
     public override void OnPointerExit(PointerEventData data)
     {
-        if (placer.DeleteMode)
+        if (placer.Mode == EntityPlacerMode.DELETE)
         {
             return;
         }
@@ -38,12 +39,12 @@ public class DeleteHandler : EventTrigger
 
     public void InvalidateDeleteButton()
     {
-        _background.color = placer.DeleteMode ? hoverAlpha : defaultAlpha;
+        _background.color = placer.Mode == EntityPlacerMode.DELETE ? hoverAlpha : defaultAlpha;
 
     } 
     public void SetDeleteMode(bool isDeleteMode)
     {
-        placer.DeleteMode = isDeleteMode;
+        placer.Mode = isDeleteMode ? EntityPlacerMode.DELETE : EntityPlacerMode.NONE;placer.DeleteMode = isDeleteMode;
         InvalidateDeleteButton();
     }
 

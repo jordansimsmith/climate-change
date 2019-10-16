@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using World;
+using World.Entities;
 
 public class ShopItem : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class ShopItem : MonoBehaviour
     public void HandleClick()
     {
         // spawn entity on cursor
+        placer.Mode = EntityPlacerMode.BUILD;
         placer.Spawn(item.entity.Type);
     }
 }
