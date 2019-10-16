@@ -48,10 +48,9 @@ public class AuthHandler : MonoBehaviour
     public async void LoginAnonymously()
     {
         var auth = await authProvider.SignInAnonymouslyAsync();
-        Debug.Log(auth.User.FederatedId);
-        Debug.Log(auth.User.LocalId);
         UpdateAuthState(auth);
     }
+    
 
 
 

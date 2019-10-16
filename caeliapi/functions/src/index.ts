@@ -1,13 +1,11 @@
 import * as functions from 'firebase-functions';
 
-import * as admin from "firebase-admin";
-admin.initializeApp();
-
 import * as express from "express";
 import * as crypto from "crypto";
 import * as cors from "cors";
 import {checkIfAuthenticated} from "./auth";
 import {SUPPORTED_REGIONS} from "firebase-functions";
+import {firebaseApp} from "./firebase";
 const app = express();
 
 
@@ -16,7 +14,7 @@ app.use(checkIfAuthenticated);
 app.use(express.json());
 app.use(cors());
 
-const worldcollection = admin.firestore().collection("worlds");
+const worldcollection = firebaseApp.firestore().collection("worlds");
 
 
 app.get('/worlds', async (req: any, res: any) => {
@@ -60,6 +58,7 @@ app.post("/worlds",  async (req: any, res: any) => {
 
     try {
         const newWorld = await worldcollection.add(world);
+
         res.status(201).send(newWorld.id);
     } catch (err) {
         res.status(500).send();
@@ -146,6 +145,7 @@ app.post("/worlds/:id/share", async (req:any ,res:any) => {
         await worldDoc.set({
             shareCode: newShareCode
         });
+
 
         return res.status(200).send(newShareCode);
     }

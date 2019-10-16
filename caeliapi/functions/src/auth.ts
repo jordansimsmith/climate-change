@@ -1,4 +1,5 @@
-import * as admin from "firebase-admin";
+import {firebaseApp} from "./firebase";
+
 
 const getAuthToken = (req: any, res: any, next: any) => {
     if (
@@ -16,7 +17,9 @@ export const checkIfAuthenticated = (req: any, res: any, next: any) => {
     getAuthToken(req, res, async () => {
         try {
             const { authToken } = req;
-            const userInfo = await admin
+            console.log(authToken);
+            console.log(firebaseApp.name);
+            const userInfo = await firebaseApp
                 .auth()
                 .verifyIdToken(authToken);
             req.authId = userInfo.uid;
