@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HUD;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using World;
@@ -10,12 +11,14 @@ public class DeleteHandler : EventTrigger
     private static Vector4 defaultAlpha = new Vector4(1, 0.5f, 0.5f, 0.7f);
     private static Vector4 hoverAlpha = new Vector4(1, 0.5f, 0.5f, 0.9f);
     private EntityPlacer placer;
+    private ContentPanelController controller;
 
     public void Start()
     {
         this._background = gameObject.GetComponent<Image>();
         this._background.color = defaultAlpha;
         this.placer = FindObjectOfType<EntityPlacer>();
+        this.controller = FindObjectOfType<ContentPanelController>();
     }
 
     public override void OnPointerDown(PointerEventData data)
@@ -45,7 +48,7 @@ public class DeleteHandler : EventTrigger
     public void SetDeleteMode(bool isDeleteMode)
     {
         placer.Mode = isDeleteMode ? EntityPlacerMode.DELETE : EntityPlacerMode.NONE;
-        InvalidateDeleteButton();
+        controller.InvalidateUI();
     }
 
 }

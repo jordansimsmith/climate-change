@@ -1,4 +1,5 @@
 ﻿using System;
+using HUD;
 using UnityEngine;
 using UnityEngine.UI;
 using World;
@@ -10,6 +11,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private Text name;
     [SerializeField] private Image image;
     private EntityPlacer placer;
+    private ContentPanelController controller;
 
     private Item item;
     public Item Item => item;
@@ -18,6 +20,7 @@ public class ShopItem : MonoBehaviour
     void Start()
     {
         placer = FindObjectOfType<EntityPlacer>();
+        controller = FindObjectOfType<ContentPanelController>();
     }
 
     public void Setup(Item item)
@@ -34,5 +37,6 @@ public class ShopItem : MonoBehaviour
         // spawn entity on cursor
         placer.Mode = EntityPlacerMode.BUILD;
         placer.Spawn(item.entity.Type);
+        controller.InvalidateUI();
     }
 }
