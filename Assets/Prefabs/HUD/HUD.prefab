@@ -349,7 +349,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 123128165390608877}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999997
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 9043012042878397349}
   - component: {fileID: 6350261051710068428}
   - component: {fileID: 8212040288077236427}
+  - component: {fileID: 5056765559680862674}
   m_Layer: 9
   m_Name: ContentPanel
   m_TagString: Untagged
@@ -603,6 +604,20 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &5056765559680862674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615309165915235926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377014484d9a4899b6422320649c8c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reclaimButton: {fileID: 8898024089065826407}
+  deleteButton: {fileID: 6746591075062796455}
 --- !u!1 &627764237664097585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4367,7 +4382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015149, y: -0.000015258789}
+  m_AnchoredPosition: {x: -277.39978, y: -712.47003}
   m_SizeDelta: {x: 0.000015259, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4137019932208472402

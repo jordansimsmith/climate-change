@@ -17,10 +17,15 @@ public class ShopItem : MonoBehaviour
     public Item Item => item;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        controller = FindObjectOfType<ContentPanelController>();
+    }
+
     void Start()
     {
         placer = FindObjectOfType<EntityPlacer>();
-        controller = FindObjectOfType<ContentPanelController>();
     }
 
     public void Setup(Item item)
