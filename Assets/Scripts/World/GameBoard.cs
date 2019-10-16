@@ -1,4 +1,7 @@
 using System;
+using Newtonsoft.Json;
+using Persistence;
+using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.AI;
 using World.Entities;
@@ -14,46 +17,56 @@ namespace World
         [SerializeField] private TileFactory tileFactory = default;
         [SerializeField] private EntityFactory entityFactory = default;
         [SerializeField] private ResourceSingleton resources;
+        private PersistenceManager persistenceManager;
 
         public NavMeshSurface surface;
 
         private Tile[,] tiles = default;
-
         public Tile[,] Tiles => tiles;
 
         private void Awake()
         {
-            TileType[,] layout = GetComponent<WorldGenerator>().Generate(boardSize);
+            persistenceManager = FindObjectOfType<PersistenceManager>();
+
+            if (persistenceManager.SelectedWorld == null)
+            {
+                BuildWorldFromSerialized(JsonConvert.DeserializeObject<SerializableWorld>(serialisedWorld));
+            }
+            else
+            {
+                Debug.Log("BUILT FROM SELECTED");
+                BuildWorldFromSerialized(persistenceManager.SelectedWorld);
+            }
+        }
+
+        private void BuildWorldFromSerialized(SerializableWorld world)
+        {
+            boardSize = world.WorldData.GetLength(0);
             tiles = new Tile[boardSize, boardSize];
 
             for (int x = 0; x < boardSize; x++)
             {
                 for (int z = 0; z < boardSize; z++)
                 {
-                    CreateTileAt(x, z, layout[x, z]);
+                    SerializableTile serialTile = world.WorldData[x, z];
+                    Tile tile = CreateTileAt(x, z, serialTile.TileType);
+                    if (serialTile.Entity != null)
+                    {
+                        tile.Entity = entityFactory.Get(serialTile.Entity.EntityType);
+                        tile.Entity.Level = serialTile.Entity.Level;
+                    }
                 }
             }
 
             RebakeNavMesh();
 
-            resources.MoneyRate = 0;
-
-            // Generate some random trees
-            for (int x = 0; x < boardSize; x++)
-            {
-                for (int z = 0; z < boardSize; z++)
-                {
-                    if (tiles[x, z].TileType == TileType.Grass && Random.value > 0.6)
-                    {
-                        tiles[x, z].Entity = entityFactory.Get(EntityType.Forest);
-                    }
-                }
-            }
-
-            resources.Money = 1_000;
+            resources.Money = world.ResourceData.Money;
+            resources.Population = world.ResourceData.Population;
+            resources.totalDemand = world.ResourceData.TotalDemand;
+            resources.totalSupply = world.ResourceData.TotalSupply;
         }
 
-        public void CreateTileAt(int x, int z, TileType type)
+        public Tile CreateTileAt(int x, int z, TileType type)
         {
             Tile tile = tileFactory.Get(type);
             var tileTransform = tile.transform;
@@ -61,6 +74,7 @@ namespace World
             tileTransform.SetParent(gameObject.transform);
             tiles[x, z] = tile;
             tile.Pos =  new Vector2Int(x, z);
+            return tile;
         }
 
 
@@ -183,6 +197,17 @@ namespace World
             // CreateTileAt(pos.x, pos.y, TileType.Grass);
             Destroy(oldTile.gameObject);
             CreateTileAt(pos.x, pos.y, TileType.Grass);
+        }
+
+        private static string serialisedWorld =
+            "{\"WorldData\":[[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":2},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":2},{\"TileType\":0},{\"TileType\":0},{\"TileType\":2},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}]],\"ResourceData\":{\"totalDemand\":{\"cost\":0,\"money\":0,\"food\":35,\"shelter\":35,\"power\":0,\"environment\":0},\"totalSupply\":{\"cost\":0,\"money\":0,\"food\":0,\"shelter\":0,\"power\":0,\"environment\":320},\"Population\":7,\"Money\":1000,\"MoneyRate\":0}}";
+
+        public void SaveGameState()
+        {
+            SerializableWorld updatedWorld = new SerializableWorld(Tiles, resources);
+            updatedWorld.Name = persistenceManager.SelectedWorld.Name;
+            updatedWorld.CreationTime = persistenceManager.SelectedWorld.CreationTime;
+            persistenceManager.SaveGameState(updatedWorld);
         }
     }
 }

@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: EntityHelper
   m_EditorClassIdentifier: 
   resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
+  outlineCube: {fileID: 5488795178715536833, guid: d0fd0361643c44c6abb8ba7285a1c5ad,
+    type: 3}
+  redTransparentMat: {fileID: 2100000, guid: a79b57a2d8c394cd1bd9e835b85b39f1, type: 2}
+  greenTransparentMat: {fileID: 2100000, guid: 0176d1e58432740bc9c829a00d45ed81, type: 2}

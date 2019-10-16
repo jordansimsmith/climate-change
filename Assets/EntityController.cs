@@ -20,7 +20,7 @@ public class EntityController : MonoBehaviour
     public void OnHover(EntityType entityType)
     {
         int cost = entityFactory.GetCost(entityType);
-        informationController.ShowInformation(null, entityFactory.GetPrefab(entityType));
+        informationController.ShowInformation(entityFactory.GetPrefab(entityType));
     }
 
     public void OnHoverExit()

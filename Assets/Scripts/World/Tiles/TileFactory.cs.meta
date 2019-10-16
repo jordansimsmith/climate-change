@@ -8,9 +8,9 @@ MonoImporter:
       type: 3}
   - sandPrefab: {fileID: 8450032971161961347, guid: 49bbac0f6e36240cdbbc5fb9c6b96eeb,
       type: 3}
-  - waterPrefab: {fileID: 377047158347412803, guid: 89f7adb82962d4484b43e4ea4813b2da,
+  - waterPrefab: {fileID: 7307145812875286883, guid: bce00a32e1305433e921830f37400c9f,
       type: 3}
-  - mountainPrefab: {fileID: 3138859624339318757, guid: 59a241f1126f74b66a39ce6f4a2d3409,
+  - mountainPrefab: {fileID: 2207230295230388727, guid: c23346717a7754ad38267eeef6bae0bc,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

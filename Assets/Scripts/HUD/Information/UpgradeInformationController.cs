@@ -11,9 +11,13 @@ namespace HUD
         [SerializeField] private Button upgradeButton;
         [SerializeField] private Button closeUpgradePanelButton;
         private Text upgradeButtonText;
+        
+        private static UpgradeInformationController instance;
+        public static UpgradeInformationController Instance => instance;
 
-        void Start()
+        void Awake()
         {
+            instance = this;
             gameObject.SetActive(false);
             upgradeButtonText = upgradeButton.GetComponentInChildren<Text>();
 
@@ -25,12 +29,12 @@ namespace HUD
                 return;
             }
 
-            title.text = entity.Type + " (" + tile.TileType + ")";
             String levelText = "Level: " + entity.Level;
             level.text = levelText;
+            title.text = entity.Type.ToString();
             RefreshEntityStats();
 
-            if (entity.isMaxLevel())
+            if (entity.IsMaxLevel())
             {
                 DisableUpgradeButton();
             }
@@ -45,7 +49,7 @@ namespace HUD
             if (entity.Upgrade())
             {
                 UpdateInformation();
-                if (entity.Type == EntityType.TownHall && entity.Level == entity.maxLevel)
+                if (entity.Type == EntityType.TownHall && entity.IsMaxLevel())
                 {
                     gameController.OnGameWin();
                 }

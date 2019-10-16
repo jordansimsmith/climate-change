@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 6073973638651444430}
   - component: {fileID: 8068884375748032247}
   - component: {fileID: 7946182720853876289}
+  - component: {fileID: -735097091604289590}
   m_Layer: 0
   m_Name: TownHall
   m_TagString: Untagged
@@ -136,17 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
   maxLevel: 3
-  stats:
-    cost: 0
-    money: 0
-    food: 0
-    shelter: 35
-    power: 0
-    environment: 0
-  upgradeCosts:
-    levelOne: 100
-    levelTwo: 200
-    levelThree: 300
   upgradeInformation:
     levelOne:
       cost: 0
@@ -185,3 +175,16 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5, y: 5, z: 4.5}
   m_TimeToStationary: 0.5
+--- !u!65 &-735097091604289590
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6079715812517241000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 5, y: 7.5, z: 5}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6472262284098676859}
   - component: {fileID: 9048195130966428832}
   - component: {fileID: -2093007100427958032}
+  - component: {fileID: -3324037976673389786}
   m_Layer: 0
   m_Name: Forest
   m_TagString: Untagged
@@ -51,22 +52,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
   maxLevel: 3
-  stats:
-    cost: 50
-    money: 0
-    food: 0
-    shelter: 0
-    power: 0
-    environment: 10
   treeTransforms:
   - {fileID: 190753342674844178}
   - {fileID: 6327803863240952413}
   - {fileID: 3644464442665959972}
   - {fileID: 6658363857799602690}
-  upgradeCosts:
-    levelOne: 100
-    levelTwo: 200
-    levelThree: 300
   upgradeInformation:
     levelOne:
       cost: 50
@@ -133,6 +123,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 1
+--- !u!65 &-3324037976673389786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487133432228363549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 5, y: 7.5, z: 5}
 --- !u!1001 &190753342674968722
 PrefabInstance:
   m_ObjectHideFlags: 0

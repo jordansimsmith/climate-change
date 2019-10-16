@@ -1,4 +1,4 @@
-﻿using HUD;
+﻿using Audio;
 using UnityEngine;
 using World.Entities;
 using World.Resource;
@@ -81,11 +81,17 @@ namespace World
                 if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                 {
                     GameObject gameTile = hitInfo.collider.gameObject;
+                    Tile tile = gameTile.GetComponent<Tile>();
+
                     buildingTransform.SetParent(gameTile.transform);
                     buildingTransform.localPosition = Vector3.zero;
-                    if (Input.GetMouseButtonDown(0))
+
+                    var canBePlaced = EntityCanBePlacedOn(tile);
+                    entity.ShowOutline(canBePlaced);
+                    if (Input.GetMouseButtonDown(0) && canBePlaced)
                     {
                         PlaceEntityIfValid(gameTile);
+                        AudioManager.Instance.Play(gameTile);
                     }
                 }
                 else
@@ -94,6 +100,7 @@ namespace World
                     Vector3 hitPoint = ray.GetPoint(enter);
                     buildingTransform.parent = null;
                     buildingTransform.position = hitPoint;
+                    entity.HideOutline();
                 }
             }
             else if (Mode == EntityPlacerMode.DELETE)
@@ -145,24 +152,31 @@ namespace World
                 }
             }
         }
-        
-        private void PlaceEntityIfValid(GameObject gameTile) {
+
+        private bool EntityCanBePlacedOn(Tile tile)
+        {
+            return tile.TileType.Equals(TileType.Grass)
+                   && tile.Entity == null
+                   && resources.Money >= entity.Stats.cost;
+        }
+
+        private void PlaceEntityIfValid(GameObject gameTile)
+        {
             Tile tile = gameTile.GetComponent<Tile>();
             if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
             {
                 tile.Entity = entity;
                 enabled = false;
-                
+
                 if (entity.Type == EntityType.TownHall)
                 {
                     //GameObject.Find("TownHall").SetActive(false);
                     FindObjectOfType<ShopScrollList>().DisableTownHall();
                 }
 
+                entity.HideOutline();
                 entity = null;
             }
-            
-    
         }
 
         private void DeleteEntityifValid(GameObject gameTile)
@@ -172,7 +186,6 @@ namespace World
             {
                 tile.Entity = null;
             }
-            
         }
 
         private void DestroyCurrentEntity()
@@ -182,8 +195,5 @@ namespace World
                 Destroy(entity.transform.gameObject);
             }
         }
-
     }
-    
-
 }

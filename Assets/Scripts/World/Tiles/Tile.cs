@@ -72,13 +72,6 @@ namespace World.Tiles
             return TileType.Equals(TileType.Grass) && entity == null;
         }
 
-        public void OnMouseDown()
-        {
-            if (Entity != null)
-            {
-                informationController.ShowInformation(this, Entity);
-            }
-        }
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
     }
 }

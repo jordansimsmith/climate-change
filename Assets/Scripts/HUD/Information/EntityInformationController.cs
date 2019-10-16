@@ -15,16 +15,10 @@ namespace HUD
         [SerializeField] protected Text income;
         [SerializeField] protected GameController gameController;
 
-        protected Tile tile;
         protected Entity entity;
-   
-        void Start() {
-            gameObject.SetActive(false);
-        }
 
-        public void ShowInformation(Tile t, Entity e)
+        public void ShowInformation( Entity e)
         {
-            tile = t;
             entity = e;
             gameObject.SetActive(true);
             

@@ -1125,8 +1125,6 @@ GameObject:
   - component: {fileID: 1508964260}
   - component: {fileID: 1508964259}
   - component: {fileID: 7713245159338260735}
-  - component: {fileID: 5968030333405118296}
-  - component: {fileID: 2955878327465031738}
   m_Layer: 5
   m_Name: UpgradeMenu
   m_TagString: Untagged
@@ -1217,38 +1215,6 @@ MonoBehaviour:
   level: {fileID: 7822612009568461632}
   upgradeButton: {fileID: 499693500}
   closeUpgradePanelButton: {fileID: 1952147315}
---- !u!114 &5968030333405118296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508964257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d52e93586d4d72880577aeec06f685, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 2058864278}
-  electricity: {fileID: 8737233}
-  environment: {fileID: 1657907828}
-  food: {fileID: 1795275998}
-  shelter: {fileID: 103283564}
-  income: {fileID: 1762518949}
-  gameController: {fileID: 7941001179834700954, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-    type: 3}
---- !u!114 &2955878327465031738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508964257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7242d318a3c04e2cb742fdb905118390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1639551120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,8 +1643,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: CloseSideBar
+      - m_Target: {fileID: 7713245159338260735}
+        m_MethodName: CloseInformation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1687,7 +1653,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!1 &1968702156
 GameObject:
   m_ObjectHideFlags: 0
@@ -6195,10 +6161,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: {fileID: 6404763119957294969}
   info: {fileID: 6404763121271444805}
-  resources: {fileID: 11400000, guid: feadfafde86658241973655fa681ecfd, type: 2}
-  tornadoPrefab: {fileID: 0}
-  smokePrefab: {fileID: 0}
-  tileConversionDelay: 0
 --- !u!1 &6404763121271444804
 GameObject:
   m_ObjectHideFlags: 0
