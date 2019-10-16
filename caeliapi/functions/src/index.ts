@@ -5,13 +5,16 @@ admin.initializeApp();
 
 import * as express from "express";
 import * as crypto from "crypto";
+import * as cors from "cors";
 import {checkIfAuthenticated} from "./auth";
+import {SUPPORTED_REGIONS} from "firebase-functions";
 const app = express();
 
 
 
 app.use(checkIfAuthenticated);
 app.use(express.json());
+app.use(cors());
 
 const worldcollection = admin.firestore().collection("worlds");
 
@@ -178,5 +181,5 @@ app.get("/sharedworlds/:shareCode", async (req: any, res: any) => {
 })
 
 
-
-exports.api = functions.https.onRequest(app);
+// I have learned that firebase does not support cloud functions in sydney yet, oh well.
+exports.api = functions.region(SUPPORTED_REGIONS[2]).https.onRequest(app);

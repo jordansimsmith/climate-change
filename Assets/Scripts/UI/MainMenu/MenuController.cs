@@ -22,6 +22,8 @@ public class MenuController : MonoBehaviour
     {
         worldsPanel.SetActive(true);
         worldsPanel.GetComponent<WorldsPanelController>().PopulateWorldsList();
+        AuthHandler handler = FindObjectOfType<AuthHandler>();
+        handler.OpenUI();
     }
 
     public void ExitButtonOnClick()
