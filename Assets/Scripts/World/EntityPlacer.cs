@@ -12,8 +12,8 @@ namespace World
         [SerializeField] private ResourceSingleton resources;
         private Entity entity;
         private Plane tilePlane;
-        private bool deleteMode;
         private EntityPlacerMode mode;
+        private GameBoard board;
 
         public EntityPlacerMode Mode
         {
@@ -51,34 +51,11 @@ namespace World
                         break;
                 }
             }
-        } 
-
-        public bool DeleteMode
-        {
-            get => deleteMode;
-            set
-            {
-                if (entity != null)
-                {
-                    DestroyCurrentEntity();
-                }
-                deleteMode = value;
-                if (value)
-                {
-                    entity = null;
-                    enabled = true;
-                }
-                else
-                {
-                    enabled = false;
-                }
-
-            }
         }
-
         private void Start()
         {
             tilePlane = new Plane(Vector3.up, 0);
+            board = GetComponentInChildren<GameBoard>();
         }
 
         public void Spawn(EntityType type)
@@ -88,7 +65,7 @@ namespace World
                 DestroyCurrentEntity();
             }
             
-            DeleteMode = false;
+            Mode = EntityPlacerMode.BUILD;
             entity = factory.Get(type);
             enabled = true;
         }
@@ -134,6 +111,38 @@ namespace World
             else if (Mode == EntityPlacerMode.RECLAIM)
             {
                 // reclaim code 
+                if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
+                {
+                    if (Input.GetMouseButton(0))
+                    {
+                        GameObject gameTile = hitInfo.collider.gameObject;
+                        Tile tile = gameTile.GetComponent<Tile>();
+                        if (tile == null)
+                        {
+                            Debug.Log("tile is null");
+                        }
+                        if (tile.Entity == null)
+                        {
+                            int reclaimCost = tile.ReclaimCost;
+                            if (tile.TileType == TileType.Grass)
+                            {   
+                                Debug.Log("grass");
+                            }
+                            else
+                            {
+                                Debug.Log("something else");
+                            }
+                            if (resources.Money >= reclaimCost)
+                            {
+                                Debug.Log("bruh");
+                                resources.Money -= reclaimCost;
+                                board.ReclaimTile(tile);
+                            }
+                            
+                        }
+                       
+                    }
+                }
             }
         }
         

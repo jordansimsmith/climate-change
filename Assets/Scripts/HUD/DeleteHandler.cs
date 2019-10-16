@@ -44,7 +44,7 @@ public class DeleteHandler : EventTrigger
     } 
     public void SetDeleteMode(bool isDeleteMode)
     {
-        placer.Mode = isDeleteMode ? EntityPlacerMode.DELETE : EntityPlacerMode.NONE;placer.DeleteMode = isDeleteMode;
+        placer.Mode = isDeleteMode ? EntityPlacerMode.DELETE : EntityPlacerMode.NONE;
         InvalidateDeleteButton();
     }
 

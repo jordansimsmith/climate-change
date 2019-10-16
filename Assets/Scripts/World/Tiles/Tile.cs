@@ -9,11 +9,31 @@ namespace World.Tiles
     {
         [SerializeField]
         private TileType tileType;
-        
+
+        public Vector2Int Pos { get; set; }
         public TileType TileType
         {
             get => tileType;
+            set => tileType = value;
         }
+
+        public int ReclaimCost
+        {
+            get
+            {
+                if (TileType == TileType.Water)
+                {
+                    return 20000;
+                }
+                if (TileType == TileType.Sand)
+                {
+                    return 10000;
+                }
+                
+                return Int32.MaxValue;
+            }
+        }
+        
 
         private Entity entity;
         private EntityInformationController informationController;

@@ -19,7 +19,11 @@ namespace HUD
             this._background.color = defaultAlpha;
             this.placer = FindObjectOfType<EntityPlacer>();
         }
-        
+
+        public override void OnPointerDown(PointerEventData data)
+        {
+            SetReclaimMode(placer.Mode != EntityPlacerMode.RECLAIM);
+        }
         public override void OnPointerEnter(PointerEventData data)
         {
             this._background.color = hoverAlpha;
@@ -42,6 +46,7 @@ namespace HUD
         public void SetReclaimMode(bool isReclaimMode)
         {
             placer.Mode = isReclaimMode ? EntityPlacerMode.RECLAIM : EntityPlacerMode.NONE;
+            Debug.Log("placer mode is " + placer.Mode);
             InvalidateReclaimButton();
         }
         
