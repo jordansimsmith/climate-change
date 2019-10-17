@@ -30,6 +30,12 @@ public class AuthHandler : MonoBehaviour
 
 
     public FirebaseAuthLink CurrentAuth => currentAuth;
+    
+    public async void LoginAnonymously()
+    {
+        var auth = await authProvider.SignInAnonymouslyAsync();
+        UpdateAuthState(auth);
+    }
 
     
 
@@ -44,13 +50,6 @@ public class AuthHandler : MonoBehaviour
             OpenAuthUI();
         }
     }
-    
-    public async void LoginAnonymously()
-    {
-        var auth = await authProvider.SignInAnonymouslyAsync();
-        UpdateAuthState(auth);
-    }
-    
 
 
 

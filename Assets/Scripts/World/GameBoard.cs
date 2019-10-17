@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using Newtonsoft.Json;
 using Persistence;
 using Persistence.Serializables;
@@ -38,6 +39,7 @@ namespace World
                 resources.Reset();
                 BuildWorldFromSerialized(persistenceManager.SelectedWorld);
             }
+
         }
 
         private void BuildWorldFromSerialized(SerializableWorld world)

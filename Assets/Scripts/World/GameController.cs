@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 using World;
 using World.Resource;
 using World.Entities;
@@ -24,6 +25,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("PollResources", 0, 1f);
+        StartCoroutine(APIService.Instance.Get("https://jsonplaceholder.typicode.com/todos/1"));
+
     }
 
     private void PollResources()
