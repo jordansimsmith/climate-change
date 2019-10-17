@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using World;
 using World.Resource;
 using World.Entities;
@@ -24,6 +25,11 @@ public class GameController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("PollResources", 0, 1f);
+    }
+
+    private void Update()
+    {
+        //Debug.Log(endScreenController);
     }
 
     private void PollResources()
@@ -82,6 +88,7 @@ public class GameController : MonoBehaviour
 
     public void OnGameWin()
     {
+        endScreenController = FindObjectOfType<EndScreenController>();
         endScreenController.EnableWinScreen();
     }
 }
