@@ -27,13 +27,13 @@ public class NPCPanelController : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-        GameObject.Find("World").GetComponent<AudioManager>().EndConversation();
+        AudioManager.Instance.EndConversation();
     }
 
     public void Show(string name, string occupation, string tweet, Sprite avatar)
     {
         gameObject.SetActive(true);
-        GameObject.Find("World").GetComponent<AudioManager>().StartConversation();
+        AudioManager.Instance.StartConversation();
 
         npcName.text = name;
         npcOccupation.text = occupation;

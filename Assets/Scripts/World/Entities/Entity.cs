@@ -1,4 +1,3 @@
-using System;
 using HUD;
 using UnityEngine;
 
@@ -16,12 +15,6 @@ namespace World.Entities
         public EntityStats Stats => GetEntityStats();
         public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 3 times
         public int MaxLevel => maxLevel;
-
-        private EntitySideBarController sideBarController;
-
-        private void Awake() {
-            sideBarController = FindObjectOfType<EntitySideBarController>();
-        }
 
         public virtual void Construct()
         {
@@ -131,7 +124,7 @@ namespace World.Entities
         
         public void OnMouseDown()
         {
-            sideBarController.ShowSideBar(this, true);
+            UpgradeInformationController.Instance.ShowInformation(this);
         }
     }
 }
