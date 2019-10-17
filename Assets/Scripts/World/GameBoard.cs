@@ -73,6 +73,7 @@ namespace World
             tileTransform.position = new Vector3(x * Tile.Size.x, -Tile.Size.y, z * Tile.Size.z);
             tileTransform.SetParent(gameObject.transform);
             tiles[x, z] = tile;
+            tile.Pos =  new Vector2Int(x, z);
             return tile;
         }
 
@@ -187,6 +188,15 @@ namespace World
             tuple.demand = netDemand;
 
             return tuple;
+        }
+
+        public void ReclaimTile(Tile oldTile)
+        {
+            Debug.Log("method is running");
+            Vector2Int pos = oldTile.Pos;
+            // CreateTileAt(pos.x, pos.y, TileType.Grass);
+            Destroy(oldTile.gameObject);
+            CreateTileAt(pos.x, pos.y, TileType.Grass);
         }
 
         private static string serialisedWorld =

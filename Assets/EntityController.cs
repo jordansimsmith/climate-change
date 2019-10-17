@@ -9,22 +9,22 @@ public class EntityController : MonoBehaviour
 {
     [SerializeField] private EntityFactory entityFactory;
 
-    private EntitySideBarController sideBarController;
+    private EntityInformationController informationController;
 
     // Start is called before the first frame update
     void Awake()
     {
-        sideBarController = FindObjectOfType<EntitySideBarController>();
+        informationController = FindObjectOfType<ShopInformationController>();
     }
 
-    public void onHover(EntityType entityType)
+    public void OnHover(EntityType entityType)
     {
         int cost = entityFactory.GetCost(entityType);
-        sideBarController.ShowSideBar(entityFactory.GetPrefab(entityType), false);
+        informationController.ShowInformation(entityFactory.GetPrefab(entityType));
     }
 
-    public void onHoverExit()
+    public void OnHoverExit()
     {
-        sideBarController.CloseSideBar();
+        informationController.CloseInformation();
     }
 }
