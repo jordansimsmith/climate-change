@@ -4454,8 +4454,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -69.34985, y: -253.58}
-  m_SizeDelta: {x: 138.7, y: 507.07}
+  m_AnchoredPosition: {x: -69.35, y: -272.2}
+  m_SizeDelta: {x: 138.7, y: 544.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5556796948455319820
 CanvasRenderer:
@@ -4869,6 +4869,7 @@ MonoBehaviour:
   contentPanel: {fileID: 4019730763119803877}
   shopItemPrefab: {fileID: 7677043186662401089, guid: 4123ab23f8b82694f92b2aa0f12452e1,
     type: 3}
+  gameBoard: {fileID: 0}
 --- !u!114 &332353342153949833
 MonoBehaviour:
   m_ObjectHideFlags: 0
