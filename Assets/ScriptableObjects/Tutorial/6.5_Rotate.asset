@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2aaecce5da4464a8d3c375d955bf957, type: 3}
-  m_Name: 14_Upgrade
+  m_Script: {fileID: 11500000, guid: 355fae3da8284a90ab512427b47ac362, type: 3}
+  m_Name: 6.5_Rotate
   m_EditorClassIdentifier: 
-  title: Ewan
-  description: Once you save up 10,000 carbon credits you'll be able to upgrade your
-    town hall! Win the game by upgrading your town hall to the 4th level!
+  title: 
+  description: 
   successMessage: 
+  keys: 
