@@ -6,15 +6,40 @@ namespace World.Entities
     public abstract class Entity : MonoBehaviour
     {
         [SerializeField] protected EntityHelper entityHelper;
-        [SerializeField] protected int maxLevel = 3;
         [SerializeField] protected GameObject[] modelForLevel;
         
         public virtual EntityType Type { get; }
-        public virtual EntityUpgradeInformation UpgradeInformation { get; }
-        
-        public EntityStats Stats => GetEntityStats();
-        public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 3 times
-        public int MaxLevel => maxLevel;
+        public virtual EntityUpgradeInfo UpgradeInfo { get; }
+
+        public EntityStats Stats {
+            get {
+                
+                //Helper function to apply updates from research
+                void Apply(EntityStats stats, EntityStats diff) {
+                    stats.cost += diff.cost;
+                    stats.environment += diff.environment;
+                    stats.food += diff.food;
+                    stats.money += diff.money;
+                    stats.power += diff.power;
+                    stats.shelter += diff.shelter;
+                }
+
+                // Get the base stats for the current level
+                var levelStat = UpgradeInfo.GetLevel(Level).BaseStats;
+
+                // Apply updates to the base stats based on research options
+                foreach (var researchOption in UpgradeInfo.GetLevel(Level).ResearchOptions) {
+                    if (researchOption.isResearched) {
+                        Apply(levelStat, researchOption.ResearchDiff);
+                    }
+                }
+
+                return levelStat;
+            }
+        }
+
+        public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 2 times
+        public int MaxLevel => UpgradeInfo.NumberOfLevels; 
 
         public virtual void Construct()
         {
@@ -30,7 +55,7 @@ namespace World.Entities
         // base functionality checks base level + cost
         public virtual bool Upgrade()
         {
-            if (Level + 1 > maxLevel)
+            if (Level + 1 > MaxLevel)
             {
                 Debug.Log("reached level cap");
                 return false;
@@ -74,54 +99,15 @@ namespace World.Entities
             box = null;
         }
 
-        public int GetUpgradeCost()
-        {
-            switch (Level + 1)
-            {
-                case 2:
-                    return UpgradeInformation.levelTwo.cost;
-                case 3:
-                    return UpgradeInformation.levelThree.cost;
-                default:
-                    return UpgradeInformation.levelOne.cost;
-            }
+        public int GetUpgradeCost() {
+            return UpgradeInfo.GetLevel(Level + 1).BaseStats.cost;
         }
 
         public bool IsMaxLevel()
         {
-            return Level == maxLevel;
+            return Level == MaxLevel;
         }
 
-        private EntityStats GetEntityStats()
-        {
-            switch (Level)
-            {
-                case 1:
-                    return UpgradeInformation.levelOne;
-                case 2:
-                    return UpgradeInformation.levelTwo;
-                case 3:
-                    return UpgradeInformation.levelThree;
-            }
-
-            return UpgradeInformation.levelOne;
-        }
-        
-        protected EntityStats GetEntityStats(int level)
-        {
-            switch (level)
-            {
-                case 1:
-                    return UpgradeInformation.levelOne;
-                case 2:
-                    return UpgradeInformation.levelTwo;
-                case 3:
-                    return UpgradeInformation.levelThree;
-            }
-
-            return UpgradeInformation.levelOne;
-        }
-        
         public void OnMouseDown()
         {
             UpgradeInformationController.Instance.ShowInformation(this);
