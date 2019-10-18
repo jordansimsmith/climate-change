@@ -10,6 +10,9 @@ namespace HUD
         [SerializeField] private Text level;
         [SerializeField] private Button upgradeButton;
         [SerializeField] private Button closeUpgradePanelButton;
+        [SerializeField] private Button[] researchButtons;
+        [SerializeField] private Text description;
+        
         private Text upgradeButtonText;
 
         private static UpgradeInformationController instance;
@@ -29,9 +32,40 @@ namespace HUD
                 return;
             }
 
+            // Set the level  
             String levelText = "Level: " + entity.Level;
             level.text = levelText;
+            
+            // Set the title 
             title.text = entity.Type.ToString();
+            
+            // Set the description 
+            var des = entity.UpgradeInfo.Description;
+            if (des == null) {
+                des = "Climate change is bad";
+            }
+            description.text = des;
+            
+            // Set the research option buttons
+            int index = 0;
+            foreach (var research in entity.UpgradeInfo.GetLevel(entity.Level).ResearchOptions) {
+                if (index > 2) {
+                    Debug.Log("Not enough space to fit more than 3 research options");
+                    break;
+                }
+                var researchButton = researchButtons[index];
+                researchButton.gameObject.SetActive(true);
+                researchButton.enabled = research.isResearched;
+                researchButton.GetComponentInChildren<Text>().text = research.Name;
+                index++;
+            }
+
+            // Disable the buttons with no attached research
+            for (int i = index; i < researchButtons.Length; i++) {
+                researchButtons[i].gameObject.SetActive(false);
+            }
+
+
             RefreshEntityStats();
 
             if (entity.IsMaxLevel())

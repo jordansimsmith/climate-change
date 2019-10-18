@@ -8887,7 +8887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 69.35, y: -197.585}
+  m_AnchoredPosition: {x: 69.3501, y: -197.58496}
   m_SizeDelta: {x: 138.7, y: 62.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7559698339405190782
@@ -9884,6 +9884,11 @@ MonoBehaviour:
   level: {fileID: 568984242335964751}
   upgradeButton: {fileID: 3478678153872894614}
   closeUpgradePanelButton: {fileID: 6167968462588689419}
+  researchButtons:
+  - {fileID: 6485156489120830583}
+  - {fileID: 1478333559239600337}
+  - {fileID: 3728019443402832574}
+  description: {fileID: 6894459156917578800}
 --- !u!1 &6808217771947579916
 GameObject:
   m_ObjectHideFlags: 0
@@ -13332,7 +13337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 69.35, y: -78.22}
+  m_AnchoredPosition: {x: 69.3501, y: -78.21997}
   m_SizeDelta: {x: 138.7, y: 156.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &285645746244036663

@@ -8,6 +8,8 @@ namespace World.Entities
     public class EntityUpgradeInfo : ScriptableObject {
         [Header("Elements of array correspond to levels of the Entity")]
         [SerializeField] private LevelInfo[] levelInfo;
+        [SerializeField] private String description;
+        public String Description => description;
 
         public LevelInfo GetLevel(int level) {
             if (level > levelInfo.Length) {
@@ -24,20 +26,17 @@ namespace World.Entities
     [Serializable]
     public struct LevelInfo {
         [SerializeField] private EntityStats baseStats;
-        public EntityStats BaseStats => baseStats;
-        
         [SerializeField] private ResearchOption[] researchOptions;
         public ResearchOption[] ResearchOptions => researchOptions;
+        public EntityStats BaseStats => baseStats;
     }
 
     [Serializable]
     public struct ResearchOption {
         [SerializeField] private string name;
-        public String Name => name;
-        
         [SerializeField] private EntityStats researchDiff;
-        public EntityStats ResearchDiff => researchDiff;
-        
         [NonSerialized] public bool isResearched;
+        public String Name => name;
+        public EntityStats ResearchDiff => researchDiff;
     }
 }

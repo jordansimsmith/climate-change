@@ -21,9 +21,17 @@ MonoBehaviour:
       power: -20
       environment: -20
     researchOptions:
-    - name: 
+    - name: Clean air filters
       researchDiff:
-        cost: 0
+        cost: 10
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 0
+    - name: Reduce waste
+      researchDiff:
+        cost: 10
         money: 0
         food: 0
         shelter: 0
@@ -45,3 +53,4 @@ MonoBehaviour:
       power: -20
       environment: -20
     researchOptions: []
+  description: Factories are bad for the environment xddxdxdx
