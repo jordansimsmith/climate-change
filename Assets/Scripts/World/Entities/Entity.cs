@@ -15,7 +15,14 @@ namespace World.Entities
         public EntityStats Stats => GetEntityStats();
         public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 3 times
         public int MaxLevel => maxLevel;
+        
+        private EntityPlacer placer;
 
+        // has to be awake instead of start, otherwise entity can't find entity placer
+        public void Awake()
+        {
+            placer = FindObjectOfType<EntityPlacer>();
+        }
         public virtual void Construct()
         {
             entityHelper.Construct(Stats);
@@ -124,7 +131,29 @@ namespace World.Entities
         
         public void OnMouseDown()
         {
-            UpgradeInformationController.Instance.ShowInformation(this);
+            if (placer.Mode != EntityPlacerMode.DELETE)
+            {
+                UpgradeInformationController.Instance.ShowInformation(this);
+            }
+
+            if (placer.Mode == EntityPlacerMode.DELETE)
+            {
+                Debug.Log("delete mode");
+                if (UpgradeInformationController.Instance.isUpgradeInformationOpen())
+                {
+                    Debug.Log("upgrade information is open");
+                    if (this == UpgradeInformationController.Instance.Entity)
+                    {
+                        Debug.Log("same entity");
+                        UpgradeInformationController.Instance.CloseInformation();
+                    }
+                    else
+                    {
+                        Debug.Log("not same entity");
+                    }
+                }
+
+            }
         }
     }
 }
