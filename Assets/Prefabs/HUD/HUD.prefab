@@ -9841,6 +9841,7 @@ MonoBehaviour:
   - {fileID: 1478333559239600337}
   - {fileID: 3728019443402832574}
   description: {fileID: 6894459156917578800}
+  contentPanelRectTransform: {fileID: 6210700579061818531}
 --- !u!1 &6808217771947579916
 GameObject:
   m_ObjectHideFlags: 0

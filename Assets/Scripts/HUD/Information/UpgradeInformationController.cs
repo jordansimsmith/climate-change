@@ -12,6 +12,7 @@ namespace HUD
         [SerializeField] private Button closeUpgradePanelButton;
         [SerializeField] private Button[] researchButtons;
         [SerializeField] private Text description;
+        [SerializeField] private RectTransform contentPanelRectTransform;
         
         private Text upgradeButtonText;
 
@@ -64,8 +65,10 @@ namespace HUD
             for (int i = index; i < researchButtons.Length; i++) {
                 researchButtons[i].gameObject.SetActive(false);
             }
-
-
+            
+            // Hotfix for text size
+            LayoutRebuilder.ForceRebuildLayoutImmediate(contentPanelRectTransform);
+            
             RefreshEntityStats();
 
             if (entity.IsMaxLevel())
