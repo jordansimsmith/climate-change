@@ -136,29 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
-  maxLevel: 3
-  upgradeInformation:
-    levelOne:
-      cost: 0
-      money: 0
-      food: 0
-      shelter: 35
-      power: 0
-      environment: 0
-    levelTwo:
-      cost: 0
-      money: 0
-      food: 0
-      shelter: 70
-      power: 0
-      environment: 0
-    levelThree:
-      cost: 0
-      money: 0
-      food: 0
-      shelter: 105
-      power: 0
-      environment: 0
+  modelForLevel: []
+  upgradeInfo: {fileID: 11400000, guid: ce5f0f2549fd645beb5bbfd4be3e6391, type: 2}
 --- !u!208 &7946182720853876289
 NavMeshObstacle:
   m_ObjectHideFlags: 0

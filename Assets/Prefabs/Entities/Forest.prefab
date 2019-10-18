@@ -51,34 +51,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
-  maxLevel: 3
+  modelForLevel: []
   treeTransforms:
   - {fileID: 190753342674844178}
   - {fileID: 6327803863240952413}
   - {fileID: 3644464442665959972}
   - {fileID: 6658363857799602690}
-  upgradeInformation:
-    levelOne:
-      cost: 50
-      money: 0
-      food: 0
-      shelter: 0
-      power: 0
-      environment: 10
-    levelTwo:
-      cost: 100
-      money: 0
-      food: 0
-      shelter: 0
-      power: 0
-      environment: 20
-    levelThree:
-      cost: 150
-      money: 0
-      food: 0
-      shelter: 0
-      power: 0
-      environment: 30
+  upgradeInfo: {fileID: 11400000, guid: c1c1d4c63bac6469f86795943c99f5da, type: 2}
 --- !u!208 &9048195130966428832
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -143,10 +122,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4196366959212067428}
     m_Modifications:
-    - target: {fileID: 100000, guid: 2ed887472c7eafa429f2abedc1b60e2f, type: 3}
-      propertyPath: m_Name
-      value: Tree oak
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ed887472c7eafa429f2abedc1b60e2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5187252
@@ -203,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2ed887472c7eafa429f2abedc1b60e2f, type: 3}
+      propertyPath: m_Name
+      value: Tree oak
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed887472c7eafa429f2abedc1b60e2f, type: 3}
 --- !u!4 &190753342674844178 stripped
@@ -218,10 +197,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4196366959212067428}
     m_Modifications:
-    - target: {fileID: 100000, guid: 16a6d96f073f0f941b9ce55635b4ffb6, type: 3}
-      propertyPath: m_Name
-      value: Tree pine
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 16a6d96f073f0f941b9ce55635b4ffb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6712748
@@ -278,6 +253,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 16a6d96f073f0f941b9ce55635b4ffb6, type: 3}
+      propertyPath: m_Name
+      value: Tree pine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a6d96f073f0f941b9ce55635b4ffb6, type: 3}
 --- !u!4 &3644464442665959972 stripped
@@ -293,10 +272,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4196366959212067428}
     m_Modifications:
-    - target: {fileID: 100000, guid: 5c5023da2230da744b2c569c2459af8b, type: 3}
-      propertyPath: m_Name
-      value: Tree spruce
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5c5023da2230da744b2c569c2459af8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2532747
@@ -353,6 +328,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5c5023da2230da744b2c569c2459af8b, type: 3}
+      propertyPath: m_Name
+      value: Tree spruce
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c5023da2230da744b2c569c2459af8b, type: 3}
 --- !u!4 &6327803863240952413 stripped
@@ -368,10 +347,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4196366959212067428}
     m_Modifications:
-    - target: {fileID: 100000, guid: 5852e3d9b75e2a34babe6d91ddec8b8d, type: 3}
-      propertyPath: m_Name
-      value: Tree spruce small
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5852e3d9b75e2a34babe6d91ddec8b8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.14427471
@@ -427,6 +402,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 5852e3d9b75e2a34babe6d91ddec8b8d, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5852e3d9b75e2a34babe6d91ddec8b8d, type: 3}
+      propertyPath: m_Name
+      value: Tree spruce small
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5852e3d9b75e2a34babe6d91ddec8b8d, type: 3}

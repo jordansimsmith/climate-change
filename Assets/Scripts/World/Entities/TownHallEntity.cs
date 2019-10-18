@@ -4,9 +4,9 @@ namespace World.Entities
 {
   public class TownHallEntity : Entity
   {
-      [SerializeField] private EntityUpgradeInformation upgradeInformation;
+      [SerializeField] private EntityUpgradeInfo upgradeInfo;
 
-      public override EntityUpgradeInformation UpgradeInformation => upgradeInformation;
+      public override EntityUpgradeInfo UpgradeInfo => upgradeInfo;
       public override EntityType Type => EntityType.TownHall;
 
   }

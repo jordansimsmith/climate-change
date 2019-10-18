@@ -35,6 +35,7 @@ namespace World
             else
             {
                 Debug.Log("BUILT FROM SELECTED");
+                resources.Reset();
                 BuildWorldFromSerialized(persistenceManager.SelectedWorld);
             }
         }
@@ -62,8 +63,6 @@ namespace World
 
             resources.Money = world.ResourceData.Money;
             resources.Population = world.ResourceData.Population;
-            resources.totalDemand = world.ResourceData.TotalDemand;
-            resources.totalSupply = world.ResourceData.TotalSupply;
         }
 
         public Tile CreateTileAt(int x, int z, TileType type)
