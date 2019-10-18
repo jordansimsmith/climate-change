@@ -121,6 +121,7 @@ MonoBehaviour:
     type: 3}
   newWorldInput: {fileID: 760458436336308888}
   createButton: {fileID: 760458436390955828}
+  loader: {fileID: 0}
   worldManager: {fileID: 2145418209}
 --- !u!114 &2145418209
 MonoBehaviour:
@@ -858,7 +859,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 760458435837037564}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

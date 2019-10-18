@@ -6,15 +6,16 @@ using World;
 
 public class EscapeController : MonoBehaviour
 {
+    [SerializeField] private GameObject[] uiElements;
+    [SerializeField] private GameObject loader;
+    [SerializeField] private GameObject escapeUIObj;
+
+    private PostProcessingBehaviour blurComponent;
+    private List<GameObject> elementsOff;
     private bool gameIsPaused = false;
 
-
-    public GameObject[] uiElements;
-    private List<GameObject> elementsOff;
-    public GameObject escapeUIObj;
-    private PostProcessingBehaviour blurComponent;
-
     private GameBoard board;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +52,7 @@ public class EscapeController : MonoBehaviour
                 elementsOff.Add(obj);
             }
         }
+
         blurComponent.enabled = true;
         gameIsPaused = true;
         Time.timeScale = 0f;
@@ -63,6 +65,7 @@ public class EscapeController : MonoBehaviour
         {
             obj.SetActive(true);
         }
+
         elementsOff = new List<GameObject>();
         blurComponent.enabled = false;
         gameIsPaused = false;
@@ -75,11 +78,18 @@ public class EscapeController : MonoBehaviour
         board.SaveGameState();
     }
 
-
     public void BackButtonOnClick()
     {
         Resume();
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
+        loader.SetActive(true);
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            if (scene.name.Equals("TestScene"))
+            {
+                loader.SetActive(false);
+            }
+        };
     }
 
     public void ResumeButtonOnClick()

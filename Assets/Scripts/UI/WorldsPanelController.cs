@@ -1,23 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Persistence;
-using Persistence.Serializables;
+﻿using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WorldsPanelController : MonoBehaviour
 {
-    
     [SerializeField] private Transform contentPanel;
     [SerializeField] private GameObject worldItemPrefab;
     [SerializeField] private InputField newWorldInput;
     [SerializeField] private Button createButton;
+    [SerializeField] private GameObject loader;
 
-    [SerializeField]
-    private WorldManager worldManager;
+    [SerializeField] private WorldManager worldManager;
 
- 
-    
+
     void Start()
     {
         PopulateWorldsList();
@@ -32,7 +27,7 @@ public class WorldsPanelController : MonoBehaviour
             Destroy(item.gameObject);
         }
     }
-    
+
     public void PopulateWorldsList()
     {
         ClearWorlds();
@@ -53,10 +48,8 @@ public class WorldsPanelController : MonoBehaviour
 
         // initialise
         WorldItem worldItem = newItem.GetComponent<WorldItem>();
-        worldItem.Initialise(world);
-       
+        worldItem.Initialise(world, loader);
     }
-    
 
     public void NewWorldTextChanged()
     {
@@ -81,13 +74,5 @@ public class WorldsPanelController : MonoBehaviour
     {
         ClearWorlds();
         gameObject.SetActive(false);
-    }
-
-
- 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class EndScreenController : MonoBehaviour
 {
-    public GameObject winMenuUI;
-    public GameObject loseMenuUI;
+    [SerializeField] private GameObject winMenuUI;
+    [SerializeField] private GameObject loseMenuUI;
+    [SerializeField] private GameObject[] uiElements;
+    [SerializeField] private GameObject loader;
+
     private EscapeController escapeController;
     private PostProcessingBehaviour blurComponent;
-    public GameObject[] uiElements;
     private List<GameObject> elementsOff;
 
     // Start is called before the first frame update
@@ -95,5 +97,13 @@ public class EndScreenController : MonoBehaviour
     public void MainMenuButtonOnClick()
     {
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
+        loader.SetActive(true);
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            if (scene.name.Equals("TestScene"))
+            {
+                loader.SetActive(false);
+            }
+        };
     }
 }
