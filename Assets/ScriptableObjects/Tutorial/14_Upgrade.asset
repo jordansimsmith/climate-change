@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Ewan
   description: Once you save up 10,000 carbon credits you'll be able to upgrade your
-    town hall! Win the game by upgrading your town hall to the 4th level!
+    town hall and unlock new upgrades! Win the game by upgrading your town hall to
+    the 3rd level!
   successMessage: 

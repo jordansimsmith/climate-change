@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 16_Achievements
   m_EditorClassIdentifier: 
   title: 
-  description: 
+  description: You can gain achievements by completing certain tasks! Press CTRL +
+    A on the keyboard to bring up the achievements panel.
   successMessage: 

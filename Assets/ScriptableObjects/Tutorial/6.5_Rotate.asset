@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: 6.5_Rotate
   m_EditorClassIdentifier: 
   title: 
-  description: 
-  successMessage: 
-  keys: 
+  description: 'You can also rotate the world by pressing the Q and E keys! Why don''t
+    you give that a try!
+
+
+    (Hint: Hit Q and E to continue)'
+  successMessage: Nicely Done!
+  keys: 7100000065000000

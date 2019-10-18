@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 15_NPC
   m_EditorClassIdentifier: 
   title: 
-  description: 
+  description: See those people wandering around the map? They are your citizens!
+    Click on them and they will let you know how you are doing as mayor!
   successMessage: 
