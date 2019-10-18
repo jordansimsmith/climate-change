@@ -130,7 +130,7 @@ namespace World
                         }
                         if (tile.Entity == null)
                         {
-                            if (board.GetNumberOfAdjacentGrassTiles(tile) >= 3)
+                            if (board.GetNumberOfAdjacentGrassTiles(tile) >= 2)
                             {
                                 int reclaimCost = tile.ReclaimCost;
                                 if (resources.Money >= reclaimCost)
