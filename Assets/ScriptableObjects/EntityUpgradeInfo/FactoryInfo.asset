@@ -28,7 +28,7 @@ MonoBehaviour:
         food: 0
         shelter: 0
         power: 0
-        environment: 0
+        environment: 5
     - name: Reduce waste
       researchDiff:
         cost: 10
@@ -36,7 +36,7 @@ MonoBehaviour:
         food: 0
         shelter: 0
         power: 0
-        environment: 0
+        environment: 5
   - baseStats:
       cost: 200
       money: 20

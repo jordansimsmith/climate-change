@@ -27,6 +27,14 @@ namespace World.Entities {
             return false;
         }
 
+        public bool ResearchIfEnoughMoney(ResearchOption research) {
+            if (research.isResearched) return false;
+            int cost = research.ResearchDiff.cost;
+            resources.Money -= resources.Money >= cost ? cost : 0;
+            return true;
+        }
+        
+
         public void Destruct(EntityStats res) {
         }
 

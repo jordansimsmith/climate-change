@@ -24,7 +24,7 @@ namespace World.Entities
     
     
     [Serializable]
-    public struct LevelInfo {
+    public class LevelInfo {
         [SerializeField] private EntityStats baseStats;
         [SerializeField] private ResearchOption[] researchOptions;
         public ResearchOption[] ResearchOptions => researchOptions;
@@ -32,7 +32,7 @@ namespace World.Entities
     }
 
     [Serializable]
-    public struct ResearchOption {
+    public class ResearchOption {
         [SerializeField] private string name;
         [SerializeField] private EntityStats researchDiff;
         [NonSerialized] public bool isResearched;

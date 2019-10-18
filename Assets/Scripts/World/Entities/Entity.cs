@@ -15,8 +15,7 @@ namespace World.Entities
             get {
                 
                 //Helper function to apply updates from research
-                void Apply(EntityStats stats, EntityStats diff) {
-                    stats.cost += diff.cost;
+                void Apply(ref EntityStats stats, EntityStats diff) {
                     stats.environment += diff.environment;
                     stats.food += diff.food;
                     stats.money += diff.money;
@@ -30,7 +29,7 @@ namespace World.Entities
                 // Apply updates to the base stats based on research options
                 foreach (var researchOption in UpgradeInfo.GetLevel(Level).ResearchOptions) {
                     if (researchOption.isResearched) {
-                        Apply(levelStat, researchOption.ResearchDiff);
+                        Apply(ref levelStat, researchOption.ResearchDiff);
                     }
                 }
 
@@ -75,6 +74,14 @@ namespace World.Entities
             }
 
             Debug.Log("not enough shmoneys");
+            return false;
+        }
+
+        public virtual bool Research(ResearchOption research) {
+            if (entityHelper.ResearchIfEnoughMoney(research)) {
+                research.isResearched = true;
+                return true;
+            }
             return false;
         }
 

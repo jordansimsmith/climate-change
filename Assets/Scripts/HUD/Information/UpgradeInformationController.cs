@@ -54,10 +54,25 @@ namespace HUD
                     Debug.Log("Not enough space to fit more than 3 research options");
                     break;
                 }
+                
+                // Get the next button and make active
                 var researchButton = researchButtons[index];
                 researchButton.gameObject.SetActive(true);
-                researchButton.enabled = research.isResearched;
                 researchButton.GetComponentInChildren<Text>().text = research.Name;
+                
+                // If research already done, button disabled
+                researchButton.interactable = !research.isResearched;
+                
+                // Callback
+                researchButton.onClick.RemoveAllListeners();
+                if (!research.isResearched) {
+                    researchButton.onClick.AddListener(() => {
+                        if (entity.Research(research)) {
+                            UpdateInformation();
+                        }
+                    });
+                }
+                
                 index++;
             }
 
@@ -80,6 +95,7 @@ namespace HUD
                 EnableUpgradeButton();
             }
         }
+        
 
         public void UpgradeEntity()
         {
