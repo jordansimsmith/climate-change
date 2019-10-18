@@ -1,4 +1,5 @@
 ﻿using NaturalDisasters;
+using Tutorial;
 using UnityEngine;
 using World.Resource;
 
@@ -7,11 +8,13 @@ public class CheatController : MonoBehaviour
     [SerializeField] private ResourceSingleton resources;
     private NaturalDisasterDispatcher disasters;
     private EndScreenController endScreen;
+    private TutorialManager tutorialManager;
 
     private void Awake()
     {
         disasters = FindObjectOfType<NaturalDisasterDispatcher>();
         endScreen = FindObjectOfType<EndScreenController>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
     private void Update()
@@ -43,7 +46,7 @@ public class CheatController : MonoBehaviour
         {
             // cheat for more money
             Debug.Log("money cheat");
-            resources.Money += 1_000;
+            resources.Money += 1_000_000;
         }
 
         // game state
@@ -59,6 +62,13 @@ public class CheatController : MonoBehaviour
             // cheat for lose
             Debug.Log("lose cheat");
             endScreen.EnableLoseScreen();
+        }
+        
+        // tutorial
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            // cheat to skip the tutorial
+            tutorialManager.EndTutorial();
         }
     }
 }

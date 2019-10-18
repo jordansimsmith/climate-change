@@ -7,24 +7,7 @@ namespace Audio
    public class AudioManager : MonoBehaviour
    {
       private static AudioManager _instance;
-      public static AudioManager Instance
-      {
-         get
-         {
-            if (_instance == null)
-            {
-               _instance = FindObjectOfType<AudioManager>();
-               if (_instance == null)
-               {
-                  _instance = new GameObject("Spawned AudioManager", typeof(AudioManager)).GetComponent<AudioManager>();
-               }
-            }
-
-            return _instance;
-         }
-
-         private set { _instance = value; }
-      }
+      public static AudioManager Instance => _instance;
 
       public EntitySound[] sounds;
       public Sound conversationSound;
@@ -32,7 +15,10 @@ namespace Audio
 
       private void Awake()
       {
-         foreach (var s in sounds)
+         // set singleton instance
+         _instance = this;
+         
+         foreach (EntitySound s in sounds)
          {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.AudioClip;
@@ -46,9 +32,9 @@ namespace Audio
       {
          Tile tile = gameTile.GetComponent<Tile>();
          EntitySound s = Array.Find(sounds, sound => sound.EntityType == tile.Entity.Type);
-         if (s != null)   {
-            s.source.Play();
-         }
+         
+         // play sound
+         s?.source.Play();
       }
 
       public void StartConversation()

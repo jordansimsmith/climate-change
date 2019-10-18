@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private int demandMargin; // A margin that will be subtracted from demand when calculating ratios, makes it safer for new players/small towns
     [SerializeField] private int secondsToLose; // Number of secs a player can survive a loosing condition
     private int secondsLoosing; // Used to count number of secs (0-20) a loss condition has been present
-    public bool Loosing => (secondsLoosing > 0);
+    public bool Loosing => secondsLoosing > 0;
 
 
     // Start is called before the first frame update
