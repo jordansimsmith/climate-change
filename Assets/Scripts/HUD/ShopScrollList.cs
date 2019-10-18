@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using World;
 using World.Entities;
 
 [System.Serializable]
@@ -14,6 +15,7 @@ public class ShopScrollList : MonoBehaviour
     [SerializeField] private List<Item> shopItems;
     [SerializeField] private Transform contentPanel;
     [SerializeField] private GameObject shopItemPrefab;
+    [SerializeField] private GameBoard gameBoard;
 
     private ShopItem townHall;
 
@@ -22,6 +24,9 @@ public class ShopScrollList : MonoBehaviour
     {
         // populate list
         AddItems();
+        
+        // check whether there is a town hall
+        InvokeRepeating("CheckForTownHall", 0f, 1f);
     }
 
     public void DisableTownHall()
@@ -32,6 +37,15 @@ public class ShopScrollList : MonoBehaviour
             // hide town hall
             townHall.gameObject.SetActive(false);
         }
+    }
+
+    private void CheckForTownHall()
+    {
+        // is there a town hall placed?
+        bool townHallExists = gameBoard.IsEntityTypeOnBoard(EntityType.TownHall);
+
+        // show/hide town hall build button
+        townHall.gameObject.SetActive(!townHallExists);
     }
 
     private void AddItems()
