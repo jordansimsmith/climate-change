@@ -6,7 +6,6 @@ using World.Resource;
 namespace World.Entities {
     [CreateAssetMenu]
     public class EntityHelper : ScriptableObject {
-
         [SerializeField] private ResourceSingleton resources;
         [SerializeField] private GameObject outlineCube;
         [SerializeField] private Material redTransparentMat;

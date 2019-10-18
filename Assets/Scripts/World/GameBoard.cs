@@ -209,5 +209,40 @@ namespace World
             updatedWorld.CreationTime = persistenceManager.SelectedWorld.CreationTime;
             persistenceManager.SaveGameState(updatedWorld);
         }
+
+        
+        private int GetNumberOfAdjacentGrassTiles(Tile tile)
+        {
+            int[] coords = {1, 0, -1};
+            int numOfGrassTiles = 0;
+
+            for (var i = 0; i < coords.Length; i++)
+            {
+                for (var j = 0; j < coords.Length; j++)
+                {
+                    int x = tile.Pos.x;
+                    int y = tile.Pos.y;
+                    
+                    // check if out of bounds
+                    if (x < 0 || x >= boardSize || y < 0 || y >= boardSize)
+                    {
+                        continue;
+                    }
+
+                    x += coords[i];
+                    y += coords[j];
+
+                    Tile adjacentTile = tiles[x, y];
+
+                    if (adjacentTile.TileType == TileType.Grass)
+                    {
+                        numOfGrassTiles++;
+                    }
+                }
+            }
+
+            return numOfGrassTiles;
+
+        }
     }
 }

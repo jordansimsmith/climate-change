@@ -12,6 +12,7 @@ public class DeleteHandler : EventTrigger
     private static Vector4 hoverAlpha = new Vector4(1, 0.5f, 0.5f, 0.9f);
     private EntityPlacer placer;
     private ContentPanelController controller;
+    private Text cost;
 
     public void Start()
     {
@@ -19,6 +20,7 @@ public class DeleteHandler : EventTrigger
         this._background.color = defaultAlpha;
         this.placer = FindObjectOfType<EntityPlacer>();
         this.controller = FindObjectOfType<ContentPanelController>();
+        cost = GetComponentInParent<ContentPanelController>().GetComponentInChildren<Text>();
     }
 
     public override void OnPointerDown(PointerEventData data)
@@ -29,6 +31,7 @@ public class DeleteHandler : EventTrigger
     public override void OnPointerEnter(PointerEventData data)
     {
         this._background.color = hoverAlpha;
+        cost.text = "Bruh moment";
     }
 
     public override void OnPointerExit(PointerEventData data)
