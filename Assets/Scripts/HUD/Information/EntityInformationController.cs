@@ -16,7 +16,8 @@ namespace HUD
         [SerializeField] protected GameController gameController;
 
         protected Entity entity;
-        public Entity Entity { get; set; }
+
+        public Entity Entity => entity;
 
         public void ShowInformation( Entity e)
         {
