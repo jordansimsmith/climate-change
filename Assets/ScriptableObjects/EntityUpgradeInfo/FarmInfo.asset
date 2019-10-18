@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba45628976743dd8c1aff117038edb1, type: 3}
   m_Name: FarmInfo
   m_EditorClassIdentifier: 
-  levelInfo: []
+  levelInfo:
+  - baseStats:
+      cost: 10
+      money: 0
+      food: 10
+      shelter: -5
+      power: 0
+      environment: -5
+    researchOptions: []
+  - baseStats:
+      cost: 20
+      money: 0
+      food: 20
+      shelter: -5
+      power: 0
+      environment: -5
+    researchOptions: []
+  - baseStats:
+      cost: 40
+      money: 0
+      food: 40
+      shelter: -5
+      power: 0
+      environment: -5
+    researchOptions: []

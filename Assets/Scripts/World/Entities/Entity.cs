@@ -110,7 +110,13 @@ namespace World.Entities
 
         public void OnMouseDown()
         {
-            UpgradeInformationController.Instance.ShowInformation(this);
+            var visual = UpgradeInformationController.Instance;
+            if (visual == null)
+            {
+                Debug.Log("UpgradeInformationController is null");
+                return;
+            }
+            visual.ShowInformation(this);
         }
     }
 }

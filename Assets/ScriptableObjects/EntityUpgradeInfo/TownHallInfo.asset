@@ -10,6 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ba45628976743dd8c1aff117038edb1, type: 3}
-  m_Name: FarmInfo 3
+  m_Name: TownHallInfo
   m_EditorClassIdentifier: 
-  levelInfo: []
+  levelInfo:
+  - baseStats:
+      cost: 0
+      money: 0
+      food: 0
+      shelter: 0
+      power: 0
+      environment: 0
+    researchOptions: []
+  - baseStats:
+      cost: 0
+      money: 0
+      food: 0
+      shelter: 0
+      power: 0
+      environment: 0
+    researchOptions: []
+  - baseStats:
+      cost: 0
+      money: 0
+      food: 0
+      shelter: 0
+      power: 0
+      environment: 0
+    researchOptions: []

@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   townHallPreFab: {fileID: 8068884375748032247, guid: 9665868e38efc8342a592f7d4c82665b,
     type: 3}
-  factoryEntity: {fileID: 3543377990499035316, guid: 2eb2c8d73d33f478a89be67bf607eb99,
+  factoryEntity: {fileID: 1266474832854779900, guid: 38adadb5234bb412fbf27546125b438d,
     type: 3}
   farmEntity: {fileID: -6795025145051476749, guid: 915900f7bf0f69d4fbdc2aa358a0f2ff,
     type: 3}
