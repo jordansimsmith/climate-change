@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using DefaultNamespace;
 using Newtonsoft.Json;
 using Persistence;
 using Persistence.Serializables;
@@ -20,33 +21,49 @@ public class WorldManager : MonoBehaviour
     private PersistenceManager persistenceManager;
     [SerializeField]
     private WorldGenerator worldGenerator;
+    [SerializeField]
+    private AuthHandler authHandler;
+
+
+    private List<ServerWorld> serverWorlds;
+
  
     void Start()
     {
         persistenceManager = FindObjectOfType<PersistenceManager>();
+  
+        serverWorlds = null;
+        
     }
 
     void Awake()
     {
       
     }
-
-    public List<SerializableWorld> LoadWorldsFromDisk()
+    
+    
+    public void FetchWorlds(Action<List<ServerWorld>> callback = null)
     {
-        string[] filePaths = Directory.GetFiles(Path.Combine(Application.persistentDataPath, "worlds"));
-        List<SerializableWorld> worlds = new List<SerializableWorld>();
-        foreach (string path in filePaths)
+        
+        APIService.Instance.GetWorlds((dbWorlds) =>
         {
-            string worldJson = File.ReadAllText(path);
-            SerializableWorld world = JsonConvert.DeserializeObject<SerializableWorld>(worldJson);
-            worlds.Add(world);
-        }
+            Debug.Log("Received worlds");
+            serverWorlds = dbWorlds;
 
-        return worlds;
+            if (callback != null)
+                callback(dbWorlds);
+        });
+        
+    }
+
+    public List<ServerWorld> ServerWorlds
+    {
+        get => serverWorlds;
+        set => serverWorlds = value;
     }
     
 
-    public SerializableWorld CreateWorld(string name, int boardSize = 20)
+    private SerializableWorld generateSerializableWorld(string name, int boardSize = 20)
     {
         TileType[,] layout = GetComponent<WorldGenerator>().Generate(boardSize);
         SerializableTile[,] tiles = new SerializableTile[boardSize, boardSize];
@@ -77,11 +94,29 @@ public class WorldManager : MonoBehaviour
         newWorld.ResourceData = initialResource;
         newWorld.WorldData = tiles;
         newWorld.Name = name;
-        newWorld.CreationTime = DateTime.Now.ToLongTimeString();
-        
-        persistenceManager.SaveGameState(newWorld);
-        
+        newWorld.CreationTime = DateTime.UtcNow.ToString();
+
         return newWorld;
+    }
+    public ServerWorld CreateWorld(string name, int boardSize = 20)
+    {
+    
+        SerializableWorld newWorld = generateSerializableWorld(name);
+        
+        
+        ServerWorld serverWorld = new ServerWorld(newWorld);
+        
+        APIService.Instance.CreateWorld(serverWorld, worldId => { serverWorld.id = worldId; });
+
+        if (ServerWorlds == null)
+        {
+            ServerWorlds = new List<ServerWorld>();
+        }
+        
+        
+        ServerWorlds.Add(serverWorld);
+
+        return serverWorld;
 
     }
 

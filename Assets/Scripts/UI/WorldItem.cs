@@ -5,21 +5,24 @@ using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using World;
 
 public class WorldItem : MonoBehaviour
 {
     [SerializeField] private Text worldNameText;
     [SerializeField] private Text carbonCreditsText;
     [SerializeField] private Text populationText;
+    [SerializeField] private GameObject sharePanel;
 
 
-    private SerializableWorld world;
+    private ServerWorld world;
     private PersistenceManager persistenceManager;
     
     // Start is called before the first frame update
     void Start()
     {
         persistenceManager = FindObjectOfType<PersistenceManager>();
+        sharePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,12 +44,18 @@ public class WorldItem : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Initialise(SerializableWorld world)
+    public void Initialise(ServerWorld serverWorld)
     {
-        this.world = world;
-        worldNameText.text = world.Name;
-        carbonCreditsText.text = world.ResourceData.Money.ToString();
-        populationText.text = world.ResourceData.Population.ToString();
+        this.world = serverWorld;
+        worldNameText.text = serverWorld.world.Name;
+        carbonCreditsText.text = serverWorld.world.ResourceData.Money.ToString();
+        populationText.text = serverWorld.world.ResourceData.Population.ToString();
+
+        if (serverWorld.shareCode != null)
+        {
+            sharePanel.SetActive(true);
+            sharePanel.GetComponentInChildren<Text>().text = serverWorld.shareCode;
+        }
     }
     
     

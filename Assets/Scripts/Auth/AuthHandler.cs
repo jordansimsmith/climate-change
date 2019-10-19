@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Firebase.Auth;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -27,11 +28,13 @@ public class AuthHandler : MonoBehaviour
     {
         currentAuth = auth;
     }
-    
-    public async void LoginAnonymously()
+
+    public async void LoginAnonymously(System.Action<FirebaseAuth> onLogin)
     {
         FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
-        Debug.Log(auth.FirebaseToken);
+     
+        onLogin(auth);
+        
         UpdateAuthState(auth);
     }
 
@@ -42,10 +45,12 @@ public class AuthHandler : MonoBehaviour
     
 
     #if UNITY_WEBGL
-    public void OpenUI() {
+    public void OpenUI(System.Action<FirebaseAuth> onLogin) {
         if (Application.isEditor)
         {
-            LoginAnonymously();
+            
+          
+            LoginAnonymously(onLogin);
         }
         else
         {
@@ -53,13 +58,7 @@ public class AuthHandler : MonoBehaviour
         }
     }
     
-    public async void LoginAnonymously()
-    {
-        FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
-        Debug.Log(auth.FirebaseToken);
-        UpdateAuthState(auth);
-    }
-    
+
 
 
 

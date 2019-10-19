@@ -25,9 +25,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("PollResources", 0, 1f);
-        APIService.Instance.access_token = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhMWQ3NzBlZWY5ZWFhNjU0MzY1ZGE5MDhjNDIzY2NkNzY4ODkxMDUiLCJ0eXAiOiJKV1QifQ.eyJwcm92aWRlcl9pZCI6ImFub255bW91cyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9jYWVsaWFwaSIsImF1ZCI6ImNhZWxpYXBpIiwiYXV0aF90aW1lIjoxNTcxNDUyODUyLCJ1c2VyX2lkIjoiNkRVa1lEQ1h4cVlOTW9vN041dnhieTlYc2JTMiIsInN1YiI6IjZEVWtZRENYeHFZTk1vbzdONXZ4Ynk5WHNiUzIiLCJpYXQiOjE1NzE0NTI4NTIsImV4cCI6MTU3MTQ1NjQ1MiwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6e30sInNpZ25faW5fcHJvdmlkZXIiOiJhbm9ueW1vdXMifX0.drhFO0bJpPQtnSo1e1KDJ7AUzr8bte7KuJmLkow0VC3_mYXPN_EcY8zJEz8JbVDa_dtQ7YpRdc45ddX64udKNMrGe8zJ-TJ9H2yI29Q0Z4lYkqgjJEYHGXdL4Q7hHvbGLm3EPERgiflF4b_dsCrxbFhoJXybd0l3TSQPwr2UFKWTucL1O0kdZ6PGm815St_LxAJa8B1OZ4AhdmWb6gC2fh7CFhIOrublCHlzKtiFuYHtAkiiITXf4-LKiCQ4bP0Z8s3jKceVi_c-9a3kkE-RHRcprPMttllf3KnMnkr23XThYZ5bJUhmWnFy0lCcHJbKoZsVVtOFxIKmc8-jAPV4vA";
-        APIService.Instance.GetWorlds(list => Debug.Log(list));
-        
     }
 
     private void PollResources()
