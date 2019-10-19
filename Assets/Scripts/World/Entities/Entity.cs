@@ -75,7 +75,7 @@ namespace World.Entities
                 }
 
                 if (Type == EntityType.TownHall) {
-                    entityHelper.townhallLevel = Level;
+                    entityHelper.townhallLevel++;
                 }
                 
                 return true;

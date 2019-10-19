@@ -12,6 +12,7 @@ namespace World.Entities {
         [SerializeField] private Material greenTransparentMat;
         
         private EntityPlacer entityPlacer;
+        
         public int townhallLevel = 1;
         
 

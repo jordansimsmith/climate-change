@@ -6853,6 +6853,8 @@ MonoBehaviour:
   shopItemPrefab: {fileID: 7677043186662401089, guid: 4123ab23f8b82694f92b2aa0f12452e1,
     type: 3}
   gameBoard: {fileID: 0}
+  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
+  phaseTwoEntities: 060000000700000008000000
 --- !u!114 &332353342153949833
 MonoBehaviour:
   m_ObjectHideFlags: 0
