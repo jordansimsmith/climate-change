@@ -1,7 +1,8 @@
 # Climate Change
 In this project, teams will be required to design and implement a web-based serious game on Climate Change for children in intermediate school years (aged 12-13).
 
-![caeli](https://thumbs.gfycat.com/IncompatibleUncomfortableIggypops-size_restricted.gif)
+![caeli](https://user-images.githubusercontent.com/31643423/67136794-0b442480-f288-11e9-9432-6b8061db87b6.gif)
+
 
 ## Team members (Team 10) 
 
