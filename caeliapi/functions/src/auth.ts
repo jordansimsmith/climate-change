@@ -17,17 +17,16 @@ export const checkIfAuthenticated = (req: any, res: any, next: any) => {
     getAuthToken(req, res, async () => {
         try {
             const { authToken } = req;
-            console.log(authToken);
-            console.log(firebaseApp.name);
             const userInfo = await firebaseApp
                 .auth()
                 .verifyIdToken(authToken);
             req.authId = userInfo.uid;
             return next();
         } catch (e) {
+            console.log(e.message);
             return res
                 .status(401)
-                .send({ error: 'You are not authorized to make this request' });
+                .send({ error: 'You are not authorized to make this request ' +req.authToken });
         }
     });
 };

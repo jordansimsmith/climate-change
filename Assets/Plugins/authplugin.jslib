@@ -13,14 +13,17 @@ var AuthFunctions =
             
                       // The signed-in user info.
                       var user = result.user;
+                      user.getIdToken().then((token) => {
                   
-                      const successObj = {
-                        accessToken: result.credential.accessToken,
-                        idToken: result.credential.idToken
-                      }
+                            const successObj = {
+                                accessToken: result.credential.accessToken,
+                                idToken: token
+                            }
+                                       
+                            unityInstance.SendMessage("AuthHandler", "GoogleLoginSuccess", JSON.stringify(successObj));
+                            
+                      });
                      
-                      unityInstance.SendMessage("AuthHandler", "GoogleLoginSuccess", JSON.stringify(successObj));
-          
                     }).catch(function(error) {
                       console.log(error);
                       // Handle Errors here.
