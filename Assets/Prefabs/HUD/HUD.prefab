@@ -6837,9 +6837,18 @@ MonoBehaviour:
   - entity: {fileID: 6472262284098676859, guid: 3008f66a9ade549e59266c86a50d0af3,
       type: 3}
     sprite: {fileID: 21300000, guid: db858f460b23c1e4ab5ed63ba000dc45, type: 3}
-  - entity: {fileID: 3543377990499035316, guid: 2eb2c8d73d33f478a89be67bf607eb99,
+  - entity: {fileID: 1266474832854779900, guid: 38adadb5234bb412fbf27546125b438d,
       type: 3}
     sprite: {fileID: 21300000, guid: d04a7b137a1aa9040a96fe05eae4f5a9, type: 3}
+  - entity: {fileID: 4823539670517023074, guid: 7f669fdcc13ef423e8d2d4bd160cbd45,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 580ba2ecd75ac4c309e9e54d4b968c03, type: 3}
+  - entity: {fileID: 4215198054487782673, guid: 21d26c932798646b9bad8d9ed0b4c221,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 9fbd57603362846c486bee7fa340320b, type: 3}
+  - entity: {fileID: 5595932140909047111, guid: 8590c1f5b0fd54c56af86cc524b5c6e3,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 5b5bc2fbbdaa54e8c8a3fa9cba75d526, type: 3}
   contentPanel: {fileID: 4019730763119803877}
   shopItemPrefab: {fileID: 7677043186662401089, guid: 4123ab23f8b82694f92b2aa0f12452e1,
     type: 3}
