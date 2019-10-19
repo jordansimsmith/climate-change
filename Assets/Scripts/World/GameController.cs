@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("PollResources", 0, 1f);
-        StartCoroutine(APIService.Instance.Get("https://jsonplaceholder.typicode.com/todos/1"));
+        // StartCoroutine(APIService.Instance.Get("https://jsonplaceholder.typicode.com/todos/1"));
 
     }
 
