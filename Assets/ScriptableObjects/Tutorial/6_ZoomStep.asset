@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Ewan
   description: "You can also zoom in with Z and zoom out with X.\n \n(Hint: Hit Z
     and X to continue)"
-  successMessage: 
+  successMessage: Nice!
   keys: 7a00000078000000

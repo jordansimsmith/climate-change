@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Ewan
   description: "Let\u2019s take a look around the island, move your mouse to the edges
     of the screen or use WASD to pan.\n\n(Hint: Hit W,A,S,D to continue)"
-  successMessage: 
+  successMessage: Great!
   keys: 77000000610000007300000064000000
