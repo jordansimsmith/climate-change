@@ -37,16 +37,8 @@ namespace World.Tiles
                 return Int32.MaxValue;
             }
         }
-        
 
         private Entity entity;
-        private EntityInformationController informationController;
-
-        public void Awake()
-        {
-            informationController = FindObjectOfType<UpgradeInformationController>();
-        }
-
         public Entity Entity
         {
             get => entity;
