@@ -15,6 +15,10 @@ In this project, teams will be required to design and implement a web-based seri
 | Jed Robertson      | JedLJRobertson  | Jrob928 |
 | Jordan Sim-Smith   | jordansimsmith  | Jsim862 |
 
+### A team photo:
+
+![TeamPhoto](https://user-images.githubusercontent.com/31643423/67136196-7a694b00-f27f-11e9-8434-dca8ebf5494a.jpeg)
+
 ## How to collaborate
 
 **Git LFS**  
