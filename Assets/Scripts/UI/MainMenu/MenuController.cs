@@ -25,26 +25,11 @@ public class MenuController : MonoBehaviour
     public void PlayButtonOnClick()
     {
         viewWorldPanel.SetActive(false);
-        AuthHandler handler = FindObjectOfType<AuthHandler>();
-        if (APIService.Instance.access_token != null)
-        {
-            worldsPanel.SetActive(true);
-            worldsPanel.GetComponent<WorldsPanelController>().PopulateWorldsList();
-        }
-        else
-        {
-            
-            handler.OpenUI((auth) =>
-            {
-                APIService.Instance.access_token = auth.FirebaseToken;
-                Debug.Log("Logged in "+auth.FirebaseToken);
-                worldsPanel.GetComponent<WorldsPanelController>().PopulateWorldsList();
-
-                worldsPanel.SetActive(true);
-            });
-        }
-      
+        worldsPanel.SetActive(true);
+        worldsPanel.GetComponent<WorldsPanelController>().PopulateWorldsList();
     }
+    
+    
 
     public void OpenViewWorldModal()
     {

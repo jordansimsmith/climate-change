@@ -18,20 +18,16 @@ namespace Persistence
             NullValueHandling = NullValueHandling.Ignore
         };
 
-        private static bool created = false;
+      
         private ServerWorld selectedWorld;
 
-        private string worldsDirectoryPath;
-
+        private static bool created = false;
         void Awake()
         {
             if (!created)
             {
                 DontDestroyOnLoad(gameObject);
                 created = true;
-                // Ensure Worlds directory is created when game loads.
-                worldsDirectoryPath = Path.Combine(Application.persistentDataPath, "worlds");
-                Directory.CreateDirectory (worldsDirectoryPath);
             }
             else
             {
@@ -64,7 +60,5 @@ namespace Persistence
             get => selectedWorld;
             set => selectedWorld = value;
         }
-
-        public string WorldsDirectoryPath => worldsDirectoryPath;
     }
 }

@@ -141,6 +141,7 @@ namespace DefaultNamespace
         {
             StartCoroutine(Get(WORLDS_ENDPOINT, (jsonData) =>
             {
+                Debug.Log(jsonData);
                 List<ServerWorld> worlds  = JsonConvert.DeserializeObject<List<ServerWorld>>(jsonData);
                 callBack(worlds);
             }));

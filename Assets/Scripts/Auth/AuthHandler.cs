@@ -10,12 +10,26 @@ using UnityEngine.Networking.Types;
 
 public class AuthHandler : MonoBehaviour
 {
-    private FirebaseAuthLink currentAuth;
+    private static FirebaseAuthLink currentAuth;
     
     [DllImport("__Internal")]
     private static extern void OpenAuthUI();
 
     private FirebaseAuthProvider authProvider;
+    
+    private static bool created = false;
+    void Awake()
+    {
+        if (!created)
+        {
+            DontDestroyOnLoad(gameObject);
+            created = true;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -32,10 +46,10 @@ public class AuthHandler : MonoBehaviour
     public async void LoginAnonymously(System.Action<FirebaseAuth> onLogin)
     {
         FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
-     
+        UpdateAuthState(auth);
         onLogin(auth);
         
-        UpdateAuthState(auth);
+    
     }
 
 
@@ -44,12 +58,10 @@ public class AuthHandler : MonoBehaviour
 
     
 
-    #if UNITY_WEBGL
+
     public void OpenUI(System.Action<FirebaseAuth> onLogin) {
         if (Application.isEditor)
         {
-            
-          
             LoginAnonymously(onLogin);
         }
         else
@@ -89,11 +101,6 @@ public class AuthHandler : MonoBehaviour
         public string IdToken => idToken;
     }
 
-    #else
-    public void OpenUI() {
-        LoginAnonymously();
-    }
-    #endif
     
     
     
