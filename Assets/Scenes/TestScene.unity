@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: World
       objectReference: {fileID: 0}
+    - target: {fileID: 7941001179048457792, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: m_TagString
+      value: InGameBoard
+      objectReference: {fileID: 0}
     - target: {fileID: 7941001179834700957, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,10 @@ namespace World.Entities {
         [SerializeField] private GameObject outlineCubePrefab;
         [SerializeField] private Material redTransparentMat;
         [SerializeField] private Material greenTransparentMat;
+        
         private EntityPlacer entityPlacer;
+        public int townhallLevel = 1;
+        
 
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
@@ -26,6 +29,14 @@ namespace World.Entities {
 
             return false;
         }
+
+        public bool IsTownhallLevelEnoughForUpgrade(Entity entity) {
+            if (entity.Type == EntityType.TownHall) {
+                return true;
+            }
+            return entity.Level < townhallLevel;
+        }
+        
 
         public bool ResearchIfEnoughMoney(ResearchOption research) {
             if (research.isResearched) return false;

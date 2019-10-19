@@ -60,6 +60,10 @@ namespace World.Entities
                 return false;
             }
 
+            if (!entityHelper.IsTownhallLevelEnoughForUpgrade(this)) {
+                return false;
+            } 
+            
             int upgradeCost = GetUpgradeCost();
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
@@ -68,6 +72,10 @@ namespace World.Entities
                 // Switch out the model when upgrading to next level
                 for (int i = 0; i < modelForLevel.Length; i++) {
                     modelForLevel[i].SetActive(i == Level - 1);
+                }
+
+                if (Type == EntityType.TownHall) {
+                    entityHelper.townhallLevel = Level;
                 }
                 
                 return true;
