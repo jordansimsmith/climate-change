@@ -135,7 +135,6 @@ namespace World
                                 int reclaimCost = tile.ReclaimCost;
                                 if (resources.Money >= reclaimCost)
                                 {
-                                    Debug.Log("bruh");
                                     resources.Money -= reclaimCost;
                                     board.ReclaimTile(tile);
                                 }
