@@ -35,7 +35,6 @@ public class WorldManager : MonoBehaviour
     {
         string[] filePaths = Directory.GetFiles(Path.Combine(Application.persistentDataPath, "worlds"));
         List<SerializableWorld> worlds = new List<SerializableWorld>();
-        Debug.Log(filePaths);
         foreach (string path in filePaths)
         {
             string worldJson = File.ReadAllText(path);

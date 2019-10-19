@@ -27,6 +27,14 @@ public class AuthHandler : MonoBehaviour
     {
         currentAuth = auth;
     }
+    
+    public async void LoginAnonymously()
+    {
+        FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
+        Debug.Log(auth.FirebaseToken);
+        UpdateAuthState(auth);
+    }
+
 
 
     public FirebaseAuthLink CurrentAuth => currentAuth;
