@@ -54,6 +54,29 @@ namespace DefaultNamespace
             }
         }
 
+        public IEnumerator Post(string url, string data)
+        {
+            using (UnityWebRequest www = UnityWebRequest.Post(url, data))
+            {
+                www.uploadHandler.contentType = "application/json";
+                www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(data)); 
+                yield return www.SendWebRequest();
+
+                if (www.isNetworkError)
+                {
+                    Debug.Log(www.error);
+                }
+                else
+                {
+                    if (www.isDone)
+                    {
+                        Debug.Log("completed");
+                    }
+                }
+
+            }
+        }
+
 
 //        public List<SerializableWorld> GetWorlds()
 //        {
