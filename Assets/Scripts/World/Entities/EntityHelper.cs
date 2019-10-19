@@ -8,11 +8,10 @@ namespace World.Entities {
     public class EntityHelper : ScriptableObject {
 
         [SerializeField] private ResourceSingleton resources;
-        [SerializeField] private GameObject outlineCube;
+        [SerializeField] private GameObject outlineCubePrefab;
         [SerializeField] private Material redTransparentMat;
         [SerializeField] private Material greenTransparentMat;
         
-
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
         }
@@ -28,20 +27,28 @@ namespace World.Entities {
             return false;
         }
 
+        public bool ResearchIfEnoughMoney(ResearchOption research) {
+            if (research.isResearched) return false;
+            int cost = research.ResearchDiff.cost;
+            resources.Money -= resources.Money >= cost ? cost : 0;
+            return true;
+        }
+        
+
         public void Destruct(EntityStats res) {
         }
 
-        public void IncreaseMoneyRate(int amount) {
-            resources.MoneyRate += amount;
-        }
+//        public void IncreaseMoneyRate(int amount) {
+//            resources.MoneyRate += amount;
+//        }
         
-        public void DecreaseMoneyRate(int amount) {
-            resources.MoneyRate -= amount;
-        }
-        
+//        public void DecreaseMoneyRate(int amount) {
+//            resources.MoneyRate -= amount;
+//        }
+//        
         public GameObject CreateOutlineCube()
         {
-            return Instantiate(outlineCube);
+            return Instantiate(outlineCubePrefab);
         }
 
         public void SetOutlineColor(GameObject cube, bool canBePlaced)

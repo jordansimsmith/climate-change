@@ -29,7 +29,18 @@ public class GameController : MonoBehaviour
     private void PollResources()
     {
         CalculateResources();
+        CalculateMoneyRate();
         LoseConditions();
+    }
+
+
+    private void CalculateMoneyRate() {
+        int moneyRate = 0;
+        foreach (var tile in gameBoard.Tiles) {
+            if (tile.Entity == null) continue;
+            moneyRate += tile.Entity.Stats.money;
+        }
+        resources.MoneyRate = moneyRate;
     }
 
     // Triggers loss if any lose condition held for more than "secondsToLose"
