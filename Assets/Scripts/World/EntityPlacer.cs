@@ -130,22 +130,20 @@ namespace World
                         }
                         if (tile.Entity == null)
                         {
-                            int reclaimCost = tile.ReclaimCost;
-                            if (tile.TileType == TileType.Grass)
-                            {   
-                                Debug.Log("grass");
+                            if (board.GetNumberOfAdjacentGrassTiles(tile) >= 3)
+                            {
+                                int reclaimCost = tile.ReclaimCost;
+                                if (resources.Money >= reclaimCost)
+                                {
+                                    Debug.Log("bruh");
+                                    resources.Money -= reclaimCost;
+                                    board.ReclaimTile(tile);
+                                }
                             }
                             else
                             {
-                                Debug.Log("something else");
+                                Debug.Log("not enough adjacent grass tiles");
                             }
-                            if (resources.Money >= reclaimCost)
-                            {
-                                Debug.Log("bruh");
-                                resources.Money -= reclaimCost;
-                                board.ReclaimTile(tile);
-                            }
-                            
                         }
                        
                     }

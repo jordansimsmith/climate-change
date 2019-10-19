@@ -1,6 +1,7 @@
 using System;
 using HUD;
 using UnityEngine;
+using UnityEngine.UI;
 using World.Entities;
 
 namespace World.Tiles
@@ -9,6 +10,9 @@ namespace World.Tiles
     {
         [SerializeField]
         private TileType tileType;
+
+        private Text cost;
+        private EntityPlacer placer;
 
         public Vector2Int Pos { get; set; }
         public TileType TileType
@@ -73,5 +77,47 @@ namespace World.Tiles
         }
 
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
+
+        public void OnMouseEnter()
+        {
+            if (placer == null)
+            {
+                placer = FindObjectOfType<EntityPlacer>();
+            }
+
+            if (cost == null)
+            {
+                cost = GameObject.FindWithTag("ReclaimCost").GetComponent<Text>();
+            }
+
+            if (placer != null)
+            {
+                if (placer.Mode == EntityPlacerMode.RECLAIM)
+                {
+                    if (TileType == TileType.Sand || TileType == TileType.Water)
+                    {
+                        cost.text = "Cost: " + ReclaimCost;
+                    }
+                    else
+                    {
+                        ResetCostText();
+                    }
+                }
+                else
+                {
+                    ResetCostText();
+                }
+            }
+        }
+
+        public void OnMouseExit()
+        {
+            ResetCostText();
+        }
+
+        private void ResetCostText()
+        {
+            cost.text = "";
+        }
     }
 }
