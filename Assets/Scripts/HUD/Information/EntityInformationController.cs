@@ -17,6 +17,8 @@ namespace HUD
 
         protected Entity entity;
 
+        public Entity Entity => entity;
+
         public void ShowInformation( Entity e)
         {
             entity = e;

@@ -109,6 +109,12 @@ namespace HUD
             }
         }
 
+
+        public bool isUpgradeInformationOpen()
+        {
+            return gameObject.activeSelf;
+        }
+        
         private void EnableUpgradeButton()
         {
             upgradeButtonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";

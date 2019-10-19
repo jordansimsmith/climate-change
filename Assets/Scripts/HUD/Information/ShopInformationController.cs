@@ -18,6 +18,7 @@ namespace HUD
                 return;
             }
 
+            cost.text = "Cost: " + entity.Stats.cost;
             title.text = entity.Type.ToString();
             cost.text = "Cost: " + entity.Stats.cost;
             RefreshEntityStats();

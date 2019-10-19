@@ -8,6 +8,7 @@ namespace HUD
     {
         [SerializeField] private Button reclaimButton;
         [SerializeField] private Button deleteButton;
+        [SerializeField] private Text cost;
 
         public void InvalidateUI()
         {

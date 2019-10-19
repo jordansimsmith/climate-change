@@ -6,12 +6,12 @@ using World.Resource;
 namespace World.Entities {
     [CreateAssetMenu]
     public class EntityHelper : ScriptableObject {
-
         [SerializeField] private ResourceSingleton resources;
         [SerializeField] private GameObject outlineCubePrefab;
         [SerializeField] private Material redTransparentMat;
         [SerializeField] private Material greenTransparentMat;
-        
+        private EntityPlacer entityPlacer;
+
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
         }
@@ -56,6 +56,15 @@ namespace World.Entities {
             cube.GetComponent<Renderer>().material = canBePlaced
                 ? greenTransparentMat
                 : redTransparentMat;
+        }
+
+        public EntityPlacerMode GetEntityPlacerMode()
+        {
+            if (entityPlacer == null)
+            {
+                entityPlacer = FindObjectOfType<EntityPlacer>();
+            }
+            return entityPlacer.Mode;
         }
     }
 }

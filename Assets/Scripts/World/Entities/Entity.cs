@@ -117,13 +117,22 @@ namespace World.Entities
 
         public void OnMouseDown()
         {
-            var visual = UpgradeInformationController.Instance;
-            if (visual == null)
+            if (entityHelper.GetEntityPlacerMode() != EntityPlacerMode.DELETE)
             {
-                Debug.Log("UpgradeInformationController is null");
-                return;
+                UpgradeInformationController.Instance.ShowInformation(this);
             }
-            visual.ShowInformation(this);
+
+            if (entityHelper.GetEntityPlacerMode() == EntityPlacerMode.DELETE)
+            {
+                if (UpgradeInformationController.Instance.isUpgradeInformationOpen())
+                {
+                    if (this == UpgradeInformationController.Instance.Entity)
+                    {
+                        UpgradeInformationController.Instance.CloseInformation();
+                    }
+                }
+
+            }
         }
     }
 }

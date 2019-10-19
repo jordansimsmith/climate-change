@@ -191,7 +191,6 @@ namespace World
 
         public void ReclaimTile(Tile oldTile)
         {
-            Debug.Log("method is running");
             Vector2Int pos = oldTile.Pos;
             // CreateTileAt(pos.x, pos.y, TileType.Grass);
             Destroy(oldTile.gameObject);
@@ -207,6 +206,41 @@ namespace World
             updatedWorld.Name = persistenceManager.SelectedWorld.Name;
             updatedWorld.CreationTime = persistenceManager.SelectedWorld.CreationTime;
             persistenceManager.SaveGameState(updatedWorld);
+        }
+
+        
+        public int GetNumberOfAdjacentGrassTiles(Tile tile)
+        {
+            int[] coords = {1, 0, -1};
+            int numOfGrassTiles = 0;
+
+            for (var i = 0; i < coords.Length; i++)
+            {
+                for (var j = 0; j < coords.Length; j++)
+                {
+                    int x = tile.Pos.x;
+                    int y = tile.Pos.y;
+                    
+                    x += coords[i];
+                    y += coords[j];
+                    
+                    // check if out of bounds
+                    if (x < 0 || x >= boardSize || y < 0 || y >= boardSize)
+                    {
+                        continue;
+                    }
+
+                    Tile adjacentTile = tiles[x, y];
+
+                    if (adjacentTile.TileType == TileType.Grass)
+                    {
+                        numOfGrassTiles++;
+                    }
+                }
+            }
+
+            return numOfGrassTiles;
+
         }
     }
 }
