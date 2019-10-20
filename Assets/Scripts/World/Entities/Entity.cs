@@ -1,6 +1,6 @@
 using HUD;
-using Tutorial;
 using UnityEngine;
+using World.Tiles;
 using UnityEngine.EventSystems;
 
 namespace World.Entities
@@ -12,6 +12,11 @@ namespace World.Entities
 
         public virtual EntityType Type { get; }
         public virtual EntityUpgradeInfo UpgradeInfo { get; }
+
+        void Start()
+        {
+            RefreshModelForLevel();
+        }
 
         public EntityStats Stats
         {
@@ -66,6 +71,11 @@ namespace World.Entities
                 return false;
             }
 
+            if (!entityHelper.IsTownhallLevelEnoughForUpgrade(this))
+            {
+                return false;
+            }
+
             int upgradeCost = GetUpgradeCost();
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
@@ -78,16 +88,21 @@ namespace World.Entities
                 }
 
                 // Switch out the model when upgrading to next level
-                for (int i = 0; i < modelForLevel.Length; i++)
-                {
-                    modelForLevel[i].SetActive(i == Level - 1);
-                }
-                
+                RefreshModelForLevel();
+
                 return true;
             }
 
             Debug.Log("not enough shmoneys");
             return false;
+        }
+
+        public void RefreshModelForLevel()
+        {
+            for (int i = 0; i < modelForLevel.Length; i++)
+            {
+                modelForLevel[i].SetActive(i == Level - 1);
+            }
         }
 
         public virtual bool Research(ResearchOption research)
@@ -122,6 +137,28 @@ namespace World.Entities
             box = null;
         }
 
+        private void OnMouseEnter()
+        {
+            var parent = transform.parent;
+            if (parent == null)
+            {
+                return;
+            }
+
+            parent.GetComponent<Tile>().ShowHighlight();
+        }
+
+        private void OnMouseExit()
+        {
+            var parent = transform.parent;
+            if (parent == null)
+            {
+                return;
+            }
+
+            parent.GetComponent<Tile>().HideHighlight();
+        }
+
         public int GetUpgradeCost()
         {
             return UpgradeInfo.GetLevel(Level + 1).BaseStats.cost;
@@ -139,7 +176,7 @@ namespace World.Entities
             {
                 return;
             }
-            
+
             if (entityHelper.GetEntityPlacerMode() != EntityPlacerMode.DELETE)
             {
                 UpgradeInformationController.Instance.ShowInformation(this);

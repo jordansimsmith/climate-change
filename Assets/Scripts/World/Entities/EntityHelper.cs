@@ -10,7 +10,12 @@ namespace World.Entities {
         [SerializeField] private GameObject outlineCubePrefab;
         [SerializeField] private Material redTransparentMat;
         [SerializeField] private Material greenTransparentMat;
+        
         private EntityPlacer entityPlacer;
+        private GameBoard board;
+        
+//        public int townhallLevel = 1;
+        
 
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
@@ -27,25 +32,34 @@ namespace World.Entities {
             return false;
         }
 
+        public bool IsTownhallLevelEnoughForUpgrade(Entity entity) {
+            if (board == null) {
+                board = GameObject.FindGameObjectWithTag("InGameBoard").GetComponent<GameBoard>();
+            }
+            if (entity.Type == EntityType.TownHall) {
+                return true;
+            }
+            return entity.Level < board.GetTownHallLevel();
+        }
+        
+
         public bool ResearchIfEnoughMoney(ResearchOption research) {
             if (research.isResearched) return false;
             int cost = research.ResearchDiff.cost;
-            resources.Money -= resources.Money >= cost ? cost : 0;
-            return true;
+            if (resources.Money >= cost)
+            {
+                resources.Money -= cost;
+                return true;
+            } else
+            {
+                return false;
+            }
         }
         
 
         public void Destruct(EntityStats res) {
         }
 
-//        public void IncreaseMoneyRate(int amount) {
-//            resources.MoneyRate += amount;
-//        }
-        
-//        public void DecreaseMoneyRate(int amount) {
-//            resources.MoneyRate -= amount;
-//        }
-//        
         public GameObject CreateOutlineCube()
         {
             return Instantiate(outlineCubePrefab);

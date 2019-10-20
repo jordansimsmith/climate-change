@@ -7422,12 +7422,24 @@ MonoBehaviour:
   - entity: {fileID: 6472262284098676859, guid: 3008f66a9ade549e59266c86a50d0af3,
       type: 3}
     sprite: {fileID: 21300000, guid: db858f460b23c1e4ab5ed63ba000dc45, type: 3}
-  - entity: {fileID: 0}
+  - entity: {fileID: 1266474832854779900, guid: 38adadb5234bb412fbf27546125b438d,
+      type: 3}
     sprite: {fileID: 21300000, guid: d04a7b137a1aa9040a96fe05eae4f5a9, type: 3}
+  - entity: {fileID: 5595932140909047111, guid: 8590c1f5b0fd54c56af86cc524b5c6e3,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 5b5bc2fbbdaa54e8c8a3fa9cba75d526, type: 3}
+  - entity: {fileID: 4823539670517023074, guid: 7f669fdcc13ef423e8d2d4bd160cbd45,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 580ba2ecd75ac4c309e9e54d4b968c03, type: 3}
+  - entity: {fileID: 4215198054487782673, guid: 21d26c932798646b9bad8d9ed0b4c221,
+      type: 3}
+    sprite: {fileID: 21300000, guid: 9fbd57603362846c486bee7fa340320b, type: 3}
   contentPanel: {fileID: 4019730763119803877}
   shopItemPrefab: {fileID: 7677043186662401089, guid: 4123ab23f8b82694f92b2aa0f12452e1,
     type: 3}
   gameBoard: {fileID: 0}
+  entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
+  phaseTwoEntities: 060000000700000008000000
 --- !u!114 &332353342153949833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13540,6 +13552,8 @@ MonoBehaviour:
   - {fileID: 1650349036636796025}
   - {fileID: 8958648899507247422}
   - {fileID: 1596095813890040113}
+  - {fileID: 4178972756765059926}
+  - {fileID: 6696520766388987256}
   loader: {fileID: 1791619237144262937}
   escapeUIObj: {fileID: 8807631041250267382}
 --- !u!114 &4055062841068429009
@@ -14681,11 +14695,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8807631040173928673}
     m_Modifications:
-    - target: {fileID: 7714427712938385853, guid: 667699e13c9142546936fa048f32d9cb,
-        type: 3}
-      propertyPath: m_Name
-      value: Loader
-      objectReference: {fileID: 0}
     - target: {fileID: 7714427712938385852, guid: 667699e13c9142546936fa048f32d9cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14790,6 +14799,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714427712938385853, guid: 667699e13c9142546936fa048f32d9cb,
+        type: 3}
+      propertyPath: m_Name
+      value: Loader
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 667699e13c9142546936fa048f32d9cb, type: 3}

@@ -65,6 +65,16 @@ namespace World
             resources.Population = world.ResourceData.Population;
         }
 
+        public int GetTownHallLevel() {
+            foreach (var tile in tiles) {
+                var entity = tile.Entity;
+                if (entity != null && entity.Type == EntityType.TownHall) {
+                    return entity.Level;
+                }
+            }
+            return 1;
+        }
+
         public Tile CreateTileAt(int x, int z, TileType type)
         {
             Tile tile = tileFactory.Get(type);

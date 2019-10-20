@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 1
+  originalMaterial: {fileID: 0}
 --- !u!1 &8127096527018232413
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 1
+  originalMaterial: {fileID: 2100000, guid: c8c44e596fdcb05468389fb3aafd6e63, type: 2}
 --- !u!208 &291850650462798624
 NavMeshObstacle:
   m_ObjectHideFlags: 0

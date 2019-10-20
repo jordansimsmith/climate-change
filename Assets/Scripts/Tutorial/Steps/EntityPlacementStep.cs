@@ -17,7 +17,7 @@ namespace Tutorial.Steps
 
         public override void OnStepBegin()
         {
-            gameBoard = GameObject.FindGameObjectWithTag("Board").GetComponent<GameBoard>();
+            gameBoard = GameObject.FindGameObjectWithTag("InGameBoard").GetComponent<GameBoard>();
             StepCompleted = false;
         }
 
