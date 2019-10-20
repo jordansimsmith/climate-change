@@ -21,7 +21,7 @@ MonoBehaviour:
       power: 0
       environment: -20
     researchOptions:
-    - name: Methane Trapping
+    - name: Methane Trapping (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 5
-    - name: Seed Enhancement
+    - name: Seed Enhancement (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
       power: 0
       environment: -30
     researchOptions:
-    - name: Methane Reuse Program
+    - name: Methane Reuse Program (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 10
-    - name: Cow Hybrid Technology
+    - name: Cow Hybrid Technology (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
       power: 0
       environment: -50
     researchOptions:
-    - name: Advanced Methane Filtration
+    - name: Advanced Filtration (20000 CC)
       researchDiff:
         cost: 20000
         money: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 20
-    - name: Advanced Seed Reasearch
+    - name: Advanced Seed Reasearch (20000 CC)
       researchDiff:
         cost: 20000
         money: 0

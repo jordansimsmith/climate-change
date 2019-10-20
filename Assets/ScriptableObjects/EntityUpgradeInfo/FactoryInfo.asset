@@ -21,7 +21,7 @@ MonoBehaviour:
       power: -20
       environment: -20
     researchOptions:
-    - name: Clean air filters
+    - name: Clean air filters (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 5
-    - name: Reduce waste
+    - name: Reduce waste (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
       power: -30
       environment: -30
     researchOptions:
-    - name: Recycling Program
+    - name: Recycling Program (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 8
-    - name: Eco Friendly Packaging
+    - name: Eco Friendly Packaging (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
       power: -40
       environment: -40
     researchOptions:
-    - name: Advanced Materials
+    - name: Advanced Materials (20000 CC)
       researchDiff:
         cost: 20000
         money: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 15
-    - name: Advanced Air Filtration
+    - name: Advanced Air Filtration (20000 CC)
       researchDiff:
         cost: 20000
         money: 0

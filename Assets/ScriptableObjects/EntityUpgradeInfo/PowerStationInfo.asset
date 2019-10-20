@@ -21,7 +21,7 @@ MonoBehaviour:
       power: 20
       environment: -20
     researchOptions:
-    - name: Carbon Filtration
+    - name: Carbon Filtration (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 10
-    - name: Advanced Generation
+    - name: Advanced Generation (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
       power: 40
       environment: -40
     researchOptions:
-    - name: Future Generation Tactics
+    - name: Future Generation (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
         shelter: 0
         power: 20
         environment: 0
-    - name: Advanced Carbon Trapping
+    - name: Advanced Carbon Trapping (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
       power: 100
       environment: -80
     researchOptions:
-    - name: Emission Reduction
+    - name: Emission Reduction (20000 CC)
       researchDiff:
         cost: 20000
         money: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
         shelter: 0
         power: 0
         environment: 50
-    - name: High Power Fuel
+    - name: High Power Fuel (20000 CC)
       researchDiff:
         cost: 20000
         money: 0
@@ -85,4 +85,5 @@ MonoBehaviour:
         shelter: 0
         power: 50
         environment: 0
-  description: 
+  description: Powerstations burn fossil fuels to make power and aren't good for the
+    environment

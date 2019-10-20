@@ -19,7 +19,7 @@ MonoBehaviour:
       food: 0
       shelter: 0
       power: 150
-      environment: -5
+      environment: 0
     researchOptions: []
   description: Geothermal Power Plants use the earths heat to produce power and have
     less impact on the environment

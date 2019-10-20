@@ -21,7 +21,7 @@ MonoBehaviour:
       power: -20
       environment: 0
     researchOptions:
-    - name: Power Circuit Upgrades
+    - name: Power Circuit Upgrades (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
         shelter: 0
         power: -5
         environment: 0
-    - name: Improved Housing Effeciency
+    - name: Increased Density (1000 CC)
       researchDiff:
         cost: 1000
         money: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
       power: -20
       environment: 0
     researchOptions:
-    - name: Improved Room Layout
+    - name: Improved Room Layout (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
         shelter: 10
         power: 0
         environment: 0
-    - name: Improved House Placement
+    - name: Improved House Placement (5000 CC)
       researchDiff:
         cost: 5000
         money: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
       power: -30
       environment: 0
     researchOptions:
-    - name: Advanced Room Layout
+    - name: Advanced Room Layout (20000 CC)
       researchDiff:
         cost: 20000
         money: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
         shelter: 10
         power: 0
         environment: 0
-    - name: Advanced Housing Density
+    - name: Advanced Housing Density (20000 CC)
       researchDiff:
         cost: 20000
         money: 0

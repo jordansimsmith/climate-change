@@ -21,4 +21,5 @@ MonoBehaviour:
       power: 75
       environment: 0
     researchOptions: []
-  description: memes
+  description: The wind turbine converts wind to power which is good for the environment
+    as no C02 released
