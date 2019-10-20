@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964127, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -127,16 +127,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7941001179834700954, guid: 7c1e5136677676c4dae8f5b7fabfee71,
-        type: 3}
-      propertyPath: endScreenController
-      value: 
-      objectReference: {fileID: 1550611959}
     - target: {fileID: 7941001179834700958, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
       propertyPath: m_Name
       value: World
       objectReference: {fileID: 0}
+    - target: {fileID: 7941001179834700954, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: endScreenController
+      value: 
+      objectReference: {fileID: 1550611959}
     - target: {fileID: 7941001179048457792, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
       propertyPath: m_TagString
@@ -535,6 +535,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8807631040173928685, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_Name
+      value: HUD
+      objectReference: {fileID: 0}
     - target: {fileID: 681500830137141196, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -604,11 +609,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8807631040173928685, guid: 65c06590066e2f44590c327a57fb4fe1,
-        type: 3}
-      propertyPath: m_Name
-      value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 106552894735451923, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
