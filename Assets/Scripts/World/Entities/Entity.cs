@@ -1,5 +1,6 @@
 using HUD;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace World.Entities
 {
@@ -7,15 +8,17 @@ namespace World.Entities
     {
         [SerializeField] protected EntityHelper entityHelper;
         [SerializeField] protected GameObject[] modelForLevel;
-        
+
         public virtual EntityType Type { get; }
         public virtual EntityUpgradeInfo UpgradeInfo { get; }
 
-        public EntityStats Stats {
-            get {
-                
+        public EntityStats Stats
+        {
+            get
+            {
                 //Helper function to apply updates from research
-                void Apply(ref EntityStats stats, EntityStats diff) {
+                void Apply(ref EntityStats stats, EntityStats diff)
+                {
                     stats.environment += diff.environment;
                     stats.food += diff.food;
                     stats.money += diff.money;
@@ -27,8 +30,10 @@ namespace World.Entities
                 var levelStat = UpgradeInfo.GetLevel(Level).BaseStats;
 
                 // Apply updates to the base stats based on research options
-                foreach (var researchOption in UpgradeInfo.GetLevel(Level).ResearchOptions) {
-                    if (researchOption.isResearched) {
+                foreach (var researchOption in UpgradeInfo.GetLevel(Level).ResearchOptions)
+                {
+                    if (researchOption.isResearched)
+                    {
                         Apply(ref levelStat, researchOption.ResearchDiff);
                     }
                 }
@@ -38,7 +43,7 @@ namespace World.Entities
         }
 
         public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 2 times
-        public int MaxLevel => UpgradeInfo.NumberOfLevels; 
+        public int MaxLevel => UpgradeInfo.NumberOfLevels;
 
         public virtual void Construct()
         {
@@ -64,12 +69,13 @@ namespace World.Entities
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
                 Level++;
-                
+
                 // Switch out the model when upgrading to next level
-                for (int i = 0; i < modelForLevel.Length; i++) {
+                for (int i = 0; i < modelForLevel.Length; i++)
+                {
                     modelForLevel[i].SetActive(i == Level - 1);
                 }
-                
+
                 return true;
             }
 
@@ -77,11 +83,14 @@ namespace World.Entities
             return false;
         }
 
-        public virtual bool Research(ResearchOption research) {
-            if (entityHelper.ResearchIfEnoughMoney(research)) {
+        public virtual bool Research(ResearchOption research)
+        {
+            if (entityHelper.ResearchIfEnoughMoney(research))
+            {
                 research.isResearched = true;
                 return true;
             }
+
             return false;
         }
 
@@ -106,7 +115,8 @@ namespace World.Entities
             box = null;
         }
 
-        public int GetUpgradeCost() {
+        public int GetUpgradeCost()
+        {
             return UpgradeInfo.GetLevel(Level + 1).BaseStats.cost;
         }
 
@@ -117,6 +127,12 @@ namespace World.Entities
 
         public void OnMouseDown()
         {
+            // disable clicking through ui elements
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            
             if (entityHelper.GetEntityPlacerMode() != EntityPlacerMode.DELETE)
             {
                 UpgradeInformationController.Instance.ShowInformation(this);
@@ -131,7 +147,6 @@ namespace World.Entities
                         UpgradeInformationController.Instance.CloseInformation();
                     }
                 }
-
             }
         }
     }
