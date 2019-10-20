@@ -14,27 +14,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelInfo:
   - baseStats:
-      cost: 250
+      cost: 200
       money: 0
       food: 30
       shelter: -5
       power: 0
-      environment: -5
-    researchOptions: []
+      environment: -20
+    researchOptions:
+    - name: Methane Trapping
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 5
+    - name: Seed Enhancement
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 10
+        shelter: 0
+        power: 0
+        environment: 5
   - baseStats:
-      cost: 500
+      cost: 1000
       money: 0
       food: 60
       shelter: -5
       power: 0
-      environment: -5
-    researchOptions: []
+      environment: -30
+    researchOptions:
+    - name: Methane Reuse Program
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 10
+    - name: Cow Hybrid Technology
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 10
   - baseStats:
-      cost: 2000
+      cost: 5000
       money: 0
       food: 90
       shelter: -5
       power: 0
-      environment: -5
-    researchOptions: []
-  description: 
+      environment: -50
+    researchOptions:
+    - name: Advanced Methane Filtration
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 20
+    - name: Advanced Seed Reasearch
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 20
+  description: Farms produce but if they have cows also release methane which is a
+    greenhouse gas.

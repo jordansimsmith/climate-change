@@ -16,25 +16,73 @@ MonoBehaviour:
   - baseStats:
       cost: 150
       money: 0
-      food: -30
+      food: 0
       shelter: 30
-      power: -10
-      environment: 0
-    researchOptions: []
-  - baseStats:
-      cost: 500
-      money: 0
-      food: -60
-      shelter: 60
       power: -20
       environment: 0
-    researchOptions: []
+    researchOptions:
+    - name: Power Circuit Upgrades
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 0
+        shelter: 0
+        power: -5
+        environment: 0
+    - name: Improved Housing Effeciency
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 0
+        shelter: 5
+        power: 0
+        environment: 0
   - baseStats:
       cost: 1000
+      money: 0
+      food: -60
+      shelter: 40
+      power: -20
+      environment: 0
+    researchOptions:
+    - name: Improved Room Layout
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 10
+        power: 0
+        environment: 0
+    - name: Improved House Placement
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 10
+        power: 0
+        environment: 0
+  - baseStats:
+      cost: 5000
       money: 0
       food: -80
       shelter: 80
       power: -30
       environment: 0
-    researchOptions: []
+    researchOptions:
+    - name: Advanced Room Layout
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 10
+        power: 0
+        environment: 0
+    - name: Advanced Housing Density
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 10
+        power: 0
+        environment: 0
   description: 

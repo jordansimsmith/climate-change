@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelInfo:
   - baseStats:
-      cost: 100
-      money: 20
+      cost: 200
+      money: 15
       food: 0
       shelter: 0
       power: -20
@@ -38,19 +38,51 @@ MonoBehaviour:
         power: 0
         environment: 5
   - baseStats:
-      cost: 500
-      money: 40
-      food: 0
-      shelter: 0
-      power: -60
-      environment: -30
-    researchOptions: []
-  - baseStats:
       cost: 1000
-      money: 100
+      money: 30
       food: 0
       shelter: 0
-      power: -80
+      power: -30
+      environment: -30
+    researchOptions:
+    - name: Recycling Program
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 8
+    - name: Eco Friendly Packaging
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 8
+  - baseStats:
+      cost: 10000
+      money: 60
+      food: 0
+      shelter: 0
+      power: -40
       environment: -40
-    researchOptions: []
-  description: Factories are bad for the environment xddxdxdx
+    researchOptions:
+    - name: Advanced Materials
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 15
+    - name: Advanced Air Filtration
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 15
+  description: Factories give you income but also cause greenhouse gases causing pollution

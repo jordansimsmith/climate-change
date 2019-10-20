@@ -20,20 +20,69 @@ MonoBehaviour:
       shelter: -5
       power: 20
       environment: -20
-    researchOptions: []
+    researchOptions:
+    - name: Carbon Filtration
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 10
+    - name: Advanced Generation
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 10
+        environment: 0
   - baseStats:
-      cost: 200
+      cost: 1000
       money: 0
       food: 0
       shelter: -10
       power: 40
       environment: -40
-    researchOptions: []
+    researchOptions:
+    - name: Future Generation Tactics
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 20
+        environment: 0
+    - name: Advanced Carbon Trapping
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 20
   - baseStats:
-      cost: 400
+      cost: 5000
       money: 0
       food: 0
       shelter: -20
-      power: 89
+      power: 100
       environment: -80
-    researchOptions: []
+    researchOptions:
+    - name: Emission Reduction
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 50
+    - name: High Power Fuel
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 50
+        environment: 0
+  description: 
