@@ -140,7 +140,7 @@ namespace World.Entities
 
             if (entityHelper.GetEntityPlacerMode() == EntityPlacerMode.DELETE)
             {
-                if (UpgradeInformationController.Instance.isUpgradeInformationOpen())
+                if (UpgradeInformationController.Instance.IsUpgradeInformationOpen())
                 {
                     if (this == UpgradeInformationController.Instance.Entity)
                     {
