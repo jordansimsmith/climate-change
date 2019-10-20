@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public abstract class Achievement : MonoBehaviour   {
+public abstract class Achievement : MonoBehaviour
+{
     [SerializeField] private string title;
     public string Title => title;
     [SerializeField] private string description;
@@ -11,5 +12,5 @@ public abstract class Achievement : MonoBehaviour   {
     protected bool done;
     public bool Done => done;
 
-    public abstract void AchievementUpdate(); 
+    public abstract void AchievementUpdate();
 }

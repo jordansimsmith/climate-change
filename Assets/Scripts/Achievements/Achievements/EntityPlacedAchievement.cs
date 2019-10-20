@@ -8,29 +8,34 @@ public class EntityPlacedAchievement : Achievement
     [SerializeField] private int targetAmount;
     [SerializeField] private GameBoard gameBoard;
 
-    private int offset = 0;
-    private bool ready = false;
+    private int offset;
+    private bool ready;
 
-    public void Start() {
+    public void Start()
+    {
         Invoke("SetOffset", 2);
     }
 
-    public void SetOffset() {
+    public void SetOffset()
+    {
         offset = gameBoard.CountEntityTypeOnBoard(targetEntity);
         ready = true;
     }
 
     public override void AchievementUpdate()
     {
-        if (!ready) {
+        if (!ready)
+        {
             return;
         }
-        
+
         var num = gameBoard.CountEntityTypeOnBoard(targetEntity);
-        if (num >= (offset + targetAmount) && !this.done)    {
-            Debug.Log(this.Title+" Done");
-            this.done = true;
+        if (num >= (offset + targetAmount) && !this.done)
+        {
+            Debug.Log(this.Title + " Done");
+            done = true;
         }
-        this.progress = num/(offset + targetAmount);
+
+        progress = num / (offset + targetAmount);
     }
 }
