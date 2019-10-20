@@ -46,8 +46,14 @@ namespace World.Entities {
         public bool ResearchIfEnoughMoney(ResearchOption research) {
             if (research.isResearched) return false;
             int cost = research.ResearchDiff.cost;
-            resources.Money -= resources.Money >= cost ? cost : 0;
-            return true;
+            if (resources.Money >= cost)
+            {
+                resources.Money -= cost;
+                return true;
+            } else
+            {
+                return false;
+            }
         }
         
 
