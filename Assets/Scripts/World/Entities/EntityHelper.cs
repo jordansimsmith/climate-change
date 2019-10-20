@@ -12,8 +12,9 @@ namespace World.Entities {
         [SerializeField] private Material greenTransparentMat;
         
         private EntityPlacer entityPlacer;
+        private GameBoard board;
         
-        public int townhallLevel = 1;
+//        public int townhallLevel = 1;
         
 
         public void Construct(EntityStats res) {
@@ -32,10 +33,13 @@ namespace World.Entities {
         }
 
         public bool IsTownhallLevelEnoughForUpgrade(Entity entity) {
+            if (board == null) {
+                board = GameObject.FindGameObjectWithTag("InGameBoard").GetComponent<GameBoard>();
+            }
             if (entity.Type == EntityType.TownHall) {
                 return true;
             }
-            return entity.Level < townhallLevel;
+            return entity.Level < board.GetTownHallLevel();
         }
         
 
@@ -50,14 +54,6 @@ namespace World.Entities {
         public void Destruct(EntityStats res) {
         }
 
-//        public void IncreaseMoneyRate(int amount) {
-//            resources.MoneyRate += amount;
-//        }
-        
-//        public void DecreaseMoneyRate(int amount) {
-//            resources.MoneyRate -= amount;
-//        }
-//        
         public GameObject CreateOutlineCube()
         {
             return Instantiate(outlineCubePrefab);

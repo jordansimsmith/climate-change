@@ -36,9 +36,7 @@ public class ShopScrollList : MonoBehaviour
     }
 
     private void UnlockNextEntities() {
-        Debug.Log("Townhall level " + entityHelper.townhallLevel);
-        if (entityHelper.townhallLevel > 1) {
-            Debug.Log("More entities unlocked");
+        if (gameBoard.GetTownHallLevel() > 1) {
             foreach (var item in phaseTwoEntityItems) {
                 item.Interactable(true);
             }

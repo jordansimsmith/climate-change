@@ -74,9 +74,9 @@ namespace World.Entities
                     modelForLevel[i].SetActive(i == Level - 1);
                 }
 
-                if (Type == EntityType.TownHall) {
-                    entityHelper.townhallLevel++;
-                }
+//                if (Type == EntityType.TownHall) {
+//                    entityHelper.townhallLevel++;
+//                }
                 
                 return true;
             }
