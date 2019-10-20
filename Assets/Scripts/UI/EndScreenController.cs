@@ -2,14 +2,17 @@
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
+using World.Tiles;
 
 public class EndScreenController : MonoBehaviour
 {
-    public GameObject winMenuUI;
-    public GameObject loseMenuUI;
+    [SerializeField] private GameObject winMenuUI;
+    [SerializeField] private GameObject loseMenuUI;
+    [SerializeField] private GameObject[] uiElements;
+    [SerializeField] private GameObject loader;
+
     private EscapeController escapeController;
     private PostProcessingBehaviour blurComponent;
-    public GameObject[] uiElements;
     private List<GameObject> elementsOff;
 
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class EndScreenController : MonoBehaviour
         escapeController.enabled = false;
         winMenuUI.SetActive(true);
         blurComponent.enabled = true;
+        Tile.highlightEnabled = false;
     }
 
     public void DisableWinScreen()
@@ -49,6 +53,7 @@ public class EndScreenController : MonoBehaviour
         blurComponent.enabled = false;
         escapeController.enabled = true;
         winMenuUI.SetActive(false);
+        Tile.highlightEnabled = true;
     }
 
     public void EnableLoseScreen()
@@ -66,6 +71,7 @@ public class EndScreenController : MonoBehaviour
         escapeController.enabled = false;
         loseMenuUI.SetActive(true);
         blurComponent.enabled = true;
+        Tile.highlightEnabled = false;
     }
 
     public void DisableLoseScreen()
@@ -79,6 +85,7 @@ public class EndScreenController : MonoBehaviour
         blurComponent.enabled = false;
         escapeController.enabled = true;
         loseMenuUI.SetActive(false);
+        Tile.highlightEnabled = true;
     }
 
     public void WinContinueButtonOnClick()
@@ -95,5 +102,13 @@ public class EndScreenController : MonoBehaviour
     public void MainMenuButtonOnClick()
     {
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
+        loader.SetActive(true);
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            if (scene.name.Equals("TestScene"))
+            {
+                loader.SetActive(false);
+            }
+        };
     }
 }

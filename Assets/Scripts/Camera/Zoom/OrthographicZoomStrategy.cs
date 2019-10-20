@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OrthographicZoomStrategy : IZoomStrategy
 {
@@ -11,14 +9,25 @@ public class OrthographicZoomStrategy : IZoomStrategy
 
     public void ZoomIn(Camera cam, float delta, float nearZoomLimit)
     {
-        if (cam.orthographicSize == nearZoomLimit) return;
+        // minimum zoom
+        if (cam.orthographicSize <= nearZoomLimit)
+        {
+            return;
+        }
+        
+        // zoom in
         cam.orthographicSize = Mathf.Max(cam.orthographicSize - delta, nearZoomLimit);
-
     }
 
     public void ZoomOut(Camera cam, float delta, float farZoomLimit)
     {
-        if (cam.orthographicSize == farZoomLimit) return;
+        // maximum zoom
+        if (cam.orthographicSize >= farZoomLimit)
+        {
+            return;
+        }
+        
+        // zoom out
         cam.orthographicSize = Mathf.Min(cam.orthographicSize + delta, farZoomLimit);
     } 
 }

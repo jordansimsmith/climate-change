@@ -67,6 +67,16 @@ namespace World
             resources.Population = world.ResourceData.Population;
         }
 
+        public int GetTownHallLevel() {
+            foreach (var tile in tiles) {
+                var entity = tile.Entity;
+                if (entity != null && entity.Type == EntityType.TownHall) {
+                    return entity.Level;
+                }
+            }
+            return 1;
+        }
+
         public Tile CreateTileAt(int x, int z, TileType type)
         {
             Tile tile = tileFactory.Get(type);
@@ -74,6 +84,7 @@ namespace World
             tileTransform.position = new Vector3(x * Tile.Size.x, -Tile.Size.y, z * Tile.Size.z);
             tileTransform.SetParent(gameObject.transform);
             tiles[x, z] = tile;
+            tile.Pos =  new Vector2Int(x, z);
             return tile;
         }
 
@@ -190,6 +201,14 @@ namespace World
             return tuple;
         }
 
+        public void ReclaimTile(Tile oldTile)
+        {
+            Vector2Int pos = oldTile.Pos;
+            // CreateTileAt(pos.x, pos.y, TileType.Grass);
+            Destroy(oldTile.gameObject);
+            CreateTileAt(pos.x, pos.y, TileType.Grass);
+        }
+
         private static string serialisedWorld =
             "{\"WorldData\":[[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":2},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":2},{\"TileType\":0},{\"TileType\":0},{\"TileType\":2},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0},{\"TileType\":0},{\"TileType\":0},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":0,\"Entity\":{\"EntityType\":0,\"Level\":1}},{\"TileType\":3},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":3},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}],[{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1},{\"TileType\":1}]],\"ResourceData\":{\"totalDemand\":{\"cost\":0,\"money\":0,\"food\":35,\"shelter\":35,\"power\":0,\"environment\":0},\"totalSupply\":{\"cost\":0,\"money\":0,\"food\":0,\"shelter\":0,\"power\":0,\"environment\":320},\"Population\":7,\"Money\":1000,\"MoneyRate\":0}}";
 
@@ -210,6 +229,41 @@ namespace World
         {
             get => persistenceManager.SelectedWorld;
             set { persistenceManager.SelectedWorld = value; }
+        }
+
+        
+        public int GetNumberOfAdjacentGrassTiles(Tile tile)
+        {
+            int[] coords = {1, 0, -1};
+            int numOfGrassTiles = 0;
+
+            for (var i = 0; i < coords.Length; i++)
+            {
+                for (var j = 0; j < coords.Length; j++)
+                {
+                    int x = tile.Pos.x;
+                    int y = tile.Pos.y;
+                    
+                    x += coords[i];
+                    y += coords[j];
+                    
+                    // check if out of bounds
+                    if (x < 0 || x >= boardSize || y < 0 || y >= boardSize)
+                    {
+                        continue;
+                    }
+
+                    Tile adjacentTile = tiles[x, y];
+
+                    if (adjacentTile.TileType == TileType.Grass)
+                    {
+                        numOfGrassTiles++;
+                    }
+                }
+            }
+
+            return numOfGrassTiles;
+
         }
     }
 }

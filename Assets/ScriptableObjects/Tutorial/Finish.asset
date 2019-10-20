@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Ewan
   description: Congratulations, you have finished the tutorial. Don't let your resources
-    drop too far (-100), your citizens will leave and you will lose the game.
+    drop too far, your citizens will leave and you will lose the game.
   successMessage: Good luck!

@@ -16,14 +16,14 @@ namespace NPC
 
         private void Awake()
         {
+            // load name and occupation data from json
             names = NameData.ParseJson(nameData.text);
             occupations = OccupationData.ParseJson(occupationData.text);
-            Debug.Log(names.Names.Count);
-            Debug.Log(occupations.Occupations.Count);
         }
 
         private void Start()
         {
+            // generate NPCs
             for (int i = 0; i < npcCount; i++)
             {
                 GenerateNPC();
@@ -32,13 +32,16 @@ namespace NPC
 
         public GameObject GenerateNPC()
         {
+            // random spawn location in the center
             int x = Random.Range(85, 95);
             int y = 0;
             int z = Random.Range(85, 95);
+            
+            // instantiate npc
             GameObject npc = Instantiate(npcPrefab, new Vector3(x, y, z), Quaternion.identity);
-
             NonPlayingCharacter npcScript = npc.GetComponent<NonPlayingCharacter>();
 
+            // randomly generate npc attributes
             npcScript.FirstName = GetRandomFromList(names.Names);
             npcScript.LastName = GetRandomFromList(names.Names);
             npcScript.Occupation = GetRandomFromList(occupations.Occupations);

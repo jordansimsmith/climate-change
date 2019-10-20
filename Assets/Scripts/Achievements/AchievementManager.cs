@@ -1,35 +1,43 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using HUD;
 using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
+
+    private static readonly string ACHIEVEMENT_UNLOCKED_TITLE = "Achievement Unlocked!";
     private Achievement[] achievements;
-    public Achievement[] Achievements => achievements; 
+    public Achievement[] Achievements => achievements;
+
+    private int numOfUnlockedAchievements = 0;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        this.achievements = gameObject.GetComponentsInChildren<Achievement>();
+        // load achievements
+        achievements = gameObject.GetComponentsInChildren<Achievement>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        // check unfinished achievements if they are completed
         foreach (var achievement in achievements)   {
             if (!achievement.Done)  {
                 achievement.AchievementUpdate();
-                if (achievement.Done)   {
-                    this.TriggerAchievement(achievement);
+                if (achievement.Done)
+                {
+                    numOfUnlockedAchievements++;
+                    TriggerAchievement(achievement);
                 }
             }
         }
     }
 
     // Displays achievement when it is earned
-    public void TriggerAchievement(Achievement achievement)
+    private void TriggerAchievement(Achievement achievement)
     {
-        //throw new NotImplementedException();
+        string achievementStatus = "Unlocked: " + numOfUnlockedAchievements + "/" + achievements.Length;
+        string achievementCompletionText = "Congratulations, you have unlocked \"" + achievement.Title + "\"\n " + achievementStatus;
+        SimpleDialogueManager.Instance.SetCurrentDialogue(new [] {achievementCompletionText}, ACHIEVEMENT_UNLOCKED_TITLE);
     }
 }

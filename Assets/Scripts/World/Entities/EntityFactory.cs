@@ -10,6 +10,11 @@ namespace World.Entities
         [SerializeField] private TownHallEntity townHallPreFab;
         [SerializeField] private FactoryEntity factoryEntity;
         [SerializeField] private FarmEntity farmEntity;
+        [SerializeField] private WindTurbineEntity windTurbineEntity;
+        [SerializeField] private SolarPanelEntity solarPanelEntity;
+        [SerializeField] private GeothermalEntity geothermalEntity;
+        
+        
 
         [SerializeField] private PowerStationEntity powerStationEntity;
         public Entity Get (EntityType entityType)
@@ -39,6 +44,12 @@ namespace World.Entities
                     return farmEntity;
                 case EntityType.PowerStation:
                     return powerStationEntity;
+                case EntityType.SolarPanel:
+                    return solarPanelEntity;
+                case EntityType.Geothermal:
+                    return geothermalEntity;
+                case EntityType.WindTurbine:
+                    return windTurbineEntity;
                 default:
                     Debug.Log ("Unknown entity type");
                     return null;

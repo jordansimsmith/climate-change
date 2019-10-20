@@ -1,27 +1,55 @@
-using System;
 using HUD;
 using UnityEngine;
+using World.Tiles;
+using UnityEngine.EventSystems;
 
 namespace World.Entities
 {
     public abstract class Entity : MonoBehaviour
     {
         [SerializeField] protected EntityHelper entityHelper;
-        [SerializeField] protected int maxLevel = 3;
         [SerializeField] protected GameObject[] modelForLevel;
-        
+
         public virtual EntityType Type { get; }
-        public virtual EntityUpgradeInformation UpgradeInformation { get; }
-        
-        public EntityStats Stats => GetEntityStats();
-        public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 3 times
-        public int MaxLevel => maxLevel;
+        public virtual EntityUpgradeInfo UpgradeInfo { get; }
 
-        private EntitySideBarController sideBarController;
-
-        private void Awake() {
-            sideBarController = FindObjectOfType<EntitySideBarController>();
+        void Start()
+        {
+            RefreshModelForLevel();
         }
+
+        public EntityStats Stats
+        {
+            get
+            {
+                //Helper function to apply updates from research
+                void Apply(ref EntityStats stats, EntityStats diff)
+                {
+                    stats.environment += diff.environment;
+                    stats.food += diff.food;
+                    stats.money += diff.money;
+                    stats.power += diff.power;
+                    stats.shelter += diff.shelter;
+                }
+
+                // Get the base stats for the current level
+                var levelStat = UpgradeInfo.GetLevel(Level).BaseStats;
+
+                // Apply updates to the base stats based on research options
+                foreach (var researchOption in UpgradeInfo.GetLevel(Level).ResearchOptions)
+                {
+                    if (researchOption.isResearched)
+                    {
+                        Apply(ref levelStat, researchOption.ResearchDiff);
+                    }
+                }
+
+                return levelStat;
+            }
+        }
+
+        public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 2 times
+        public int MaxLevel => UpgradeInfo.NumberOfLevels;
 
         public virtual void Construct()
         {
@@ -37,9 +65,14 @@ namespace World.Entities
         // base functionality checks base level + cost
         public virtual bool Upgrade()
         {
-            if (Level + 1 > maxLevel)
+            if (Level + 1 > MaxLevel)
             {
                 Debug.Log("reached level cap");
+                return false;
+            }
+
+            if (!entityHelper.IsTownhallLevelEnoughForUpgrade(this))
+            {
                 return false;
             }
 
@@ -47,16 +80,39 @@ namespace World.Entities
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
                 Level++;
-                
-                // Switch out the model when upgrading to next level
-                for (int i = 0; i < modelForLevel.Length; i++) {
-                    modelForLevel[i].SetActive(i == Level - 1);
+
+                if (Type == EntityType.TownHall && Level == 2)
+                {
+                    string[] auditDialogue = EwanAuditGenerator.Instance.GenerateAuditText();
+                    SimpleDialogueManager.Instance.SetCurrentDialogue(auditDialogue, "Ewan    ");
                 }
-                
+
+                // Switch out the model when upgrading to next level
+                RefreshModelForLevel();
+
                 return true;
             }
 
             Debug.Log("not enough shmoneys");
+            return false;
+        }
+
+        public void RefreshModelForLevel()
+        {
+            for (int i = 0; i < modelForLevel.Length; i++)
+            {
+                modelForLevel[i].SetActive(i == Level - 1);
+            }
+        }
+
+        public virtual bool Research(ResearchOption research)
+        {
+            if (entityHelper.ResearchIfEnoughMoney(research))
+            {
+                research.isResearched = true;
+                return true;
+            }
+
             return false;
         }
 
@@ -81,59 +137,60 @@ namespace World.Entities
             box = null;
         }
 
+        private void OnMouseEnter()
+        {
+            var parent = transform.parent;
+            if (parent == null)
+            {
+                return;
+            }
+
+            parent.GetComponent<Tile>().ShowHighlight();
+        }
+
+        private void OnMouseExit()
+        {
+            var parent = transform.parent;
+            if (parent == null)
+            {
+                return;
+            }
+
+            parent.GetComponent<Tile>().HideHighlight();
+        }
+
         public int GetUpgradeCost()
         {
-            switch (Level + 1)
-            {
-                case 2:
-                    return UpgradeInformation.levelTwo.cost;
-                case 3:
-                    return UpgradeInformation.levelThree.cost;
-                default:
-                    return UpgradeInformation.levelOne.cost;
-            }
+            return UpgradeInfo.GetLevel(Level + 1).BaseStats.cost;
         }
 
         public bool IsMaxLevel()
         {
-            return Level == maxLevel;
+            return Level == MaxLevel;
         }
 
-        private EntityStats GetEntityStats()
-        {
-            switch (Level)
-            {
-                case 1:
-                    return UpgradeInformation.levelOne;
-                case 2:
-                    return UpgradeInformation.levelTwo;
-                case 3:
-                    return UpgradeInformation.levelThree;
-            }
-
-            return UpgradeInformation.levelOne;
-        }
-        
-        protected EntityStats GetEntityStats(int level)
-        {
-            switch (level)
-            {
-                case 1:
-                    return UpgradeInformation.levelOne;
-                case 2:
-                    return UpgradeInformation.levelTwo;
-                case 3:
-                    return UpgradeInformation.levelThree;
-            }
-
-            return UpgradeInformation.levelOne;
-        }
-        
         public void OnMouseDown()
         {
-            if (sideBarController == null || !sideBarController.isActiveAndEnabled)
+            // disable clicking through ui elements
+            if (EventSystem.current.IsPointerOverGameObject())
             {
-                sideBarController.ShowSideBar(this, true);
+                return;
+            }
+
+            if (entityHelper.GetEntityPlacerMode() != EntityPlacerMode.DELETE)
+            {
+                UpgradeInformationController.Instance.ShowInformation(this);
+            }
+
+            if (entityHelper.GetEntityPlacerMode() == EntityPlacerMode.DELETE)
+            {
+                if (UpgradeInformationController.Instance.IsUpgradeInformationOpen())
+                {
+                    if (this == UpgradeInformationController.Instance.Entity)
+                    {
+                        UpgradeInformationController.Instance.CloseInformation();
+                    }
+                }
             }
         }
     }

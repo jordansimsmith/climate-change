@@ -1,7 +1,8 @@
 # Climate Change
 In this project, teams will be required to design and implement a web-based serious game on Climate Change for children in intermediate school years (aged 12-13).
 
-![caeli](https://user-images.githubusercontent.com/18223858/66722883-43ee9300-ee6f-11e9-801e-7dc943dd8134.png)
+![caeli](https://user-images.githubusercontent.com/31643423/67136794-0b442480-f288-11e9-9432-6b8061db87b6.gif)
+
 
 ## Team members (Team 10) 
 
@@ -14,6 +15,10 @@ In this project, teams will be required to design and implement a web-based seri
 | Nisarag Bhatt      | FocalChord      | Nbha702 |
 | Jed Robertson      | JedLJRobertson  | Jrob928 |
 | Jordan Sim-Smith   | jordansimsmith  | Jsim862 |
+
+### A team photo:
+
+![TeamPhoto](https://user-images.githubusercontent.com/31643423/67136196-7a694b00-f27f-11e9-8434-dca8ebf5494a.jpeg)
 
 ## How to collaborate
 

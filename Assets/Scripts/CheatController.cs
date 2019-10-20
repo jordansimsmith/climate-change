@@ -46,7 +46,7 @@ public class CheatController : MonoBehaviour
         {
             // cheat for more money
             Debug.Log("money cheat");
-            resources.Money += 1_000;
+            resources.Money += 1_000_000;
         }
 
         // game state

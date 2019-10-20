@@ -18,9 +18,15 @@ MonoBehaviour:
     type: 3}
   townHallPreFab: {fileID: 8068884375748032247, guid: 9665868e38efc8342a592f7d4c82665b,
     type: 3}
-  factoryEntity: {fileID: 3543377990499035316, guid: 2eb2c8d73d33f478a89be67bf607eb99,
+  factoryEntity: {fileID: 1266474832854779900, guid: 38adadb5234bb412fbf27546125b438d,
     type: 3}
   farmEntity: {fileID: -6795025145051476749, guid: 915900f7bf0f69d4fbdc2aa358a0f2ff,
+    type: 3}
+  windTurbineEntity: {fileID: 4823539670517023074, guid: 7f669fdcc13ef423e8d2d4bd160cbd45,
+    type: 3}
+  solarPanelEntity: {fileID: 5595932140909047111, guid: 8590c1f5b0fd54c56af86cc524b5c6e3,
+    type: 3}
+  geothermalEntity: {fileID: 4215198054487782673, guid: 21d26c932798646b9bad8d9ed0b4c221,
     type: 3}
   powerStationEntity: {fileID: 1663121603228564104, guid: b036a3c7c93494e9c91e1b1b8924e080,
     type: 3}

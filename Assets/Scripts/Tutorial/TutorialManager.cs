@@ -1,5 +1,7 @@
-﻿using Persistence;
+using Persistence;
 using UnityEngine;
+using World;
+using World.Entities;
 
 namespace Tutorial
 {
@@ -8,6 +10,7 @@ namespace Tutorial
         public TutorialStep[] tutorialSteps;
         public bool tutorialActive;
         public GameObject tutorialCanvas;
+        public GameBoard board;
         private DialogueManager dialogueManager;
         private int currentTutorialStep;
         private bool tutorialComplete = false;

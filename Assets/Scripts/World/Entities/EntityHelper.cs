@@ -6,11 +6,15 @@ using World.Resource;
 namespace World.Entities {
     [CreateAssetMenu]
     public class EntityHelper : ScriptableObject {
-
         [SerializeField] private ResourceSingleton resources;
-        [SerializeField] private GameObject outlineCube;
+        [SerializeField] private GameObject outlineCubePrefab;
         [SerializeField] private Material redTransparentMat;
         [SerializeField] private Material greenTransparentMat;
+        
+        private EntityPlacer entityPlacer;
+        private GameBoard board;
+        
+//        public int townhallLevel = 1;
         
 
         public void Construct(EntityStats res) {
@@ -28,20 +32,37 @@ namespace World.Entities {
             return false;
         }
 
+        public bool IsTownhallLevelEnoughForUpgrade(Entity entity) {
+            if (board == null) {
+                board = GameObject.FindGameObjectWithTag("InGameBoard").GetComponent<GameBoard>();
+            }
+            if (entity.Type == EntityType.TownHall) {
+                return true;
+            }
+            return entity.Level < board.GetTownHallLevel();
+        }
+        
+
+        public bool ResearchIfEnoughMoney(ResearchOption research) {
+            if (research.isResearched) return false;
+            int cost = research.ResearchDiff.cost;
+            if (resources.Money >= cost)
+            {
+                resources.Money -= cost;
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+        
+
         public void Destruct(EntityStats res) {
         }
 
-        public void IncreaseMoneyRate(int amount) {
-            resources.MoneyRate += amount;
-        }
-        
-        public void DecreaseMoneyRate(int amount) {
-            resources.MoneyRate -= amount;
-        }
-        
         public GameObject CreateOutlineCube()
         {
-            return Instantiate(outlineCube);
+            return Instantiate(outlineCubePrefab);
         }
 
         public void SetOutlineColor(GameObject cube, bool canBePlaced)
@@ -49,6 +70,15 @@ namespace World.Entities {
             cube.GetComponent<Renderer>().material = canBePlaced
                 ? greenTransparentMat
                 : redTransparentMat;
+        }
+
+        public EntityPlacerMode GetEntityPlacerMode()
+        {
+            if (entityPlacer == null)
+            {
+                entityPlacer = FindObjectOfType<EntityPlacer>();
+            }
+            return entityPlacer.Mode;
         }
     }
 }

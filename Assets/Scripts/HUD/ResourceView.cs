@@ -22,7 +22,7 @@ public class ResourceView : MonoBehaviour
     private bool flipflop;
     private Vector4 normal = new Vector4(1f, 1f, 1f, 1f);
     private Vector4 red = new Vector4(0.5f, 0, 0, 1f);
-    
+
     private ViewedResource[] viewedResources;
     [SerializeField] private Text populationCounter;
     private Dictionary<String,Transform> sliderTransform;
@@ -34,8 +34,7 @@ public class ResourceView : MonoBehaviour
         var slider = resourceMaster.GetComponentInChildren<Slider>();
         sliderTransform[name] = slider.transform;
         return new ViewedResource(slider);
-    }    
-    
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -96,10 +95,10 @@ public class ResourceView : MonoBehaviour
    
 }
 
-class ViewedResource    {
+public class ViewedResource    {
     private Slider slider;
     private Image sliderColor;
-    private int desired; 
+    private int desired;
     private int current;
 
     // Used for pretty moving of sliders

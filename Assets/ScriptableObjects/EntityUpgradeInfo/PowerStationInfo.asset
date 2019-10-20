@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba45628976743dd8c1aff117038edb1, type: 3}
+  m_Name: PowerStationInfo
+  m_EditorClassIdentifier: 
+  levelInfo:
+  - baseStats:
+      cost: 100
+      money: 0
+      food: 0
+      shelter: 0
+      power: 20
+      environment: -20
+    researchOptions:
+    - name: Carbon Filtration (1000 CC)
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 10
+    - name: Advanced Generation (1000 CC)
+      researchDiff:
+        cost: 1000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 10
+        environment: 0
+  - baseStats:
+      cost: 1000
+      money: 0
+      food: 0
+      shelter: 0
+      power: 40
+      environment: -40
+    researchOptions:
+    - name: Future Generation (5000 CC)
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 20
+        environment: 0
+    - name: Advanced Carbon Trapping (5000 CC)
+      researchDiff:
+        cost: 5000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 20
+  - baseStats:
+      cost: 5000
+      money: 0
+      food: 0
+      shelter: 0
+      power: 100
+      environment: -80
+    researchOptions:
+    - name: Emission Reduction (20000 CC)
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 0
+        environment: 50
+    - name: High Power Fuel (20000 CC)
+      researchDiff:
+        cost: 20000
+        money: 0
+        food: 0
+        shelter: 0
+        power: 50
+        environment: 0
+  description: Powerstations burn fossil fuels to make power and aren't good for the
+    environment

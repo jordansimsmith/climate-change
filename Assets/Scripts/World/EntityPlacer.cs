@@ -1,5 +1,4 @@
 ﻿using Audio;
-using HUD;
 using UnityEngine;
 using World.Entities;
 using World.Resource;
@@ -13,36 +12,50 @@ namespace World
         [SerializeField] private ResourceSingleton resources;
         private Entity entity;
         private Plane tilePlane;
-        private bool deleteMode;
-        private EntitySideBarController sideBarController;
+        private EntityPlacerMode mode;
+        private GameBoard board;
 
-        public bool DeleteMode
+        public EntityPlacerMode Mode
         {
-            get => deleteMode;
+            get => mode;
             set
             {
-                if (entity != null)
+                switch (value)
                 {
-                    DestroyCurrentEntity();
-                }
+                    case EntityPlacerMode.DELETE:
+                        if (entity != null)
+                        {
+                            DestroyCurrentEntity();
+                        }
 
-                deleteMode = value;
-                if (value)
-                {
-                    entity = null;
-                    enabled = true;
-                }
-                else
-                {
-                    enabled = false;
+                        mode = EntityPlacerMode.DELETE;
+                        
+                        // clear entity if there is currently one 
+                        entity = null;
+                        enabled = true;
+                        break;
+                    
+                    case EntityPlacerMode.NONE:
+                        mode = EntityPlacerMode.NONE;
+                        enabled = false;
+                        break;
+                    
+                    case EntityPlacerMode.BUILD:
+                        mode = EntityPlacerMode.BUILD;
+                        enabled = true;
+                        break;
+                    
+                    case EntityPlacerMode.RECLAIM:
+                        mode = EntityPlacerMode.RECLAIM;
+                        enabled = true;
+                        break;
                 }
             }
         }
-
         private void Start()
         {
             tilePlane = new Plane(Vector3.up, 0);
-            sideBarController = FindObjectOfType<EntitySideBarController>();
+            board = GetComponentInChildren<GameBoard>();
         }
 
         public void Spawn(EntityType type)
@@ -51,8 +64,8 @@ namespace World
             {
                 DestroyCurrentEntity();
             }
-
-            DeleteMode = false;
+            
+            Mode = EntityPlacerMode.BUILD;
             entity = factory.Get(type);
             enabled = true;
         }
@@ -61,7 +74,7 @@ namespace World
         private void Update()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (entity != null)
+            if (Mode == EntityPlacerMode.BUILD)
             {
                 // Places object at mouse, deposits object on grid when clicked
                 Transform buildingTransform = entity.transform;
@@ -77,7 +90,10 @@ namespace World
                     entity.ShowOutline(canBePlaced);
                     if (Input.GetMouseButtonDown(0) && canBePlaced)
                     {
-                        PlaceEntityIfValid(gameTile);
+                        tile.Entity = entity;
+                        enabled = false;
+                        entity.HideOutline();
+                        entity = null;
                         AudioManager.Instance.Play(gameTile);
                     }
                 }
@@ -90,15 +106,35 @@ namespace World
                     entity.HideOutline();
                 }
             }
-            else if (DeleteMode)
+            else if (Mode == EntityPlacerMode.DELETE)
             {
                 // Remove target object if clicked
                 if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    GameObject deleteTile = hitInfo.collider.gameObject;
+                    Tile tile = deleteTile.GetComponent<Tile>();
+                    var canBeDeleted = EntityCanBeDeleted(tile);
+                    if (Input.GetMouseButtonDown(0) && canBeDeleted) {
+                        tile.Entity = null;
+                    }
+                }
+            }
+            else if (Mode == EntityPlacerMode.RECLAIM)
+            {
+                // reclaim code 
+                if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
+                {
+                    if (Input.GetMouseButton(0))
                     {
                         GameObject gameTile = hitInfo.collider.gameObject;
-                        DeleteEntityifValid(gameTile);
+                        Tile tile = gameTile.GetComponent<Tile>();
+                        if (TileCanBeReclaimed(tile)) {
+                            int reclaimCost = tile.ReclaimCost;
+                            if (resources.Money >= reclaimCost) {
+                                resources.Money -= reclaimCost;
+                                board.ReclaimTile(tile);
+                            }
+                        } 
                     }
                 }
             }
@@ -106,30 +142,43 @@ namespace World
 
         private bool EntityCanBePlacedOn(Tile tile)
         {
-            return tile.TileType.Equals(TileType.Grass)
-                   && tile.Entity == null
-                   && resources.Money >= entity.Stats.cost;
+            return tile.IsTileValid() && resources.Money >= entity.Stats.cost;
         }
 
-        private void PlaceEntityIfValid(GameObject gameTile)
-        {
-            Tile tile = gameTile.GetComponent<Tile>();
-            if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
-            {
-                tile.Entity = entity;
-                enabled = false;
-                entity.HideOutline();
-                entity = null;
-            }
-        }
+//        private void PlaceEntityIfValid(GameObject gameTile) {
+//            Tile tile = gameTile.GetComponent<Tile>();
+//            if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
+//            {
+//                tile.Entity = entity;
+//                enabled = false;
+//                entity.HideOutline();
+//                entity = null;
+//            }
+//        }
 
-        private void DeleteEntityifValid(GameObject gameTile)
+
+        public bool TileCanBeReclaimed(Tile tile) {
+            return tile.Entity == null && board.GetNumberOfAdjacentGrassTiles(tile) >= 2;
+            
+//            
+//            if (tile.Entity == null) {
+//                if (board.GetNumberOfAdjacentGrassTiles(tile) >= 2) {
+//                    int reclaimCost = tile.ReclaimCost;
+//                    if (resources.Money >= reclaimCost) {
+//                        resources.Money -= reclaimCost;
+//                        board.ReclaimTile(tile);
+//                    }
+//                }
+//                else {
+//                    Debug.Log("not enough adjacent grass tiles");
+//                }
+//            }
+        }
+        
+
+        public bool EntityCanBeDeleted(Tile tile)
         {
-            Tile tile = gameTile.GetComponent<Tile>();
-            if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
-            {
-                tile.Entity = null;
-            }
+            return tile.Entity != null && tile.Entity.Type != EntityType.TownHall;
         }
 
         private void DestroyCurrentEntity()

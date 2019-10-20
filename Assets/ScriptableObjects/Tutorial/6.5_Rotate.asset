@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355fae3da8284a90ab512427b47ac362, type: 3}
+  m_Name: 6.5_Rotate
+  m_EditorClassIdentifier: 
+  title: 
+  description: 'You can also rotate the world by pressing the Q and E keys! Why don''t
+    you give that a try!
+
+
+    (Hint: Hit Q and E to continue)'
+  successMessage: Nicely Done!
+  keys: 7100000065000000

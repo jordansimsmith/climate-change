@@ -5,20 +5,22 @@ using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using World;
+using World.Tiles;
 
 public class EscapeController : MonoBehaviour
 {
-    private bool gameIsPaused = false;
+    [SerializeField] private GameObject[] uiElements;
+    [SerializeField] private GameObject loader;
+    [SerializeField] private GameObject escapeUIObj;
 
-
-    public GameObject[] uiElements;
     private List<GameObject> elementsOff;
-    public GameObject escapeUIObj;
     public Text shareText;
     public Button shareButton;
     private PostProcessingBehaviour blurComponent;
-
+    private bool gameIsPaused = false;
+    public bool GameIsPaused => gameIsPaused;
     private GameBoard board;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,10 +58,12 @@ public class EscapeController : MonoBehaviour
                 elementsOff.Add(obj);
             }
         }
+
         blurComponent.enabled = true;
         gameIsPaused = true;
         Time.timeScale = 0f;
         escapeUIObj.SetActive(true);
+        Tile.highlightEnabled = false;
     }
 
     void Resume()
@@ -68,11 +72,13 @@ public class EscapeController : MonoBehaviour
         {
             obj.SetActive(true);
         }
+
         elementsOff = new List<GameObject>();
         blurComponent.enabled = false;
         gameIsPaused = false;
         Time.timeScale = 1f;
         escapeUIObj.SetActive(false);
+        Tile.highlightEnabled = true;
     }
 
     public void SaveButtonOnClick()
@@ -124,12 +130,19 @@ public class EscapeController : MonoBehaviour
        
     }
 
-
     public void BackButtonOnClick()
     {
         Resume();
         board.ActiveWorld = null;
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
+        loader.SetActive(true);
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            if (scene.name.Equals("TestScene"))
+            {
+                loader.SetActive(false);
+            }
+        };
     }
 
     public void ResumeButtonOnClick()
