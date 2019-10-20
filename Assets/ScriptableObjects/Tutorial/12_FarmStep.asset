@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Ewan
   description: You'll probably need some food, let's go ahead and build a farm by
-    clicking the pizza on the right.
+    clicking the farm icon on the right.
   successMessage: I was getting hungry, Thanks!
   entityToDetect: 4
