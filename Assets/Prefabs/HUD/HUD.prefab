@@ -12721,6 +12721,8 @@ MonoBehaviour:
   - {fileID: 1650349036636796025}
   - {fileID: 8958648899507247422}
   - {fileID: 1596095813890040113}
+  - {fileID: 4178972756765059926}
+  - {fileID: 6696520766388987256}
   loader: {fileID: 1791619237144262937}
   escapeUIObj: {fileID: 8807631041250267382}
 --- !u!114 &4055062841068429009
@@ -13862,6 +13864,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8807631040173928673}
     m_Modifications:
+    - target: {fileID: 7714427712938385853, guid: 667699e13c9142546936fa048f32d9cb,
+        type: 3}
+      propertyPath: m_Name
+      value: Loader
+      objectReference: {fileID: 0}
     - target: {fileID: 7714427712938385852, guid: 667699e13c9142546936fa048f32d9cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13966,11 +13973,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714427712938385853, guid: 667699e13c9142546936fa048f32d9cb,
-        type: 3}
-      propertyPath: m_Name
-      value: Loader
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 667699e13c9142546936fa048f32d9cb, type: 3}
