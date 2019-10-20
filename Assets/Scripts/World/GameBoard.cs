@@ -199,6 +199,9 @@ namespace World
             SerializableWorld updatedWorld = new SerializableWorld(Tiles, resources);
             updatedWorld.Name = persistenceManager.SelectedWorld.world.Name;
             updatedWorld.CreationTime = persistenceManager.SelectedWorld.world.CreationTime;
+            updatedWorld.IsTutorialCompleted = persistenceManager.SelectedWorld.world.IsTutorialCompleted;
+                
+            
             persistenceManager.SelectedWorld.world = updatedWorld;
             persistenceManager.SaveGameState(persistenceManager.SelectedWorld);
         }

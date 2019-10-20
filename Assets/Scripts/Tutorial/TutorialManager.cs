@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Persistence;
+using UnityEngine;
 
 namespace Tutorial
 {
@@ -13,13 +14,23 @@ namespace Tutorial
 
         public bool TutorialComplete => tutorialComplete;
         public int CurrentTutorialStep => currentTutorialStep;
+        private PersistenceManager persistenceManager;
 
         // Start is called before the first frame update
         private void Start()
         {
             EndTutorial();
             dialogueManager = tutorialCanvas.GetComponent<DialogueManager>();
-            StartTutorial(0);
+            persistenceManager = FindObjectOfType<PersistenceManager>();
+            if (!persistenceManager.SelectedWorld.world.IsTutorialCompleted)
+            {
+                StartTutorial(0);
+            }
+            else
+            {
+                tutorialActive = false;
+                tutorialCanvas.SetActive(false);
+            }
         }
 
         // Update is called once per frame
@@ -92,6 +103,7 @@ namespace Tutorial
             tutorialActive = false;
             tutorialCanvas.SetActive(false);
             tutorialComplete = true;
+            persistenceManager.SelectedWorld.world.IsTutorialCompleted = true;
         }
     }
 }

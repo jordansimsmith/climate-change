@@ -12,8 +12,8 @@ public class AuthHandler : MonoBehaviour
 {
     private static FirebaseAuthLink currentAuth;
     
-    [DllImport("__Internal")]
-    private static extern void OpenAuthUI();
+//    [DllImport("__Internal")]
+//    private static extern void OpenAuthUI();
 
     private FirebaseAuthProvider authProvider;
     
@@ -66,7 +66,7 @@ public class AuthHandler : MonoBehaviour
         }
         else
         {
-            OpenAuthUI();
+//            OpenAuthUI();
         }
     }
     

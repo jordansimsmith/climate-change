@@ -131,7 +131,10 @@ namespace World.Entities
         
         public void OnMouseDown()
         {
-            sideBarController.ShowSideBar(this, true);
+            if (sideBarController == null || !sideBarController.isActiveAndEnabled)
+            {
+                sideBarController.ShowSideBar(this, true);
+            }
         }
     }
 }

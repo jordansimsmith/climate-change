@@ -13,6 +13,8 @@ namespace Persistence.Serializables
        
         private string name;
         private string creationTime;
+        private bool isTutorialCompleted;
+        
         public SerializableWorld()
         {
         }
@@ -44,6 +46,12 @@ namespace Persistence.Serializables
         {
             get => creationTime;
             set => creationTime = value;
+        }
+
+        public bool IsTutorialCompleted
+        {
+            get => isTutorialCompleted;
+            set => isTutorialCompleted = value;
         }
 
         public SerializableTile[,] WorldData { get; set; }
