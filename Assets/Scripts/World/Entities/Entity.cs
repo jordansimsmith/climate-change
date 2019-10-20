@@ -1,6 +1,7 @@
 using System;
 using HUD;
 using UnityEngine;
+using World.Tiles;
 
 namespace World.Entities
 {
@@ -120,6 +121,22 @@ namespace World.Entities
             if (box == null) return;
             Destroy(box);
             box = null;
+        }
+
+        private void OnMouseEnter() {
+            var parent = transform.parent;
+            if (parent == null) {
+                return;
+            }
+            parent.GetComponent<Tile>().ShowHighlight();
+        }
+
+        private void OnMouseExit() {
+            var parent = transform.parent;
+            if (parent == null) {
+                return;
+            }
+            parent.GetComponent<Tile>().HideHighlight();
         }
 
         public int GetUpgradeCost() {
