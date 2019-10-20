@@ -87,11 +87,30 @@ namespace World.Tiles
 
 
         public void ShowHighlight() {
-            var ogColor = originalMaterial.color;
-            var color = TileType is TileType.Sand
-                ? new Color(ogColor.r * 0.9f, ogColor.g * 0.9f, ogColor.b * 0.9f)
-                : new Color(ogColor.r * 1.5f, ogColor.g * 1.5f, ogColor.b * 1.5f);
-            ShowHighlight(color);
+            if (placer == null)
+            {
+                placer = FindObjectOfType<EntityPlacer>();
+            }
+            if (placer.Mode == EntityPlacerMode.DELETE) {
+                if (placer.EntityCanBeDeleted(this)) {
+                    ShowHighlight(new Color(0.9f, 0.8f, 0.17f));
+                }
+            }
+            else if (placer.Mode == EntityPlacerMode.RECLAIM) {
+                if (placer.TileCanBeReclaimed(this)) {
+                    ShowHighlight(new Color(0.35f, 0.77f, 0.39f));
+                }
+                else {
+                    ShowHighlight(new Color(0.77f, 0.27f, 0.23f));
+                }
+            }
+            else {
+                var ogColor = originalMaterial.color;
+                var color = TileType is TileType.Sand
+                    ? new Color(ogColor.r * 0.9f, ogColor.g * 0.9f, ogColor.b * 0.9f)
+                    : new Color(ogColor.r * 1.5f, ogColor.g * 1.5f, ogColor.b * 1.5f);
+                ShowHighlight(color);
+            }
         }
 
 
@@ -106,10 +125,6 @@ namespace World.Tiles
         public void OnMouseEnter()
         {
             ShowHighlight();
-            if (placer == null)
-            {
-                placer = FindObjectOfType<EntityPlacer>();
-            }
 
             if (cost == null)
             {

@@ -90,7 +90,10 @@ namespace World
                     entity.ShowOutline(canBePlaced);
                     if (Input.GetMouseButtonDown(0) && canBePlaced)
                     {
-                        PlaceEntityIfValid(gameTile);
+                        tile.Entity = entity;
+                        enabled = false;
+                        entity.HideOutline();
+                        entity = null;
                         AudioManager.Instance.Play(gameTile);
                     }
                 }
@@ -108,10 +111,11 @@ namespace World
                 // Remove target object if clicked
                 if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                 {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        GameObject gameTile = hitInfo.collider.gameObject;
-                        DeleteEntityifValid(gameTile);
+                    GameObject deleteTile = hitInfo.collider.gameObject;
+                    Tile tile = deleteTile.GetComponent<Tile>();
+                    var canBeDeleted = EntityCanBeDeleted(tile);
+                    if (Input.GetMouseButtonDown(0) && canBeDeleted) {
+                        tile.Entity = null;
                     }
                 }
             }
@@ -124,27 +128,13 @@ namespace World
                     {
                         GameObject gameTile = hitInfo.collider.gameObject;
                         Tile tile = gameTile.GetComponent<Tile>();
-                        if (tile == null)
-                        {
-                            Debug.Log("tile is null");
-                        }
-                        if (tile.Entity == null)
-                        {
-                            if (board.GetNumberOfAdjacentGrassTiles(tile) >= 2)
-                            {
-                                int reclaimCost = tile.ReclaimCost;
-                                if (resources.Money >= reclaimCost)
-                                {
-                                    resources.Money -= reclaimCost;
-                                    board.ReclaimTile(tile);
-                                }
+                        if (TileCanBeReclaimed(tile)) {
+                            int reclaimCost = tile.ReclaimCost;
+                            if (resources.Money >= reclaimCost) {
+                                resources.Money -= reclaimCost;
+                                board.ReclaimTile(tile);
                             }
-                            else
-                            {
-                                Debug.Log("not enough adjacent grass tiles");
-                            }
-                        }
-                       
+                        } 
                     }
                 }
             }
@@ -152,30 +142,43 @@ namespace World
 
         private bool EntityCanBePlacedOn(Tile tile)
         {
-            return tile.TileType.Equals(TileType.Grass)
-                   && tile.Entity == null
-                   && resources.Money >= entity.Stats.cost;
+            return tile.IsTileValid() && resources.Money >= entity.Stats.cost;
         }
 
-        private void PlaceEntityIfValid(GameObject gameTile)
-        {
-            Tile tile = gameTile.GetComponent<Tile>();
-            if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
-            {
-                tile.Entity = entity;
-                enabled = false;
-                entity.HideOutline();
-                entity = null;
-            }
-        }
+//        private void PlaceEntityIfValid(GameObject gameTile) {
+//            Tile tile = gameTile.GetComponent<Tile>();
+//            if (tile.IsTileValid() && resources.Money >= entity.Stats.cost)
+//            {
+//                tile.Entity = entity;
+//                enabled = false;
+//                entity.HideOutline();
+//                entity = null;
+//            }
+//        }
 
-        private void DeleteEntityifValid(GameObject gameTile)
+
+        public bool TileCanBeReclaimed(Tile tile) {
+            return tile.Entity == null && board.GetNumberOfAdjacentGrassTiles(tile) >= 2;
+            
+//            
+//            if (tile.Entity == null) {
+//                if (board.GetNumberOfAdjacentGrassTiles(tile) >= 2) {
+//                    int reclaimCost = tile.ReclaimCost;
+//                    if (resources.Money >= reclaimCost) {
+//                        resources.Money -= reclaimCost;
+//                        board.ReclaimTile(tile);
+//                    }
+//                }
+//                else {
+//                    Debug.Log("not enough adjacent grass tiles");
+//                }
+//            }
+        }
+        
+
+        public bool EntityCanBeDeleted(Tile tile)
         {
-            Tile tile = gameTile.GetComponent<Tile>();
-            if (tile.Entity != null && tile.Entity.Type != EntityType.TownHall)
-            {
-                tile.Entity = null;
-            }
+            return tile.Entity != null && tile.Entity.Type != EntityType.TownHall;
         }
 
         private void DestroyCurrentEntity()
