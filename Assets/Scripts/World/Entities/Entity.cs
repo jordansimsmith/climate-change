@@ -1,4 +1,5 @@
 using HUD;
+using Tutorial;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -75,6 +76,8 @@ namespace World.Entities
                 {
                     modelForLevel[i].SetActive(i == Level - 1);
                 }
+                
+                SimpleDialogueManager.Instance.SetCurrentDialogue(new [] {"Thats a bruh moment", "Bruhhh"}, "Bruh");
 
                 return true;
             }

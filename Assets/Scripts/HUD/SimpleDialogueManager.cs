@@ -11,17 +11,12 @@ namespace Tutorial
         private Text titleText;
         [SerializeField]
         private Text descriptionText;
-        [SerializeField]
-        private Button continueButton;
         
         public GameObject dialoguePanel;
         
         private List<string> dialogueLines = new List<string>();
         private int dialogueIndex;
         private string dialogueTitle;
-
-        
-        private string fullDescriptionText;
         
         public static SimpleDialogueManager Instance { get; set;  }
 
@@ -37,7 +32,7 @@ namespace Tutorial
                 Instance = this;
             }
         }
-        public void AddNewDialogue(string[] lines, string dialogueName)
+        public void SetCurrentDialogue(string[] lines, string dialogueName)
         {
             dialogueIndex = 0;
             dialogueTitle = dialogueName;
@@ -57,25 +52,34 @@ namespace Tutorial
             else
             {
                 dialoguePanel.SetActive(false);
+                RemoveCurrentDialogue();
             }
         }
 
-        public void CreateDialogue()
+        private void CreateDialogue()
         {
+            dialoguePanel.SetActive(true);
             titleText.text = dialogueTitle;
             DisplayNextSentence(dialogueLines[dialogueIndex]);
-            dialoguePanel.SetActive(true);
-            
+        }
+
+        private void RemoveCurrentDialogue()
+        {
+            titleText.text = "";
+            descriptionText.text = "";
+
+            dialogueLines = null;
+            dialogueIndex = 0;
+            dialogueTitle = "";
+
         }
         
-        public void DisplayNextSentence(string description)
+        private void DisplayNextSentence(string description)
         {
             descriptionText.text = "";
             
             StopAllCoroutines();
             StartCoroutine(TypeSentence(description));
-            Debug.Log(description);
-
         }
 
 
