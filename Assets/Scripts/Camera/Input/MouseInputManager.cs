@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MouseInputManager : InputManager
 {
-    Vector2Int screen;
-
     //events
     public static event MoveInputHandler OnMoveInput;
     public static event RotateInputHandler OnRotateInput;
     public static event ZoomInputHandler OnZoomInput;
+
+    private Vector2Int screen;
 
     private void Awake()
     {
@@ -18,18 +16,18 @@ public class MouseInputManager : InputManager
 
     private void Update()
     {
+        // check mouse is within bounds
         Vector3 mp = Input.mousePosition;
-        bool mouseValid = (mp.y <= screen.y * 1.05f && mp.y >= screen.y * -0.05f &&
-            mp.x <= screen.x * 1.05f && mp.x >= screen.x * -0.05f);
-
+        bool mouseValid = mp.y <= screen.y * 1.05f && mp.y >= screen.y * -0.05f &&
+                          mp.x <= screen.x * 1.05f && mp.x >= screen.x * -0.05f;
         if (!mouseValid) return;
 
-        //movement
-        if(mp.y > screen.y * 0.995f)
+        // pan camera if mouse is on edge of screen
+        if (mp.y > screen.y * 0.995f)
         {
             OnMoveInput?.Invoke(Vector3.forward);
         }
-        else if(mp.y < screen.y * 0.005f)
+        else if (mp.y < screen.y * 0.005f)
         {
             OnMoveInput?.Invoke(-Vector3.forward);
         }
@@ -43,13 +41,13 @@ public class MouseInputManager : InputManager
             OnMoveInput?.Invoke(-Vector3.right);
         }
 
-        if(Input.mouseScrollDelta.y > 0)
+        if (Input.mouseScrollDelta.y > 0)
         {
             OnZoomInput?.Invoke(-3f);
         }
-        else if(Input.mouseScrollDelta.y < 0)
+        else if (Input.mouseScrollDelta.y < 0)
         {
-            OnZoomInput.Invoke(3f);
+            OnZoomInput?.Invoke(3f);
         }
     }
 }

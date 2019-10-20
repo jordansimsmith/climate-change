@@ -110,7 +110,7 @@ namespace HUD
         }
 
 
-        public bool isUpgradeInformationOpen()
+        public bool IsUpgradeInformationOpen()
         {
             return gameObject.activeSelf;
         }

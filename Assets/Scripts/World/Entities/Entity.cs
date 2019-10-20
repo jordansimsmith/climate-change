@@ -1,7 +1,7 @@
-using System;
 using HUD;
 using UnityEngine;
 using World.Tiles;
+using UnityEngine.EventSystems;
 
 namespace World.Entities
 {
@@ -9,7 +9,7 @@ namespace World.Entities
     {
         [SerializeField] protected EntityHelper entityHelper;
         [SerializeField] protected GameObject[] modelForLevel;
-        
+
         public virtual EntityType Type { get; }
         public virtual EntityUpgradeInfo UpgradeInfo { get; }
 
@@ -18,11 +18,13 @@ namespace World.Entities
             RefreshModelForLevel();
         }
 
-        public EntityStats Stats {
-            get {
-                
+        public EntityStats Stats
+        {
+            get
+            {
                 //Helper function to apply updates from research
-                void Apply(ref EntityStats stats, EntityStats diff) {
+                void Apply(ref EntityStats stats, EntityStats diff)
+                {
                     stats.environment += diff.environment;
                     stats.food += diff.food;
                     stats.money += diff.money;
@@ -34,8 +36,10 @@ namespace World.Entities
                 var levelStat = UpgradeInfo.GetLevel(Level).BaseStats;
 
                 // Apply updates to the base stats based on research options
-                foreach (var researchOption in UpgradeInfo.GetLevel(Level).ResearchOptions) {
-                    if (researchOption.isResearched) {
+                foreach (var researchOption in UpgradeInfo.GetLevel(Level).ResearchOptions)
+                {
+                    if (researchOption.isResearched)
+                    {
                         Apply(ref levelStat, researchOption.ResearchDiff);
                     }
                 }
@@ -45,7 +49,7 @@ namespace World.Entities
         }
 
         public int Level { get; set; } = 1; // level starts at 1 currently- upgradable 2 times
-        public int MaxLevel => UpgradeInfo.NumberOfLevels; 
+        public int MaxLevel => UpgradeInfo.NumberOfLevels;
 
         public virtual void Construct()
         {
@@ -67,25 +71,26 @@ namespace World.Entities
                 return false;
             }
 
-            if (!entityHelper.IsTownhallLevelEnoughForUpgrade(this)) {
+            if (!entityHelper.IsTownhallLevelEnoughForUpgrade(this))
+            {
                 return false;
-            } 
-            
+            }
+
             int upgradeCost = GetUpgradeCost();
             if (entityHelper.UpgradeIfEnoughMoney(upgradeCost))
             {
                 Level++;
-                
+
                 // Switch out the model when upgrading to next level
                 RefreshModelForLevel();
-                
+
                 return true;
             }
 
             Debug.Log("not enough shmoneys");
             return false;
         }
-        
+
         public void RefreshModelForLevel()
         {
             for (int i = 0; i < modelForLevel.Length; i++)
@@ -94,11 +99,14 @@ namespace World.Entities
             }
         }
 
-        public virtual bool Research(ResearchOption research) {
-            if (entityHelper.ResearchIfEnoughMoney(research)) {
+        public virtual bool Research(ResearchOption research)
+        {
+            if (entityHelper.ResearchIfEnoughMoney(research))
+            {
                 research.isResearched = true;
                 return true;
             }
+
             return false;
         }
 
@@ -123,23 +131,30 @@ namespace World.Entities
             box = null;
         }
 
-        private void OnMouseEnter() {
+        private void OnMouseEnter()
+        {
             var parent = transform.parent;
-            if (parent == null) {
+            if (parent == null)
+            {
                 return;
             }
+
             parent.GetComponent<Tile>().ShowHighlight();
         }
 
-        private void OnMouseExit() {
+        private void OnMouseExit()
+        {
             var parent = transform.parent;
-            if (parent == null) {
+            if (parent == null)
+            {
                 return;
             }
+
             parent.GetComponent<Tile>().HideHighlight();
         }
 
-        public int GetUpgradeCost() {
+        public int GetUpgradeCost()
+        {
             return UpgradeInfo.GetLevel(Level + 1).BaseStats.cost;
         }
 
@@ -150,6 +165,12 @@ namespace World.Entities
 
         public void OnMouseDown()
         {
+            // disable clicking through ui elements
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+
             if (entityHelper.GetEntityPlacerMode() != EntityPlacerMode.DELETE)
             {
                 UpgradeInformationController.Instance.ShowInformation(this);
@@ -157,14 +178,13 @@ namespace World.Entities
 
             if (entityHelper.GetEntityPlacerMode() == EntityPlacerMode.DELETE)
             {
-                if (UpgradeInformationController.Instance.isUpgradeInformationOpen())
+                if (UpgradeInformationController.Instance.IsUpgradeInformationOpen())
                 {
                     if (this == UpgradeInformationController.Instance.Entity)
                     {
                         UpgradeInformationController.Instance.CloseInformation();
                     }
                 }
-
             }
         }
     }

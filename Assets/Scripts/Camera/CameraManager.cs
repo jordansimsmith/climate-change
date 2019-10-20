@@ -28,6 +28,7 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
+        // setup camera
         maxBounds.x = 190;
         maxBounds.y = 190;
         cam = GetComponentInChildren<Camera>();
@@ -37,6 +38,7 @@ public class CameraManager : MonoBehaviour
             : new PerspectiveZoomStrategy(cam, cameraOffset, startingZoom);
         cam.transform.LookAt(transform.position + Vector3.up * lookAtOffset);
 
+        // initial camera position
         initialPosition = transform.position;
         initialRotation = transform.rotation;
     }
@@ -76,6 +78,7 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
+        // reset camera position
         if (Input.GetKey(KeyCode.Space))
         {
             transform.SetPositionAndRotation(initialPosition, initialRotation);

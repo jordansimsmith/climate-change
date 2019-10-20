@@ -1401,6 +1401,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 760458435837037564, guid: fe9699826e8d2f94da0a8b38094def2f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 760458436336308891, guid: fe9699826e8d2f94da0a8b38094def2f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1710,6 +1715,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1014289878}
+    - target: {fileID: 5960761321585997474, guid: 9288ecd476f400c4e97785f2ac391e06,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9288ecd476f400c4e97785f2ac391e06, type: 3}
 --- !u!1001 &6636023552445663363
@@ -1719,6 +1729,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1967276532}
     m_Modifications:
+    - target: {fileID: 6636023552991531743, guid: 64b2873d6e725594f9e9e9125f5180fa,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
     - target: {fileID: 6636023552991531742, guid: 64b2873d6e725594f9e9e9125f5180fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1773,11 +1788,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636023552991531743, guid: 64b2873d6e725594f9e9e9125f5180fa,
-        type: 3}
-      propertyPath: m_Name
-      value: AudioManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b2873d6e725594f9e9e9125f5180fa, type: 3}
