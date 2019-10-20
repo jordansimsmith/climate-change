@@ -1,4 +1,5 @@
 using HUD;
+using Tutorial;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -75,7 +76,7 @@ namespace World.Entities
                 {
                     modelForLevel[i].SetActive(i == Level - 1);
                 }
-
+                
                 return true;
             }
 
@@ -140,7 +141,7 @@ namespace World.Entities
 
             if (entityHelper.GetEntityPlacerMode() == EntityPlacerMode.DELETE)
             {
-                if (UpgradeInformationController.Instance.isUpgradeInformationOpen())
+                if (UpgradeInformationController.Instance.IsUpgradeInformationOpen())
                 {
                     if (this == UpgradeInformationController.Instance.Entity)
                     {

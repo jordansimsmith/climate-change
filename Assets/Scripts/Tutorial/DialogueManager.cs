@@ -13,9 +13,8 @@ namespace Tutorial
         private Text descriptionText;
         [SerializeField]
         private Button continueButton;
-
+        
         private string fullDescriptionText;
-   
 
         public void StartDialogue(string titleText, string descriptionText)
         {
@@ -66,6 +65,7 @@ namespace Tutorial
             StopAllCoroutines();
             descriptionText.text = fullDescriptionText;
         }
-      
+
+
     }
 }
