@@ -11,9 +11,12 @@ namespace World.Tiles
         [SerializeField]
         private TileType tileType;
 
+        [SerializeField] 
+        private Material originalMaterial;
+
+        private Material highlightMaterial;
         private Text cost;
         private EntityPlacer placer;
-
         public Vector2Int Pos { get; set; }
         public TileType TileType
         {
@@ -72,6 +75,23 @@ namespace World.Tiles
 
         public void OnMouseEnter()
         {
+            if (highlightMaterial == null)
+            {
+                highlightMaterial = new Material(originalMaterial);
+//                Debug.Log(highlightMaterial.color.ToString());
+                highlightMaterial.EnableKeyword("_EMISSION");
+                highlightMaterial.SetColor("_EMISSION", new Color(0.05f, 0.05f, 0.05f));
+                highlightMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.RealtimeEmissive;
+//                highlightMaterial.color = Color.blue;
+            }
+
+            var materials = GetComponent<MeshRenderer>().materials;
+            materials[1] = highlightMaterial;
+            GetComponent<MeshRenderer>().materials = materials;
+            
+            Debug.Log("Material changed");
+            
+            
             if (placer == null)
             {
                 placer = FindObjectOfType<EntityPlacer>();
@@ -105,6 +125,9 @@ namespace World.Tiles
         public void OnMouseExit()
         {
             ResetCostText();
+//            var materials = GetComponent<MeshRenderer>().materials;
+//            materials[1] = originalMaterial;
+//            GetComponent<MeshRenderer>().materials = materials;
         }
 
         private void ResetCostText()

@@ -101,6 +101,11 @@ namespace World.Entities
             return false;
         }
 
+        private void OnMouseEnter()
+        {
+            
+        }
+
         private GameObject box;
 
         public void ShowOutline(bool canBePlaced)
