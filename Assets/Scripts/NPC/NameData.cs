@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace NPC
@@ -8,7 +7,6 @@ namespace NPC
     public class NameData
     {
         [SerializeField] private List<string> names;
-
         public List<string> Names => names;
 
         public static NameData ParseJson(string json)

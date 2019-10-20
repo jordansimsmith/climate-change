@@ -10,10 +10,6 @@ public class NonPlayingCharacter : MonoBehaviour
     public Sprite avatar;
     public ResourceSingleton resourceSingleton;
 
-    private string firstName;
-    private string lastName;
-    private string occupation;
-
     private Color[] colours;
     private Renderer[] renderers;
 
@@ -21,23 +17,9 @@ public class NonPlayingCharacter : MonoBehaviour
     private NPCPanelController panelController;
     private NavMeshAgent agent;
 
-    public string FirstName
-    {
-        get => firstName;
-        set => firstName = value;
-    }
-
-    public string LastName
-    {
-        get => lastName;
-        set => lastName = value;
-    }
-
-    public string Occupation
-    {
-        get => occupation;
-        set => occupation = value;
-    }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Occupation { get; set; }
 
     // Start is called before the first frame update
     private void Start()
@@ -56,18 +38,20 @@ public class NonPlayingCharacter : MonoBehaviour
         {
             colours[i] = renderers[i].material.color;
         }
-        
+
         // update pathing destination every 10 seconds
         InvokeRepeating("ChangeDestination", 0, 10f);
     }
 
     private void ChangeDestination()
     {
+        // pick a random point on the board
         float x = Random.Range(0, 190f);
         float y = transform.position.y;
         float z = Random.Range(0, 190f);
-        
-        Vector3 destination = new Vector3(x,y,z);
+
+        // set the destination
+        Vector3 destination = new Vector3(x, y, z);
         agent.destination = destination;
     }
 
@@ -89,28 +73,34 @@ public class NonPlayingCharacter : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+    private void OnMouseDown()
     {
+        // npc achievement logic
         var npcAchievement = GameObject.Find("SocialiserAchievement");
-        if (npcAchievement) {
-            AchievementSocialite achv = npcAchievement.GetComponent<AchievementSocialite>();
-            if (achv)   {
+        if (npcAchievement)
+        {
+            var achv = npcAchievement.GetComponent<AchievementSocialite>();
+            if (achv)
+            {
                 achv.OnTalkTo();
             }
         }
 
-        string fullName = firstName + " " + lastName;
+        string fullName = FirstName + " " + LastName;
 
+        // calculate surplus/shortage of resources
         var envBalance = resourceSingleton.totalSupply.environment - resourceSingleton.totalDemand.environment;
         var powerBalance = resourceSingleton.totalSupply.power - resourceSingleton.totalDemand.power;
         var foodBalance = resourceSingleton.totalSupply.food - resourceSingleton.totalDemand.food;
         var shelterBalance = resourceSingleton.totalSupply.shelter - resourceSingleton.totalDemand.shelter;
-        
+
+        // generate tweet based on resources
         string tweet = tweetGenerator.GenerateTweet(foodBalance, powerBalance, shelterBalance, envBalance);
         tweet = "\"" + tweet + "\"";
         TextInfo info = new CultureInfo("en-US", false).TextInfo;
-        string occupationTitleCase = info.ToTitleCase(occupation);
+        string occupationTitleCase = info.ToTitleCase(Occupation);
 
+        // show the npc dialogue
         panelController.Show(fullName, occupationTitleCase, tweet, avatar);
     }
 }

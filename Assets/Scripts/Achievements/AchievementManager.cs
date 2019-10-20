@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
@@ -9,19 +6,21 @@ public class AchievementManager : MonoBehaviour
     public Achievement[] Achievements => achievements; 
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        this.achievements = gameObject.GetComponentsInChildren<Achievement>();
+        // load achievements
+        achievements = gameObject.GetComponentsInChildren<Achievement>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        // check unfinished achievements if they are completed
         foreach (var achievement in achievements)   {
             if (!achievement.Done)  {
                 achievement.AchievementUpdate();
                 if (achievement.Done)   {
-                    this.TriggerAchievement(achievement);
+                    TriggerAchievement(achievement);
                 }
             }
         }
@@ -30,6 +29,6 @@ public class AchievementManager : MonoBehaviour
     // Displays achievement when it is earned
     public void TriggerAchievement(Achievement achievement)
     {
-        //throw new NotImplementedException();
+        // TODO: message to the user that the achievement is completed
     }
 }

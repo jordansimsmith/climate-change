@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PerspectiveZoomStrategy : IZoomStrategy
 {
-    Vector3 normalizedCameraPosition;
-    float currentZoomLevel;
-
-    public float nearZoomLimit { get; private set; }
+    private Vector3 normalizedCameraPosition;
+    private float currentZoomLevel;
 
     public PerspectiveZoomStrategy(Camera cam, Vector3 offset, float startingZoom)
     {
@@ -24,14 +19,26 @@ public class PerspectiveZoomStrategy : IZoomStrategy
 
     public void ZoomIn(Camera cam, float delta, float nearZoomLimit)
     {
-        if (currentZoomLevel <= nearZoomLimit) return;
+        // minimum zoom
+        if (currentZoomLevel <= nearZoomLimit)
+        {
+            return;
+        }
+        
+        // zoom in
         currentZoomLevel = Mathf.Max(currentZoomLevel - delta, nearZoomLimit);
         PositionCamera(cam);
     }
 
     public void ZoomOut(Camera cam, float delta, float farZoomLimit)
     {
-        if (currentZoomLevel >= farZoomLimit) return;
+        // maximum zoom
+        if (currentZoomLevel >= farZoomLimit)
+        {
+            return;
+        } 
+        
+        // zoom out
         currentZoomLevel = Mathf.Min(currentZoomLevel + delta, farZoomLimit);
         PositionCamera(cam);
     }
