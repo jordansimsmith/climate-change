@@ -14,26 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelInfo:
   - baseStats:
-      cost: 10
+      cost: 150
       money: 0
-      food: -10
-      shelter: 10
+      food: -30
+      shelter: 30
       power: -10
-      environment: -10
+      environment: 0
     researchOptions: []
   - baseStats:
-      cost: 20
+      cost: 500
       money: 0
-      food: -20
-      shelter: 20
+      food: -60
+      shelter: 60
       power: -20
-      environment: -20
+      environment: 0
     researchOptions: []
   - baseStats:
-      cost: 40
+      cost: 1000
       money: 0
-      food: -40
-      shelter: 40
-      power: -40
-      environment: -40
+      food: -80
+      shelter: 80
+      power: -30
+      environment: 0
     researchOptions: []
+  description: 

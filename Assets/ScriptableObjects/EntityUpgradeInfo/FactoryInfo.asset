@@ -15,7 +15,7 @@ MonoBehaviour:
   levelInfo:
   - baseStats:
       cost: 100
-      money: 10
+      money: 20
       food: 0
       shelter: 0
       power: -20
@@ -23,7 +23,7 @@ MonoBehaviour:
     researchOptions:
     - name: Clean air filters
       researchDiff:
-        cost: 10
+        cost: 1000
         money: 0
         food: 0
         shelter: 0
@@ -31,26 +31,26 @@ MonoBehaviour:
         environment: 5
     - name: Reduce waste
       researchDiff:
-        cost: 10
+        cost: 1000
         money: 0
         food: 0
         shelter: 0
         power: 0
         environment: 5
   - baseStats:
-      cost: 200
-      money: 20
-      food: 0
-      shelter: 0
-      power: -20
-      environment: -20
-    researchOptions: []
-  - baseStats:
-      cost: 400
+      cost: 500
       money: 40
       food: 0
       shelter: 0
-      power: -20
-      environment: -20
+      power: -60
+      environment: -30
+    researchOptions: []
+  - baseStats:
+      cost: 1000
+      money: 100
+      food: 0
+      shelter: 0
+      power: -80
+      environment: -40
     researchOptions: []
   description: Factories are bad for the environment xddxdxdx

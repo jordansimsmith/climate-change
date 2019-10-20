@@ -22,7 +22,7 @@ MonoBehaviour:
       environment: 0
     researchOptions: []
   - baseStats:
-      cost: 0
+      cost: 10000
       money: 0
       food: 0
       shelter: 0
@@ -30,10 +30,11 @@ MonoBehaviour:
       environment: 0
     researchOptions: []
   - baseStats:
-      cost: 0
+      cost: 50000
       money: 0
       food: 0
       shelter: 0
       power: 0
       environment: 0
     researchOptions: []
+  description: 

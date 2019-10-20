@@ -19,5 +19,6 @@ MonoBehaviour:
       food: 0
       shelter: 0
       power: 0
-      environment: 5
+      environment: 20
     researchOptions: []
+  description: 

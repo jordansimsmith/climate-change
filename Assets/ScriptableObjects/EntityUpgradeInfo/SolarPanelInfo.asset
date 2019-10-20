@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelInfo:
   - baseStats:
-      cost: 200
+      cost: 4000
       money: 0
       food: 0
       shelter: 0
-      power: 20
+      power: 120
       environment: 0
     researchOptions: []
   description: memes
