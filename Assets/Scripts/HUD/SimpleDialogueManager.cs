@@ -15,8 +15,8 @@ namespace HUD
         private Text titleText;
         [SerializeField]
         private Text descriptionText;
-        
-        public GameObject dialoguePanel;
+        [SerializeField]
+        private GameObject dialoguePanel;
         
         private List<string> dialogueLines = new List<string>();
         private int dialogueIndex;
