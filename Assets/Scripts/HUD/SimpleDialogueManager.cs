@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tutorial
+namespace HUD
 {
+    /**
+     * Simple dialogue manager class that controls the dialogue panel (separate from tutorial panel)
+     * Handles displaying of simple text prompts and supports multiple pages
+     */
     public class SimpleDialogueManager : MonoBehaviour
     {
         [SerializeField]
@@ -32,6 +36,11 @@ namespace Tutorial
                 Instance = this;
             }
         }
+        
+        /**
+         * Sets the current dialogue sequence to be displayed
+         * Takes in a list of dialogue and title for the sequence
+         */
         public void SetCurrentDialogue(string[] lines, string dialogueName)
         {
             dialogueIndex = 0;
@@ -42,6 +51,19 @@ namespace Tutorial
             CreateDialogue();
         }
 
+        /**
+         * Displays the dialogue panel and initiates the sequence
+         */
+        private void CreateDialogue()
+        {
+            dialoguePanel.SetActive(true);
+            titleText.text = dialogueTitle;
+            DisplayNextSentence(dialogueLines[dialogueIndex]);
+        }
+
+        /**
+         * Displays the next dialogue line in the sequence (if available) or closes the panel
+         */
         public void ContinueDialogue()
         {
             if (dialogueIndex < dialogueLines.Count - 1)
@@ -55,14 +77,6 @@ namespace Tutorial
                 RemoveCurrentDialogue();
             }
         }
-
-        private void CreateDialogue()
-        {
-            dialoguePanel.SetActive(true);
-            titleText.text = dialogueTitle;
-            DisplayNextSentence(dialogueLines[dialogueIndex]);
-        }
-
         private void RemoveCurrentDialogue()
         {
             titleText.text = "";
@@ -74,12 +88,24 @@ namespace Tutorial
 
         }
         
+        /**
+         * Starts co-routine to display typewriter animation
+         */
         private void DisplayNextSentence(string description)
         {
             descriptionText.text = "";
             
             StopAllCoroutines();
             StartCoroutine(TypeSentence(description));
+        }
+
+        /**
+         * Autocompletes the current dialogue line in the sequence 
+         */
+        public void FinishTyping()
+        {
+            StopAllCoroutines();
+            descriptionText.text = dialogueLines[dialogueIndex];
         }
 
 

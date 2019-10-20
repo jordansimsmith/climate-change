@@ -77,7 +77,10 @@ namespace World.Entities
                     modelForLevel[i].SetActive(i == Level - 1);
                 }
                 
-                SimpleDialogueManager.Instance.SetCurrentDialogue(new [] {"Thats a bruh moment", "Bruhhh"}, "Bruh");
+                SimpleDialogueManager.Instance.SetCurrentDialogue(
+                    new [] {"Thats a bruh moment Thats a bruh moment Thats a bruh moment Thats a bruh moment Thats a bruh moment Thats a bruh moment Thats a bruh moment Thats a bruh moment Thats a bruh moment "
+                        , "Hello sample dialogue yeeeeeehaw"}, 
+                    "Bruh");
 
                 return true;
             }
