@@ -73,25 +73,39 @@ namespace World.Tiles
 
         public static Vector3 Size { get; } = new Vector3(10f, 2.5f, 10f);
 
+        public void ShowHighlight(Color color) {
+            // Swap out the material for a temporary material of a different color
+            if (highlightMaterial == null) {
+                highlightMaterial = new Material(originalMaterial);
+            }
+            highlightMaterial.color = color;
+            var meshRenderer = GetComponent<MeshRenderer>();
+            var materials = meshRenderer.materials;
+            materials[1] = highlightMaterial;
+            meshRenderer.materials = materials;
+        }
+
+
+        public void ShowHighlight() {
+            var ogColor = originalMaterial.color;
+            var color = TileType is TileType.Sand
+                ? new Color(ogColor.r * 0.9f, ogColor.g * 0.9f, ogColor.b * 0.9f)
+                : new Color(ogColor.r * 1.5f, ogColor.g * 1.5f, ogColor.b * 1.5f);
+            ShowHighlight(color);
+        }
+
+
+        public void HideHighlight() {
+            // Restores the original material
+            var meshRenderer = GetComponent<MeshRenderer>();
+            var materials = meshRenderer.materials;
+            materials[1] = originalMaterial;
+            meshRenderer.materials = materials;
+        }
+        
         public void OnMouseEnter()
         {
-            if (highlightMaterial == null)
-            {
-                highlightMaterial = new Material(originalMaterial);
-//                Debug.Log(highlightMaterial.color.ToString());
-                highlightMaterial.EnableKeyword("_EMISSION");
-                highlightMaterial.SetColor("_EMISSION", new Color(0.05f, 0.05f, 0.05f));
-                highlightMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.RealtimeEmissive;
-//                highlightMaterial.color = Color.blue;
-            }
-
-            var materials = GetComponent<MeshRenderer>().materials;
-            materials[1] = highlightMaterial;
-            GetComponent<MeshRenderer>().materials = materials;
-            
-            Debug.Log("Material changed");
-            
-            
+            ShowHighlight();
             if (placer == null)
             {
                 placer = FindObjectOfType<EntityPlacer>();
@@ -125,9 +139,7 @@ namespace World.Tiles
         public void OnMouseExit()
         {
             ResetCostText();
-//            var materials = GetComponent<MeshRenderer>().materials;
-//            materials[1] = originalMaterial;
-//            GetComponent<MeshRenderer>().materials = materials;
+            HideHighlight();
         }
 
         private void ResetCostText()
