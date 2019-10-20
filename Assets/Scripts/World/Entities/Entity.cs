@@ -1,3 +1,4 @@
+using System;
 using HUD;
 using UnityEngine;
 
@@ -10,6 +11,11 @@ namespace World.Entities
         
         public virtual EntityType Type { get; }
         public virtual EntityUpgradeInfo UpgradeInfo { get; }
+
+        void Start()
+        {
+            RefreshModelForLevel();
+        }
 
         public EntityStats Stats {
             get {
@@ -70,19 +76,21 @@ namespace World.Entities
                 Level++;
                 
                 // Switch out the model when upgrading to next level
-                for (int i = 0; i < modelForLevel.Length; i++) {
-                    modelForLevel[i].SetActive(i == Level - 1);
-                }
-
-//                if (Type == EntityType.TownHall) {
-//                    entityHelper.townhallLevel++;
-//                }
+                RefreshModelForLevel();
                 
                 return true;
             }
 
             Debug.Log("not enough shmoneys");
             return false;
+        }
+        
+        public void RefreshModelForLevel()
+        {
+            for (int i = 0; i < modelForLevel.Length; i++)
+            {
+                modelForLevel[i].SetActive(i == Level - 1);
+            }
         }
 
         public virtual bool Research(ResearchOption research) {
