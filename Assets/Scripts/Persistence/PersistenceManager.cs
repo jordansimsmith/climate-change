@@ -37,6 +37,7 @@ namespace Persistence
             }
         }
 
+      
         public void SaveGameState(ServerWorld world)
         {
 
@@ -46,10 +47,10 @@ namespace Persistence
             APIService.Instance.UpdateWorld(world, world.id);
         }
         
+        
         public void DeleteWorld(ServerWorld serverWorld)
         {
 
-            Debug.Log("Try delete "+serverWorld.world.Name);
             APIService.Instance.DeleteWorld(serverWorld.id);
         }
 
