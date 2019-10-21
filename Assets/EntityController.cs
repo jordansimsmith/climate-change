@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using HUD;
+﻿using HUD;
 using UnityEngine;
-using UnityEngine.UI;
 using World.Entities;
 
 public class EntityController : MonoBehaviour
@@ -11,7 +8,6 @@ public class EntityController : MonoBehaviour
 
     private EntityInformationController informationController;
 
-    // Start is called before the first frame update
     void Awake()
     {
         informationController = FindObjectOfType<ShopInformationController>();
@@ -19,7 +15,6 @@ public class EntityController : MonoBehaviour
 
     public void OnHover(EntityType entityType)
     {
-        int cost = entityFactory.GetCost(entityType);
         informationController.ShowInformation(entityFactory.GetPrefab(entityType));
     }
 

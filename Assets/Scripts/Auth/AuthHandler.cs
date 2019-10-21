@@ -1,23 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading;
+﻿using System.Runtime.InteropServices;
 using Firebase.Auth;
 using Newtonsoft.Json;
 using UnityEngine;
-using UnityEngine.Networking.Types;
-
 
 public class AuthHandler : MonoBehaviour
 {
     private static FirebaseCredentials currentAuth;
-    
+
     [DllImport("__Internal")]
     private static extern void OpenAuthUI();
-    
+
     [DllImport("__Internal")]
     private static extern void LoginAnonymously();
-    
+
     [DllImport("__Internal")]
     private static extern void LinkWithGoogle();
 
@@ -25,10 +20,10 @@ public class AuthHandler : MonoBehaviour
 
     private System.Action<FirebaseCredentials> onLoginSuccess;
     private System.Action<string> onLoginError;
-    
-    
-    
+
+
     private static bool created = false;
+
     void Awake()
     {
         if (!created)
@@ -41,14 +36,13 @@ public class AuthHandler : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
         var apiKey = "AIzaSyDkT5sQL8VHw88QsC1gSOOFZB7CwDBkTVs"; // public api key
         authProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
     }
-
 
 
     public void Logout()
@@ -59,7 +53,7 @@ public class AuthHandler : MonoBehaviour
     public async void LoginAnonymousUser(System.Action<FirebaseCredentials> onLogin, System.Action<string> onError)
     {
         onLoginSuccess = onLogin;
-        
+
         if (Application.isEditor)
         {
             FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
@@ -70,7 +64,6 @@ public class AuthHandler : MonoBehaviour
         {
             LoginAnonymously(); // login via JS firebase sdk (authplugin.jslib)
         }
-        
     }
 
     public void AttemptLinkWithGoogle(System.Action<FirebaseCredentials> onLogin, System.Action<string> onError)
@@ -83,23 +76,20 @@ public class AuthHandler : MonoBehaviour
 
         onLoginSuccess = onLogin;
         onLoginError = onError;
-        
-        LinkWithGoogle();
-        
-    }
 
+        LinkWithGoogle();
+    }
 
 
     public FirebaseCredentials CurrentAuth
     {
-        get => currentAuth; 
+        get => currentAuth;
         set { currentAuth = value; }
     }
 
-    
 
-
-    public void DoGoogleLogin(System.Action<FirebaseCredentials> onLogin, System.Action<string> onError) {
+    public void DoGoogleLogin(System.Action<FirebaseCredentials> onLogin, System.Action<string> onError)
+    {
         onLoginSuccess = onLogin;
         onLoginError = onError;
         if (Application.isEditor)
@@ -111,31 +101,27 @@ public class AuthHandler : MonoBehaviour
             OpenAuthUI();
         }
     }
-    
-
-
-
 
 
     public async void LoginSuccess(string credentialsJson)
     {
         Debug.Log(credentialsJson);
         Debug.Log("Received");
-  
+
         FirebaseCredentials creds = JsonConvert.DeserializeObject<FirebaseCredentials>(credentialsJson);
         CurrentAuth = creds;
         Debug.Log(creds.IdToken);
-        
+
         onLoginSuccess(CurrentAuth);
     }
-    
+
     public void LoginError(string error)
     {
         Debug.Log(error);
         Debug.Log("error Received");
         onLoginError(error);
     }
-    
+
     public class FirebaseCredentials
     {
         private string idToken;
@@ -180,8 +166,4 @@ public class AuthHandler : MonoBehaviour
             set => photoURL = value;
         }
     }
-
-    
-    
-    
 }
