@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
+using World.Tiles;
 
 public class EndScreenController : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class EndScreenController : MonoBehaviour
         escapeController.enabled = false;
         winMenuUI.SetActive(true);
         blurComponent.enabled = true;
+        Tile.highlightEnabled = false;
     }
 
     public void DisableWinScreen()
@@ -51,6 +53,7 @@ public class EndScreenController : MonoBehaviour
         blurComponent.enabled = false;
         escapeController.enabled = true;
         winMenuUI.SetActive(false);
+        Tile.highlightEnabled = true;
     }
 
     public void EnableLoseScreen()
@@ -68,6 +71,7 @@ public class EndScreenController : MonoBehaviour
         escapeController.enabled = false;
         loseMenuUI.SetActive(true);
         blurComponent.enabled = true;
+        Tile.highlightEnabled = false;
     }
 
     public void DisableLoseScreen()
@@ -81,6 +85,7 @@ public class EndScreenController : MonoBehaviour
         blurComponent.enabled = false;
         escapeController.enabled = true;
         loseMenuUI.SetActive(false);
+        Tile.highlightEnabled = true;
     }
 
     public void WinContinueButtonOnClick()
