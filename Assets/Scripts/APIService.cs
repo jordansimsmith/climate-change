@@ -9,6 +9,9 @@ using World;
 
 namespace DefaultNamespace
 {
+    /**
+        API Client class that interfaces with the API.
+     */
     public class APIService : MonoBehaviour
     {
 //        private static string BASE_ENDPOINT = "http://localhost:5001/caeliapi/us-east4/api/";

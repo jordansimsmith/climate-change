@@ -25,7 +25,7 @@ export interface DBWorld {
         Name: string;
         CreationTime: string;
         WorldData: {
-            [ind: string]: any[]
+            [ind: string]: any[] // firestore friendly format (firestore does not support 2d arrays in oct 2019)
         }; // n x n tiles
         ResourceData: {
             Money: number;

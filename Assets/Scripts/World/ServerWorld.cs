@@ -2,6 +2,9 @@
 
 namespace World
 {
+    /**
+        Serializable World alongside serverside metadata.
+     */
     public class ServerWorld
     {
         public string authId;

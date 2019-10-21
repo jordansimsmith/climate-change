@@ -5,9 +5,12 @@ using World.Entities;
 
 namespace Tutorial
 {
+    /**
+        Wrapper manager class that can run a tutorial flow through the game utilising a dialoguemanager
+     */
     public class TutorialManager : MonoBehaviour
     {
-        public TutorialStep[] tutorialSteps;
+        public TutorialStep[] tutorialSteps; // Scriptable Objects.
         public bool tutorialActive;
         public GameObject tutorialCanvas;
         public GameBoard board;

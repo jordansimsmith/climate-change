@@ -3,9 +3,10 @@
     $impl: {
         openAuthUI: function()
                   {
-                    console.log('test');
+                    
                     const provider = new firebase.auth.GoogleAuthProvider();
                     provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+                    // Request auth with profile scope (email/profile picture etc..)
                     firebase.auth().signInWithPopup(provider).then(function(result) {
             
                        // Have to duplicate this code because of .jslib syntax and rules.
@@ -62,6 +63,8 @@
                 console.log('no user');
                 return;
             }
+
+            // Link an anonymous user with a google account (if the account already exists, user should logout and relogin to that acc.)
             const provider = new firebase.auth.GoogleAuthProvider();
             
             provider.addScope("https://www.googleapis.com/auth/userinfo.profile");

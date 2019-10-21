@@ -7,6 +7,10 @@ public class AuthHandler : MonoBehaviour
 {
     private static FirebaseCredentials currentAuth;
 
+    /**
+        Functios are imported from authplugin.jslib during a WebGL Deployment.
+        Interacts with Firebase SDK so Auth in WebGL can be handled/hijacked by the JavaScript SDK
+     */
     [DllImport("__Internal")]
     private static extern void OpenAuthUI();
 
@@ -37,10 +41,10 @@ public class AuthHandler : MonoBehaviour
         }
     }
 
+    private static string apiKey ="AIzaSyDkT5sQL8VHw88QsC1gSOOFZB7CwDBkTVs";
     // Start is called before the first frame update
     void Start()
     {
-        var apiKey = "AIzaSyDkT5sQL8VHw88QsC1gSOOFZB7CwDBkTVs"; // public api key
         authProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
     }
 
@@ -54,7 +58,7 @@ public class AuthHandler : MonoBehaviour
     {
         onLoginSuccess = onLogin;
 
-        if (Application.isEditor)
+        if (Application.isEditor) // Use unofficial firebase.NET SDK (which only works in editor/standalone.)
         {
             FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
             CurrentAuth = new FirebaseCredentials(auth.FirebaseToken, true);
@@ -105,12 +109,9 @@ public class AuthHandler : MonoBehaviour
 
     public async void LoginSuccess(string credentialsJson)
     {
-        Debug.Log(credentialsJson);
-        Debug.Log("Received");
 
         FirebaseCredentials creds = JsonConvert.DeserializeObject<FirebaseCredentials>(credentialsJson);
         CurrentAuth = creds;
-        Debug.Log(creds.IdToken);
 
         onLoginSuccess(CurrentAuth);
     }
@@ -118,10 +119,12 @@ public class AuthHandler : MonoBehaviour
     public void LoginError(string error)
     {
         Debug.Log(error);
-        Debug.Log("error Received");
         onLoginError(error);
     }
 
+    /**
+        Credentials struct
+     */
     public class FirebaseCredentials
     {
         private string idToken;
