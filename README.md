@@ -1,5 +1,5 @@
 # Climate Change
-In this project, teams will be required to design and implement a web-based serious game on Climate Change for children in intermediate school years (aged 12-13). (This game should be run on a computer with a 16:9 aspect ratio)
+In this project, teams will be required to design and implement a web-based serious game on Climate Change for children in intermediate school years (aged 12-13).
 
 ![caeli](https://user-images.githubusercontent.com/31643423/67136794-0b442480-f288-11e9-9432-6b8061db87b6.gif)
 
@@ -18,7 +18,7 @@ In this project, teams will be required to design and implement a web-based seri
 
 ### A team photo:
 
-![TeamPhoto](https://user-images.githubusercontent.com/31643423/67184473-55700600-f440-11e9-8195-fed95f4bcd37.png)
+![TeamPhoto](https://user-images.githubusercontent.com/31643423/67136196-7a694b00-f27f-11e9-8434-dca8ebf5494a.jpeg)
 
 ## How to collaborate
 
