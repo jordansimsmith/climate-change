@@ -71,6 +71,12 @@ namespace World.Entities
             {
                 Level++;
 
+                if (Type == EntityType.TownHall && Level == 2)
+                {
+                    string[] auditDialogue = EwanAuditGenerator.Instance.GenerateAuditText();
+                    SimpleDialogueManager.Instance.SetCurrentDialogue(auditDialogue, "Ewan    ");
+                }
+
                 // Switch out the model when upgrading to next level
                 for (int i = 0; i < modelForLevel.Length; i++)
                 {

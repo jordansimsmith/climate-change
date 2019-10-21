@@ -1,0 +1,26 @@
+﻿{
+  "food": {
+    "veryBad": "Oh on, your citizens are starving! Make sure you build more farms so your people have food to eat.",
+    "bad": "Looking at your food... It's not terrible, but make sure your remember to keep building those farms! You can also look into farm upgrades.",
+    "good": "Good work on the food ! Looks like your people have plenty of food to eat. Consider researching farm upgrades for more prosperity. ",
+    "veryGood": "Your island has an abundance of food ! No need to worry about famine anytime soon. Consider researching farm upgrades for more prosperity."
+  },
+  "power": {
+    "veryBad": "Oh no, you island is extremely low on power ! Increase the number of power stations so your people can keep their lights on!",
+    "bad": "Hmmm, make sure you keep an eye on your power supply. Increase the number of power stations so your people can keep their lights on! ",
+    "good": "Nice work on keeping your power levels good ! Nothing to complain about here.",
+    "veryGood": "Awesome power management ! P.S: Once you hit level 3 town hall you can unlock special power generation entities "
+  },
+  "shelter": {
+    "veryBad": "There is a housing crisis on this island ! Remember the population count increases slowly over time so make sure you keep building houses.",
+    "bad": "Make sure you keep an eye on the housing situation ! Remember the population count increases slowly over time so make sure you keep building houses.",
+    "good": "Great work managing the housing situation ! Remember the population count increases slowly over time, so keep a sharp eye on the situation, ",
+    "veryGood": "Awesome shelter management! Looks like everyone has a home. If you keep upgrading your houses you will unlock apartment blocks"
+  },
+  "environment": {
+    "veryBad": "Watch your environment ! Any worse and you'll run into a host of environmental disasters. I think a cyclone is coming...",
+    "bad": "Keep a close eye on the environment... Remember, climate change can lead to droughts, floods and cyclones!",
+    "good": "Great work on the environment, keep it up ! Together we're maintaining a clean, green island" ,
+    "veryGood":  "Amazing work on managing the environment, keep it up ! Your on the golden road to victory."
+  }
+}
