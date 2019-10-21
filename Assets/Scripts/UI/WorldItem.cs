@@ -15,6 +15,7 @@ public class WorldItem : MonoBehaviour
     [SerializeField] private GameObject sharePanel;
 
 
+    private GameObject loader;
     private ServerWorld world;
     private PersistenceManager persistenceManager;
     
@@ -34,7 +35,9 @@ public class WorldItem : MonoBehaviour
     public void PlayButtonOnClick()
     {
         persistenceManager.SelectedWorld = world;
+        loader.SetActive(true);
         SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
+        SceneManager.sceneLoaded += (arg0, mode) => loader.SetActive(false);
     }
 
     public void DeleteButtonOnClick()
@@ -43,8 +46,9 @@ public class WorldItem : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Initialise(ServerWorld serverWorld)
+    public void Initialise(ServerWorld serverWorld, GameObject loader)
     {
+        this.loader = loader;
         this.world = serverWorld;
         worldNameText.text = serverWorld.world.Name;
         carbonCreditsText.text = serverWorld.world.ResourceData.Money.ToString();

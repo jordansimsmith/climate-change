@@ -10,23 +10,13 @@ using World;
 
 public class WorldsPanelController : MonoBehaviour
 {
-    
     [SerializeField] private Transform contentPanel;
     [SerializeField] private GameObject worldItemPrefab;
     [SerializeField] private InputField newWorldInput;
     [SerializeField] private Button createButton;
 
-    [SerializeField]
-    private WorldManager worldManager;
-
-
- 
-    
-    void Start()
-    {
-   
-        
-    }
+    [SerializeField] private WorldManager worldManager;
+    [SerializeField] private GameObject loader;
 
     void ClearWorlds()
     {
@@ -37,15 +27,14 @@ public class WorldsPanelController : MonoBehaviour
             Destroy(item.gameObject);
         }
     }
-    
+
     public void PopulateWorldsList(System.Action onFilled)
     {
-      
-            worldManager.FetchWorlds((worlds) =>
-            {
-                FillList(worlds);
-                onFilled();
-            });
+        worldManager.FetchWorlds((worlds) =>
+        {
+            FillList(worlds);
+            onFilled();
+        });
     }
 
     private void FillList(List<ServerWorld> worlds)
@@ -67,10 +56,9 @@ public class WorldsPanelController : MonoBehaviour
 
         // initialise
         WorldItem worldItem = newItem.GetComponent<WorldItem>();
-        worldItem.Initialise(world);
-       
+        worldItem.Initialise(world, loader);
     }
-    
+
 
     public void NewWorldTextChanged()
     {
@@ -95,13 +83,5 @@ public class WorldsPanelController : MonoBehaviour
     {
         ClearWorlds();
         gameObject.SetActive(false);
-    }
-
-
- 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

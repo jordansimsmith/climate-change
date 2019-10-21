@@ -8,12 +8,11 @@ using UnityEngine.UI;
 
 public class ViewWorldController : MonoBehaviour
 {
-
     public InputField shareCodeInput;
 
     public Button viewWorldBtn;
     private PersistenceManager persistenceManager;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +22,6 @@ public class ViewWorldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
 
@@ -41,7 +39,6 @@ public class ViewWorldController : MonoBehaviour
 
     public void ViewWorldClicked()
     {
-
         shareCodeInput.interactable = false;
         viewWorldBtn.interactable = false;
         viewWorldBtn.GetComponentInChildren<Text>().text = "Retrieving...";
@@ -52,17 +49,13 @@ public class ViewWorldController : MonoBehaviour
                 shareCodeInput.text = "";
                 shareCodeInput.interactable = true;
                 viewWorldBtn.GetComponentInChildren<Text>().text = "Invalid Code, Try Again!";
-
             }
             else
-            {      
+            {
                 shareCodeInput.interactable = true;
                 persistenceManager.SelectedWorld = serverWorld;
                 SceneManager.LoadScene("ObserverScene", LoadSceneMode.Single);
             }
-           
-            
-           
         });
     }
 
@@ -70,5 +63,4 @@ public class ViewWorldController : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
 }
