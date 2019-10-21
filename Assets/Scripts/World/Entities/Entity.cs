@@ -91,6 +91,17 @@ namespace World.Entities
                 RefreshModelForLevel();
 
                 return true;
+            } else {
+                // Display out of money warning
+                var HUD = GameObject.Find("HUD");
+                if (HUD)    {
+                    var warning = HUD.transform.Find("OutOfMoneyWarning");
+                    if (warning)    {
+                        warning.position = Input.mousePosition;
+                        warning.gameObject.SetActive(true);
+                        Invoke("HideCostWarning", 4);
+                    }
+                }
             }
 
             Debug.Log("not enough shmoneys");
