@@ -108,3 +108,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 3
+  originalMaterial: {fileID: 2100000, guid: e77da7ffe8890d14c9e1fbf17e290d2c, type: 2}

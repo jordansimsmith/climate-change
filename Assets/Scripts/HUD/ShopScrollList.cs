@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using World;
 using World.Entities;
@@ -16,8 +17,12 @@ public class ShopScrollList : MonoBehaviour
     [SerializeField] private Transform contentPanel;
     [SerializeField] private GameObject shopItemPrefab;
     [SerializeField] private GameBoard gameBoard;
-
+    [SerializeField] private EntityHelper entityHelper;
+    [SerializeField] private EntityType[] phaseTwoEntities;
+    
     private ShopItem townHall;
+    private List<ShopItem> phaseTwoEntityItems = new List<ShopItem>();
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +32,14 @@ public class ShopScrollList : MonoBehaviour
         
         // check whether there is a town hall
         InvokeRepeating("CheckForTownHall", 0f, 1f);
+        InvokeRepeating("UnlockNextEntities", 0f, 1f);
     }
 
-    public void DisableTownHall()
-    {
-        // only one town hall should be constructed
-        if (townHall != null)
-        {
-            // hide town hall
-            townHall.gameObject.SetActive(false);
+    private void UnlockNextEntities() {
+        if (gameBoard.GetTownHallLevel() > 1) {
+            foreach (var item in phaseTwoEntityItems) {
+                item.Interactable(true);
+            }
         }
     }
 
@@ -64,6 +68,11 @@ public class ShopScrollList : MonoBehaviour
             // initialise
             ShopItem shopItem = newItem.GetComponent<ShopItem>();
             shopItem.Setup(item);
+
+            if (phaseTwoEntities.Contains(item.entity.Type)) {
+                shopItem.Interactable(false);
+                phaseTwoEntityItems.Add(shopItem);
+            }
 
             // maintain reference to town hall menu item
             if (item.entity.Type.Equals(EntityType.TownHall))

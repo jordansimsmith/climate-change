@@ -44,4 +44,8 @@ public class ShopItem : MonoBehaviour
         placer.Spawn(item.entity.Type);
         controller.InvalidateUI();
     }
+
+    public void Interactable(bool pred) {
+        button.interactable = pred;
+    }
 }

@@ -230,14 +230,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7941001179834700958, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
-      propertyPath: m_Name
-      value: World
+      propertyPath: populationShelterMultiplier
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7941001179834700954, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
       propertyPath: endScreenController
       value: 
       objectReference: {fileID: 1550611959}
+    - target: {fileID: 7941001179048457792, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: populationFoodMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7941001179834700957, guid: 7c1e5136677676c4dae8f5b7fabfee71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -308,6 +313,11 @@ PrefabInstance:
       propertyPath: naturalDisasterPanelController
       value: 
       objectReference: {fileID: 1091456245}
+    - target: {fileID: 7941001179048457792, guid: 7c1e5136677676c4dae8f5b7fabfee71,
+        type: 3}
+      propertyPath: m_TagString
+      value: InGameBoard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1e5136677676c4dae8f5b7fabfee71, type: 3}
 --- !u!114 &103732479 stripped
@@ -717,6 +727,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 743070175}
+    - target: {fileID: 5960761321585997474, guid: 9288ecd476f400c4e97785f2ac391e06,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5960761321128490702, guid: 9288ecd476f400c4e97785f2ac391e06,
         type: 3}
       propertyPath: m_Color.a
@@ -970,17 +985,17 @@ PrefabInstance:
     - target: {fileID: 4028309970138745183, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4028309970138745183, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4028309970138745183, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -274.22998
       objectReference: {fileID: 0}
     - target: {fileID: 4028309970138745183, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
@@ -1976,6 +1991,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 123128165390608877, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 463221720347173467, guid: 65c06590066e2f44590c327a57fb4fe1,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2510,6 +2530,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019730763119803877, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019730763119803877, guid: 65c06590066e2f44590c327a57fb4fe1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000061035156
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c06590066e2f44590c327a57fb4fe1, type: 3}

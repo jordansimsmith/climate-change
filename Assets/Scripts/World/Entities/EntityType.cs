@@ -7,7 +7,9 @@ namespace World.Entities
         TownHall,
         Factory,
         Farm,
-        PowerStation
-
+        PowerStation,
+        WindTurbine,
+        SolarPanel,
+        Geothermal
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
+using World;
+using World.Entities;
 
 namespace Tutorial
 {
@@ -8,6 +9,7 @@ namespace Tutorial
         public TutorialStep[] tutorialSteps;
         public bool tutorialActive;
         public GameObject tutorialCanvas;
+        public GameBoard board;
         private DialogueManager dialogueManager;
         private int currentTutorialStep;
         private bool tutorialComplete = false;
@@ -20,7 +22,10 @@ namespace Tutorial
         {
             EndTutorial();
             dialogueManager = tutorialCanvas.GetComponent<DialogueManager>();
-            StartTutorial(0);
+            if (!board.IsEntityTypeOnBoard(EntityType.TownHall))
+            {
+                StartTutorial(0);
+            }
         }
 
         // Update is called once per frame

@@ -9,6 +9,7 @@ TagManager:
   - Tornado
   - Tile
   - ReclaimCost
+  - InGameBoard
   layers:
   - Default
   - TransparentFX
