@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace;
+﻿using DefaultNamespace;
 using Persistence;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,16 +12,10 @@ public class ViewWorldController : MonoBehaviour
     private PersistenceManager persistenceManager;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         persistenceManager = FindObjectOfType<PersistenceManager>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
 
     public void CodeTextChanged()
     {

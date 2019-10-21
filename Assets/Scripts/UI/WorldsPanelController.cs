@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace;
-using Persistence;
-using Persistence.Serializables;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using World;
@@ -18,7 +13,7 @@ public class WorldsPanelController : MonoBehaviour
     [SerializeField] private WorldManager worldManager;
     [SerializeField] private GameObject loader;
 
-    void ClearWorlds()
+    private void ClearWorlds()
     {
         WorldItem[] worldItems = GetComponentsInChildren<WorldItem>();
 
@@ -52,7 +47,6 @@ public class WorldsPanelController : MonoBehaviour
 
         // set parent
         newItem.transform.SetParent(contentPanel, false);
-
 
         // initialise
         WorldItem worldItem = newItem.GetComponent<WorldItem>();

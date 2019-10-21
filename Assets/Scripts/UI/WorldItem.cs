@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Persistence;
-using Persistence.Serializables;
+﻿using Persistence;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,26 +11,19 @@ public class WorldItem : MonoBehaviour
     [SerializeField] private Text populationText;
     [SerializeField] private GameObject sharePanel;
 
-
     private GameObject loader;
     private ServerWorld world;
     private PersistenceManager persistenceManager;
-    
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         persistenceManager = FindObjectOfType<PersistenceManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void PlayButtonOnClick()
     {
+        // load main scene
         persistenceManager.SelectedWorld = world;
         loader.SetActive(true);
         SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
@@ -42,12 +32,14 @@ public class WorldItem : MonoBehaviour
 
     public void DeleteButtonOnClick()
     {
+        // delete world
         persistenceManager.DeleteWorld(world);
         Destroy(gameObject);
     }
 
     public void Initialise(ServerWorld serverWorld, GameObject loader)
     {
+        // set world item properties
         this.loader = loader;
         this.world = serverWorld;
         worldNameText.text = serverWorld.world.Name;
@@ -64,6 +56,4 @@ public class WorldItem : MonoBehaviour
             sharePanel.SetActive(false);
         }
     }
-    
-    
 }

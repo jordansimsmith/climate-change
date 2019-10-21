@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace;
-using DefaultNamespace.UI.MainMenu;
+﻿using DefaultNamespace.UI.MainMenu;
 using Persistence;
-using Persistence.Serializables;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-
     private PersistenceManager persistenceManager;
-  
+
     public GameObject worldsPanel;
 
     public GameObject viewWorldPanel;
@@ -38,8 +32,6 @@ public class MenuController : MonoBehaviour
             playGameButton.GetComponentInChildren<Text>().text = "Play Game";
         });
     }
-    
-    
 
     public void OpenViewWorldModal()
     {
@@ -49,7 +41,7 @@ public class MenuController : MonoBehaviour
 
     public void ExitButtonOnClick()
     {
-      loginPanel.SetActive(true);
-      loginPanel.GetComponent<LoginPanelController>().TriggerLogout();
+        loginPanel.SetActive(true);
+        loginPanel.GetComponent<LoginPanelController>().TriggerLogout();
     }
 }

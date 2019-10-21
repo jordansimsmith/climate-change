@@ -22,7 +22,7 @@ public class EscapeController : MonoBehaviour
     private GameBoard board;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         escapeUIObj.SetActive(false);
@@ -32,8 +32,9 @@ public class EscapeController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        // handle pause/resume on escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!gameIsPaused)
@@ -92,21 +93,20 @@ public class EscapeController : MonoBehaviour
         {
             return;
         }
+
         if (board.ActiveWorld.shareCode != null)
         {
-        
             shareText.gameObject.SetActive(true);
             shareText.text = "Code: " + board.ActiveWorld.shareCode;
-            if(shareButton)
+            if (shareButton)
                 shareButton.GetComponentInChildren<Text>().text = "Stop Sharing";
         }
         else
         {
             shareText.gameObject.SetActive(false);
-            if(shareButton)
+            if (shareButton)
                 shareButton.GetComponentInChildren<Text>().text = "Share World";
         }
-        
     }
 
     public void ShareButtonOnClick()
@@ -124,14 +124,13 @@ public class EscapeController : MonoBehaviour
         {
             APIService.Instance.DeleteShareCode(board.ActiveWorld.id);
             board.ActiveWorld.shareCode = null;
-            InvalidateSharingUI();  // assume it worked.
-        };
-        
-       
+            InvalidateSharingUI(); // assume it worked.
+        }
     }
 
     public void BackButtonOnClick()
     {
+        // load main scene
         Resume();
         board.ActiveWorld = null;
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);

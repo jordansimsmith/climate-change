@@ -76,6 +76,7 @@ public class EndScreenController : MonoBehaviour
 
     public void DisableLoseScreen()
     {
+        // redisplay hidden ui elements
         foreach (GameObject obj in elementsOff)
         {
             obj.SetActive(true);
@@ -90,6 +91,7 @@ public class EndScreenController : MonoBehaviour
 
     public void WinContinueButtonOnClick()
     {
+        // redisplay hidden ui elements
         foreach (GameObject obj in elementsOff)
         {
             obj.SetActive(true);
@@ -101,6 +103,7 @@ public class EndScreenController : MonoBehaviour
 
     public void MainMenuButtonOnClick()
     {
+        // show spinner/loader and switch scenes
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
         loader.SetActive(true);
         SceneManager.sceneLoaded += (scene, mode) =>

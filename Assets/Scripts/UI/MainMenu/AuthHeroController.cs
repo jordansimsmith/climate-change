@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-
 namespace DefaultNamespace.UI.MainMenu
 {
     public class AuthHeroController : MonoBehaviour
@@ -36,6 +35,7 @@ namespace DefaultNamespace.UI.MainMenu
                     {
                         errorMsg = "Failed Link";
                     }
+
                     linkWithGoogle.interactable = true;
                     linkWithGoogle.GetComponentInChildren<Text>().text = errorMsg;
                 });
@@ -56,17 +56,16 @@ namespace DefaultNamespace.UI.MainMenu
                 StartCoroutine(DownloadAndSetImage(credentials.PhotoURL));
                 linkWithGoogle.gameObject.SetActive(false);
             }
-           
         }
-        
+
         IEnumerator DownloadAndSetImage(string MediaUrl)
-        {   
+        {
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
             yield return request.SendWebRequest();
             if (request.isNetworkError || request.isHttpError)
                 Debug.Log(request.error);
             else
                 profilePic.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
-        } 
+        }
     }
 }
