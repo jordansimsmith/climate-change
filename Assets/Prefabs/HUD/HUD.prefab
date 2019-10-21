@@ -349,7 +349,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 123128165390608877}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999976
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5870,9 +5870,9 @@ RectTransform:
   m_Father: {fileID: 6210700579061818531}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104.4, y: -274.22998}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 104.4, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6538860382623040178
@@ -14044,6 +14044,8 @@ MonoBehaviour:
   - {fileID: 1596095813890040113}
   - {fileID: 4178972756765059926}
   - {fileID: 6696520766388987256}
+  - {fileID: 1915053304126323258}
+  - {fileID: 6140881447575654674}
   loader: {fileID: 1791619237144262937}
   escapeUIObj: {fileID: 8807631041250267382}
   shareText: {fileID: 1864599450811738168}
@@ -14070,6 +14072,7 @@ MonoBehaviour:
   - {fileID: 6696520766388987256}
   - {fileID: 4178972756765059926}
   - {fileID: 1915053304126323258}
+  - {fileID: 6140881447575654674}
   loader: {fileID: 1791619237144262937}
 --- !u!1 &8807631040477718156
 GameObject:
