@@ -264,8 +264,6 @@ MonoBehaviour:
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
   modelForLevel:
   - {fileID: 4514163140034326988}
-  - {fileID: 6311806313798154701}
-  - {fileID: 5517892004903205681}
   upgradeInfo: {fileID: 11400000, guid: 33fd22af950d442c5b4fc84e28aed9d2, type: 2}
 --- !u!1001 &4514376460243211024
 PrefabInstance:

@@ -14,7 +14,6 @@ public class NonPlayingCharacter : MonoBehaviour
     private Renderer[] renderers;
 
     private TweetGenerator tweetGenerator;
-    private NPCPanelController panelController;
     private NavMeshAgent agent;
 
     public string FirstName { get; set; }
@@ -27,7 +26,6 @@ public class NonPlayingCharacter : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         // get singleton instances
         tweetGenerator = TweetGenerator.Instance;
-        panelController = NPCPanelController.Instance;
 
         // get renderers of npc model components
         renderers = GetComponentsInChildren<Renderer>();
@@ -101,6 +99,6 @@ public class NonPlayingCharacter : MonoBehaviour
         string occupationTitleCase = info.ToTitleCase(Occupation);
 
         // show the npc dialogue
-        panelController.Show(fullName, occupationTitleCase, tweet, avatar);
+        NPCPanelController.Instance.Show(fullName, occupationTitleCase, tweet, avatar);
     }
 }

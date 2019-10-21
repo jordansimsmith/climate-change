@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Caeli</title>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance =  UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
+    </script>
+  </head>
+  <body>
+    <div id="unityContainer" style="width: 1280px; height: 720px; margin: auto"></div>
+
+      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDkT5sQL8VHw88QsC1gSOOFZB7CwDBkTVs",
+            authDomain: "caeliapi.firebaseapp.com",
+            databaseURL: "https://caeliapi.firebaseio.com",
+            projectId: "caeliapi",
+            storageBucket: "caeliapi.appspot.com",
+            messagingSenderId: "166315015027",
+            appId: "1:166315015027:web:e8da31fd1010f30d3a2306"
+          };
+
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+    </script>
+   
+  </body>
+</html>

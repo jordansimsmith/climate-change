@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using Newtonsoft.Json;
 using World.Resource;
 using World.Tiles;
 
@@ -9,7 +10,11 @@ namespace Persistence.Serializables
     [Serializable]
     public class SerializableWorld
     {
-            
+       
+        private string name;
+        private string creationTime;
+        private bool isTutorialCompleted;
+        
         public SerializableWorld()
         {
         }
@@ -30,33 +35,27 @@ namespace Persistence.Serializables
             }
                 
         }
-        
-        public string Name { get; set; }
-        
-        public string CreationTime { get; set; }
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public string CreationTime
+        {
+            get => creationTime;
+            set => creationTime = value;
+        }
+
+        public bool IsTutorialCompleted
+        {
+            get => isTutorialCompleted;
+            set => isTutorialCompleted = value;
+        }
 
         public SerializableTile[,] WorldData { get; set; }
         public SerializableResource ResourceData { get; set; }
-
-        public string GetHashedId()
-        {
-            return GetHashString(Name + CreationTime);
-        }
-        
-        public static byte[] GetHash(string inputString)
-        {
-            HashAlgorithm algorithm = SHA256.Create();
-            return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
-        }
-
-        public static string GetHashString(string inputString)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (byte b in GetHash(inputString))
-                sb.Append(b.ToString("X2"));
-
-            return sb.ToString();
-        }
     }
 
 

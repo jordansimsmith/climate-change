@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using DefaultNamespace;
 using Newtonsoft.Json;
 using Persistence.Serializables;
 using UnityEngine;
@@ -17,20 +18,16 @@ namespace Persistence
             NullValueHandling = NullValueHandling.Ignore
         };
 
+      
+        private ServerWorld selectedWorld;
+
         private static bool created = false;
-        private SerializableWorld selectedWorld;
-
-        private string worldsDirectoryPath;
-
         void Awake()
         {
             if (!created)
             {
                 DontDestroyOnLoad(gameObject);
                 created = true;
-                // Ensure Worlds directory is created when game loads.
-                worldsDirectoryPath = Path.Combine(Application.persistentDataPath, "worlds");
-                Directory.CreateDirectory (worldsDirectoryPath);
             }
             else
             {
@@ -40,34 +37,28 @@ namespace Persistence
             }
         }
 
-        public void SaveGameState(SerializableWorld world)
+        public void SaveGameState(ServerWorld world)
         {
 
             string serializedObject = JsonConvert.SerializeObject(world, serializationSettings);
             Debug.Log(serializedObject);
             
-      
-           
-            string path = Path.Combine(WorldsDirectoryPath, world.GetHashedId() + ".json");
-            
-            File.WriteAllText(path, serializedObject);
+            APIService.Instance.UpdateWorld(world, world.id);
         }
         
-        public void DeleteWorld(SerializableWorld world)
+        public void DeleteWorld(ServerWorld serverWorld)
         {
-            string path = Path.Combine(worldsDirectoryPath, world.GetHashedId() + ".json");
-            Debug.Log("Try delete "+path);
-            File.Delete(path);
+
+            Debug.Log("Try delete "+serverWorld.world.Name);
+            APIService.Instance.DeleteWorld(serverWorld.id);
         }
 
     
 
-        public SerializableWorld SelectedWorld
+        public ServerWorld SelectedWorld
         {
             get => selectedWorld;
             set => selectedWorld = value;
         }
-
-        public string WorldsDirectoryPath => worldsDirectoryPath;
     }
 }

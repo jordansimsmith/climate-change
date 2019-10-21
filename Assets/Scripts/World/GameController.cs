@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using DefaultNamespace;
+using UnityEngine;
 using World;
 using World.Resource;
 using World.Entities;
