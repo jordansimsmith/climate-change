@@ -1,6 +1,4 @@
-﻿
-using UnityEngine;
-
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 
@@ -14,15 +12,12 @@ public class DraggableUIPanel : MonoBehaviour, IDragHandler
     {
         if (eventData.dragging)
         {
-            FrameToDrag.position = Input.mousePosition -  startDragOffset;
+            FrameToDrag.position = Input.mousePosition - startDragOffset;
         }
     }
-    
+
     public void OnBeginDrag()
     {
         startDragOffset = Input.mousePosition - FrameToDrag.position;
-        
     }
-
-
 }

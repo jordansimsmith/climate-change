@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,22 +6,19 @@ namespace Tutorial
 {
     public class DialogueManager : MonoBehaviour
     {
-        [SerializeField]
-        private Text titleText;
-        [SerializeField]
-        private Text descriptionText;
-        [SerializeField]
-        private Button continueButton;
-        
+        [SerializeField] private Text titleText;
+        [SerializeField] private Text descriptionText;
+        [SerializeField] private Button continueButton;
+
         private string fullDescriptionText;
 
         public void StartDialogue(string titleText, string descriptionText)
         {
-            Debug.Log("Starting conversation  " +titleText);
+            // populate dialogue panel
+            Debug.Log("Starting conversation  " + titleText);
             this.titleText.text = titleText;
             fullDescriptionText = descriptionText;
             ContinueInteractable = false;
-          
 
             DisplayNextSentence(descriptionText);
         }
@@ -31,17 +27,16 @@ namespace Tutorial
         {
             descriptionText.text = fullDescriptionText;
             StopAllCoroutines();
-            StartCoroutine(TypeSentence("\n"+textToAppend));
+            StartCoroutine(TypeSentence("\n" + textToAppend));
         }
 
         public void DisplayNextSentence(string description)
         {
             descriptionText.text = "";
-            
+
             StopAllCoroutines();
             StartCoroutine(TypeSentence(description));
             Debug.Log(description);
-
         }
 
         public bool ContinueInteractable
@@ -53,6 +48,7 @@ namespace Tutorial
 
         IEnumerator TypeSentence(string sentence)
         {
+            // animate word typing in dialogue box
             foreach (var letter in sentence.ToCharArray())
             {
                 descriptionText.text += letter;
@@ -62,10 +58,9 @@ namespace Tutorial
 
         public void FinishTyping()
         {
+            // show the full description if skipped
             StopAllCoroutines();
             descriptionText.text = fullDescriptionText;
         }
-
-
     }
 }

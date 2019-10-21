@@ -20,6 +20,7 @@ public class NPCPanelController : MonoBehaviour
             ? GetComponentsInChildren<Image>()[1]
             : GetComponentsInChildren<Image>()[0];
 
+        // set singleton instance
         instance = this;
         Hide();
     }
@@ -32,12 +33,15 @@ public class NPCPanelController : MonoBehaviour
 
     public void Show(string name, string occupation, string tweet, Sprite avatar)
     {
+        // show npc panel with name, occupation and tweet
         gameObject.SetActive(true);
-        AudioManager.Instance.StartConversation();
-
+        
         npcName.text = name;
         npcOccupation.text = occupation;
         npcTweet.text = tweet;
         npcAvatar.overrideSprite = avatar;
+        
+        // play conversation sounds
+        AudioManager.Instance.StartConversation();
     }
 }

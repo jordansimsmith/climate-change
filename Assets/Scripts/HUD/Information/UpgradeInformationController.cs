@@ -16,7 +16,7 @@ namespace HUD
         [SerializeField] private RectTransform contentPanelRectTransform;
         [SerializeField] private GameBoard gameBoard;
         [SerializeField] private GameObject upgradeToolTip;
-        
+
         private Text upgradeButtonText;
 
         private static UpgradeInformationController instance;
@@ -24,6 +24,7 @@ namespace HUD
 
         void Awake()
         {
+            // set singleton instance
             instance = this;
             gameObject.SetActive(false);
             upgradeButtonText = upgradeButton.GetComponentInChildren<Text>();
@@ -39,60 +40,69 @@ namespace HUD
             // Set the level  
             String levelText = "Level: " + entity.Level;
             level.text = levelText;
-            
+
             // Set the title 
             title.text = entity.Type.ToString();
-            
+
             // Set the description 
             var des = entity.UpgradeInfo.Description;
-            if (des == null) {
+            if (des == null)
+            {
                 des = "Climate change is bad";
             }
+
             description.text = des;
-            
+
             // Set the research option buttons
             int index = 0;
-            foreach (var research in entity.UpgradeInfo.GetLevel(entity.Level).ResearchOptions) {
-                if (index > 2) {
+            foreach (var research in entity.UpgradeInfo.GetLevel(entity.Level).ResearchOptions)
+            {
+                if (index > 2)
+                {
                     Debug.Log("Not enough space to fit more than 3 research options");
                     break;
                 }
-                
+
                 // Get the next button and make active
                 var researchButton = researchButtons[index];
                 researchButton.gameObject.SetActive(true);
                 researchButton.GetComponentInChildren<Text>().text = research.Name;
-                
+
                 // If research already done, button disabled
                 researchButton.interactable = !research.isResearched;
-                
+
                 // Callback
                 researchButton.onClick.RemoveAllListeners();
-                if (!research.isResearched) {
-                    researchButton.onClick.AddListener(() => {
-                        if (entity.Research(research)) {
+                if (!research.isResearched)
+                {
+                    researchButton.onClick.AddListener(() =>
+                    {
+                        if (entity.Research(research))
+                        {
                             UpdateInformation();
                         }
                     });
                 }
-                
+
                 index++;
             }
 
             // Disable the buttons with no attached research
-            for (int i = index; i < researchButtons.Length; i++) {
+            for (int i = index; i < researchButtons.Length; i++)
+            {
                 researchButtons[i].gameObject.SetActive(false);
             }
-            
+
             // Hotfix for text size
             LayoutRebuilder.ForceRebuildLayoutImmediate(contentPanelRectTransform);
-            
+
             RefreshEntityStats();
 
             if (entity.IsMaxLevel())
             {
                 DisableUpgradeButton("Max Level");
-            } else if (IsEntityLocked())
+            }
+            else if (IsEntityLocked())
             {
                 DisableUpgradeButton("Upgrade");
             }
@@ -101,7 +111,7 @@ namespace HUD
                 EnableUpgradeButton();
             }
         }
-        
+
 
         public void UpgradeEntity()
         {
@@ -125,7 +135,7 @@ namespace HUD
         {
             return gameObject.activeSelf;
         }
-        
+
         private void EnableUpgradeButton()
         {
             upgradeButtonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
@@ -142,7 +152,7 @@ namespace HUD
         {
             if (!entity.IsMaxLevel() && IsEntityLocked())
             {
-                upgradeToolTip.SetActive(true);   
+                upgradeToolTip.SetActive(true);
             }
         }
 

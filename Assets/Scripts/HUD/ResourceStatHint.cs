@@ -9,7 +9,7 @@ namespace HUD
     {
         [SerializeField] private Text hint;
         private const String msg = "Supply: {0}\nDemand:{1}";
-        
+
         public void ShowHint(ResourceStat stat)
         {
             gameObject.SetActive(true);
@@ -20,6 +20,5 @@ namespace HUD
         {
             gameObject.SetActive(false);
         }
-
     }
 }

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using World;
-using World.Resource;
-using World.Tiles;
-using Random = UnityEngine.Random;
 
 public class NaturalDisasterPanelController : MonoBehaviour
 {

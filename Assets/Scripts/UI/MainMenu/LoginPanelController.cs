@@ -3,14 +3,15 @@ using UnityEngine.UI;
 
 namespace DefaultNamespace.UI.MainMenu
 {
-    public class LoginPanelController: MonoBehaviour
+    public class LoginPanelController : MonoBehaviour
     {
         public Button GoogleButton;
         public Button AnonymousButton;
         public GameObject MenuPanel;
         public GameObject AuthHero;
-        
+
         private AuthHandler authHandler;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -18,6 +19,7 @@ namespace DefaultNamespace.UI.MainMenu
             {
                 GoogleButton.interactable = false;
             }
+
             authHandler = FindObjectOfType<AuthHandler>();
 
             InvalidateUI();
@@ -31,11 +33,10 @@ namespace DefaultNamespace.UI.MainMenu
                 GoogleButton.interactable = true;
                 AnonymousButton.interactable = true;
                 MenuPanel.SetActive(true);
-                 
+
                 AuthHero.SetActive(true);
                 AuthHero.GetComponent<AuthHeroController>().Initialise(authHandler.CurrentAuth);
                 gameObject.SetActive(false);
-               
             }
             else
             {
@@ -55,26 +56,23 @@ namespace DefaultNamespace.UI.MainMenu
         // Update is called once per frame
         void Update()
         {
-        
         }
-        
-        
 
-        
+
         public void LoginAnonymousButtonClicked()
         {
             GoogleButton.interactable = false;
             AnonymousButton.interactable = false;
-            
+
             Text buttonText = AnonymousButton.GetComponentInChildren<Text>();
-            
+
             string oldButtonText = buttonText.text;
             buttonText.text = "Logging in...";
             authHandler.LoginAnonymousUser((auth) =>
             {
                 buttonText.text = oldButtonText;
                 APIService.Instance.access_token = auth.IdToken;
-               InvalidateUI();
+                InvalidateUI();
             }, (error) =>
             {
                 GoogleButton.interactable = true;
@@ -87,18 +85,17 @@ namespace DefaultNamespace.UI.MainMenu
         {
             GoogleButton.interactable = false;
             AnonymousButton.interactable = false;
-    
+
             Text buttonText = GoogleButton.GetComponentInChildren<Text>();
-            
+
             string oldButtonText = buttonText.text;
             buttonText.text = "Logging in...";
             authHandler.DoGoogleLogin((auth) =>
             {
                 buttonText.text = oldButtonText;
                 APIService.Instance.access_token = auth.IdToken;
-                
+
                 InvalidateUI();
-                
             }, (error) =>
             {
                 GoogleButton.interactable = true;

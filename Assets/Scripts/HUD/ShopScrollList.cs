@@ -19,25 +19,28 @@ public class ShopScrollList : MonoBehaviour
     [SerializeField] private GameBoard gameBoard;
     [SerializeField] private EntityHelper entityHelper;
     [SerializeField] private EntityType[] phaseTwoEntities;
-    
+
     private ShopItem townHall;
     private List<ShopItem> phaseTwoEntityItems = new List<ShopItem>();
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         // populate list
         AddItems();
-        
+
         // check whether there is a town hall
         InvokeRepeating("CheckForTownHall", 0f, 1f);
         InvokeRepeating("UnlockNextEntities", 0f, 1f);
     }
 
-    private void UnlockNextEntities() {
-        if (gameBoard.GetTownHallLevel() > 1) {
-            foreach (var item in phaseTwoEntityItems) {
+    private void UnlockNextEntities()
+    {
+        if (gameBoard.GetTownHallLevel() > 1)
+        {
+            foreach (var item in phaseTwoEntityItems)
+            {
                 item.Interactable(true);
             }
         }
@@ -56,20 +59,21 @@ public class ShopScrollList : MonoBehaviour
     {
         foreach (Item item in shopItems)
         {
-            // insantiate shop item
+            // instantiate shop item
             GameObject newItem = Instantiate(shopItemPrefab);
-            
+
             // set parent
             newItem.transform.SetParent(contentPanel, false);
-            
+
             // attach event trigger
             newItem.AddComponent<ShopItemEventTrigger>();
-            
+
             // initialise
             ShopItem shopItem = newItem.GetComponent<ShopItem>();
             shopItem.Setup(item);
 
-            if (phaseTwoEntities.Contains(item.entity.Type)) {
+            if (phaseTwoEntities.Contains(item.entity.Type))
+            {
                 shopItem.Interactable(false);
                 phaseTwoEntityItems.Add(shopItem);
             }

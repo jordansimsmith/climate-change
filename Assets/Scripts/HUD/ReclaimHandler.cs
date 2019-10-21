@@ -13,21 +13,23 @@ namespace HUD
         private static Vector4 hoverAlpha = new Vector4(1, 0.5f, 0.5f, 1.0f);
         private ContentPanelController controller;
         private EntityPlacer placer;
-        public void Start()
+
+        private void Start()
         {
-            this._background = gameObject.GetComponent<Image>();
-            this._background.color = defaultAlpha;
-            this.placer = FindObjectOfType<EntityPlacer>();
-            this.controller = FindObjectOfType<ContentPanelController>();
+            _background = gameObject.GetComponent<Image>();
+            _background.color = defaultAlpha;
+            placer = FindObjectOfType<EntityPlacer>();
+            controller = FindObjectOfType<ContentPanelController>();
         }
 
         public override void OnPointerDown(PointerEventData data)
         {
             SetReclaimMode(placer.Mode != EntityPlacerMode.RECLAIM);
         }
+
         public override void OnPointerEnter(PointerEventData data)
         {
-            this._background.color = hoverAlpha;
+            _background.color = hoverAlpha;
         }
 
         public override void OnPointerExit(PointerEventData data)
@@ -36,7 +38,8 @@ namespace HUD
             {
                 return;
             }
-            this._background.color = defaultAlpha;
+
+            _background.color = defaultAlpha;
         }
 
         public void InvalidateReclaimButton()
@@ -50,7 +53,5 @@ namespace HUD
             Debug.Log("placer mode is " + placer.Mode);
             controller.InvalidateUI();
         }
-        
-
     }
 }

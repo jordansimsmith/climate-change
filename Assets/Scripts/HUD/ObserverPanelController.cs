@@ -1,33 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Persistence;
+﻿using Persistence;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ObserverPanelController : MonoBehaviour
 {
-
     public Text worldText;
-
     public Text shareText;
     public GameObject tornadoPrefab;
 
     private PersistenceManager persistenceManager;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        // locate persistence manager in heirachy
         persistenceManager = FindObjectOfType<PersistenceManager>();
         InvalidateUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TornadoButtonClicked()
-    { 
+    {
+        // create tornado
         Instantiate(tornadoPrefab);
     }
 
@@ -37,11 +30,8 @@ public class ObserverPanelController : MonoBehaviour
         {
             return;
         }
+
         worldText.text = "World: " + persistenceManager.SelectedWorld.world.Name;
         shareText.text = "Sharing Code: " + persistenceManager.SelectedWorld.shareCode;
     }
-    
-    
-    
-    
 }

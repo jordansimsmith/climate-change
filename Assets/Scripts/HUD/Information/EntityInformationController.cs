@@ -5,7 +5,7 @@ using World.Tiles;
 
 namespace HUD
 {
-    public abstract class EntityInformationController: MonoBehaviour
+    public abstract class EntityInformationController : MonoBehaviour
     {
         [SerializeField] protected Text title;
         [SerializeField] protected Text electricity;
@@ -19,11 +19,11 @@ namespace HUD
 
         public Entity Entity => entity;
 
-        public void ShowInformation( Entity e)
+        public void ShowInformation(Entity e)
         {
             entity = e;
             gameObject.SetActive(true);
-            
+
             UpdateInformation();
         }
 
@@ -37,6 +37,7 @@ namespace HUD
 
         protected void RefreshEntityStats()
         {
+            // display stats
             EntityStats stats = entity.Stats;
             electricity.text = "Power: " + stats.power;
             environment.text = "Environment: " + stats.environment;
@@ -45,6 +46,4 @@ namespace HUD
             income.text = "Income: " + stats.money;
         }
     }
-    
-
 }

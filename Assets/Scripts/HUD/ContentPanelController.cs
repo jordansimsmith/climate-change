@@ -12,9 +12,8 @@ namespace HUD
 
         public void InvalidateUI()
         {
-           reclaimButton.GetComponent<ReclaimHandler>().InvalidateReclaimButton();
-           deleteButton.GetComponent<DeleteHandler>().InvalidateDeleteButton();
+            reclaimButton.GetComponent<ReclaimHandler>().InvalidateReclaimButton();
+            deleteButton.GetComponent<DeleteHandler>().InvalidateDeleteButton();
         }
-        
     }
 }

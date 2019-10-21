@@ -8,29 +8,34 @@ using World.Resource;
 
 namespace HUD
 {
-    public class EwanAuditGenerator: MonoBehaviour
+    public class EwanAuditGenerator : MonoBehaviour
     {
         public TextAsset auditData;
         private AuditData audit;
-        
+
         [SerializeField] private ResourceSingleton resources;
         private static EwanAuditGenerator _instance;
         public static EwanAuditGenerator Instance => _instance;
 
         private void Awake()
         {
+            // parse json
             audit = AuditData.ParseJson(auditData.text);
+            
+            // set singleton instance
             _instance = this;
         }
-        
+
         public string[] GenerateAuditText()
         {
+            // dialogue for ewan to say
             List<string> dialogue = new List<string>();
 
             dialogue.Add(
                 "Congratulations on upgrading your Town Hall to Level Two. You can now upgrade all your entities to Level Two as well.");
-            dialogue.Add("Now that I'm here, I might as well take a look at your island and resources to give you some feedback on how your going !");
-            
+            dialogue.Add(
+                "Now that I'm here, I might as well take a look at your island and resources to give you some feedback on how your going !");
+
             var resourceTypes = Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>();
 
             foreach (ResourceType resource in resourceTypes)
@@ -43,7 +48,7 @@ namespace HUD
                 int overall = supply - demand;
 
                 AuditLevels auditLevels = null;
-                
+
                 switch (resource)
                 {
                     case ResourceType.Environment:
@@ -73,10 +78,11 @@ namespace HUD
 
         private String GetAuditForResource(AuditLevels auditLevels, float level)
         {
+            // generates statement depending on how the resource is doing
             switch (level)
             {
                 case float l when l <= -30f:
-                   return auditLevels.VeryBad;
+                    return auditLevels.VeryBad;
                 case float l when l <= 0f:
                     return auditLevels.Bad;
                 case float l when l <= 50f:
@@ -84,9 +90,6 @@ namespace HUD
                 default:
                     return auditLevels.VeryGood;
             }
-            
         }
-        
-        
-    } 
+    }
 }

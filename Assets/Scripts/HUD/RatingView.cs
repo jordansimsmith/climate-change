@@ -10,9 +10,11 @@ public class RatingView : MonoBehaviour
 
     public ResourceSingleton resourceSingleton;
 
-    private int ratingBoost; // If you have a good rating for a while, it gets a positive boost (0 no boost, 10 full boost)
+    // If you have a good rating for a while, it gets a positive boost (0 no boost, 10 full boost)
+    private int ratingBoost;
 
-    private int rating; // Rating out of ten
+    // Rating out of ten
+    private int rating;
 
     private Image[] stars;
 
@@ -40,8 +42,6 @@ public class RatingView : MonoBehaviour
                     break;
                 case "Star5":
                     stars[4] = component;
-                    break;
-                default:
                     break;
             }
         }
@@ -111,10 +111,13 @@ public class RatingView : MonoBehaviour
             pts++;
         }
 
-        if (ratingBoost > 6)    {
+        if (ratingBoost > 6)
+        {
             pts++;
         }
-        if (ratingBoost > 9)    {
+
+        if (ratingBoost > 9)
+        {
             pts++;
         }
 
@@ -152,15 +155,21 @@ public class RatingView : MonoBehaviour
     }
 
     // Used to update the rating boost, from having a streak of good rating
-    public void FourSecondTick() {
-        if (rating > 6)    {
+    private void FourSecondTick()
+    {
+        if (rating > 6)
+        {
             ratingBoost++;
-            if (ratingBoost > 10)   {
+            if (ratingBoost > 10)
+            {
                 ratingBoost = 10;
             }
-        } else {
+        }
+        else
+        {
             ratingBoost--;
-            if (ratingBoost < 0)    {
+            if (ratingBoost < 0)
+            {
                 ratingBoost = 0;
             }
         }

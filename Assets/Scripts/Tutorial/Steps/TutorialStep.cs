@@ -4,12 +4,9 @@ namespace Tutorial
 {
     public abstract class TutorialStep : ScriptableObject
     {
-        [SerializeField]
-        protected string title;
-        [SerializeField,  TextArea(3, 10)]
-        protected string description;
-        [SerializeField,  TextArea(3, 10)]
-        protected string successMessage;
+        [SerializeField] protected string title;
+        [SerializeField, TextArea(3, 10)] protected string description;
+        [SerializeField, TextArea(3, 10)] protected string successMessage;
 
         private bool stepCompleted;
 
@@ -32,7 +29,6 @@ namespace Tutorial
          */
         public virtual void OnStepBegin()
         {
-            
         }
 
         /**
@@ -40,30 +36,25 @@ namespace Tutorial
          */
         public virtual void OnStepCompleted()
         {
-            
         }
 
-        
+
         /**
          * Called when this tutorial step ends (the user continues to next step)
          */
         public virtual void OnStepEnd()
         {
-            
         }
-        
-        
-        
+
 
         /**
          * Called every frame when this step is the active step.
          */
         public virtual void Update()
         {
-            
         }
 
-    
+
         public virtual bool StepCompleted
         {
             get => stepCompleted;
@@ -73,6 +64,7 @@ namespace Tutorial
                 {
                     OnStepCompleted();
                 }
+
                 stepCompleted = value;
             }
         }
