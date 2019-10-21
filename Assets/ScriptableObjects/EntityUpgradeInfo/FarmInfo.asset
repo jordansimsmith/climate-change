@@ -17,7 +17,7 @@ MonoBehaviour:
       cost: 200
       money: 0
       food: 30
-      shelter: -5
+      shelter: 0
       power: 0
       environment: -20
     researchOptions:
@@ -41,7 +41,7 @@ MonoBehaviour:
       cost: 1000
       money: 0
       food: 60
-      shelter: -5
+      shelter: 0
       power: 0
       environment: -30
     researchOptions:
@@ -65,7 +65,7 @@ MonoBehaviour:
       cost: 5000
       money: 0
       food: 90
-      shelter: -5
+      shelter: 0
       power: 0
       environment: -50
     researchOptions:
