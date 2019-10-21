@@ -30,7 +30,7 @@ namespace DefaultNamespace.UI.MainMenu
 
                     if (error.Contains("auth/credential-already-in-use"))
                     {
-                        errorMsg = "Error: Account Exists.";
+                        errorMsg = "Account Exists (Logout)";
                     }
                     else
                     {

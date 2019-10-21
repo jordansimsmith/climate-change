@@ -5,6 +5,7 @@
                   {
                     console.log('test');
                     const provider = new firebase.auth.GoogleAuthProvider();
+                    provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
                     firebase.auth().signInWithPopup(provider).then(function(result) {
             
                        // Have to duplicate this code because of .jslib syntax and rules.
@@ -62,6 +63,9 @@
                 return;
             }
             const provider = new firebase.auth.GoogleAuthProvider();
+            
+            provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+                    
             firebase.auth().currentUser.linkWithPopup(provider).then(function(result) {
                 
                        // Have to duplicate this code because of .jslib syntax and rules.

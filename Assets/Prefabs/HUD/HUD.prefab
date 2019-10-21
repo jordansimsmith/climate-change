@@ -76,7 +76,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reshad Contractor
+  m_Text: John Hopkins
 --- !u!1 &538828846
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '"yeet"'
+  m_Text: '"Welcome to Caeli Island!"'
 --- !u!1 &1093540755
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Chief Dreaming Officer
+  m_Text: Groundsman
 --- !u!1 &87698934855083270
 GameObject:
   m_ObjectHideFlags: 0
