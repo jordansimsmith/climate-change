@@ -6,6 +6,12 @@ using World.Entities;
 
 namespace World.Tiles
 {
+    /// <summary>
+    /// Represents a tile on the game board.
+    /// Entities can be assigned to tiles and they are stored
+    /// as the child game object. In game, they are positioned above
+    /// the tile.
+    /// </summary>
     public class Tile : MonoBehaviour
     {
         [SerializeField]

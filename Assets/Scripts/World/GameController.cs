@@ -4,6 +4,10 @@ using World;
 using World.Resource;
 using World.Entities;
 
+/// <summary>
+/// GameController updates the resource counts (including money). It also checks
+/// for the lose condition and can output a win condition.
+/// </summary>
 public class GameController : MonoBehaviour
 {
     [SerializeField] private ResourceSingleton resources;

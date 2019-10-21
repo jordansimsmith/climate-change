@@ -5,6 +5,10 @@ using World.Entities;
 
 namespace World.Resource
 {
+    /// <summary>
+    /// Stores the total demand and total supply of all resources:
+    /// Money, Environment, Power, Food, Shelter
+    /// </summary>
     [CreateAssetMenu, DataContract]
     public class ResourceSingleton : ScriptableObject
     {
@@ -26,14 +30,12 @@ namespace World.Resource
             MoneyRate = 0;
         }
 
-        // Kms
         public ResourceStat GetResourceBalanceFor(String typeStr)
         {
             Enum.TryParse(typeStr, out ResourceType type);
             return GetResourceBalanceFor(type);
         }
 
-        // Kms2
         public ResourceStat GetResourceBalanceFor(ResourceType type)
         {
             var stat = new ResourceStat();

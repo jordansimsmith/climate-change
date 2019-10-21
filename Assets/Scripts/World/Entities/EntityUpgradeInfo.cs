@@ -4,6 +4,10 @@ using UnityEngine;
 namespace World.Entities
 {
 
+    /// <summary>
+    /// Serializes the resource contributions and upgrade options for each entity
+    /// for different levels.
+    /// </summary>
     [CreateAssetMenu]
     public class EntityUpgradeInfo : ScriptableObject {
         [Header("Elements of array correspond to levels of the Entity")]
