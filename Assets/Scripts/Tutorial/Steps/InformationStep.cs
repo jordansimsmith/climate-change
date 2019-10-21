@@ -2,7 +2,7 @@
 
 namespace Tutorial.Steps
 {
-    [CreateAssetMenu(menuName="Tutorial Steps/Information Step")]
+    [CreateAssetMenu(menuName = "Tutorial Steps/Information Step")]
     public class InformationStep : TutorialStep
     {
         public InformationStep(string title, string description) : base(title, description)

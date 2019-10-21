@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using UnityEngine;
 using World;
 using World.Entities;
@@ -41,7 +39,7 @@ public class TornadoMovement : MonoBehaviour
     {
         targetPosition = PickRandomPosition();
         periodsElapsed++;
-        if (periodsElapsed > this.periodsTillDeath)
+        if (periodsElapsed > periodsTillDeath)
         {
             masterParticleSystem.Stop(true);
             Destroy(gameObject, 2.0f);

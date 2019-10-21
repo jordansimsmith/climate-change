@@ -31,7 +31,7 @@ namespace NaturalDisasters
                 naturalDisasterPanelController.Hide();
             }
         }
-   
+
         private void DisasterEventDispatcher()
         {
             // If environment drops below 100, i.e. relatively few trees to factories (you start w +300 env thanks trees).  
@@ -133,8 +133,5 @@ namespace NaturalDisasters
             // rebake nav mesh since underlying tiles have changed 
             board.RebakeNavMesh();
         }
-        
-        
-
     }
 }
