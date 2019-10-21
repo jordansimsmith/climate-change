@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using World.Resource;
 
-/**
-    Manages population, and the resource stats that derive from it
- */
+/// <summary>
+/// Manages population, and the resource stats that derive from it
+/// </summary>
 public class PopulationController : MonoBehaviour
 {
     public ResourceSingleton ResourceSingleton;

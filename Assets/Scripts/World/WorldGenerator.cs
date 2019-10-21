@@ -3,6 +3,11 @@ using World.Tiles;
 
 namespace World
 {
+    /// <summary>
+    /// Generates a 2d array of TileType which represents the board layout.
+    /// The output of the Generate() method is used by GameBoard to spawn
+    /// tile prefabs.
+    /// </summary>
     public class WorldGenerator : MonoBehaviour
     {
         [SerializeField] private float generationOffset;

@@ -6,6 +6,13 @@ using World.Tiles;
 
 namespace World
 {
+    /// <summary>
+    /// EntityPlacer provides some interactions with the game board. It has four
+    /// different modes: NONE, DELETE, BUILD, RECLAIM.
+    ///
+    /// BUILD and RECLAIM uses ray cast to select tiles to build entities and
+    /// to reclaim tiles
+    /// </summary>
     public class EntityPlacer : MonoBehaviour
     {
         [SerializeField] private EntityFactory factory;
@@ -15,6 +22,7 @@ namespace World
         private EntityPlacerMode mode = EntityPlacerMode.NONE;
         private GameBoard board;
 
+        // Stores the mode of the EntityPlacer
         public EntityPlacerMode Mode
         {
             get => mode;
@@ -110,7 +118,7 @@ namespace World
             }
             else if (Mode == EntityPlacerMode.RECLAIM)
             {
-                // reclaim code 
+                //  Reclaims a tile on click
                 if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
                 {
                     if (Input.GetMouseButton(0))

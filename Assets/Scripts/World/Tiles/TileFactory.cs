@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace World.Tiles
 {
+    /// <summary>
+    /// Runtime retrieval of tile prefabs (can be instantiated or not)
+    /// </summary>
     [CreateAssetMenu]
     public class TileFactory : ScriptableObject
     {
