@@ -62,4 +62,3 @@ namespace Persistence
             set => selectedWorld = value;
         }
     }
-}

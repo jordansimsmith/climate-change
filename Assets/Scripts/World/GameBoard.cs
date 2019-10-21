@@ -209,7 +209,6 @@ namespace World
         public void ReclaimTile(Tile oldTile)
         {
             Vector2Int pos = oldTile.Pos;
-            // CreateTileAt(pos.x, pos.y, TileType.Grass);
             Destroy(oldTile.gameObject);
             CreateTileAt(pos.x, pos.y, TileType.Grass);
         }

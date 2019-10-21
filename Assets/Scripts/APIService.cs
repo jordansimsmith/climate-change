@@ -9,12 +9,12 @@ using World;
 
 namespace DefaultNamespace
 {
-    /**
-        API Client class that interfaces with the API.
-     */
+    /// <summary>
+    /// Client that interfaces with the Caeli APi
+    /// </summary>
     public class APIService : MonoBehaviour
     {
-//        private static string BASE_ENDPOINT = "http://localhost:5001/caeliapi/us-east4/api/";
+//       private static string BASE_ENDPOINT = "http://localhost:5001/caeliapi/us-east4/api/";
         private static string BASE_ENDPOINT = "https://us-east4-caeliapi.cloudfunctions.net/api/";
         private static string WORLDS_ENDPOINT = BASE_ENDPOINT + "worlds/";
         private static string SHARED_WORLDS_ENDPOINT = BASE_ENDPOINT + "sharedworlds/";

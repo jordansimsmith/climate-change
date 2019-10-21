@@ -5,6 +5,10 @@ using World.Tiles;
 
 namespace HUD
 {
+    /// <summary>
+    /// Template pattern for all HUD's that display entity information can implement
+    /// Provides basic built in functionality and allows hooks for custom display functionality
+    /// </summary>
     public abstract class EntityInformationController : MonoBehaviour
     {
         [SerializeField] protected Text title;
@@ -19,6 +23,7 @@ namespace HUD
 
         public Entity Entity => entity;
 
+        // template method that handles setting the entity and displaying panel
         public void ShowInformation(Entity e)
         {
             entity = e;
@@ -33,6 +38,7 @@ namespace HUD
             gameObject.SetActive(false);
         }
 
+        // hook method for individual UI formatting
         public abstract void UpdateInformation();
 
         protected void RefreshEntityStats()

@@ -91,6 +91,7 @@ namespace World
                     GameObject gameTile = hitInfo.collider.gameObject;
                     Tile tile = gameTile.GetComponent<Tile>();
 
+                    // If entity over grid, lock entity to tile
                     buildingTransform.SetParent(gameTile.transform);
                     buildingTransform.localPosition = Vector3.zero;
 
@@ -108,6 +109,7 @@ namespace World
                 }
                 else
                 {
+                    // if mouse not on grid, set entity free form position to mouse
                     tilePlane.Raycast(ray, out var enter);
                     Vector3 hitPoint = ray.GetPoint(enter);
                     buildingTransform.parent = null;

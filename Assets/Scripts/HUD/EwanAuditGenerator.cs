@@ -8,6 +8,10 @@ using World.Resource;
 
 namespace HUD
 {
+    /// <summary>
+    /// Provides random text generation for Ewan audit upon reaching level two
+    /// by parsing the corresponding audit data file
+    /// </summary>
     public class EwanAuditGenerator : MonoBehaviour
     {
         public TextAsset auditData;
@@ -38,6 +42,7 @@ namespace HUD
 
             var resourceTypes = Enum.GetValues(typeof(ResourceType)).Cast<ResourceType>();
 
+            // create unique dialogue for each resource
             foreach (ResourceType resource in resourceTypes)
             {
                 ResourceStat stat = resources.GetResourceBalanceFor(resource);

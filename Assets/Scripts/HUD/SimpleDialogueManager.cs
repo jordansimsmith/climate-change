@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace HUD
 {
-    /**
-     * Simple dialogue manager class that controls the dialogue panel (separate from tutorial panel)
-     * Handles displaying of simple text prompts and supports multiple pages
-     */
+    /// <summary>
+    /// Simple dialogue manager class that controls the dialogue panel (separate from tutorial panel)
+    /// Handles displaying of simple text prompts and supports multiple pages
+    /// </summary>
     public class SimpleDialogueManager : MonoBehaviour
     {
         [SerializeField] private Text titleText;
