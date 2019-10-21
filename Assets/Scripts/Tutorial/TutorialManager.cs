@@ -24,8 +24,6 @@ namespace Tutorial
         {
             dialogueManager = tutorialCanvas.GetComponent<DialogueManager>();
             persistenceManager = FindObjectOfType<PersistenceManager>();
-            
-            EndTutorial();
 
             if (!persistenceManager.SelectedWorld.world.IsTutorialCompleted)
             {
