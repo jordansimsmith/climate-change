@@ -12718,7 +12718,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Out of Money
+  m_Text: Not Enough Money
 --- !u!1 &8094272303652060672
 GameObject:
   m_ObjectHideFlags: 0
