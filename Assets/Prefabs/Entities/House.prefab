@@ -258,16 +258,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2475268260737098598}
     m_Modifications:
-    - target: {fileID: 3018872639531760716, guid: 6eee64216f34dc849b6177ee22b4cf54,
-        type: 3}
-      propertyPath: m_Name
-      value: CityEntity
-      objectReference: {fileID: 0}
-    - target: {fileID: 3018872639531760716, guid: 6eee64216f34dc849b6177ee22b4cf54,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3502902632987985123, guid: 6eee64216f34dc849b6177ee22b4cf54,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -321,6 +311,16 @@ PrefabInstance:
     - target: {fileID: 3502902632987985123, guid: 6eee64216f34dc849b6177ee22b4cf54,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018872639531760716, guid: 6eee64216f34dc849b6177ee22b4cf54,
+        type: 3}
+      propertyPath: m_Name
+      value: CityEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018872639531760716, guid: 6eee64216f34dc849b6177ee22b4cf54,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -93,6 +93,8 @@ namespace World.Tiles
             {
                 placer = FindObjectOfType<EntityPlacer>();
             }
+            
+            
             if (placer.Mode == EntityPlacerMode.DELETE) {
                 if (placer.EntityCanBeDeleted(this)) {
                     ShowHighlight(new Color(0.9f, 0.8f, 0.17f));
@@ -105,6 +107,10 @@ namespace World.Tiles
                 else {
                     ShowHighlight(new Color(0.77f, 0.27f, 0.23f));
                 }
+            }
+            else if (placer.Mode == EntityPlacerMode.BUILD)
+            {
+                return;
             }
             else {
                 var ogColor = originalMaterial.color;
@@ -164,6 +170,7 @@ namespace World.Tiles
 
         private void ResetCostText()
         {
+            if (cost == null) return;
             cost.text = "";
         }
     }

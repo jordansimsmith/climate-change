@@ -5,35 +5,39 @@ using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using World;
 
 public class WorldItem : MonoBehaviour
 {
     [SerializeField] private Text worldNameText;
     [SerializeField] private Text carbonCreditsText;
     [SerializeField] private Text populationText;
+    [SerializeField] private GameObject sharePanel;
 
-    private SerializableWorld world;
-    private PersistenceManager persistenceManager;
+
     private GameObject loader;
-
+    private ServerWorld world;
+    private PersistenceManager persistenceManager;
+    
     // Start is called before the first frame update
     void Start()
     {
         persistenceManager = FindObjectOfType<PersistenceManager>();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+
     public void PlayButtonOnClick()
     {
         persistenceManager.SelectedWorld = world;
-        SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
         loader.SetActive(true);
-        SceneManager.sceneLoaded += (scene, mode) =>
-        {
-            if (scene.name.Equals("TestScene"))
-            {
-                loader.SetActive(false);
-            }
-        };
+        SceneManager.LoadScene("TestScene", LoadSceneMode.Single);
+        SceneManager.sceneLoaded += (arg0, mode) => loader.SetActive(false);
     }
 
     public void DeleteButtonOnClick()
@@ -42,12 +46,24 @@ public class WorldItem : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Initialise(SerializableWorld world, GameObject loader)
+    public void Initialise(ServerWorld serverWorld, GameObject loader)
     {
-        this.world = world;
-        worldNameText.text = world.Name;
-        carbonCreditsText.text = world.ResourceData.Money.ToString();
-        populationText.text = world.ResourceData.Population.ToString();
         this.loader = loader;
+        this.world = serverWorld;
+        worldNameText.text = serverWorld.world.Name;
+        carbonCreditsText.text = serverWorld.world.ResourceData.Money.ToString();
+        populationText.text = serverWorld.world.ResourceData.Population.ToString();
+
+        if (serverWorld.shareCode != null)
+        {
+            sharePanel.SetActive(true);
+            sharePanel.GetComponentInChildren<Text>().text = serverWorld.shareCode;
+        }
+        else
+        {
+            sharePanel.SetActive(false);
+        }
     }
+    
+    
 }
