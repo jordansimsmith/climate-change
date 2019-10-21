@@ -19,9 +19,11 @@ namespace Tutorial
         // Start is called before the first frame update
         private void Start()
         {
-            EndTutorial();
             dialogueManager = tutorialCanvas.GetComponent<DialogueManager>();
             persistenceManager = FindObjectOfType<PersistenceManager>();
+            
+            EndTutorial();
+
             if (!persistenceManager.SelectedWorld.world.IsTutorialCompleted)
             {
                 StartTutorial(0);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using Persistence;
@@ -23,7 +24,7 @@ public class WorldsPanelController : MonoBehaviour
     
     void Start()
     {
-        PopulateWorldsList();
+   
         
     }
 
@@ -37,19 +38,14 @@ public class WorldsPanelController : MonoBehaviour
         }
     }
     
-    public void PopulateWorldsList()
+    public void PopulateWorldsList(System.Action onFilled)
     {
-        if (worldManager.ServerWorlds != null)
-        {
-            FillList(worldManager.ServerWorlds);
-        }
-        else
-        {
-            worldManager.FetchWorlds(FillList);
-        }
-        
-        
-        
+      
+            worldManager.FetchWorlds((worlds) =>
+            {
+                FillList(worlds);
+                onFilled();
+            });
     }
 
     private void FillList(List<ServerWorld> worlds)

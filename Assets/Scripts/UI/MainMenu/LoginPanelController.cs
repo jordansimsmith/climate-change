@@ -8,7 +8,8 @@ namespace DefaultNamespace.UI.MainMenu
         public Button GoogleButton;
         public Button AnonymousButton;
         public GameObject MenuPanel;
-
+        public GameObject AuthHero;
+        
         private AuthHandler authHandler;
         // Start is called before the first frame update
         void Start()
@@ -19,16 +20,36 @@ namespace DefaultNamespace.UI.MainMenu
             }
             authHandler = FindObjectOfType<AuthHandler>();
 
+            InvalidateUI();
+        }
+
+
+        private void InvalidateUI()
+        {
             if (authHandler.CurrentAuth != null)
             {
+                GoogleButton.interactable = true;
+                AnonymousButton.interactable = true;
                 MenuPanel.SetActive(true);
+                 
+                AuthHero.SetActive(true);
+                AuthHero.GetComponent<AuthHeroController>().Initialise(authHandler.CurrentAuth);
                 gameObject.SetActive(false);
-                
+               
             }
             else
             {
+                GoogleButton.interactable = true;
+                AnonymousButton.interactable = true;
                 MenuPanel.SetActive(false);
+                AuthHero.SetActive(false);
             }
+        }
+
+        public void TriggerLogout()
+        {
+            authHandler.Logout();
+            InvalidateUI();
         }
 
         // Update is called once per frame
@@ -36,24 +57,54 @@ namespace DefaultNamespace.UI.MainMenu
         {
         
         }
+        
+        
 
         
         public void LoginAnonymousButtonClicked()
         {
             GoogleButton.interactable = false;
             AnonymousButton.interactable = false;
-            AnonymousButton.GetComponentInChildren<Text>().text = "Logging in...";
-            authHandler.LoginAnonymously((auth) =>
+            
+            Text buttonText = AnonymousButton.GetComponentInChildren<Text>();
+            
+            string oldButtonText = buttonText.text;
+            buttonText.text = "Logging in...";
+            authHandler.LoginAnonymousUser((auth) =>
             {
-                APIService.Instance.access_token = auth.FirebaseToken;
-                MenuPanel.SetActive(true);
-                gameObject.SetActive(false);
+                buttonText.text = oldButtonText;
+                APIService.Instance.access_token = auth.IdToken;
+               InvalidateUI();
+            }, (error) =>
+            {
+                GoogleButton.interactable = true;
+                AnonymousButton.interactable = true;
+                buttonText.text = "Login Failed. Try Again?";
             });
         }
 
         public void LoginWithGoogleButtonClicked()
         {
-        
+            GoogleButton.interactable = false;
+            AnonymousButton.interactable = false;
+    
+            Text buttonText = GoogleButton.GetComponentInChildren<Text>();
+            
+            string oldButtonText = buttonText.text;
+            buttonText.text = "Logging in...";
+            authHandler.DoGoogleLogin((auth) =>
+            {
+                buttonText.text = oldButtonText;
+                APIService.Instance.access_token = auth.IdToken;
+                
+                InvalidateUI();
+                
+            }, (error) =>
+            {
+                GoogleButton.interactable = true;
+                AnonymousButton.interactable = true;
+                buttonText.text = "Login Failed. Try Again?";
+            });
         }
     }
 }

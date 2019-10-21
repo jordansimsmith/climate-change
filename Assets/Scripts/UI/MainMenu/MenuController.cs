@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.UI.MainMenu;
 using Persistence;
 using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class MenuController : MonoBehaviour
     public GameObject worldsPanel;
 
     public GameObject viewWorldPanel;
+
+    public GameObject playGameButton;
+    public GameObject loginPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +30,13 @@ public class MenuController : MonoBehaviour
 
     public void PlayButtonOnClick()
     {
-        viewWorldPanel.SetActive(false);
-        worldsPanel.SetActive(true);
-        worldsPanel.GetComponent<WorldsPanelController>().PopulateWorldsList();
+        playGameButton.GetComponentInChildren<Text>().text = "Retrieving...";
+        worldsPanel.GetComponent<WorldsPanelController>().PopulateWorldsList(() =>
+        {
+            viewWorldPanel.SetActive(false);
+            worldsPanel.SetActive(true);
+            playGameButton.GetComponentInChildren<Text>().text = "Play Game";
+        });
     }
     
     
@@ -39,6 +49,7 @@ public class MenuController : MonoBehaviour
 
     public void ExitButtonOnClick()
     {
-        Application.Quit();
+      loginPanel.SetActive(true);
+      loginPanel.GetComponent<LoginPanelController>().TriggerLogout();
     }
 }

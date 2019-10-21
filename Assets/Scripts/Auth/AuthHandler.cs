@@ -10,12 +10,23 @@ using UnityEngine.Networking.Types;
 
 public class AuthHandler : MonoBehaviour
 {
-    private static FirebaseAuthLink currentAuth;
+    private static FirebaseCredentials currentAuth;
     
-//    [DllImport("__Internal")]
-//    private static extern void OpenAuthUI();
+    [DllImport("__Internal")]
+    private static extern void OpenAuthUI();
+    
+    [DllImport("__Internal")]
+    private static extern void LoginAnonymously();
+    
+    [DllImport("__Internal")]
+    private static extern void LinkWithGoogle();
 
     private FirebaseAuthProvider authProvider;
+
+    private System.Action<FirebaseCredentials> onLoginSuccess;
+    private System.Action<string> onLoginError;
+    
+    
     
     private static bool created = false;
     void Awake()
@@ -38,35 +49,66 @@ public class AuthHandler : MonoBehaviour
         authProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
     }
 
-    public void UpdateAuthState(FirebaseAuthLink auth)
+
+
+    public void Logout()
     {
-        currentAuth = auth;
+        CurrentAuth = null;
     }
 
-    public async void LoginAnonymously(System.Action<FirebaseAuth> onLogin)
+    public async void LoginAnonymousUser(System.Action<FirebaseCredentials> onLogin, System.Action<string> onError)
     {
-        FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
-        UpdateAuthState(auth);
-        onLogin(auth);
+        onLoginSuccess = onLogin;
         
-    
-    }
-
-
-
-    public FirebaseAuthLink CurrentAuth => currentAuth;
-
-    
-
-
-    public void OpenUI(System.Action<FirebaseAuth> onLogin) {
         if (Application.isEditor)
         {
-            LoginAnonymously(onLogin);
+            FirebaseAuthLink auth = await authProvider.SignInAnonymouslyAsync();
+            CurrentAuth = new FirebaseCredentials(auth.FirebaseToken, true);
+            onLoginSuccess(CurrentAuth);
         }
         else
         {
-//            OpenAuthUI();
+            LoginAnonymously(); // login via JS firebase sdk (authplugin.jslib)
+        }
+        
+    }
+
+    public void AttemptLinkWithGoogle(System.Action<FirebaseCredentials> onLogin, System.Action<string> onError)
+    {
+        if (Application.isEditor)
+        {
+            onError("Can't link with google in editor mode.'");
+            return;
+        }
+
+        onLoginSuccess = onLogin;
+        onLoginError = onError;
+        
+        LinkWithGoogle();
+        
+    }
+
+
+
+    public FirebaseCredentials CurrentAuth
+    {
+        get => currentAuth; 
+        set { currentAuth = value; }
+    }
+
+    
+
+
+    public void DoGoogleLogin(System.Action<FirebaseCredentials> onLogin, System.Action<string> onError) {
+        onLoginSuccess = onLogin;
+        onLoginError = onError;
+        if (Application.isEditor)
+        {
+            LoginAnonymousUser(onLogin, onError);
+        }
+        else
+        {
+            OpenAuthUI();
         }
     }
     
@@ -75,30 +117,68 @@ public class AuthHandler : MonoBehaviour
 
 
 
-    public async void GoogleLoginSuccess(string credentialsJson)
+    public async void LoginSuccess(string credentialsJson)
     {
-     
-        GoogleCredentials credentials = JsonConvert.DeserializeObject<GoogleCredentials>(credentialsJson);
-     
-        var auth = await authProvider.SignInWithOAuthAsync(FirebaseAuthType.Google, credentials.AccessToken);
+        Debug.Log(credentialsJson);
+        Debug.Log("Received");
+  
+        FirebaseCredentials creds = JsonConvert.DeserializeObject<FirebaseCredentials>(credentialsJson);
+        CurrentAuth = creds;
+        Debug.Log(creds.IdToken);
         
-        UpdateAuthState(auth);
-        Debug.Log(auth.User.Email);
+        onLoginSuccess(CurrentAuth);
     }
     
-    public void GoogleLoginError(string error)
+    public void LoginError(string error)
     {
-        
+        Debug.Log(error);
+        Debug.Log("error Received");
+        onLoginError(error);
     }
     
-    private class GoogleCredentials
+    public class FirebaseCredentials
     {
-        private string accessToken;
         private string idToken;
+        private bool isAnonymous;
+        private string displayName;
+        private string email;
+        private string photoURL;
 
-        public string AccessToken => accessToken;
+        public FirebaseCredentials(string idToken, bool isAnonymous)
+        {
+            this.idToken = idToken;
+            this.isAnonymous = isAnonymous;
+        }
 
-        public string IdToken => idToken;
+        public string IdToken
+        {
+            get => idToken;
+            set => idToken = value;
+        }
+
+        public bool IsAnonymous
+        {
+            get => isAnonymous;
+            set => isAnonymous = value;
+        }
+
+        public string DisplayName
+        {
+            get => displayName;
+            set => displayName = value;
+        }
+
+        public string Email
+        {
+            get => email;
+            set => email = value;
+        }
+
+        public string PhotoURL
+        {
+            get => photoURL;
+            set => photoURL = value;
+        }
     }
 
     

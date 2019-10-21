@@ -120,6 +120,7 @@ namespace DefaultNamespace
         {
             using (UnityWebRequest www = UnityWebRequest.Delete(url))
             {
+                www.SetRequestHeader("Authorization", "Bearer " + access_token );
                 yield return www.SendWebRequest();
 
                 if (www.isNetworkError)

@@ -6,7 +6,7 @@
     <title>Caeli</title>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      UnityLoader.instantiate("unityContainer", "Build/build.json");
+      var unityInstance =  UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
     </script>
   </head>
   <body>

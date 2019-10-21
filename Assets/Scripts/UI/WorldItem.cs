@@ -22,7 +22,6 @@ public class WorldItem : MonoBehaviour
     void Start()
     {
         persistenceManager = FindObjectOfType<PersistenceManager>();
-        sharePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -55,6 +54,10 @@ public class WorldItem : MonoBehaviour
         {
             sharePanel.SetActive(true);
             sharePanel.GetComponentInChildren<Text>().text = serverWorld.shareCode;
+        }
+        else
+        {
+            sharePanel.SetActive(false);
         }
     }
     
