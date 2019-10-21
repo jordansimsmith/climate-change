@@ -6,8 +6,10 @@ namespace HUD
     public class ShopInformationController : EntityInformationController
     {
         [SerializeField] private Text cost;
+
         private void Start()
         {
+            // hide initially
             gameObject.SetActive(false);
         }
 
@@ -18,7 +20,7 @@ namespace HUD
                 return;
             }
 
-            cost.text = "Cost: " + entity.Stats.cost;
+            // set cost
             title.text = entity.Type.ToString();
             cost.text = "Cost: " + entity.Stats.cost;
             RefreshEntityStats();

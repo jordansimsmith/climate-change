@@ -15,10 +15,10 @@ public class DeleteHandler : EventTrigger
 
     public void Start()
     {
-        this._background = gameObject.GetComponent<Image>();
-        this._background.color = defaultAlpha;
-        this.placer = FindObjectOfType<EntityPlacer>();
-        this.controller = FindObjectOfType<ContentPanelController>();
+        _background = gameObject.GetComponent<Image>();
+        _background.color = defaultAlpha;
+        placer = FindObjectOfType<EntityPlacer>();
+        controller = FindObjectOfType<ContentPanelController>();
     }
 
     public override void OnPointerDown(PointerEventData data)
@@ -28,7 +28,7 @@ public class DeleteHandler : EventTrigger
 
     public override void OnPointerEnter(PointerEventData data)
     {
-        this._background.color = hoverAlpha;
+        _background.color = hoverAlpha;
     }
 
     public override void OnPointerExit(PointerEventData data)
@@ -37,18 +37,18 @@ public class DeleteHandler : EventTrigger
         {
             return;
         }
-        this._background.color = defaultAlpha;
+
+        _background.color = defaultAlpha;
     }
 
     public void InvalidateDeleteButton()
     {
         _background.color = placer.Mode == EntityPlacerMode.DELETE ? hoverAlpha : defaultAlpha;
+    }
 
-    } 
     public void SetDeleteMode(bool isDeleteMode)
     {
         placer.Mode = isDeleteMode ? EntityPlacerMode.DELETE : EntityPlacerMode.NONE;
         controller.InvalidateUI();
     }
-
 }

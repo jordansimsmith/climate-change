@@ -1,5 +1,4 @@
-﻿using System;
-using HUD;
+﻿using HUD;
 using UnityEngine;
 using UnityEngine.UI;
 using World;
@@ -23,7 +22,7 @@ public class ShopItem : MonoBehaviour
         controller = FindObjectOfType<ContentPanelController>();
     }
 
-    void Start()
+    private void Start()
     {
         placer = FindObjectOfType<EntityPlacer>();
     }
@@ -45,7 +44,8 @@ public class ShopItem : MonoBehaviour
         controller.InvalidateUI();
     }
 
-    public void Interactable(bool pred) {
+    public void Interactable(bool pred)
+    {
         button.interactable = pred;
     }
 }

@@ -11,21 +11,18 @@ namespace HUD
      */
     public class SimpleDialogueManager : MonoBehaviour
     {
-        [SerializeField]
-        private Text titleText;
-        [SerializeField]
-        private Text descriptionText;
-        [SerializeField]
-        private GameObject dialoguePanel;
+        [SerializeField] private Text titleText;
+        [SerializeField] private Text descriptionText;
+        [SerializeField] private GameObject dialoguePanel;
 
         private Dialogue currentDialogue;
         private Queue<Dialogue> queue = new Queue<Dialogue>();
-        
-        private int dialogueIndex;
-        
-        public static SimpleDialogueManager Instance { get; set;  }
 
-        public void Awake()
+        private int dialogueIndex;
+
+        public static SimpleDialogueManager Instance { get; set; }
+
+        private void Awake()
         {
             dialoguePanel.SetActive(false);
             if (Instance != null && Instance != this)
@@ -37,7 +34,7 @@ namespace HUD
                 Instance = this;
             }
         }
-        
+
         /**
          * Takes in a dialogue sequence and title
          * If there is nothing currently playing, the dialogue is started immediately
@@ -47,8 +44,8 @@ namespace HUD
         {
             List<string> dialogueLines = new List<string>(lines.Length);
             dialogueLines.AddRange(lines);
-            
-            Dialogue dialogue = new Dialogue(dialogueLines, dialogueName );
+
+            Dialogue dialogue = new Dialogue(dialogueLines, dialogueName);
 
             // queue empty, just start playing dialogue
             if (currentDialogue == null)
@@ -60,7 +57,6 @@ namespace HUD
                 // otherwise, add dialogue to queue
                 queue.Enqueue(dialogue);
             }
-
         }
 
         /**
@@ -97,10 +93,9 @@ namespace HUD
                     // play next dialogue if available
                     CreateDialogue(queue.Dequeue());
                 }
-                
             }
         }
-        
+
         /**
          * Removes the current dialogue that is being displayed 
          */
@@ -114,14 +109,14 @@ namespace HUD
             currentDialogue = null;
             dialogueIndex = 0;
         }
-        
+
         /**
          * Starts co-routine to display typewriter animation
          */
         private void DisplayNextSentence(string description)
         {
             descriptionText.text = "";
-            
+
             StopAllCoroutines();
             StartCoroutine(TypeSentence(description));
         }
@@ -144,8 +139,6 @@ namespace HUD
                 yield return null;
             }
         }
-
-
     }
 
     public class Dialogue
