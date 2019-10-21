@@ -6,12 +6,19 @@ using UnityEngine.EventSystems;
 
 namespace World.Entities
 {
+    /// <summary>
+    /// Base class for all concrete entities. Entity's have Stats which determine
+    /// it's resource contribution once placed on the game board. Entities can
+    /// also be upgraded and researched by invoking the respective methods.
+    /// </summary>
     public abstract class Entity : MonoBehaviour
     {
         [SerializeField] protected EntityHelper entityHelper;
         [SerializeField] protected GameObject[] modelForLevel;
 
+        // Type to be overriden by each concrete entity
         public virtual EntityType Type { get; }
+        // Upgrade specs to be overriden by each concrete entity
         public virtual EntityUpgradeInfo UpgradeInfo { get; }
 
         void Start()
@@ -19,6 +26,7 @@ namespace World.Entities
             RefreshModelForLevel();
         }
 
+        // Calculate the resource contributions for current entity
         public EntityStats Stats
         {
             get
@@ -72,6 +80,7 @@ namespace World.Entities
                 return false;
             }
 
+            // Check townhall level higher than current
             if (!entityHelper.IsTownhallLevelEnoughForUpgrade(this))
             {
                 return false;
@@ -109,6 +118,7 @@ namespace World.Entities
             return false;
         }
 
+        // Switches between models for each level of current entity
         public void RefreshModelForLevel()
         {
             for (int i = 0; i < modelForLevel.Length; i++)
@@ -133,6 +143,7 @@ namespace World.Entities
            
         }
 
+        // Apply research options to stats
         public virtual bool Research(ResearchOption research)
         {
             if (entityHelper.ResearchIfEnoughMoney(research))
@@ -234,6 +245,7 @@ namespace World.Entities
             {
                 if (Type != EntityType.TownHall)
                 {
+                    // Delete the current entity by invoking from parent tile
                     var parent = transform.parent;
                     var tile = parent.gameObject.GetComponent<Tile>();
                     tile.Entity = null;

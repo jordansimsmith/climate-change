@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace World.Entities
 {
+    /// <summary>
+    /// Runtime retrieval of entity prefabs (instantiated or not)
+    /// </summary>
     [CreateAssetMenu]
     public class EntityFactory : ScriptableObject
     {

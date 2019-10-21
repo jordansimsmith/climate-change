@@ -4,6 +4,10 @@ using UnityEngine;
 using World.Resource;
 
 namespace World.Entities {
+    /// <summary>
+    /// Provides helper functionality common among all entities.
+    /// This is useful because serialized fields can be reused.
+    /// </summary>
     [CreateAssetMenu]
     public class EntityHelper : ScriptableObject {
         [SerializeField] private ResourceSingleton resources;
@@ -13,9 +17,6 @@ namespace World.Entities {
         
         private EntityPlacer entityPlacer;
         private GameBoard board;
-        
-//        public int townhallLevel = 1;
-        
 
         public void Construct(EntityStats res) {
           resources.Money -= res.cost;
