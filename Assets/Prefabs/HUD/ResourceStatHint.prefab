@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5265676162990569393}
   - component: {fileID: 5265676162990569406}
-  - component: {fileID: 5265676162990569407}
   - component: {fileID: 5265676162990569392}
+  - component: {fileID: -5935795851058082851}
   m_Layer: 5
   m_Name: ResourceStatHint
   m_TagString: Untagged
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160, y: 9}
+  m_AnchoredPosition: {x: 179.29, y: 10}
   m_SizeDelta: {x: 157.70001, y: 55.39801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5265676162990569406
@@ -47,7 +47,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5265676162990569394}
   m_CullTransparentMesh: 0
---- !u!114 &5265676162990569407
+--- !u!114 &5265676162990569392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265676162990569394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c2aeed6b1748eeaf02d0e16c49d845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hint: {fileID: 5265676163748080619}
+--- !u!114 &-5935795851058082851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.53333336, g: 0.78823537, b: 0.3647059, a: 1}
+  m_Color: {r: 0.38431376, g: 0.73333335, b: 0.5058824, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -75,19 +88,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5265676162990569392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265676162990569394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c2aeed6b1748eeaf02d0e16c49d845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hint: {fileID: 5265676163748080619}
 --- !u!1 &5265676163748080621
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.22647, y: -27.932434}
+  m_AnchoredPosition: {x: -23.9, y: -23.7}
   m_SizeDelta: {x: 96.599976, y: 40.5}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &5265676163748080618
