@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5265676162990569392}
   - component: {fileID: -5935795851058082851}
   m_Layer: 5
-  m_Name: ReclaimToolTip 1
+  m_Name: DeleteToolTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38431376, g: 0.73333335, b: 0.5058824, a: 1}
+  m_Color: {r: 0.9176471, g: 0.93725497, b: 0.91372555, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -164,4 +164,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toggles delete mode. Click on entities to delete them from the board.
+  m_Text: Toggles destroy mode. Click on entities to delete them from the board.
