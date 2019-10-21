@@ -98,7 +98,7 @@ namespace World.Entities
                 if (HUD)    {
                     var warning = HUD.transform.Find("OutOfMoneyWarning");
                     if (warning)    {
-                        warning.position = Input.mousePosition;
+                        warning.position = new Vector2(230, Input.mousePosition.y);
                         warning.gameObject.SetActive(true);
                         Invoke("HideCostWarning", 4);
                     }
@@ -145,7 +145,7 @@ namespace World.Entities
                 if (HUD)    {
                     var warning = HUD.transform.Find("OutOfMoneyWarning");
                     if (warning)    {
-                        warning.position = Input.mousePosition;
+                        warning.position = new Vector2(230, Input.mousePosition.y);
                         warning.gameObject.SetActive(true);
                         Invoke("HideCostWarning", 4);
                     }
