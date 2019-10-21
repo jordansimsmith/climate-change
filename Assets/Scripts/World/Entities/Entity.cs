@@ -123,7 +123,8 @@ namespace World.Entities
                         maxY = Math.Max(maxY, renderer.bounds.size.y);
                     }
                     var collider = GetComponent<BoxCollider>();
-                    collider.size = new Vector3(collider.size.x, maxY, collider.size.z);
+                    collider.center = new Vector3(collider.center.x,  2.5f + (maxY / 2f), collider.center.z);
+                    collider.size = new Vector3(collider.size.x, maxY, collider.size.z);    
                 }
                 else
                 {
