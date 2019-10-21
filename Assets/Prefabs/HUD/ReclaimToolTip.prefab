@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 210.24, y: 1.5900269}
-  m_SizeDelta: {x: 219.6, y: 72.23}
+  m_AnchoredPosition: {x: 210.23999, y: 0}
+  m_SizeDelta: {x: 219.6, y: 79.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5265676162990569406
 CanvasRenderer:
@@ -122,8 +122,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -103.3, y: -39.1}
-  m_SizeDelta: {x: 178.94, y: 67.79}
+  m_AnchoredPosition: {x: -100.9, y: -36.6}
+  m_SizeDelta: {x: 178.94, y: 73.2}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &5265676163748080618
 CanvasRenderer:
@@ -164,5 +164,5 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toggles reclaim mode. Click on water and sand tiles adjacent to grass to
-    convert them into grass
+  m_Text: Toggles reclaim mode. Click on water and sand tiles adjacent to two grass
+    tiles to convert them into grass
