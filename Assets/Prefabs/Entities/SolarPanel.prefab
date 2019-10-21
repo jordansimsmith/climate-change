@@ -172,8 +172,6 @@ MonoBehaviour:
   entityHelper: {fileID: 11400000, guid: d6783958e576a4ecfb3f89703a598f45, type: 2}
   modelForLevel:
   - {fileID: 8763506363408908394}
-  - {fileID: 8488577988535543824}
-  - {fileID: 2957285442657439922}
   upgradeInfo: {fileID: 11400000, guid: ac9954d9847c849e8b984ecd61208c43, type: 2}
 --- !u!1 &8488577988535543824
 GameObject:
