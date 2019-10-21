@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Bob the Builder
-  description: Build 10 Homes
+  description: Build 3 Homes
   targetEntity: 1
-  targetAmount: 10
+  targetAmount: 3
   gameBoard: {fileID: 7941001179048457806}
 --- !u!1 &328928425
 GameObject:
@@ -92,9 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Eco-Warrior
-  description: Plant 10 Trees
+  description: Plant 3 Trees
   targetEntity: 0
-  targetAmount: 10
+  targetAmount: 3
   gameBoard: {fileID: 7941001179048457806}
 --- !u!1 &698990938
 GameObject:
@@ -235,9 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: BRIC
-  description: Build 10 Powerplants
+  description: Build 3 Powerplants
   targetEntity: 5
-  targetAmount: 10
+  targetAmount: 3
   gameBoard: {fileID: 7941001179048457806}
 --- !u!1 &1879704653
 GameObject:
@@ -331,9 +331,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Agricultural Revolution
-  description: Build 10 Farms
+  description: Build 3 Farms
   targetEntity: 4
-  targetAmount: 10
+  targetAmount: 3
   gameBoard: {fileID: 7941001179048457806}
 --- !u!1 &6299459441424567991
 GameObject:
