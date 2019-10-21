@@ -170,6 +170,7 @@ namespace World.Tiles
 
         private void ResetCostText()
         {
+            if (cost == null) return;
             cost.text = "";
         }
     }

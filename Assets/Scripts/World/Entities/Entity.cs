@@ -1,3 +1,4 @@
+using System;
 using HUD;
 using UnityEngine;
 using World.Tiles;
@@ -101,8 +102,24 @@ namespace World.Entities
         {
             for (int i = 0; i < modelForLevel.Length; i++)
             {
-                modelForLevel[i].SetActive(i == Level - 1);
+                if (i == Level - 1)
+                {
+                    modelForLevel[i].SetActive(true);
+                    var renderers = modelForLevel[i].GetComponentsInChildren<Renderer>();
+                    float maxY = 0;
+                    foreach (var renderer in renderers)
+                    {
+                        maxY = Math.Max(maxY, renderer.bounds.size.y);
+                    }
+                    var collider = GetComponent<BoxCollider>();
+                    collider.size = new Vector3(collider.size.x, maxY, collider.size.z);
+                }
+                else
+                {
+                    modelForLevel[i].SetActive(false);
+                }
             }
+           
         }
 
         public virtual bool Research(ResearchOption research)

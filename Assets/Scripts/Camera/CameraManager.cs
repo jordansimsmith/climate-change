@@ -48,7 +48,6 @@ public class CameraManager : MonoBehaviour
         KeyboardInputManager.OnMoveInput += UpdateFrameMove;
         KeyboardInputManager.OnZoomInput += UpdateFrameZoom;
         KeyboardInputManager.OnRotateInput += UpdateFrameRotate;
-        MouseInputManager.OnMoveInput += UpdateFrameMove;
         MouseInputManager.OnZoomInput += UpdateFrameZoom;
     }
 
