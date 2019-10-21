@@ -108,16 +108,21 @@ namespace World
             }
             else if (Mode == EntityPlacerMode.DELETE)
             {
+//                if (Input.GetMouseButtonDown(0) && canBeDeleted)
+                
                 // Remove target object if clicked
-                if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, 1 << 10))
-                {
-                    GameObject deleteTile = hitInfo.collider.gameObject;
-                    Tile tile = deleteTile.GetComponent<Tile>();
-                    var canBeDeleted = EntityCanBeDeleted(tile);
-                    if (Input.GetMouseButtonDown(0) && canBeDeleted) {
-                        tile.Entity = null;
-                    }
-                }
+//                if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity))
+//                {
+//                    GameObject deleteObject = hitInfo.collider.gameObject;
+//                    Entity entity = deleteObject.GetComponent<Entity>();
+//                    
+//                    
+//                    Tile tile = deleteTile.GetComponent<Tile>();
+//                    var canBeDeleted = EntityCanBeDeleted(tile);
+//                    if (Input.GetMouseButtonDown(0) && canBeDeleted) {
+//                        tile.Entity = null;
+//                    }
+//                }
             }
             else if (Mode == EntityPlacerMode.RECLAIM)
             {

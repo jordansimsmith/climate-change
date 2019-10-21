@@ -184,6 +184,13 @@ namespace World.Entities
 
             if (entityHelper.GetEntityPlacerMode() == EntityPlacerMode.DELETE)
             {
+                if (Type != EntityType.TownHall)
+                {
+                    var parent = transform.parent;
+                    var tile = parent.gameObject.GetComponent<Tile>();
+                    tile.Entity = null;
+                }
+                
                 if (UpgradeInformationController.Instance.IsUpgradeInformationOpen())
                 {
                     if (this == UpgradeInformationController.Instance.Entity)
