@@ -24,6 +24,13 @@ namespace World.Tiles
             set => tileType = value;
         }
 
+        private EscapeController escapeController;
+
+        public void Start()
+        {
+            escapeController = FindObjectOfType<EscapeController>();
+        }
+
         public int ReclaimCost
         {
             get
@@ -124,7 +131,10 @@ namespace World.Tiles
         
         public void OnMouseEnter()
         {
-            ShowHighlight();
+            if (!escapeController.GameIsPaused)
+            {
+                ShowHighlight();
+            }
 
             if (cost == null)
             {

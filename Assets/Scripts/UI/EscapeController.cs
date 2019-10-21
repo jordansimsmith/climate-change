@@ -13,7 +13,7 @@ public class EscapeController : MonoBehaviour
     private PostProcessingBehaviour blurComponent;
     private List<GameObject> elementsOff;
     private bool gameIsPaused = false;
-
+    public bool GameIsPaused => gameIsPaused;
     private GameBoard board;
 
     // Start is called before the first frame update
