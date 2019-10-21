@@ -6,6 +6,9 @@ Note that the game is intended to be run at a 16:9 aspect ratio.
 ![caeli](https://user-images.githubusercontent.com/31643423/67184473-55700600-f440-11e9-8195-fed95f4bcd37.png)
 
 
+## How to run
+Open https://tinyurl.com/caeli-final in google chrome.
+
 ## Team members (Team 10) 
 
 | Name               | GitHub Username | UoA UPI |
@@ -47,6 +50,3 @@ Unity, by default, uses binary files for project configuration. However, it can 
 `File > Save Project`
 
 > Refer to this article for more information: [how-to-git-with-unity](https://thoughtbot.com/blog/how-to-git-with-unity)
-
-## How to run
-Open https://tinyurl.com/caeli-island in google chrome.
