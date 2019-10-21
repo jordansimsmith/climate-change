@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using HUD;
+using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
+
+    private static readonly string ACHIEVEMENT_UNLOCKED_TITLE = "Achievement Unlocked!";
     private Achievement[] achievements;
-    public Achievement[] Achievements => achievements; 
+    public Achievement[] Achievements => achievements;
+
+    private int numOfUnlockedAchievements = 0;
 
     // Start is called before the first frame update
     private void Awake()
@@ -19,7 +24,9 @@ public class AchievementManager : MonoBehaviour
         foreach (var achievement in achievements)   {
             if (!achievement.Done)  {
                 achievement.AchievementUpdate();
-                if (achievement.Done)   {
+                if (achievement.Done)
+                {
+                    numOfUnlockedAchievements++;
                     TriggerAchievement(achievement);
                 }
             }
@@ -27,8 +34,10 @@ public class AchievementManager : MonoBehaviour
     }
 
     // Displays achievement when it is earned
-    public void TriggerAchievement(Achievement achievement)
+    private void TriggerAchievement(Achievement achievement)
     {
-        // TODO: message to the user that the achievement is completed
+        string achievementStatus = "Unlocked: " + numOfUnlockedAchievements + "/" + achievements.Length;
+        string achievementCompletionText = "Congratulations, you have unlocked \"" + achievement.Title + "\"\n " + achievementStatus;
+        SimpleDialogueManager.Instance.SetCurrentDialogue(new [] {achievementCompletionText}, ACHIEVEMENT_UNLOCKED_TITLE);
     }
 }

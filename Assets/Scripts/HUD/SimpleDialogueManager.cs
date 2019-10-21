@@ -15,12 +15,13 @@ namespace HUD
         private Text titleText;
         [SerializeField]
         private Text descriptionText;
+        [SerializeField]
+        private GameObject dialoguePanel;
+
+        private Dialogue currentDialogue;
+        private Queue<Dialogue> queue = new Queue<Dialogue>();
         
-        public GameObject dialoguePanel;
-        
-        private List<string> dialogueLines = new List<string>();
         private int dialogueIndex;
-        private string dialogueTitle;
         
         public static SimpleDialogueManager Instance { get; set;  }
 
@@ -38,34 +39,50 @@ namespace HUD
         }
         
         /**
-         * Sets the current dialogue sequence to be displayed
-         * Takes in a list of dialogue and title for the sequence
+         * Takes in a dialogue sequence and title
+         * If there is nothing currently playing, the dialogue is started immediately
+         * Otherwise, the dialogue is added to the queue 
          */
         public void SetCurrentDialogue(string[] lines, string dialogueName)
         {
-            dialogueIndex = 0;
-            dialogueTitle = dialogueName;
-            dialogueLines = new List<string>(lines.Length);
+            List<string> dialogueLines = new List<string>(lines.Length);
             dialogueLines.AddRange(lines);
             
-            CreateDialogue();
+            Dialogue dialogue = new Dialogue(dialogueLines, dialogueName );
+
+            // queue empty, just start playing dialogue
+            if (currentDialogue == null)
+            {
+                CreateDialogue(dialogue);
+            }
+            else
+            {
+                // otherwise, add dialogue to queue
+                queue.Enqueue(dialogue);
+            }
+
         }
 
         /**
-         * Displays the dialogue panel and initiates the sequence
+         * Sets the current dialogue and starts the sequence 
          */
-        private void CreateDialogue()
+        private void CreateDialogue(Dialogue dialgoue)
         {
+            currentDialogue = dialgoue;
+            dialogueIndex = 0;
             dialoguePanel.SetActive(true);
-            titleText.text = dialogueTitle;
-            DisplayNextSentence(dialogueLines[dialogueIndex]);
+            titleText.text = currentDialogue.dialogueTitle;
+            DisplayNextSentence(currentDialogue.dialogue[dialogueIndex]);
         }
 
         /**
-         * Displays the next dialogue line in the sequence (if available) or closes the panel
+         * Displays the next line in the current dialogue (if available)
+         * If the dialogue finishes, and there are other dialogues in the queue, it starts the next one automatically
+         * Otherwise, the dialogue panel is closed
          */
         public void ContinueDialogue()
         {
+            List<string> dialogueLines = currentDialogue.dialogue;
             if (dialogueIndex < dialogueLines.Count - 1)
             {
                 dialogueIndex++;
@@ -73,19 +90,29 @@ namespace HUD
             }
             else
             {
-                dialoguePanel.SetActive(false);
                 RemoveCurrentDialogue();
+
+                if (queue.Count > 0)
+                {
+                    // play next dialogue if available
+                    CreateDialogue(queue.Dequeue());
+                }
+                
             }
         }
+        
+        /**
+         * Removes the current dialogue that is being displayed 
+         */
         private void RemoveCurrentDialogue()
         {
+            dialoguePanel.SetActive(false);
+
             titleText.text = "";
             descriptionText.text = "";
 
-            dialogueLines = null;
+            currentDialogue = null;
             dialogueIndex = 0;
-            dialogueTitle = "";
-
         }
         
         /**
@@ -105,7 +132,7 @@ namespace HUD
         public void FinishTyping()
         {
             StopAllCoroutines();
-            descriptionText.text = dialogueLines[dialogueIndex];
+            descriptionText.text = currentDialogue.dialogue[dialogueIndex];
         }
 
 
@@ -119,5 +146,17 @@ namespace HUD
         }
 
 
+    }
+
+    public class Dialogue
+    {
+        public List<string> dialogue;
+        public string dialogueTitle;
+
+        public Dialogue(List<string> dialogue, string dialogueTitle)
+        {
+            this.dialogue = dialogue;
+            this.dialogueTitle = dialogueTitle;
+        }
     }
 }

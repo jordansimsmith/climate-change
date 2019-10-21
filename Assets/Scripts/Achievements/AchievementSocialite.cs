@@ -8,14 +8,13 @@ public class AchievementSocialite : Achievement
     public void OnTalkTo()
     {
         numTalkedTo++;
-
-        if (numTalkedTo > target)
-        {
-            done = true;
-        }
     }
 
     public override void AchievementUpdate()
     {
+        if (numTalkedTo >= target)
+        {
+            done = true;
+        }
     }
 }
