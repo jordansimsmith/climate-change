@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
 using World;
+using World.Tiles;
 
 public class EscapeController : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class EscapeController : MonoBehaviour
         gameIsPaused = true;
         Time.timeScale = 0f;
         escapeUIObj.SetActive(true);
+        Tile.highlightEnabled = false;
     }
 
     void Resume()
@@ -71,6 +73,7 @@ public class EscapeController : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1f;
         escapeUIObj.SetActive(false);
+        Tile.highlightEnabled = true;
     }
 
     public void SaveButtonOnClick()
