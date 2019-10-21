@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-using UnityEngine.Analytics;
+
 using UnityEngine.EventSystems;
-using EventTrigger = UnityEngine.Analytics.EventTrigger;
+
 
 public class DraggableUIPanel : MonoBehaviour, IDragHandler
 {

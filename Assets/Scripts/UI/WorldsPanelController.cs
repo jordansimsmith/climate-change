@@ -1,6 +1,12 @@
-﻿using Persistence.Serializables;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using DefaultNamespace;
+using Persistence;
+using Persistence.Serializables;
 using UnityEngine;
 using UnityEngine.UI;
+using World;
 
 public class WorldsPanelController : MonoBehaviour
 {
@@ -8,15 +14,9 @@ public class WorldsPanelController : MonoBehaviour
     [SerializeField] private GameObject worldItemPrefab;
     [SerializeField] private InputField newWorldInput;
     [SerializeField] private Button createButton;
-    [SerializeField] private GameObject loader;
 
     [SerializeField] private WorldManager worldManager;
-
-
-    void Start()
-    {
-        PopulateWorldsList();
-    }
+    [SerializeField] private GameObject loader;
 
     void ClearWorlds()
     {
@@ -28,17 +28,25 @@ public class WorldsPanelController : MonoBehaviour
         }
     }
 
-    public void PopulateWorldsList()
+    public void PopulateWorldsList(System.Action onFilled)
+    {
+        worldManager.FetchWorlds((worlds) =>
+        {
+            FillList(worlds);
+            onFilled();
+        });
+    }
+
+    private void FillList(List<ServerWorld> worlds)
     {
         ClearWorlds();
-        var worlds = worldManager.LoadWorldsFromDisk();
-        foreach (SerializableWorld world in worlds)
+        foreach (ServerWorld world in worlds)
         {
             AddItem(world);
         }
     }
 
-    private void AddItem(SerializableWorld world)
+    private void AddItem(ServerWorld world)
     {
         GameObject newItem = Instantiate(worldItemPrefab);
 
@@ -50,6 +58,7 @@ public class WorldsPanelController : MonoBehaviour
         WorldItem worldItem = newItem.GetComponent<WorldItem>();
         worldItem.Initialise(world, loader);
     }
+
 
     public void NewWorldTextChanged()
     {
@@ -65,8 +74,8 @@ public class WorldsPanelController : MonoBehaviour
 
     public void CreateButtonClicked()
     {
-        SerializableWorld newWorld = worldManager.CreateWorld(newWorldInput.text);
-        AddItem(newWorld);
+        ServerWorld serverWorld = worldManager.CreateWorld(newWorldInput.text);
+        AddItem(serverWorld);
         newWorldInput.text = "";
     }
 

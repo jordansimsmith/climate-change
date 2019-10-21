@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using World;
 using World.Tiles;
 
@@ -11,8 +13,10 @@ public class EscapeController : MonoBehaviour
     [SerializeField] private GameObject loader;
     [SerializeField] private GameObject escapeUIObj;
 
-    private PostProcessingBehaviour blurComponent;
     private List<GameObject> elementsOff;
+    public Text shareText;
+    public Button shareButton;
+    private PostProcessingBehaviour blurComponent;
     private bool gameIsPaused = false;
     public bool GameIsPaused => gameIsPaused;
     private GameBoard board;
@@ -24,6 +28,7 @@ public class EscapeController : MonoBehaviour
         escapeUIObj.SetActive(false);
         blurComponent = mainCamera.GetComponent<PostProcessingBehaviour>();
         board = FindObjectOfType<GameBoard>();
+        InvalidateSharingUI();
     }
 
     // Update is called once per frame
@@ -78,12 +83,57 @@ public class EscapeController : MonoBehaviour
 
     public void SaveButtonOnClick()
     {
-        board.SaveGameState();
+        board.SaveActiveWorld();
+    }
+
+    public void InvalidateSharingUI()
+    {
+        if (board.ActiveWorld == null)
+        {
+            return;
+        }
+        if (board.ActiveWorld.shareCode != null)
+        {
+        
+            shareText.gameObject.SetActive(true);
+            shareText.text = "Code: " + board.ActiveWorld.shareCode;
+            if(shareButton)
+                shareButton.GetComponentInChildren<Text>().text = "Stop Sharing";
+        }
+        else
+        {
+            shareText.gameObject.SetActive(false);
+            if(shareButton)
+                shareButton.GetComponentInChildren<Text>().text = "Share World";
+        }
+        
+    }
+
+    public void ShareButtonOnClick()
+    {
+        if (board.ActiveWorld.shareCode == null)
+        {
+            APIService.Instance.CreateShareCode(board.ActiveWorld.id, (shareCode) =>
+            {
+                Debug.Log(shareCode);
+                board.ActiveWorld.shareCode = shareCode;
+                InvalidateSharingUI();
+            });
+        }
+        else
+        {
+            APIService.Instance.DeleteShareCode(board.ActiveWorld.id);
+            board.ActiveWorld.shareCode = null;
+            InvalidateSharingUI();  // assume it worked.
+        };
+        
+       
     }
 
     public void BackButtonOnClick()
     {
         Resume();
+        board.ActiveWorld = null;
         SceneManager.LoadScene("MainUIScene", LoadSceneMode.Single);
         loader.SetActive(true);
         SceneManager.sceneLoaded += (scene, mode) =>

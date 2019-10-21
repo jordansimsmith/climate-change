@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using Persistence;
+using UnityEngine;
 using World;
 using World.Entities;
 
@@ -16,15 +17,22 @@ namespace Tutorial
 
         public bool TutorialComplete => tutorialComplete;
         public int CurrentTutorialStep => currentTutorialStep;
+        private PersistenceManager persistenceManager;
 
         // Start is called before the first frame update
         private void Start()
         {
-            EndTutorial();
             dialogueManager = tutorialCanvas.GetComponent<DialogueManager>();
-            if (!board.IsEntityTypeOnBoard(EntityType.TownHall))
+            persistenceManager = FindObjectOfType<PersistenceManager>();
+
+            if (!persistenceManager.SelectedWorld.world.IsTutorialCompleted)
             {
                 StartTutorial(0);
+            }
+            else
+            {
+                tutorialActive = false;
+                tutorialCanvas.SetActive(false);
             }
         }
 
@@ -98,6 +106,7 @@ namespace Tutorial
             tutorialActive = false;
             tutorialCanvas.SetActive(false);
             tutorialComplete = true;
+            persistenceManager.SelectedWorld.world.IsTutorialCompleted = true;
         }
     }
 }
