@@ -27,7 +27,7 @@ MonoBehaviour:
         money: 0
         food: 0
         shelter: 0
-        power: -5
+        power: 5
         environment: 0
     - name: Increased Density (1000 CC)
       researchDiff:
@@ -40,7 +40,7 @@ MonoBehaviour:
   - baseStats:
       cost: 1000
       money: 0
-      food: -60
+      food: 0
       shelter: 40
       power: -20
       environment: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   - baseStats:
       cost: 5000
       money: 0
-      food: -80
+      food: 0
       shelter: 80
       power: -30
       environment: 0
