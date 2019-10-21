@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using World;
 using World.Entities;
 
 namespace HUD
@@ -13,6 +14,8 @@ namespace HUD
         [SerializeField] private Button[] researchButtons;
         [SerializeField] private Text description;
         [SerializeField] private RectTransform contentPanelRectTransform;
+        [SerializeField] private GameBoard gameBoard;
+        [SerializeField] private GameObject upgradeToolTip;
         
         private Text upgradeButtonText;
 
@@ -88,7 +91,10 @@ namespace HUD
 
             if (entity.IsMaxLevel())
             {
-                DisableUpgradeButton();
+                DisableUpgradeButton("Max Level");
+            } else if (IsEntityLocked())
+            {
+                DisableUpgradeButton("Upgrade");
             }
             else
             {
@@ -110,6 +116,11 @@ namespace HUD
         }
 
 
+        private bool IsEntityLocked()
+        {
+            return entity.Type != EntityType.TownHall && entity.Level >= gameBoard.GetTownHallLevel();
+        }
+
         public bool IsUpgradeInformationOpen()
         {
             return gameObject.activeSelf;
@@ -118,13 +129,26 @@ namespace HUD
         private void EnableUpgradeButton()
         {
             upgradeButtonText.text = "Upgrade (" + entity.GetUpgradeCost() + ")";
-            upgradeButton.enabled = true;
+            upgradeButton.interactable = true;
         }
 
-        private void DisableUpgradeButton()
+        private void DisableUpgradeButton(string text)
         {
-            upgradeButtonText.text = "Max Level";
-            upgradeButton.enabled = false;
+            upgradeButtonText.text = text;
+            upgradeButton.interactable = false;
+        }
+
+        public void OnMouseEnterButton()
+        {
+            if (!entity.IsMaxLevel() && IsEntityLocked())
+            {
+                upgradeToolTip.SetActive(true);   
+            }
+        }
+
+        public void OnMouseExitButton()
+        {
+            upgradeToolTip.SetActive(false);
         }
     }
 }
