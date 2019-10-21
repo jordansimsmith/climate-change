@@ -92,6 +92,17 @@ namespace World.Entities
                 RefreshModelForLevel();
 
                 return true;
+            } else {
+                // Display out of money warning
+                var HUD = GameObject.Find("HUD");
+                if (HUD)    {
+                    var warning = HUD.transform.Find("OutOfMoneyWarning");
+                    if (warning)    {
+                        warning.position = new Vector2(230, Input.mousePosition.y);
+                        warning.gameObject.SetActive(true);
+                        Invoke("HideCostWarning", 4);
+                    }
+                }
             }
 
             Debug.Log("not enough shmoneys");
@@ -128,9 +139,29 @@ namespace World.Entities
             {
                 research.isResearched = true;
                 return true;
+            } else {
+                // Display out of money warning
+                var HUD = GameObject.Find("HUD");
+                if (HUD)    {
+                    var warning = HUD.transform.Find("OutOfMoneyWarning");
+                    if (warning)    {
+                        warning.position = new Vector2(230, Input.mousePosition.y);
+                        warning.gameObject.SetActive(true);
+                        Invoke("HideCostWarning", 4);
+                    }
+                }
             }
 
             return false;
+        }
+
+        public void HideCostWarning()
+        {
+            // Hide out of money warning
+            var warning = GameObject.Find("OutOfMoneyWarning");
+            if (warning)    {
+                warning.SetActive(false);
+            }
         }
 
         private GameObject box;
