@@ -189,6 +189,7 @@ namespace World.Entities
                     var parent = transform.parent;
                     var tile = parent.gameObject.GetComponent<Tile>();
                     tile.Entity = null;
+                    tile.HideHighlight();
                 }
                 
                 if (UpgradeInformationController.Instance.IsUpgradeInformationOpen())
